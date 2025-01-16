@@ -1,0 +1,127 @@
+@use "../../variables.scss" as *;
+
+.example-container {
+  display: flex;
+  height: 100vh;
+}
+
+.mat-drawer-container {
+  position: relative;
+}
+
+.example-sidenav {
+  width: 300px;
+  background-color: #201f24;
+  color: white;
+  box-shadow: none;
+  visibility: visible !important;
+  transition: transform 0.5s ease-out;
+  transform: translateX(0);
+  display: block !important;
+
+  &.minimized {
+    transition: transform 0.5s ease-in;
+    transform: translateX(-250px) !important;
+    visibility: visible;
+  }
+}
+
+.main-logo {
+  display: block;
+  margin: 20px;
+}
+
+.subtitle {
+  color: $color-text;
+  text-decoration: none;
+}
+
+.btn-logo {
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+  background-color: transparent;
+  color: $color-text;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.5s ease, right 0.5s ease;
+
+  &.left {
+    right: 130px !important;
+    transform: translateX(0px);
+  }
+
+  .reversed {
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+    color: #201f24;
+  }
+}
+
+.example-sidenav-content {
+  padding: 20px 0;
+
+  .navbar-items-container {
+    margin-top: 70px;
+
+    .menu-list-container {
+      padding: 0;
+    }
+
+    .navbar-items {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 20px;
+      width: 99%;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+
+      &.active {
+        background: #f8f4f0;
+
+        .subtitle {
+          color: #201f24;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: #f8f4f0;
+        .subtitle {
+          color: #201f24;
+        }
+      }
+    }
+  }
+}
+
+button {
+  background-color: #5c6bc0;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e4db0;
+}
+
+.minimized {
+  transform: translateX(-250px) !important;
+}
+
+.content-container {
+  margin-left: 50px;
+  transition: margin-left 0.5s ease-out;
+  padding: 20px;
+}
+
+.content-container.shifted {
+  margin-left: 300px;
+}

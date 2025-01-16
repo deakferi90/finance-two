@@ -1,0 +1,36 @@
+<div class="box-container">
+  <div class="signup-card-container">
+    <img src="assets/finance-pic.png" alt="Styled Image" class="image-banner" />
+    <img src="assets/message.png" alt="Message" class="img-msg" />
+    <img src="assets/logoAuth.png" alt="Message" class="img-logo" />
+  </div>
+  <div class="signup-card-box">
+    <div class="signup-card">
+      <div class="card-title">
+        <h1>Sign Up</h1>
+        <form class="form-group form-container" (ngSubmit)="onSubmit()">
+          <label>Name</label>
+          <input name="name" type="string" placeholder="Name" />
+          <label>Email</label>
+          <input
+            name="email"
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+          />
+          <label>Create Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <button class="form-btn" type="submit">Submit</button>
+        </form>
+        <div class="txt-container">
+          <span class="txt">Already have an account? </span
+          ><a routerLink="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

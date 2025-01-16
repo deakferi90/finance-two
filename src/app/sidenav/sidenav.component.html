@@ -1,0 +1,64 @@
+<mat-drawer-container
+  class="example-container mat-drawer-container"
+  [class.open]="isOpen"
+  autosize
+>
+  <mat-drawer
+    #drawer
+    class="example-sidenav mat-drawer-side"
+    [@drawerAnimation]="showFiller"
+    mode="side"
+  >
+    <div class="example-sidenav-content">
+      <img
+        class="main-logo"
+        [src]="svgLogoUrl"
+        alt="Logo"
+        width="122"
+        height="22"
+      />
+      <nav class="navbar-items-container">
+        <ul class="menu-list-container">
+          <li
+            *ngFor="let item of menuItems; trackBy: trackById"
+            (click)="onLinkClick(item)"
+            [routerLink]="item.link"
+            routerLinkActive="active"
+            [class.active]="selectedMenuItem === item"
+            (mouseover)="onHoverItem(item)"
+            (mouseleave)="onHoverItem(null)"
+            class="navbar-items"
+          >
+            <img
+              class="nav-icon"
+              [src]="
+                hoveredItem === item || selectedMenuItem === item
+                  ? item.activeImgUrl
+                  : item.imgUrl
+              "
+              alt="{{ item.label }} Icon"
+            />
+            <a routerLinkActive="active" class="subtitle">{{ item.label }}</a>
+          </li>
+        </ul>
+      </nav>
+      <button
+        class="btn-logo"
+        [class.left]="showFiller === 'open'"
+        type="button"
+        (click)="toggleSidenav()"
+      >
+        <img
+          [src]="arrow"
+          [class.reversed]="showFiller !== 'open'"
+          alt="Arrow"
+        />
+        <span *ngIf="showFiller === 'open'">Minimize Menu</span>
+      </button>
+    </div>
+  </mat-drawer>
+
+  <div class="content-container" [class.shifted]="showFiller === 'open'">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
