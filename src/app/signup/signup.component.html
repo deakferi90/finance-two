@@ -8,9 +8,18 @@
     <div class="signup-card">
       <div class="card-title">
         <h1>Sign Up</h1>
-        <form class="form-group form-container" (ngSubmit)="onSubmit()">
+        <form
+          class="form-group form-container"
+          [formGroup]="fromGroup"
+          (ngSubmit)="onSubmit()"
+        >
           <label>Name</label>
-          <input name="name" type="string" placeholder="Name" />
+          <input
+            name="name"
+            type="string"
+            placeholder="Name"
+            formControlName="name"
+          />
           <label>Email</label>
           <input
             name="email"

@@ -28,11 +28,8 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value).subscribe((data: any) => {
-        if (this.authService.isLoggedIn()) {
-          this.router.navigate(['/overview']);
-        }
-        console.log(data);
+      this.authService.login(this.loginForm.value).subscribe(() => {
+        this.router.navigate(['/overview']);
       });
     }
   }

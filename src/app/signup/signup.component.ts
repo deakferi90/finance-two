@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -14,26 +19,35 @@ export class SignupComponent {
   name: string = '';
   email: string = '';
   password: string = '';
+  fromGroup!: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.fromGroup = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+    });
+  }
 
   onSubmit() {
-    const user = {
-      name: this.name,
-      email: this.email,
-      password: this.password,
-    };
+    if (this.fromGroup.valid) {
+      const user = this.fromGroup.value;
 
-    // Call the signup method in AuthService to send data to the backend
-    this.authService.signup(user).subscribe(
-      (response) => {
-        alert('User registered successfully');
-        this.router.navigate(['/login']); // Redirect to login page
-      },
-      (error) => {
-        console.error(error);
-        alert('Registration failed');
-      }
-    );
+      this.authService.signup(user).subscribe(
+        (response) => {
+          alert('User registered successfully');
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          console.error(error);
+          alert('Registration failed');
+        }
+      );
+    } else {
+      alert('Please fill out the form correctly.');
+    }
   }
 }
