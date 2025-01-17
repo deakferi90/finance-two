@@ -18,21 +18,37 @@
             name="name"
             type="string"
             placeholder="Name"
+            [(ngModel)]="name"
             formControlName="name"
           />
+          @if (isSubmitted && name.length === 0) {
+          <div class="text-red-500">You forget to write a name!</div>
+          }
           <label>Email</label>
           <input
             name="email"
             type="email"
+            [(ngModel)]="email"
             formControlName="email"
             placeholder="Email"
           />
+          @if (isSubmitted && email.length === 0) {
+          <div class="text-red-500">You forget to write an email!</div>
+          }
           <label>Create Password</label>
           <input
             type="password"
             formControlName="password"
+            [(ngModel)]="password"
             placeholder="Password"
           />
+          @if (isSubmitted && password.length === 0) {
+          <div class="text-red-500">You forget to write a password!</div>
+          } @else if(password.length > 0 && password.length < 8) {
+          <div class="text-red-500">
+            Password must be at least 8 characters!
+          </div>
+          }
           <button class="form-btn" type="submit">Submit</button>
         </form>
         <div class="txt-container">

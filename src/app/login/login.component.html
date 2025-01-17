@@ -17,17 +17,27 @@
           <input
             name="email"
             type="email"
+            [(ngModel)]="email"
             formControlName="email"
             placeholder="Email"
           />
+          @if (isLoggedIn && email.length === 0) {
+          <div class="text-red-500">Email is required.</div>
+          }
           <label>Password</label>
           <input
             type="password"
             formControlName="password"
+            [(ngModel)]="password"
             placeholder="Password"
             autocomplete="current-password"
           />
-          <button class="form-btn">Login</button>
+          @if (isLoggedIn && password.length === 0) {
+          <div class="text-red-500">Password is required.</div>
+          }
+
+          <!-- Submit Button -->
+          <button class="form-btn" type="submit">Login</button>
         </form>
         <div class="txt-container">
           <span class="txt">Need to create an account? </span

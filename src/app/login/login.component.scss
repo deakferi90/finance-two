@@ -34,7 +34,7 @@
   outline: none;
   padding: 12px 20px;
   border-radius: 12px;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .login-card .form-btn {
@@ -105,6 +105,12 @@
   width: 60%;
   display: flex;
   justify-content: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 0.25em;
 }
 
 @media screen and (max-width: 992px) {

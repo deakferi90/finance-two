@@ -130,7 +130,6 @@ export class TransactionsComponent implements OnInit {
   }
 
   filterTable(event: Event) {
-    console.log('no changes');
     const target = event.target as HTMLInputElement;
     const value = target.value.toLowerCase();
     this.filteredTransactions = this.transactions.filter((item) =>

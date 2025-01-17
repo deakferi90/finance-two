@@ -20,6 +20,7 @@ export class SignupComponent {
   email: string = '';
   password: string = '';
   fromGroup!: FormGroup;
+  isSubmitted: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.fromGroup = new FormGroup({
@@ -33,6 +34,7 @@ export class SignupComponent {
   }
 
   onSubmit() {
+    this.isSubmitted = true;
     if (this.fromGroup.valid) {
       const user = this.fromGroup.value;
 
@@ -46,8 +48,6 @@ export class SignupComponent {
           alert('Registration failed');
         }
       );
-    } else {
-      alert('Please fill out the form correctly.');
     }
   }
 }

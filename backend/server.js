@@ -1,32 +1,24 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const authRoutes = require("./routes/auth");
+const bcrypt = require("bcryptjs");
+const User = require("./models/User"); // Replace with your User model
+const router = express.Router();
 
-// Initialize the app
-const app = express();
+router.post("/api/signup", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
 
-// Middleware to parse JSON bodies
-app.use(bodyParser.json());
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
 
-// Use the auth routes
-app.use("/api", authRoutes);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ name, email, password: hashedPassword });
 
-// Connect to MongoDB
-mongoose
-  .connect("mongodb://localhost:27017/finance", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB", err);
-  });
-
-// Start the server
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    await newUser.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
 });
+
+module.exports = router;
