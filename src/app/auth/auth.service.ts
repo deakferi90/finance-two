@@ -1,36 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
-  httpClient = inject(HttpClient);
-  router = inject(Router);
-  baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:3000';
 
-  signup(data: any) {
+  constructor(private httpClient: HttpClient, private router: Router) {}
+
+  signup(data: { name: string; email: string; password: string }) {
     return this.httpClient.post(`${this.baseUrl}/register`, data);
   }
 
-  login(data: any) {
+  login(data: { email: string; password: string }) {
     return this.httpClient.post(`${this.baseUrl}/login`, data).pipe(
-      tap((result) => {
-        localStorage.setItem('authUser', JSON.stringify(result));
-        this.router.navigate(['/overview']);
+      tap((response: any) => {
+        localStorage.setItem('authUser', JSON.stringify(response.user));
+        this.router.navigate(['/transactions']);
       })
     );
   }
 
   logout() {
     localStorage.removeItem('authUser');
+    this.router.navigate(['/login']);
   }
 
   isLoggedIn() {
-    return localStorage.getItem('authUser') !== null;
+    return !!localStorage.getItem('authUser');
   }
 }

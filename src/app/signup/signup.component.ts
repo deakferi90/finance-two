@@ -19,11 +19,11 @@ export class SignupComponent {
   name: string = '';
   email: string = '';
   password: string = '';
-  fromGroup!: FormGroup;
+  signupForm!: FormGroup;
   isSubmitted: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
-    this.fromGroup = new FormGroup({
+    this.signupForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -35,8 +35,8 @@ export class SignupComponent {
 
   onSubmit() {
     this.isSubmitted = true;
-    if (this.fromGroup.valid) {
-      const user = this.fromGroup.value;
+    if (this.signupForm.valid) {
+      const user = this.signupForm.value;
 
       this.authService.signup(user).subscribe(
         (response) => {
