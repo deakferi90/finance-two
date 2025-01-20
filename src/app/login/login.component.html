@@ -19,16 +19,19 @@
             type="email"
             formControlName="email"
             placeholder="Email"
+            autocomplete="email"
           />
-          <div
-            *ngIf="
-              loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-            "
-          >
-            <div *ngIf="loginForm.get('email')?.hasError('required')">
-              Email is required.
+          <div *ngIf="isLoggedIn && loginForm.get('email')?.invalid">
+            <div
+              *ngIf="loginForm.get('email')?.errors?.['required']"
+              class="text-red-500"
+            >
+              You forgot to write an email!
             </div>
-            <div *ngIf="loginForm.get('email')?.hasError('email')">
+            <div
+              *ngIf="loginForm.get('email')?.errors?.['email']"
+              class="text-red-500"
+            >
               Enter a valid email.
             </div>
           </div>
@@ -41,14 +44,18 @@
             placeholder="Password"
             autocomplete="current-password"
           />
-          <div
-            *ngIf="
-              loginForm.get('password')?.invalid &&
-              loginForm.get('password')?.touched
-            "
-          >
-            <div *ngIf="loginForm.get('password')?.hasError('required')">
-              Password is required.
+          <div *ngIf="isLoggedIn && loginForm.get('password')?.invalid">
+            <div
+              *ngIf="loginForm.get('password')?.errors?.['required']"
+              class="text-red-500"
+            >
+              You forgot to write a password!
+            </div>
+            <div
+              *ngIf="loginForm.get('password')?.errors?.['minlength']"
+              class="text-red-500"
+            >
+              Password must be at least 8 characters!
             </div>
           </div>
 
@@ -58,7 +65,6 @@
           <span class="txt">Need to create an account? </span>
           <a routerLink="/signup">Sign up</a>
         </div>
-        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
       </div>
     </div>
   </div>

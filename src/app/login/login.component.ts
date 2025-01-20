@@ -20,15 +20,20 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
+  isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
   }
 
   onSubmit() {
+    this.isLoggedIn = true;
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         () => {
@@ -38,8 +43,6 @@ export class LoginComponent {
           this.errorMessage = 'Invalid email or password. Please try again.';
         }
       );
-    } else {
-      this.errorMessage = 'Please fill in all required fields.';
     }
   }
 }
