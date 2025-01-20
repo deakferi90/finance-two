@@ -118,7 +118,6 @@ export class TransactionsComponent implements OnInit {
     this.transactionService.getTransactions().subscribe((data) => {
       this.transactions = data[0]['transactions'];
       this.filteredTransactions = this.transactions;
-      console.log(this.filteredTransactions);
       this.totalPages = Math.ceil(this.transactions.length / this.pageSize);
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
       this.updatePageData();

@@ -13,42 +13,66 @@
           [formGroup]="signupForm"
           (ngSubmit)="onSubmit()"
         >
-          <label>Name</label>
+          <label for="name">Name</label>
           <input
-            name="name"
-            type="string"
-            placeholder="Name"
-            [(ngModel)]="name"
+            id="name"
+            type="text"
             formControlName="name"
+            placeholder="Name"
           />
-          @if (isSubmitted && name.length === 0) {
-          <div class="text-red-500">You forget to write a name!</div>
-          }
-          <label>Email</label>
+          <div *ngIf="isSubmitted && signupForm.get('name')?.invalid">
+            <div
+              *ngIf="signupForm.get('name')?.errors?.['required']"
+              class="text-red-500"
+            >
+              You forgot to write a name!
+            </div>
+          </div>
+
+          <label for="email">Email</label>
           <input
-            name="email"
+            id="email"
             type="email"
-            [(ngModel)]="email"
             formControlName="email"
             placeholder="Email"
           />
-          @if (isSubmitted && email.length === 0) {
-          <div class="text-red-500">You forget to write an email!</div>
-          }
-          <label>Create Password</label>
+          <div *ngIf="isSubmitted && signupForm.get('email')?.invalid">
+            <div
+              *ngIf="signupForm.get('email')?.errors?.['required']"
+              class="text-red-500"
+            >
+              You forgot to write an email!
+            </div>
+            <div
+              *ngIf="signupForm.get('email')?.errors?.['email']"
+              class="text-red-500"
+            >
+              Enter a valid email.
+            </div>
+          </div>
+
+          <label for="password">Create Password</label>
           <input
+            id="password"
             type="password"
             formControlName="password"
-            [(ngModel)]="password"
             placeholder="Password"
           />
-          @if (isSubmitted && password.length === 0) {
-          <div class="text-red-500">You forget to write a password!</div>
-          } @else if(password.length > 0 && password.length < 8) {
-          <div class="text-red-500">
-            Password must be at least 8 characters!
+          <div *ngIf="isSubmitted && signupForm.get('password')?.invalid">
+            <div
+              *ngIf="signupForm.get('password')?.errors?.['required']"
+              class="text-red-500"
+            >
+              You forgot to write a password!
+            </div>
+            <div
+              *ngIf="signupForm.get('password')?.errors?.['minlength']"
+              class="text-red-500"
+            >
+              Password must be at least 6 characters!
+            </div>
           </div>
-          }
+
           <button class="form-btn" type="submit">Submit</button>
         </form>
         <div class="txt-container">

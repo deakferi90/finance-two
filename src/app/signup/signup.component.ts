@@ -1,51 +1,49 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
 import {
-  FormControl,
+  FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
 })
 export class SignupComponent {
-  name: string = '';
-  email: string = '';
-  password: string = '';
-  signupForm!: FormGroup;
-  isSubmitted: boolean = false;
+  signupForm: FormGroup;
+  isSubmitted = false;
+  errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.signupForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.signupForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSubmit() {
     this.isSubmitted = true;
     if (this.signupForm.valid) {
-      const user = this.signupForm.value;
-
-      this.authService.signup(user).subscribe(
-        (response) => {
+      this.authService.signup(this.signupForm.value).subscribe(
+        () => {
           alert('User registered successfully');
           this.router.navigate(['/login']);
         },
         (error) => {
           console.error(error);
-          alert('Registration failed');
+          this.errorMessage = 'Registration failed';
         }
       );
     }

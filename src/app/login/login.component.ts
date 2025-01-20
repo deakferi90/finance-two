@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -15,18 +15,13 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  authService = inject(AuthService);
-  router = inject(Router);
-  isLoggedIn: boolean = false;
   loginForm: FormGroup;
   errorMessage: string = '';
-  email: string = '';
-  password: string = '';
 
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -34,8 +29,6 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    this.isLoggedIn = true;
-    this.errorMessage = '';
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         () => {
@@ -43,9 +36,10 @@ export class LoginComponent {
         },
         (error) => {
           this.errorMessage = 'Invalid email or password. Please try again.';
-          this.isLoggedIn = false;
         }
       );
+    } else {
+      this.errorMessage = 'Please fill in all required fields.';
     }
   }
 }
