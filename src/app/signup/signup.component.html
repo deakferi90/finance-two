@@ -13,34 +13,39 @@
           [formGroup]="signupForm"
           (ngSubmit)="onSubmit()"
         >
-          <label>Name</label>
+          <label for="name">Name</label>
           <input
             name="name"
             type="string"
             placeholder="Name"
             [(ngModel)]="user.username"
             formControlName="name"
+            placeholder="Name"
+            autocomplete="name"
           />
           @if (isSubmitted && user.username.length === 0) {
           <div class="text-red-500">Name is required!</div>
           }
           <label>Email</label>
           <input
-            name="email"
+            id="email"
             type="email"
             [(ngModel)]="user.email"
             formControlName="email"
             placeholder="Email"
+            autocomplete="email"
           />
           @if (isSubmitted && user.email.length === 0) {
           <div class="text-red-500">Email is required!</div>
           }
           <label>Create Password</label>
           <input
+            id="password"
             type="password"
             [(ngModel)]="user.password"
             formControlName="password"
             placeholder="Password"
+            autocomplete="new-password"
           />
           @if (isSubmitted && user.password.length === 0) {
           <div class="text-red-500">Password is required!</div>

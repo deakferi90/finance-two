@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,27 +15,25 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule, CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  authService = inject(AuthService);
-  router = inject(Router);
-  isLoggedIn: boolean = false;
   loginForm: FormGroup;
   errorMessage: string = '';
-  email: string = '';
-  password: string = '';
+  isLoggedIn: boolean = false;
 
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
   }
 
   onSubmit() {
     this.isLoggedIn = true;
-    this.errorMessage = '';
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         (response: string) => {
@@ -44,7 +41,6 @@ export class LoginComponent {
         },
         (error: string) => {
           this.errorMessage = 'Invalid email or password. Please try again.';
-          this.isLoggedIn = false;
         }
       );
       console.log(this.loginForm.value);

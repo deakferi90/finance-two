@@ -2,7 +2,7 @@
   <div class="login-card-container">
     <img src="assets/finance-pic.png" alt="Styled Image" class="image-banner" />
     <img src="assets/message.png" alt="Message" class="img-msg" />
-    <img src="assets/logoAuth.png" alt="Message" class="img-logo" />
+    <img src="assets/logoAuth.png" alt="Logo" class="img-logo" />
   </div>
   <div class="login-card-box">
     <div class="login-card">
@@ -13,35 +13,57 @@
           [formGroup]="loginForm"
           (ngSubmit)="onSubmit()"
         >
-          <label>Email</label>
+          <label for="email">Email</label>
           <input
-            name="email"
+            id="email"
             type="email"
-            [(ngModel)]="email"
             formControlName="email"
             placeholder="Email"
+            autocomplete="email"
           />
-          @if (isLoggedIn && email.length === 0) {
-          <div class="text-red-500">Email is required.</div>
-          }
-          <label>Password</label>
+          <div *ngIf="isLoggedIn && loginForm.get('email')?.invalid">
+            <div
+              *ngIf="loginForm.get('email')?.errors?.['required']"
+              class="text-red-500"
+            >
+              You forgot to write an email!
+            </div>
+            <div
+              *ngIf="loginForm.get('email')?.errors?.['email']"
+              class="text-red-500"
+            >
+              Enter a valid email.
+            </div>
+          </div>
+
+          <label for="password">Password</label>
           <input
+            id="password"
             type="password"
             formControlName="password"
-            [(ngModel)]="password"
             placeholder="Password"
             autocomplete="current-password"
           />
-          @if (isLoggedIn && password.length === 0) {
-          <div class="text-red-500">Password is required.</div>
-          }
+          <div *ngIf="isLoggedIn && loginForm.get('password')?.invalid">
+            <div
+              *ngIf="loginForm.get('password')?.errors?.['required']"
+              class="text-red-500"
+            >
+              You forgot to write a password!
+            </div>
+            <div
+              *ngIf="loginForm.get('password')?.errors?.['minlength']"
+              class="text-red-500"
+            >
+              Password must be at least 8 characters!
+            </div>
+          </div>
 
-          <!-- Submit Button -->
           <button class="form-btn" type="submit">Login</button>
         </form>
         <div class="txt-container">
-          <span class="txt">Need to create an account? </span
-          ><a routerLink="/signup">Sign up</a>
+          <span class="txt">Need to create an account? </span>
+          <a routerLink="/signup">Sign up</a>
         </div>
       </div>
     </div>

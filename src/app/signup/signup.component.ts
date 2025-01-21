@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, FormsModule],
 })
 export class SignupComponent {
   signupForm!: FormGroup;
@@ -40,7 +36,6 @@ export class SignupComponent {
 
       this.authService.signup(this.user).subscribe(
         (complete: string) => {
-          alert(`User registered successfully ${complete}`);
           this.router.navigate(['/login']);
         },
         (err: string) => {
