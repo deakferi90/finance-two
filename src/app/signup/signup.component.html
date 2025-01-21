@@ -10,7 +10,7 @@
         <h1>Sign Up</h1>
         <form
           class="form-group form-container"
-          [formGroup]="fromGroup"
+          [formGroup]="signupForm"
           (ngSubmit)="onSubmit()"
         >
           <label>Name</label>
@@ -18,33 +18,33 @@
             name="name"
             type="string"
             placeholder="Name"
-            [(ngModel)]="name"
+            [(ngModel)]="user.username"
             formControlName="name"
           />
-          @if (isSubmitted && name.length === 0) {
-          <div class="text-red-500">You forget to write a name!</div>
+          @if (isSubmitted && user.username.length === 0) {
+          <div class="text-red-500">Name is required!</div>
           }
           <label>Email</label>
           <input
             name="email"
             type="email"
-            [(ngModel)]="email"
+            [(ngModel)]="user.email"
             formControlName="email"
             placeholder="Email"
           />
-          @if (isSubmitted && email.length === 0) {
-          <div class="text-red-500">You forget to write an email!</div>
+          @if (isSubmitted && user.email.length === 0) {
+          <div class="text-red-500">Email is required!</div>
           }
           <label>Create Password</label>
           <input
             type="password"
+            [(ngModel)]="user.password"
             formControlName="password"
-            [(ngModel)]="password"
             placeholder="Password"
           />
-          @if (isSubmitted && password.length === 0) {
-          <div class="text-red-500">You forget to write a password!</div>
-          } @else if(password.length > 0 && password.length < 8) {
+          @if (isSubmitted && user.password.length === 0) {
+          <div class="text-red-500">Password is required!</div>
+          } @else if(user.password.length > 0 && user.password.length < 8) {
           <div class="text-red-500">
             Password must be at least 8 characters!
           </div>

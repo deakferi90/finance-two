@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import {
   FormControl,
@@ -13,17 +14,16 @@ import {
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, FormsModule],
 })
 export class SignupComponent {
-  name: string = '';
-  email: string = '';
-  password: string = '';
-  fromGroup!: FormGroup;
+  signupForm!: FormGroup;
   isSubmitted: boolean = false;
 
+  user = { username: '', email: '', password: '' };
+
   constructor(private authService: AuthService, private router: Router) {
-    this.fromGroup = new FormGroup({
+    this.signupForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -35,17 +35,16 @@ export class SignupComponent {
 
   onSubmit() {
     this.isSubmitted = true;
-    if (this.fromGroup.valid) {
-      const user = this.fromGroup.value;
+    if (this.signupForm.valid) {
+      const value = this.signupForm.value;
 
-      this.authService.signup(user).subscribe(
-        (response) => {
-          alert('User registered successfully');
+      this.authService.signup(this.user).subscribe(
+        (complete: string) => {
+          alert(`User registered successfully ${complete}`);
           this.router.navigate(['/login']);
         },
-        (error) => {
-          console.error(error);
-          alert('Registration failed');
+        (err: string) => {
+          alert(`Unsuccessful registration`);
         }
       );
     }

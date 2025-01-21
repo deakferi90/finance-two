@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { inject } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -8,29 +7,32 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
-  httpClient = inject(HttpClient);
-  router = inject(Router);
-  baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:3000/api';
 
-  signup(data: any) {
-    return this.httpClient.post(`${this.baseUrl}/register`, data);
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  login(data: any) {
-    return this.httpClient.post(`${this.baseUrl}/login`, data).pipe(
-      tap((result) => {
-        localStorage.setItem('authUser', JSON.stringify(result));
-        this.router.navigate(['/overview']);
+  signup(data: any): any {
+    console.log(data);
+    return this.http.post(`${this.baseUrl}/signup`, data).pipe(
+      tap((result: any) => {
+        this.router.navigate(['/login']);
       })
     );
   }
 
-  logout() {
+  login(data: any): any {
+    return this.http.post(`${this.baseUrl}/login`, data).pipe(
+      tap((result: any) => {
+        localStorage.setItem('authUser', JSON.stringify(result));
+      })
+    );
+  }
+
+  logout(): void {
     localStorage.removeItem('authUser');
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
     return localStorage.getItem('authUser') !== null;
   }
 }

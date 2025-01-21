@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -38,14 +39,15 @@ export class LoginComponent {
     this.errorMessage = '';
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
-        () => {
-          // this.router.navigate(['/overview']);
+        (response: string) => {
+          this.router.navigate(['/transactions']);
         },
-        (error) => {
+        (error: string) => {
           this.errorMessage = 'Invalid email or password. Please try again.';
           this.isLoggedIn = false;
         }
       );
+      console.log(this.loginForm.value);
     }
   }
 }
