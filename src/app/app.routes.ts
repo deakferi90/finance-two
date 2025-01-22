@@ -6,6 +6,7 @@ import { PotsComponent } from './pots/pots.component';
 import { RecurringBillsComponent } from './recurring-bills/recurring-bills.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -21,10 +22,18 @@ export const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
   },
-  { path: 'overview', component: OverviewComponent },
-  { path: 'transactions', component: TransactionsComponent },
-  { path: 'budgets', component: BudgetsComponent },
-  { path: 'pots', component: PotsComponent },
-  { path: 'recurring-bills', component: RecurringBillsComponent },
+  { path: 'overview', component: OverviewComponent, canActivate: [AuthGuard] },
+  {
+    path: 'transactions',
+    component: TransactionsComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'budgets', component: BudgetsComponent, canActivate: [AuthGuard] },
+  { path: 'pots', component: PotsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'recurring-bills',
+    component: RecurringBillsComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', redirectTo: '/overview' },
 ];

@@ -117,11 +117,30 @@ button:hover {
 }
 
 .content-container {
-  margin-left: 50px;
+  margin-left: 100px;
+  margin-right: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   transition: margin-left 0.5s ease-out;
   padding: 20px;
+  padding-bottom: 0px;
+  border-radius: 20px;
 }
 
 .content-container.shifted {
-  margin-left: 300px;
+  margin-left: 350px;
+  margin-top: 50px;
+  margin-right: 50px;
+}
+
+.section-title {
+  color: #201f24;
+  margin-left: 100px;
+  font-size: 38px;
+  font-weight: bold;
+  transition: margin-left 0.5s ease-out;
+
+  &.shifted {
+    margin-left: 350px;
+  }
 }

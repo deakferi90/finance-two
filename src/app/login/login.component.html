@@ -1,3 +1,6 @@
+<div class="header-black">
+  <img src="assets/logoAuth.png" alt="Logo" class="img-logo" />
+</div>
 <div class="box-container">
   <div class="login-card-container">
     <img src="assets/finance-pic.png" alt="Styled Image" class="image-banner" />
@@ -26,7 +29,7 @@
               *ngIf="loginForm.get('email')?.errors?.['required']"
               class="text-red-500"
             >
-              You forgot to write an email!
+              Email is required!
             </div>
             <div
               *ngIf="loginForm.get('email')?.errors?.['email']"
@@ -49,7 +52,7 @@
               *ngIf="loginForm.get('password')?.errors?.['required']"
               class="text-red-500"
             >
-              You forgot to write a password!
+              Password is required!
             </div>
             <div
               *ngIf="loginForm.get('password')?.errors?.['minlength']"

@@ -9,6 +9,7 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,11 @@ export class LoginComponent {
   errorMessage: string = '';
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -37,9 +42,11 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         (response: string) => {
+          this.toastr.success('You successfully logged in!');
           this.router.navigate(['/transactions']);
         },
         (error: string) => {
+          this.toastr.error('Your login credentials are incorrect!');
           this.errorMessage = 'Invalid email or password. Please try again.';
         }
       );

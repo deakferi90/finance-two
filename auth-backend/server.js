@@ -18,7 +18,6 @@ mongoose.connection.on("error", (err) =>
   console.log("MongoDB connection error:", err)
 );
 
-// Routes
 const authRoutes = require("./routes/authRoutes");
 app.use("/api", authRoutes);
 

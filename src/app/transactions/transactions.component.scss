@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 20px 0;
+  padding: 15px 0;
 
   .img {
     width: 50px;
@@ -72,7 +72,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 25px;
 
   .pagination-numbers {
     display: flex;
@@ -113,4 +113,22 @@
   display: flex;
   gap: 30px;
   align-items: baseline;
+}
+
+@media screen and (max-width: 1180px) {
+  .sort-input-container {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .search-and-filter {
+    flex-direction: column;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 10px !important;
+    top: 15px !important;
+  }
 }

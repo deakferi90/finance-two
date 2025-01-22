@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "ngx-toastr/toastr";
 
 @include mat.core();
 
@@ -27,17 +28,44 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: #f8f4f0;
+}
+
+.content-container {
+  background: #fff;
 }
 
 .mat-drawer-content {
   width: 100% !important;
-}
-
-.mat-mdc-paginator-container {
-  background: #fafafa !important;
+  background: #f8f4f0;
+  padding-top: 25px;
 }
 
 .mat-mdc-paginator-range-label,
 .mat-mdc-paginator-range-actions {
   display: none !important;
+}
+
+.header-black {
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .header-black {
+    height: 70px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .signup-card {
+    margin-top: 70px !important;
+  }
 }
