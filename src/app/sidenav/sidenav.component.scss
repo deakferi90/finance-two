@@ -144,3 +144,19 @@ button:hover {
     margin-left: 350px;
   }
 }
+
+@media screen and (max-width: 1180px) {
+  .content-container.shifted {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .example-sidenav {
+    display: none !important;
+  }
+
+  .content-container {
+    margin-left: 50px;
+  }
+}

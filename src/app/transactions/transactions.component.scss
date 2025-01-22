@@ -111,15 +111,14 @@
 
 .sort-input-container {
   display: flex;
-  gap: 30px;
+  gap: 5px;
   align-items: baseline;
 }
 
 @media screen and (max-width: 1180px) {
   .sort-input-container {
     margin-top: 10px;
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
   }
 
   .search-and-filter {
@@ -127,8 +126,18 @@
   }
 
   .search-icon {
-    position: absolute;
-    right: 10px !important;
     top: 15px !important;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .custom-td {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sm-width {
+    width: 18%;
   }
 }

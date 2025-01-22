@@ -24,7 +24,7 @@
   </div>
   <div class="sort-input-container">
     <mat-label>Sort By</mat-label>
-    <mat-form-field>
+    <mat-form-field fxFlex="400px" fxFlex.lt-md="90%" fxFlex.lt-sm="100%">
       <mat-label>Select to sort...</mat-label>
       <mat-select (selectionChange)="onTimelineChange($event.value)">
         @for (timeLine of timeLines; track timeLine.id) {
@@ -35,7 +35,7 @@
       </mat-select>
     </mat-form-field>
     <mat-label>Category</mat-label>
-    <mat-form-field>
+    <mat-form-field fxFlex="400px" fxFlex.lt-md="90%" fxFlex.lt-sm="100%">
       <mat-label>Select to sort...</mat-label>
       <mat-select (selectionChange)="onCategoryChange($event.value)">
         @for (category of categories; track category.id) {
@@ -69,12 +69,12 @@
         <img class="img" [src]="'assets/avatars/' + item.avatar" alt="Avatar" />
         <span class="text-center font-bold">{{ item.name }}</span>
       </td>
-      <td class="px-4 py-2 text-center">{{ item.category }}</td>
-      <td class="px-4 py-2 text-center">
+      <td class="px-4 py-2 text-center sm-width">{{ item.category }}</td>
+      <td class="px-4 py-2 text-center sm-width">
         {{ item.date | date : "shortDate" }}
       </td>
       <td
-        class="px-4 py-2 text-center font-bold"
+        class="px-4 py-2 text-center font-bold sm-width"
         [ngClass]="{
           'text-green-500': item.amount > 0,
           'text-black': item.amount < 0

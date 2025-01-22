@@ -45,6 +45,7 @@ export class SidenavComponent implements OnInit {
   @Input() showFiller: 'open' | 'closed' = 'closed';
   @Input() isOpen: boolean = false;
   active: boolean = true;
+  currentTitle = '';
 
   menuItems = [
     {
@@ -95,6 +96,11 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       this.updateActiveMenu();
+      const currentRoute = this.router.url.split('/').pop();
+      const activeItem = this.menuItems.find(
+        (item) => item.link === currentRoute
+      );
+      this.currentTitle = activeItem ? activeItem.label : '';
     });
   }
 

@@ -58,7 +58,7 @@
     </div>
   </mat-drawer>
   <h1 class="section-title" [class.shifted]="showFiller === 'open'">
-    Transactions
+    {{ currentTitle }}
   </h1>
   <div class="content-container" [class.shifted]="showFiller === 'open'">
     <router-outlet></router-outlet>
