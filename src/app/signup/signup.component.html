@@ -42,14 +42,23 @@
           <div class="text-red-500">Email is required!</div>
           }
           <label>Create Password</label>
-          <input
-            id="password"
-            type="password"
-            [(ngModel)]="user.password"
-            formControlName="password"
-            placeholder="Password"
-            autocomplete="new-password"
-          />
+          <div class="custom-input-container">
+            <input
+              id="password"
+              matInput
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Password"
+              autocomplete="current-password"
+            />
+            <mat-icon
+              matSuffix
+              class="eye-icon"
+              (click)="togglePasswordVisibility()"
+            >
+              {{ showPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </div>
           @if (isSubmitted && user.password.length === 0) {
           <div class="text-red-500">Password is required!</div>
           } @else if(user.password.length > 0 && user.password.length < 8) {

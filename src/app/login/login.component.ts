@@ -10,11 +10,18 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormsModule],
+  imports: [
+    ReactiveFormsModule,
+    RouterModule,
+    CommonModule,
+    FormsModule,
+    MatIconModule,
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
@@ -22,6 +29,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
   isLoggedIn: boolean = false;
+  showPassword: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -35,6 +43,10 @@ export class LoginComponent {
         Validators.minLength(8),
       ]),
     });
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   onSubmit() {

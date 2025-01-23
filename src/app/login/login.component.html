@@ -40,13 +40,23 @@
           </div>
 
           <label for="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            formControlName="password"
-            placeholder="Password"
-            autocomplete="current-password"
-          />
+          <div class="custom-input-container">
+            <input
+              id="password"
+              matInput
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Password"
+              autocomplete="current-password"
+            />
+            <mat-icon
+              matSuffix
+              class="eye-icon"
+              (click)="togglePasswordVisibility()"
+            >
+              {{ showPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </div>
           <div *ngIf="isLoggedIn && loginForm.get('password')?.invalid">
             <div
               *ngIf="loginForm.get('password')?.errors?.['required']"

@@ -101,6 +101,25 @@
   }
 }
 
+.eye-icon {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.custom-icon {
+  margin-right: 8px;
+  color: gray;
+  position: absolute;
+  right: 15px;
+}
+
+.custom-input {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
 .login-card-box {
   width: 60%;
   display: flex;
@@ -125,10 +144,6 @@
     .image-banner {
       display: none;
     }
-  }
-
-  .box-container {
-    width: auto;
   }
 
   .login-card-box {

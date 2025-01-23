@@ -4,17 +4,19 @@ import { FormControl } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, MatIconModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
   signupForm!: FormGroup;
   isSubmitted: boolean = false;
+  showPassword: boolean = false;
 
   user = { username: '', email: '', password: '' };
 
@@ -27,6 +29,10 @@ export class SignupComponent {
         Validators.minLength(6),
       ]),
     });
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   onSubmit() {

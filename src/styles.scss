@@ -50,6 +50,19 @@ body {
   display: none;
 }
 
+.custom-input-container {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 4px;
+  position: relative;
+
+  .eye-icon {
+    position: absolute;
+    right: 15px;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .header-black {
     height: 70px;
