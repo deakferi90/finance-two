@@ -71,33 +71,20 @@
     .menu-list-container {
       padding: 0;
     }
-
-    .navbar-items {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 20px;
-      width: 99%;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-
-      &.active {
-        background: #f8f4f0;
-
-        .subtitle {
-          color: #201f24;
-        }
-      }
-
-      &:hover {
-        cursor: pointer;
-        background: #f8f4f0;
-        .subtitle {
-          color: #201f24;
-        }
-      }
-    }
   }
+}
+
+.sm-screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.bottom-box {
+  background-color: #000;
+  display: none;
 }
 
 button {
@@ -145,18 +132,88 @@ button:hover {
   }
 }
 
+.navbar-items {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 20px;
+  width: 99%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  &.active {
+    background: #f8f4f0;
+
+    .subtitle {
+      color: #201f24;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: #f8f4f0;
+    .subtitle {
+      color: #201f24;
+    }
+  }
+}
+
 @media screen and (max-width: 1180px) {
   .content-container.shifted {
     margin-top: 15px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .example-sidenav {
     display: none !important;
   }
 
   .content-container {
+    margin-top: 20px;
+    margin-bottom: 100px;
     margin-left: 50px;
+  }
+
+  .section-title {
+    margin-left: 50px;
+  }
+
+  .bottom-box {
+    z-index: 1;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .navbar-items {
+    margin-top: 8px;
+    height: 66px;
+    align-items: center;
+    padding: 0px;
+    width: 99%;
+    display: grid;
+    justify-content: center;
+    gap: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0px;
+
+    &.active {
+      background: #f8f4f0;
+
+      .subtitle {
+        color: #201f24;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: #f8f4f0;
+      .subtitle {
+        color: #201f24;
+      }
+    }
   }
 }

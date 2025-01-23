@@ -64,3 +64,31 @@
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
+
+<div class="navbar-items-container bottom-box">
+  <ul class="menu-list-container sm-screen">
+    <li
+      *ngFor="let item of menuItems; trackBy: trackById"
+      (click)="onLinkClick(item)"
+      [routerLink]="item.link"
+      routerLinkActive="active"
+      [class.active]="selectedMenuItem === item"
+      (mouseover)="onHoverItem(item)"
+      (mouseleave)="onHoverItem(null)"
+      class="navbar-items"
+    >
+      <div class="grid justify-center">
+        <img
+          class="nav-icon"
+          [src]="
+            hoveredItem === item || selectedMenuItem === item
+              ? item.activeImgUrl
+              : item.imgUrl
+          "
+          alt="{{ item.label }} Icon"
+        />
+      </div>
+      <a routerLinkActive="active" class="subtitle">{{ item.label }}</a>
+    </li>
+  </ul>
+</div>
