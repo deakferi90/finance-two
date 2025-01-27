@@ -10,6 +10,10 @@
   min-width: 600px;
 }
 
+.smaller-div {
+  display: none;
+}
+
 .custom-td {
   display: flex;
   align-items: center;
@@ -139,5 +143,23 @@
 @media screen and (max-width: 900px) {
   .sm-width {
     width: 18%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .btn-text {
+    display: none;
+  }
+
+  .table-auto {
+    display: none;
+  }
+
+  .hide-table {
+    display: none;
+  }
+
+  .smaller-div {
+    display: block;
   }
 }

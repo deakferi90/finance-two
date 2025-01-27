@@ -44,8 +44,9 @@
       </mat-select>
     </mat-form-field>
   </div>
+  <div class="sm-screen-filter-and-sort"></div>
 </div>
-<table mat-table class="min-w-full table-auto">
+<table mat-table class="min-w-full table-auto table-smaller-screen hide-table">
   <thead>
     <tr class="border-b-[1px] border-[#f2f2f2]">
       <th class="px-4 py-2 text-left font-normal text-header-gray">
@@ -90,6 +91,37 @@
   </tbody>
 </table>
 
+<div mat-table class="min-w-full smaller-div table-smaller-screen">
+  <div>
+    <div
+      class="border-b-[1px] border-[#f2f2f2]"
+      *ngFor="let item of paginatedData"
+    >
+      <div class="custom-td flex items-left justify-start gap-1">
+        <img class="img" [src]="'assets/avatars/' + item.avatar" alt="Avatar" />
+        <span class="text-center font-bold">{{ item.name }}</span>
+        <span>{{ item.category }}</span>
+      </div>
+      <div class="px-4 py-2 text-center sm-width">
+        {{ item.date | date : "shortDate" }}
+      </div>
+      <div
+        class="px-4 py-2 text-center font-bold sm-width"
+        [ngClass]="{
+          'text-green-500': item.amount > 0,
+          'text-black': item.amount < 0
+        }"
+      >
+        {{
+          item.amount > 0
+            ? "+" + (item.amount | currency)
+            : (item.amount | currency)
+        }}
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="pagination-container">
   <button
     class="btn-steps"
@@ -98,7 +130,7 @@
     [disabled]="currentPage === 0"
   >
     <mat-icon>chevron_left</mat-icon>
-    <span>Prev</span>
+    <span class="btn-text">Prev</span>
   </button>
   <div (click)="showPage(currentPage)" class="pagination-numbers">
     <button
@@ -115,7 +147,7 @@
     (click)="onNextPage()"
     [disabled]="currentPage === totalPages - 1"
   >
-    <span>Next</span>
+    <span class="btn-text">Next</span>
     <mat-icon>chevron_right</mat-icon>
   </button>
 </div>
