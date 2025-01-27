@@ -3,10 +3,9 @@
     <input
       type="text"
       (keyup)="filterTable($event)"
-      class="input-el"
       type="text"
       placeholder="Filter by name..."
-      class="w-full pl-5 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-color-icon-color focus:border-icon-color"
+      class="input-el pl-5 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-color-icon-color cutom-width focus:border-icon-color"
     />
     <svg
       class="search-icon"
@@ -22,8 +21,10 @@
       />
     </svg>
   </div>
+  <img src="assets/icon-sort-mobile.svg" alt="Logo" class="sort-logo" />
+  <img src="assets/icon-filter-mobile.svg" alt="Logo" class="filter-logo" />
   <div class="sort-input-container">
-    <mat-label>Sort By</mat-label>
+    <mat-label class="whitespace-nowrap">Sort By</mat-label>
     <mat-form-field fxFlex="400px" fxFlex.lt-md="90%" fxFlex.lt-sm="100%">
       <mat-label>Select to sort...</mat-label>
       <mat-select (selectionChange)="onTimelineChange($event.value)">
@@ -44,7 +45,6 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="sm-screen-filter-and-sort"></div>
 </div>
 <table mat-table class="min-w-full table-auto table-smaller-screen hide-table">
   <thead>
@@ -94,34 +94,45 @@
 <div mat-table class="min-w-full smaller-div table-smaller-screen">
   <div>
     <div
-      class="border-b-[1px] border-[#f2f2f2]"
+      class="border-b-[1px] border-[#f2f2f2] flex justify-between items-center"
       *ngFor="let item of paginatedData"
     >
-      <div class="custom-td flex items-left justify-start gap-1">
-        <img class="img" [src]="'assets/avatars/' + item.avatar" alt="Avatar" />
-        <span class="text-center font-bold">{{ item.name }}</span>
-        <span>{{ item.category }}</span>
+      <div class="custom-td flex">
+        <div class="text-right">
+          <img
+            class="img"
+            [src]="'assets/avatars/' + item.avatar"
+            alt="Avatar"
+          />
+        </div>
+        <div>
+          <div class="text-center font-bold whitespace-nowrap">
+            {{ item.name }}
+          </div>
+          <div>{{ item.category }}</div>
+        </div>
       </div>
-      <div class="px-4 py-2 text-center sm-width">
-        {{ item.date | date : "shortDate" }}
-      </div>
-      <div
-        class="px-4 py-2 text-center font-bold sm-width"
-        [ngClass]="{
-          'text-green-500': item.amount > 0,
-          'text-black': item.amount < 0
-        }"
-      >
-        {{
-          item.amount > 0
-            ? "+" + (item.amount | currency)
-            : (item.amount | currency)
-        }}
+      <div>
+        <div
+          class="px-0 py-0 text-end font-bold"
+          [ngClass]="{
+            'text-green-500': item.amount > 0,
+            'text-black': item.amount < 0
+          }"
+        >
+          {{
+            item.amount > 0
+              ? "+" + (item.amount | currency)
+              : (item.amount | currency)
+          }}
+        </div>
+        <div class="px-0 py-0 text-end whitespace-nowrap">
+          {{ item.date | date : "d MMM y" }}
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="pagination-container">
   <button
     class="btn-steps"
@@ -132,15 +143,17 @@
     <mat-icon>chevron_left</mat-icon>
     <span class="btn-text">Prev</span>
   </button>
-  <div (click)="showPage(currentPage)" class="pagination-numbers">
+
+  <div class="pagination-numbers">
     <button
       *ngFor="let page of pages; let i = index"
-      [class.active]="i === currentPage"
+      [class.active]="page === currentPage + 1"
       (click)="showPage(i)"
     >
       {{ page }}
     </button>
   </div>
+
   <button
     class="btn-steps"
     mat-icon-button

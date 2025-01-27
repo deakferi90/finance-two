@@ -27,7 +27,7 @@
 }
 
 .input-container {
-  width: 30%;
+  width: 100%;
   position: relative;
 }
 
@@ -36,7 +36,7 @@
   line-height: 43px;
   border-radius: 5px;
   border: 1px solid #98908b;
-  width: 30%;
+  width: 100%;
 }
 
 .sidenav-open {
@@ -117,6 +117,12 @@
   display: flex;
   gap: 5px;
   align-items: baseline;
+  margin-left: 40px;
+}
+
+.sort-logo,
+.filter-logo {
+  display: none;
 }
 
 @media screen and (max-width: 1180px) {
@@ -147,6 +153,12 @@
 }
 
 @media screen and (max-width: 720px) {
+  .search-and-filter {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
   .btn-text {
     display: none;
   }
@@ -161,5 +173,31 @@
 
   .smaller-div {
     display: block;
+  }
+
+  .sort-input-container {
+    display: none;
+  }
+
+  .custom-td {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 40px !important;
+    }
+  }
+
+  .sort-logo,
+  .filter-logo {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .pagination-numbers {
+    gap: 5px !important;
+    margin: 0 5px;
   }
 }
