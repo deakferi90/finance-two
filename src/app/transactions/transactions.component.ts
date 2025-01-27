@@ -185,7 +185,6 @@ export class TransactionsComponent implements OnInit {
           this.totalPages - 1,
           this.totalPages,
         ];
-        console.log('is this the step');
       } else if (this.currentPage === this.totalPages - 1) {
         this.pages = [1, 2, '...'];
       } else {
