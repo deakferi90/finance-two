@@ -21,8 +21,18 @@
       />
     </svg>
   </div>
-  <img src="assets/icon-sort-mobile.svg" alt="Logo" class="sort-logo" />
-  <img src="assets/icon-filter-mobile.svg" alt="Logo" class="filter-logo" />
+  <img
+    (click)="sortList()"
+    src="assets/icon-sort-mobile.svg"
+    alt="Logo"
+    class="sort-logo"
+  />
+  <img
+    (click)="sortCategory()"
+    src="assets/icon-filter-mobile.svg"
+    alt="Logo"
+    class="filter-logo"
+  />
   <div class="sort-input-container">
     <mat-label class="whitespace-nowrap">Sort By</mat-label>
     <mat-form-field fxFlex="400px" fxFlex.lt-md="90%" fxFlex.lt-sm="100%">

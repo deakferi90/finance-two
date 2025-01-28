@@ -50,6 +50,8 @@ export class TransactionsComponent implements OnInit {
   type: any;
   selectedTimeLine: string | null = null;
   selectedCategory: string | null = null;
+  sortAscending: boolean = true;
+  categorySortAscending: boolean = true;
 
   @ViewChild('sortSelect') sortSelect!: MatSelect;
   @ViewChild('categorySelect') categorySelect!: MatSelect;
@@ -127,21 +129,29 @@ export class TransactionsComponent implements OnInit {
 
   onTimelineChange(selectedTimeline: string) {
     this.selectedTimeline = selectedTimeline;
-    if (selectedTimeline === 'Latest') {
-      this.filteredTransactions.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      );
-    } else {
+    this.sortList();
+  }
+
+  sortList() {
+    this.sortAscending = !this.sortAscending;
+
+    if (this.sortAscending) {
       this.filteredTransactions.sort(
         (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
       );
+    } else {
+      this.filteredTransactions.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
     }
+
     this.updatePagination();
     this.updatePageData();
   }
 
   onCategoryChange(selectedCategory: string) {
     this.selectedCategory = selectedCategory;
+
     if (selectedCategory === 'All Transactions') {
       this.filteredTransactions = [...this.transactions];
     } else if (selectedCategory === 'Small Transactions') {
@@ -153,12 +163,27 @@ export class TransactionsComponent implements OnInit {
         (item) => item.amount >= 50 || item.amount < -50
       );
     }
-    this.filteredTransactions.sort((a, b) => b.amount - a.amount);
-    if (selectedCategory === 'Small Transactions') {
+
+    this.sortCategory();
+    this.updatePagination();
+    this.updatePageData();
+  }
+
+  sortCategory() {
+    this.categorySortAscending = !this.categorySortAscending;
+
+    if (this.categorySortAscending) {
       this.filteredTransactions.sort((a, b) => a.amount - b.amount);
+    } else {
+      this.filteredTransactions.sort((a, b) => b.amount - a.amount);
     }
     this.updatePagination();
     this.updatePageData();
+  }
+
+  onCategorySort() {
+    this.filteredTransactions = [...this.transactions];
+    this.sortCategory();
   }
 
   showPagination() {

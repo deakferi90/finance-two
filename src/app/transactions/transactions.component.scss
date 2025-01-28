@@ -93,6 +93,10 @@
         background-color: #201f24;
         color: #fff;
       }
+
+      &:hover {
+        cursor: not-allowed;
+      }
     }
   }
 }
