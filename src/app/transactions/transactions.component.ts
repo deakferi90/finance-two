@@ -171,20 +171,15 @@ export class TransactionsComponent implements OnInit {
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
     } else {
       if (this.currentPage === 0) {
-        this.pages = [1, 2, 3, 4];
+        this.pages = [1, 2, '...', 5];
       } else if (this.currentPage === 1) {
         this.pages = [1, 2, 3, '...'];
       } else if (this.currentPage === 2) {
         this.pages = [1, 2, 3, '...'];
       } else if (this.currentPage === this.totalPages - 2) {
-        this.pages = [1, '...', this.totalPages - 2, this.totalPages - 1];
+        this.pages = [1, '...', this.totalPages - 1, this.totalPages];
       } else if (this.currentPage === this.totalPages - 1) {
-        this.pages = [
-          '...',
-          this.totalPages - 2,
-          this.totalPages - 1,
-          this.totalPages,
-        ];
+        this.pages = [1, '...', this.totalPages - 1, this.totalPages];
       } else if (this.currentPage === this.totalPages - 1) {
         this.pages = [1, 2, '...'];
       } else {
