@@ -49,9 +49,10 @@ export class TransactionsComponent implements OnInit {
   filteredTransactions: Transaction[] = [];
   type: any;
   selectedTimeLine: string | null = null;
-  selectedCategory: string | null = null;
+  selectedCategory: string | any = 'All Transactions';
   sortAscending: boolean = true;
   categorySortAscending: boolean = true;
+  currentCategoryIndex = 0;
 
   @ViewChild('sortSelect') sortSelect!: MatSelect;
   @ViewChild('categorySelect') categorySelect!: MatSelect;
@@ -147,6 +148,15 @@ export class TransactionsComponent implements OnInit {
 
     this.updatePagination();
     this.updatePageData();
+  }
+
+  toggleCategorySort(): void {
+    this.currentCategoryIndex =
+      (this.currentCategoryIndex + 1) % this.categories.length;
+
+    this.selectedCategory = this.categories[this.currentCategoryIndex];
+
+    this.onCategoryChange(this.selectedCategory);
   }
 
   onCategoryChange(selectedCategory: string) {
