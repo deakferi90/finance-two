@@ -154,9 +154,9 @@ export class TransactionsComponent implements OnInit {
     this.currentCategoryIndex =
       (this.currentCategoryIndex + 1) % this.categories.length;
 
-    this.selectedCategory = this.categories[this.currentCategoryIndex];
+    const nextCategory = this.categories[this.currentCategoryIndex].value;
 
-    this.onCategoryChange(this.selectedCategory);
+    this.onCategoryChange(nextCategory);
   }
 
   onCategoryChange(selectedCategory: string) {
