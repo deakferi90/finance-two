@@ -125,11 +125,6 @@ export class TransactionsComponent implements OnInit {
     this.updatePageData();
   }
 
-  showPage(pageNumber: number): void {
-    this.updatePageData(pageNumber);
-    this.showPagination();
-  }
-
   onTimelineChange(selectedTimeline: string) {
     this.selectedTimeline = selectedTimeline;
     if (selectedTimeline === 'Latest') {
@@ -171,20 +166,34 @@ export class TransactionsComponent implements OnInit {
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
     } else {
       if (this.currentPage === 0) {
-        this.pages = [1, 2, '...', 5];
-      } else if (this.currentPage === 1) {
+        this.pages = [1, 2, '...', this.totalPages];
+      } else if (this.currentPage === 1 || this.currentPage === 2) {
         this.pages = [1, 2, 3, '...'];
-      } else if (this.currentPage === 2) {
-        this.pages = [1, 2, 3, '...'];
-      } else if (this.currentPage === this.totalPages - 2) {
-        this.pages = [1, '...', this.totalPages - 1, this.totalPages];
-      } else if (this.currentPage === this.totalPages - 1) {
-        this.pages = [1, '...', this.totalPages - 1, this.totalPages];
-      } else if (this.currentPage === this.totalPages - 1) {
-        this.pages = [1, 2, '...'];
+      } else if (this.currentPage >= this.totalPages - 2) {
+        this.pages = [
+          '...',
+          this.totalPages - 2,
+          this.totalPages - 1,
+          this.totalPages,
+        ];
       } else {
-        this.pages = [1, '...', this.currentPage - 1];
+        this.pages = [
+          1,
+          '...',
+          this.currentPage,
+          this.currentPage + 1,
+          '...',
+          this.totalPages,
+        ];
       }
+    }
+  }
+
+  showPage(page: any): void {
+    if (page >= 0 && page < this.totalPages) {
+      this.currentPage = page;
+      this.showPagination();
+      this.updatePageData();
     }
   }
 }
