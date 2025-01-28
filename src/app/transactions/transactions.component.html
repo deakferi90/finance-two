@@ -148,7 +148,6 @@
     <button
       *ngFor="let page of pages; let i = index"
       [class.active]="page === currentPage + 1"
-      (click)="showPage(currentPage)"
     >
       {{ page }}
     </button>

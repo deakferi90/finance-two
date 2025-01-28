@@ -188,12 +188,4 @@ export class TransactionsComponent implements OnInit {
       }
     }
   }
-
-  showPage(page: any): void {
-    if (page >= 0 && page < this.totalPages) {
-      this.currentPage = page;
-      this.showPagination();
-      this.updatePageData();
-    }
-  }
 }
