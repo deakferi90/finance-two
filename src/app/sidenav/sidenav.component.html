@@ -57,11 +57,13 @@
       </button>
     </div>
   </mat-drawer>
-  <h1 class="section-title" [class.shifted]="showFiller === 'open'">
-    {{ currentTitle }}
-  </h1>
   <div class="content-container" [class.shifted]="showFiller === 'open'">
-    <router-outlet></router-outlet>
+    <h1 class="section-title">
+      {{ currentTitle }}
+    </h1>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </mat-drawer-container>
 

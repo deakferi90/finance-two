@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TransactionsService } from './transactions.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Transaction } from './transaction.interface';
@@ -13,6 +13,7 @@ import {
   MatPaginatorModule,
   PageEvent,
 } from '@angular/material/paginator';
+import { ShowFillerService } from '../show-filler.service';
 
 @Component({
   selector: 'app-transactions',
@@ -31,6 +32,7 @@ import {
   styleUrls: ['./transactions.component.scss'],
 })
 export class TransactionsComponent implements OnInit {
+  @Input() showFiller: 'open' | 'closed' = 'closed';
   svgSortMobile: string = 'assets/icon-sort-mobile.svg';
   selectedTransaction: string | undefined;
   selectedTimeline: string | undefined;
@@ -63,11 +65,17 @@ export class TransactionsComponent implements OnInit {
   totalPages = 0;
   currentPage = 0;
 
-  constructor(private transactionService: TransactionsService) {}
+  constructor(
+    private transactionService: TransactionsService,
+    private showFillerService: ShowFillerService
+  ) {}
 
   ngOnInit(): void {
     this.showPagination();
     this.showData();
+    this.showFillerService.showFiller$.subscribe((value) => {
+      this.showFiller = value;
+    });
   }
 
   showData() {
@@ -77,6 +85,7 @@ export class TransactionsComponent implements OnInit {
       this.updatePagination();
       this.updatePageData();
     });
+    console.log(this.showFiller);
   }
 
   onPageChange(event: PageEvent) {

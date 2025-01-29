@@ -103,26 +103,14 @@ button:hover {
   transform: translateX(-250px) !important;
 }
 
-.content-container {
-  margin-left: 100px;
-  margin-right: 50px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  transition: margin-left 0.5s ease-out;
-  padding: 20px;
-  padding-bottom: 0px;
-  border-radius: 20px;
-}
-
 .content-container.shifted {
   margin-left: 350px;
-  margin-top: 50px;
   margin-right: 50px;
 }
 
 .section-title {
   color: #201f24;
-  margin-left: 100px;
+  margin-left: 25px;
   font-size: 38px;
   font-weight: bold;
   transition: margin-left 0.5s ease-out;
@@ -158,26 +146,18 @@ button:hover {
   }
 }
 
-@media screen and (max-width: 1180px) {
-  .content-container.shifted {
-    margin-top: 15px;
-  }
-}
-
 @media screen and (max-width: 992px) {
   .example-sidenav {
     display: none !important;
   }
 
   .content-container {
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 100px;
-    margin-left: 25px;
-    margin-right: 25px;
   }
 
   .section-title {
-    margin-left: 50px;
+    margin-left: 25px;
   }
 
   .bottom-box {

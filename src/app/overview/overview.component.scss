@@ -13,10 +13,33 @@
   color: #333;
 }
 
-.balance-info-container div {
+.balance-info-container .balance-info-prices {
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: #555;
+}
+
+.balance-info-prices {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+  width: 100%;
+
+  .parent-container {
+    width: 33.33%;
+
+    h1 {
+      font-size: 18px;
+    }
+
+    .current-value {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #000;
+      font-weight: 600;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -27,5 +50,11 @@
 
   .balance-info-container h1 {
     font-size: 1.2rem;
+  }
+
+  .balance-info-prices {
+    .current-value {
+      font-size: 36px !important;
+    }
   }
 }

@@ -3,6 +3,7 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { filter } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { ShowFillerService } from './show-filler.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,10 @@ export class AppComponent {
   title = 'personal-finance';
   showLayout = true;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private showFillerService: ShowFillerService
+  ) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -32,5 +36,9 @@ export class AppComponent {
           this.showLayout = true;
         }
       });
+  }
+
+  updateShowFiller(value: 'open' | 'closed') {
+    this.showFillerService.setShowFiller(value);
   }
 }

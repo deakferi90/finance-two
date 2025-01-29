@@ -1,8 +1,22 @@
 <div class="balance-info-container">
-  <h1>Current Balance</h1>
-  <div>{{ this.balance.current | currency : "USD" : "symbol" : "1.2-2" }}</div>
-  <h1>Income</h1>
-  <div>{{ this.balance.income | currency : "USD" : "symbol" : "1.2-2" }}</div>
-  <h1>Expenses</h1>
-  <div>{{ this.balance.expenses | currency : "USD" : "symbol" : "1.2-2" }}</div>
+  <div class="balance-info-prices">
+    <div class="parent-container">
+      <h1>Current Balance</h1>
+      <div class="current-value">
+        {{ this.balance.current | currency : "USD" : "symbol" : "1.2-2" }}
+      </div>
+    </div>
+    <div class="parent-container">
+      <h1>Income</h1>
+      <div class="current-value">
+        {{ this.balance.income | currency : "USD" : "symbol" : "1.2-2" }}
+      </div>
+    </div>
+    <div class="parent-container">
+      <h1>Expenses</h1>
+      <div class="current-value">
+        {{ this.balance.expenses | currency : "USD" : "symbol" : "1.2-2" }}
+      </div>
+    </div>
+  </div>
 </div>

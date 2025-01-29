@@ -11,7 +11,6 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { TransactionsComponent } from '../transactions/transactions.component';
 
 @Component({
   selector: 'app-sidenav',

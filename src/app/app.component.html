@@ -1,5 +1,8 @@
 <div *ngIf="showLayout" class="layout-container">
-  <app-sidenav [class.open]="showFiller === 'open'"></app-sidenav>
+  <app-sidenav
+    [class.open]="showFiller === 'open'"
+    [showFiller]="showFiller"
+  ></app-sidenav>
 </div>
 
 <div *ngIf="!showLayout">
