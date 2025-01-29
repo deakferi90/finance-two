@@ -1,1 +1,8 @@
-<p>overview works!</p>
+<div class="balance-info-container">
+  <h1>Current Balance</h1>
+  <div>{{ this.balance.current | currency : "USD" : "symbol" : "1.2-2" }}</div>
+  <h1>Income</h1>
+  <div>{{ this.balance.income | currency : "USD" : "symbol" : "1.2-2" }}</div>
+  <h1>Expenses</h1>
+  <div>{{ this.balance.expenses | currency : "USD" : "symbol" : "1.2-2" }}</div>
+</div>
