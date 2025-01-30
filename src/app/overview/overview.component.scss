@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 50px;
+  gap: 40px;
   width: 100%;
 
   .parent-container {
@@ -42,7 +42,31 @@
   }
 }
 
-@media (max-width: 768px) {
+.balance-info-prices-sm {
+  display: none;
+}
+
+@media screen and (max-width: 1225px) {
+  .balance-info-prices-sm {
+    display: flex;
+    flex-direction: column;
+    gap: 5;
+  }
+
+  .balance-info-prices {
+    .current-value {
+      font-size: 36px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .content-container .shifted {
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 900px) {
   .balance-info-container {
     padding: 15px;
     font-size: 1rem;
@@ -51,10 +75,16 @@
   .balance-info-container h1 {
     font-size: 1.2rem;
   }
+}
 
+@media screen and (max-width: 720px) {
   .balance-info-prices {
-    .current-value {
-      font-size: 36px !important;
+    flex-direction: column;
+    gap: 10px;
+    .parent-container {
+      margin: 0;
+      width: auto;
+      text-align: center;
     }
   }
 }

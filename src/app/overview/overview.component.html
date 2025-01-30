@@ -1,5 +1,10 @@
 <div class="balance-info-container">
-  <div class="balance-info-prices">
+  <div
+    [ngClass]="{
+       'balance-info-prices': showFiller === 'closed' && !isPortrait,
+      'balance-info-prices-sm': showFiller === 'open' && !isPortrait,
+    }"
+  >
     <div class="parent-container">
       <h1>Current Balance</h1>
       <div class="current-value">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { OverviewService } from './overview.service';
 import { CommonModule } from '@angular/common';
 
@@ -10,9 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './overview.component.scss',
 })
 export class OverviewComponent implements OnInit {
+  @Input() showFiller: 'open' | 'closed' = 'closed';
+  isPortrait = window.matchMedia('(orientation: portrait)').matches;
   balance: any = {};
   constructor(private overviewService: OverviewService) {}
-
   ngOnInit(): void {
     this.displayData();
   }
