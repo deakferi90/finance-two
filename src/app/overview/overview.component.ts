@@ -16,6 +16,15 @@ export class OverviewComponent implements OnInit {
   constructor(private overviewService: OverviewService) {}
   ngOnInit(): void {
     this.displayData();
+    this.handleOrientationChange();
+  }
+
+  handleOrientationChange() {
+    const contentContainer = document.querySelector('.content-container');
+
+    if (window.matchMedia('(orientation: portrait)').matches) {
+      contentContainer?.classList.remove('shifted');
+    }
   }
 
   displayData() {

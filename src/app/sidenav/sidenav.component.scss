@@ -155,6 +155,10 @@ button:hover {
     margin-left: auto;
     margin-top: 0px;
     margin-bottom: 100px;
+
+    &.shifted {
+      margin-left: 0px;
+    }
   }
 
   .section-title {
