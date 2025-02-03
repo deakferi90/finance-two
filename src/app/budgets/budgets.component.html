@@ -1,1 +1,38 @@
-<p>budgets works!</p>
+@for (budget of budgets; track $index) {
+<div class="parent-container">
+  <div class="flex items-center gap-5 text-[24px] pb-[20px]">
+    <span class="status" [ngStyle]="{ background: budget.theme }"></span>
+    <h1>{{ budget.category }}</h1>
+  </div>
+  <h2 class="text-gray-500">
+    Maximum of {{ "$" + budget.maximum.toFixed(2) }}
+  </h2>
+  <div class="progress-bar-container">
+    <mat-progress-bar
+      mode="determinate"
+      [ngStyle]="{
+      height: progressBarHeight,
+      'background-color': budget.theme,
+      'border-radius': '5px',
+    }"
+    ></mat-progress-bar>
+  </div>
+  <div class="prices">
+    <div class="budget-container">
+      <div class="wall" [ngStyle]="{ 'background-color': budget.theme }"></div>
+      <div>
+        <h3>Spent</h3>
+        <div>{{ "$" + budget.maximum.toFixed(2) }}</div>
+      </div>
+    </div>
+    <div class="budget-container">
+      <div class="wall"></div>
+      <div>
+        <h3>Remaining</h3>
+        <div>{{ "$" + budget.maximum.toFixed(2) }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="spent-remaining"><span class="wall"></span></div>
+</div>
+}

@@ -1,0 +1,29 @@
+.status {
+  width: 16px;
+  display: block;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.progress-bar-container {
+  padding: 4px;
+  background: #f8f4f0;
+}
+
+.wall {
+  width: 5px;
+  height: 45px;
+  background: #f8f4f0;
+  border-radius: 10px;
+}
+
+.prices {
+  padding: 20px 0;
+  display: flex;
+  gap: calc(50% - 50px);
+}
+
+.budget-container {
+  display: flex;
+  gap: 10px;
+}
