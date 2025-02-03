@@ -21,18 +21,44 @@
     <div class="budget-container">
       <div class="wall" [ngStyle]="{ 'background-color': budget.theme }"></div>
       <div>
-        <h3>Spent</h3>
-        <div>{{ "$" + budget.maximum.toFixed(2) }}</div>
+        <h3 class="text-gray-500">Spent</h3>
+        <div class="font-bold">{{ "$" + budget.maximum.toFixed(2) }}</div>
       </div>
     </div>
     <div class="budget-container">
       <div class="wall"></div>
       <div>
-        <h3>Remaining</h3>
-        <div>{{ "$" + budget.maximum.toFixed(2) }}</div>
+        <h3 class="text-gray-500">Remaining</h3>
+        <div class="font-bold">{{ "$" + budget.maximum.toFixed(2) }}</div>
       </div>
     </div>
   </div>
-  <div class="spent-remaining"><span class="wall"></span></div>
+  <div class="spending-users">
+    <div class="progress-bar-container px-5 py-5">
+      <div class="flex justify-between">
+        <h1 class="text-2xl font-bold">Latest Spending</h1>
+        <div class="flex items-center gap-2.5">
+          See all<img src="assets/arrowRight.png" alt="right-arrow" />
+        </div>
+      </div>
+      <div *ngFor="let item of transactions">
+        <div *ngIf="item.category === budget.category" class="custom-td flex">
+          <div class="text-right">
+            <img
+              class="img"
+              [src]="'assets/avatars/' + item.avatar"
+              alt="Avatar"
+            />
+          </div>
+          <div>
+            <div class="text-left font-bold">
+              {{ item.name }}
+            </div>
+            <div>{{ item.category }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 }

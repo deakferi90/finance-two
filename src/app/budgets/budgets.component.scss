@@ -6,7 +6,6 @@
 }
 
 .progress-bar-container {
-  padding: 4px;
   background: #f8f4f0;
 }
 
@@ -26,4 +25,8 @@
 .budget-container {
   display: flex;
   gap: 10px;
+}
+
+.spending-users {
+  padding-bottom: 30px;
 }
