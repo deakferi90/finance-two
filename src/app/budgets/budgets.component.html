@@ -10,6 +10,7 @@
   <div class="progress-bar-container">
     <mat-progress-bar
       mode="determinate"
+      [value]="(calculateTotalSpent(budget) / budget.maximum) * 100"
       [ngStyle]="{
       height: progressBarHeight,
       'background-color': budget.theme,
@@ -22,14 +23,22 @@
       <div class="wall" [ngStyle]="{ 'background-color': budget.theme }"></div>
       <div>
         <h3 class="text-gray-500">Spent</h3>
-        <div class="font-bold">{{ "$" + budget.maximum.toFixed(2) }}</div>
+        <div class="font-bold">
+          {{ "$" + getAbsoluteSpent(budget).toFixed(2) }}
+        </div>
       </div>
     </div>
     <div class="budget-container">
       <div class="wall"></div>
       <div>
         <h3 class="text-gray-500">Remaining</h3>
-        <div class="font-bold">{{ "$" + budget.maximum.toFixed(2) }}</div>
+        <div class="font-bold">
+          {{
+            calculateRemainingAmount(budget) < 0
+              ? "$0"
+              : "$" + calculateRemainingAmount(budget).toFixed(2)
+          }}
+        </div>
       </div>
     </div>
   </div>
@@ -37,24 +46,47 @@
     <div class="progress-bar-container px-5 py-5">
       <div class="flex justify-between">
         <h1 class="text-2xl font-bold">Latest Spending</h1>
-        <div class="flex items-center gap-2.5">
+        <div
+          class="flex items-center gap-2.5 text-see-all"
+          (click)="toggleShowAll(budget.category)"
+        >
           See all<img src="assets/arrowRight.png" alt="right-arrow" />
         </div>
       </div>
-      <div *ngFor="let item of transactions">
-        <div *ngIf="item.category === budget.category" class="custom-td flex">
-          <div class="text-right">
-            <img
-              class="img"
-              [src]="'assets/avatars/' + item.avatar"
-              alt="Avatar"
-            />
-          </div>
-          <div>
+      <div *ngFor="let item of getVisibleTransactions(budget.category)">
+        <div
+          class="flex justify-between border-b border-[#696868] border-opacity-15 py-4"
+          *ngIf="item.category === budget.category"
+        >
+          <div class="flex items-center gap-4">
+            <div class="text-right img-container">
+              <img
+                class="img"
+                [src]="'assets/avatars/' + item.avatar"
+                alt="Avatar"
+              />
+            </div>
             <div class="text-left font-bold">
               {{ item.name }}
             </div>
-            <div>{{ item.category }}</div>
+          </div>
+          <div>
+            <div
+              class="px-0 py-0 text-end font-bold"
+              [ngClass]="{
+                'text-green-500': item.amount > 0,
+                'text-black': item.amount < 0
+              }"
+            >
+              {{
+                item.amount > 0
+                  ? "+" + (item.amount | currency)
+                  : (item.amount | currency)
+              }}
+            </div>
+            <div class="px-0 py-0 text-end">
+              {{ item.date | date : "d MMM y" }}
+            </div>
           </div>
         </div>
       </div>

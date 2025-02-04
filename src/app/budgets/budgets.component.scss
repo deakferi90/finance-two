@@ -7,6 +7,8 @@
 
 .progress-bar-container {
   background: #f8f4f0;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .wall {
@@ -29,4 +31,17 @@
 
 .spending-users {
   padding-bottom: 30px;
+}
+
+.img-container {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.text-see-all {
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -76,10 +76,13 @@ body {
 .parent-container {
   background: #fff;
   margin-top: 20px;
-  margin-bottom: 50px;
   padding: 20px;
   padding-bottom: 0px;
   border-radius: 20px;
+}
+
+.mdc-linear-progress__buffer {
+  display: none !important;
 }
 
 @media screen and (max-width: 1280px) {
