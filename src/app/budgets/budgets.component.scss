@@ -45,3 +45,30 @@
     cursor: pointer;
   }
 }
+
+.custom-progress-bar {
+  width: 100%;
+  position: relative;
+}
+
+::ng-deep .custom-progress-bar {
+  .mdc-linear-progress__bar-inner {
+    border-top-width: 24px !important;
+  }
+
+  &.entertainment .mdc-linear-progress__bar-inner {
+    border-top: 24px solid #277c78 !important;
+  }
+
+  &.bills .mdc-linear-progress__bar-inner {
+    border-top: 24px solid #82c9d7 !important;
+  }
+
+  &.dining-out .mdc-linear-progress__bar-inner {
+    border-top: 24px solid #f2cdac !important;
+  }
+
+  &.personal-care .mdc-linear-progress__bar-inner {
+    border-top: 24px solid #626070 !important;
+  }
+}

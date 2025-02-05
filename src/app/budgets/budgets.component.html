@@ -9,13 +9,14 @@
   </h2>
   <div class="progress-bar-container">
     <mat-progress-bar
-      mode="determinate"
-      [value]="(calculateTotalSpent(budget) / budget.maximum) * 100"
+      mode="buffer"
+      class="custom-progress-bar"
       [ngStyle]="{
-      height: progressBarHeight,
-      'background-color': budget.theme,
-      'border-radius': '5px',
-    }"
+        height: progressBarHeight,
+        'border-radius': '5px',
+      }"
+      [ngClass]="budget.category.toLowerCase().replace(' ', '-')"
+      [value]="(getAbsoluteSpent(budget) / budget.maximum) * 100"
     ></mat-progress-bar>
   </div>
   <div class="prices">

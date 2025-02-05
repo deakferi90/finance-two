@@ -22,6 +22,14 @@ export class BudgetsComponent implements OnInit {
   budgets: Budget[] = [];
   showAll = false;
   selectedCategory: string | null = null;
+
+  budgetColors: { [key: string]: string } = {
+    Entertainment: '#277C78',
+    Bills: '#82C9D7',
+    'Dining Out': '#F2CDAC',
+    'Personal Care': '#626070',
+  };
+
   constructor(private service: BudgetsService) {}
 
   ngOnInit(): void {
@@ -41,6 +49,12 @@ export class BudgetsComponent implements OnInit {
   calculateRemainingAmount(budget: Budget): number {
     this.spent = this.calculateTotalSpent(budget);
     return this.spent < 0 ? budget.maximum - Math.abs(this.spent) : 0;
+  }
+
+  calculateSpentPercentage(budget: Budget): number {
+    const spent = this.calculateTotalSpent(budget);
+    const percentage = budget.maximum > 0 ? (spent / budget.maximum) * 100 : 0;
+    return Math.min(percentage, 100);
   }
 
   toggleShowAll(category: string | null) {

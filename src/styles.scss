@@ -85,6 +85,15 @@ body {
   display: none !important;
 }
 
+.mdc-linear-progress__bar {
+  margin: 0 !important;
+  .mdc-linear-progress__bar-inner {
+    border-top-width: 24px !important;
+    margin: 0 !important;
+    border-color: red !important;
+  }
+}
+
 @media screen and (max-width: 1280px) {
   .open-layout {
     display: flex;
