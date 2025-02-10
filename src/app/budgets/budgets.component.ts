@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BudgetsService } from './budgets.service';
 import { Budget } from './budgets.interface';
 import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Transaction } from '../transactions/transaction.interface';
+import { DonutChartComponent } from './donut-chart/donut-chart.component';
 
 @Component({
   selector: 'app-budgets',
   standalone: true,
-  imports: [CommonModule, MatProgressBarModule],
+  imports: [CommonModule, DonutChartComponent, MatProgressBarModule],
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.scss',
 })
@@ -16,11 +17,14 @@ export class BudgetsComponent implements OnInit {
   [x: string]: any;
   progress: number = 50;
   totalAmount: number = 0;
-  spent: any;
+  spent: number | number[] | any;
   progressBarHeight: string = '24px';
   transactions: Transaction[] = [];
   budgets: Budget[] = [];
+  spentValues: any;
+  displaySpent: any;
   showAll = false;
+  colorBudget: string = '';
   selectedCategory: string | null = null;
 
   budgetColors: { [key: string]: string } = {
@@ -30,7 +34,10 @@ export class BudgetsComponent implements OnInit {
     'Personal Care': '#626070',
   };
 
-  constructor(private service: BudgetsService) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private service: BudgetsService
+  ) {}
 
   ngOnInit(): void {
     this.loadBudgetData();
@@ -52,8 +59,9 @@ export class BudgetsComponent implements OnInit {
   }
 
   calculateSpentPercentage(budget: Budget): number {
-    const spent = this.calculateTotalSpent(budget);
-    const percentage = budget.maximum > 0 ? (spent / budget.maximum) * 100 : 0;
+    this.spent = this.calculateTotalSpent(budget);
+    const percentage =
+      budget.maximum > 0 ? (this.spent / budget.maximum) * 100 : 0;
     return Math.min(percentage, 100);
   }
 
@@ -71,11 +79,25 @@ export class BudgetsComponent implements OnInit {
       : filteredTransactions.slice(0, 3);
   }
 
+  handleValue(value: any) {
+    for (let index = 0; index < value.length; index++) {
+      this.spentValues = value;
+    }
+  }
+
   loadBudgetData() {
     this.service.getBudgets().subscribe((data) => {
       if (Array.isArray(data) && data.length > 0) {
         this.budgets = data[0].budgets;
         this.transactions = data[0].transactions;
+        this.spent = this.budgets.map((budget) =>
+          this.calculateTotalSpent(budget)
+        );
+        for (let i = 0; i < this.spent.length; i++) {
+          this.spentValues = this.spent[i];
+        }
+
+        this.cdr.detectChanges();
         for (let index = 0; index < data[0].budgets.length; index++) {
           const el = data[0].budgets[index];
           this.progress = el.maximum;
@@ -84,5 +106,18 @@ export class BudgetsComponent implements OnInit {
         console.error('Unexpected data format', data);
       }
     });
+  }
+
+  getColorForTheme(theme: string): string {
+    switch (theme.toLowerCase()) {
+      case 'Entertainment':
+        return '#277C78';
+      case 'Bills':
+        return '#82C9D7';
+      case 'Dining Out':
+        return '#F2CDAC';
+      default:
+        return '#626070';
+    }
   }
 }

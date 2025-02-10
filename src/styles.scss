@@ -79,6 +79,12 @@ body {
   padding: 20px;
   padding-bottom: 0px;
   border-radius: 20px;
+
+  app-donut-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .mdc-linear-progress__buffer {
@@ -90,7 +96,6 @@ body {
   .mdc-linear-progress__bar-inner {
     border-top-width: 24px !important;
     margin: 0 !important;
-    border-color: red !important;
   }
 }
 

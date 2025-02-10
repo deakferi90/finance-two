@@ -1,0 +1,18 @@
+canvas {
+  display: block;
+  margin: auto;
+  min-width: 700px;
+}
+
+.wall {
+  width: 5px;
+  height: 45px;
+  background: #f8f4f0;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1280px) {
+  canvas {
+    min-width: 700px;
+  }
+}

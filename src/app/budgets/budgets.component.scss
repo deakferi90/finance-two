@@ -51,6 +51,11 @@
   position: relative;
 }
 
+.summary {
+  display: flex;
+  justify-content: space-between;
+}
+
 ::ng-deep .custom-progress-bar {
   .mdc-linear-progress__bar-inner {
     border-top-width: 24px !important;

@@ -1,97 +1,149 @@
-@for (budget of budgets; track $index) {
-<div class="parent-container">
-  <div class="flex items-center gap-5 text-[24px] pb-[20px]">
-    <span class="status" [ngStyle]="{ background: budget.theme }"></span>
-    <h1>{{ budget.category }}</h1>
+<div class="budget-parent-container flex flex-row gap-5">
+  <div class="parent-container my-class w-2/5">
+    @if (budgets.length > 0) {
+    <app-donut-chart
+      class="parent-container"
+      [budgets]="budgets"
+      [spent]="spent"
+      (spentValues)="handleValue($event)"
+    ></app-donut-chart>
+    }
+    <h1 class="font-bold text-2xl pb-[15px]">Spending Summary</h1>
+    <div
+      class="summary pt-[15px] pb-[15px] px-0 border-b border-[#f2f2f2]"
+      *ngFor="let budget of budgets; let i = index"
+    >
+      <div class="flex items-center gap-4">
+        <div
+          [ngStyle]="{
+            'background-color': budget.theme,
+            width: '4px',
+            height: '21px',
+            'border-radius': '10px'
+          }"
+        ></div>
+        <div class="category">{{ budget.category }}</div>
+      </div>
+      <div class="flex gap-2 items-center">
+        <div class="font-bold text-lg">${{ spentValues[i].toFixed(2) }}</div>
+        <div class="text-[gray]">of ${{ budget.maximum.toFixed(2) }}</div>
+      </div>
+    </div>
   </div>
-  <h2 class="text-gray-500">
-    Maximum of {{ "$" + budget.maximum.toFixed(2) }}
-  </h2>
-  <div class="progress-bar-container">
-    <mat-progress-bar
-      mode="buffer"
-      class="custom-progress-bar"
-      [ngStyle]="{
+  <div class="budgets-container-parent w-3/5">
+    @for (budget of budgets; track $index) {
+    <div class="parent-container">
+      <div class="flex items-center gap-5 text-[24px] pb-[20px]">
+        <span class="status" [ngStyle]="{ background: budget.theme }"></span>
+        <h1 class="font-bold">{{ budget.category }}</h1>
+      </div>
+      <h2 class="text-gray-500">
+        Maximum of {{ "$" + budget.maximum.toFixed(2) }}
+      </h2>
+      <div class="progress-bar-container">
+        <mat-progress-bar
+          mode="buffer"
+          class="custom-progress-bar"
+          [ngStyle]="{
         height: progressBarHeight,
         'border-radius': '5px',
       }"
-      [ngClass]="budget.category.toLowerCase().replace(' ', '-')"
-      [value]="(getAbsoluteSpent(budget) / budget.maximum) * 100"
-    ></mat-progress-bar>
-  </div>
-  <div class="prices">
-    <div class="budget-container">
-      <div class="wall" [ngStyle]="{ 'background-color': budget.theme }"></div>
-      <div>
-        <h3 class="text-gray-500">Spent</h3>
-        <div class="font-bold">
-          {{ "$" + getAbsoluteSpent(budget).toFixed(2) }}
-        </div>
+          [ngClass]="budget.category.toLowerCase().replace(' ', '-')"
+          [value]="(getAbsoluteSpent(budget) / budget.maximum) * 100"
+        ></mat-progress-bar>
       </div>
-    </div>
-    <div class="budget-container">
-      <div class="wall"></div>
-      <div>
-        <h3 class="text-gray-500">Remaining</h3>
-        <div class="font-bold">
-          {{
-            calculateRemainingAmount(budget) < 0
-              ? "$0"
-              : "$" + calculateRemainingAmount(budget).toFixed(2)
-          }}
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="spending-users">
-    <div class="progress-bar-container px-5 py-5">
-      <div class="flex justify-between">
-        <h1 class="text-2xl font-bold">Latest Spending</h1>
-        <div
-          class="flex items-center gap-2.5 text-see-all"
-          (click)="toggleShowAll(budget.category)"
-        >
-          See all<img src="assets/arrowRight.png" alt="right-arrow" />
-        </div>
-      </div>
-      <div *ngFor="let item of getVisibleTransactions(budget.category)">
-        <div
-          class="flex justify-between border-b border-[#696868] border-opacity-15 py-4"
-          *ngIf="item.category === budget.category"
-        >
-          <div class="flex items-center gap-4">
-            <div class="text-right img-container">
-              <img
-                class="img"
-                [src]="'assets/avatars/' + item.avatar"
-                alt="Avatar"
-              />
-            </div>
-            <div class="text-left font-bold">
-              {{ item.name }}
+      <div class="prices">
+        <div class="budget-container">
+          <div
+            class="wall"
+            [ngStyle]="{ 'background-color': budget.theme }"
+          ></div>
+          <div>
+            <h3 class="text-gray-500">Spent</h3>
+            <div class="font-bold">
+              {{ "$" + getAbsoluteSpent(budget).toFixed(2) }}
             </div>
           </div>
+        </div>
+        <div class="budget-container">
+          <div class="wall"></div>
           <div>
-            <div
-              class="px-0 py-0 text-end font-bold"
-              [ngClass]="{
-                'text-green-500': item.amount > 0,
-                'text-black': item.amount < 0
-              }"
-            >
+            <h3 class="text-gray-500">Remaining</h3>
+            <div class="font-bold">
               {{
-                item.amount > 0
-                  ? "+" + (item.amount | currency)
-                  : (item.amount | currency)
+                calculateRemainingAmount(budget) < 0
+                  ? "$0"
+                  : "$" + calculateRemainingAmount(budget).toFixed(2)
               }}
             </div>
-            <div class="px-0 py-0 text-end">
-              {{ item.date | date : "d MMM y" }}
+          </div>
+        </div>
+      </div>
+      <div class="spending-users">
+        <div class="progress-bar-container px-5 py-5">
+          <div class="flex justify-between">
+            <h1 class="text-2xl font-bold">Latest Spending</h1>
+            <div
+              class="flex items-center gap-2.5 text-see-all"
+              (click)="toggleShowAll(budget.category)"
+            >
+              {{
+                selectedCategory === budget.category ? "See less" : "See all"
+              }}
+              <img
+                src="{{
+                  selectedCategory === budget.category
+                    ? 'assets/arrowDown.svg'
+                    : 'assets/arrowRight.png'
+                }}"
+                alt="{{
+                  selectedCategory === budget.category
+                    ? 'right-arrow'
+                    : 'down-arrow'
+                }}"
+              />
+            </div>
+          </div>
+          <div *ngFor="let item of getVisibleTransactions(budget.category)">
+            <div
+              class="flex justify-between border-b border-[#696868] border-opacity-15 py-4"
+              *ngIf="item.category === budget.category"
+            >
+              <div class="flex items-center gap-4">
+                <div class="text-right img-container">
+                  <img
+                    class="img"
+                    [src]="'assets/avatars/' + item.avatar"
+                    alt="Avatar"
+                  />
+                </div>
+                <div class="text-left font-bold">
+                  {{ item.name }}
+                </div>
+              </div>
+              <div>
+                <div
+                  class="px-0 py-0 text-end font-bold"
+                  [ngClass]="{
+                    'text-green-500': item.amount > 0,
+                    'text-black': item.amount < 0
+                  }"
+                >
+                  {{
+                    item.amount > 0
+                      ? "+" + (item.amount | currency)
+                      : (item.amount | currency)
+                  }}
+                </div>
+                <div class="px-0 py-0 text-end">
+                  {{ item.date | date : "d MMM y" }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    }
   </div>
 </div>
-}
