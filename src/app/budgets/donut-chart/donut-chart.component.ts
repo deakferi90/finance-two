@@ -16,13 +16,14 @@ import {
   DoughnutController,
 } from 'chart.js';
 import { Budget } from '../budgets.interface';
+import { HttpClientModule } from '@angular/common/http';
 
 Chart.register(ArcElement, Tooltip, Legend, DoughnutController);
 
 @Component({
   selector: 'app-donut-chart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './donut-chart.component.html',
   styleUrls: ['./donut-chart.component.scss'],
 })
@@ -30,7 +31,7 @@ export class DonutChartComponent implements AfterViewInit {
   @ViewChild('myDonutChart') private canvasRef!: ElementRef<HTMLCanvasElement>;
 
   @Input() budgets: Budget[] = [];
-  @Input() spent: any;
+  @Input() spent: any[] = [];
   @Input() getAbsoluteSpent!: (budget: Budget) => number;
   @Output() spentValues = new EventEmitter<any>();
   chart: Chart | undefined;

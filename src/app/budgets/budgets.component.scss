@@ -77,3 +77,14 @@
     border-top: 24px solid #626070 !important;
   }
 }
+
+@media screen and (max-width: 1100px) {
+  .budget-parent-container {
+    display: block;
+  }
+
+  .parent-container,
+  .budgets-container-parent {
+    width: 100%;
+  }
+}

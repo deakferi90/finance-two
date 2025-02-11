@@ -5,11 +5,17 @@ import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Transaction } from '../transactions/transaction.interface';
 import { DonutChartComponent } from './donut-chart/donut-chart.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-budgets',
   standalone: true,
-  imports: [CommonModule, DonutChartComponent, MatProgressBarModule],
+  imports: [
+    CommonModule,
+    DonutChartComponent,
+    MatProgressBarModule,
+    HttpClientModule,
+  ],
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.scss',
 })
