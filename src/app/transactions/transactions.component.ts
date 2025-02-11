@@ -49,7 +49,6 @@ export class TransactionsComponent implements OnInit {
   sidenavOpen: boolean = false;
   transactions: Transaction[] = [];
   filteredTransactions: Transaction[] = [];
-  type: any;
   selectedTimeLine: string | null = null;
   selectedCategory: string | any = 'All Transactions';
   sortAscending: boolean = true;
@@ -60,7 +59,7 @@ export class TransactionsComponent implements OnInit {
   @ViewChild('categorySelect') categorySelect!: MatSelect;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  paginatedData: any = [];
+  paginatedData: Transaction[] = [];
   pageSize = 10;
   totalPages = 0;
   currentPage = 0;
@@ -139,20 +138,18 @@ export class TransactionsComponent implements OnInit {
 
   onTimelineChange(selectedTimeline: string) {
     this.selectedTimeline = selectedTimeline;
+
+    this.sortAscending = selectedTimeline === 'Oldest';
     this.sortList();
   }
 
   sortList() {
-    this.sortAscending = !this.sortAscending;
+    this.filteredTransactions.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
 
-    if (this.sortAscending) {
-      this.filteredTransactions.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
-    } else {
-      this.filteredTransactions.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      );
+    if (!this.sortAscending) {
+      this.filteredTransactions.reverse();
     }
 
     this.updatePagination();

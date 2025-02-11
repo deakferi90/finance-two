@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,16 +12,16 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  signup(data: any): any {
+  signup(data: object): Observable<any> {
     console.log(data);
     return this.http.post(`${this.baseUrl}/signup`, data).pipe(
-      tap((result: any) => {
+      tap(() => {
         this.router.navigate(['/login']);
       })
     );
   }
 
-  login(data: any): any {
+  login(data: object): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, data).pipe(
       tap((result: any) => {
         localStorage.setItem('authUser', JSON.stringify(result));

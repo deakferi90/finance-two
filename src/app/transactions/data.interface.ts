@@ -6,7 +6,7 @@ interface Data {
     income: number;
     expenses: number;
   };
-  budgets: any[];
-  pots: any[];
+  budgets: object[];
+  pots: object[];
   transactions: Transaction[];
 }
