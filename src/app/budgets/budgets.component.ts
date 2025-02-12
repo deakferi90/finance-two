@@ -70,8 +70,13 @@ export class BudgetsComponent implements OnInit {
     this.loadBudgetData();
   }
 
+  addBudget() {
+    this.modalTitle = 'Add New Budget';
+    this.modalContent = `Choose category to set a spending budget. These categories can help you monitor spending.`;
+    this.isModalVisible = true;
+  }
+
   openEditModal(index: number) {
-    console.log('show me edit message', index + 1);
     this.modalTitle = 'Edit Budget';
     this.modalContent = `You are about to edit budget #${index + 1}.`;
     this.isModalVisible = true;

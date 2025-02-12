@@ -17,9 +17,23 @@
     >
       Yes, Confirm Deletion
     </button>
-    }
     <button class="mt-[20px] text-[#696868] w-[100%]" (click)="close()">
       No, Go Back
     </button>
+    } @else if (title === 'Add New Budget') {
+    <button
+      class="mt-[20px] w-[100%] py-[14px] bg-[#201F24] text-white rounded-lg"
+      (click)="close()"
+    >
+      Add Budget
+    </button>
+    } @else {
+    <button
+      class="mt-[20px] w-[100%] py-[14px] bg-[#201F24] text-white rounded-lg"
+      (click)="close()"
+    >
+      Save Changes
+    </button>
+    }
   </div>
 </div>
