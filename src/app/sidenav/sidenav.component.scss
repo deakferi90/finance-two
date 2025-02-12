@@ -88,15 +88,15 @@
 }
 
 button {
-  background-color: #5c6bc0;
   color: white;
   padding: 10px;
   border: none;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #3e4db0;
+.add-budget {
+  padding: 14px;
+  border-radius: 12px;
 }
 
 .minimized {

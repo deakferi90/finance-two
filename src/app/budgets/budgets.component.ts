@@ -15,6 +15,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Transaction } from '../transactions/transaction.interface';
 import { DonutChartComponent } from './donut-chart/donut-chart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-budgets',
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     DonutChartComponent,
     MatProgressBarModule,
     HttpClientModule,
+    ModalComponent,
   ],
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.scss',
@@ -42,6 +44,9 @@ export class BudgetsComponent implements OnInit {
   spentValues: any;
   displaySpent: any;
   showAll = false;
+  isModalVisible = false;
+  modalTitle: string = '';
+  modalContent: string = '';
   colorBudget: string = '';
   selectedCategory: string | null = null;
 
@@ -65,27 +70,21 @@ export class BudgetsComponent implements OnInit {
     this.loadBudgetData();
   }
 
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: MouseEvent) {
-    let clickedInside = false;
-
-    this.menuContainers.forEach((menu) => {
-      if (menu.nativeElement.contains(event.target)) {
-        clickedInside = true;
-      }
-    });
-
-    if (!clickedInside && this.openDropDownIndex !== null) {
-      this.openDropDownIndex = null;
-    }
-  }
-
   openEditModal(index: number) {
     console.log('show me edit message', index + 1);
+    this.modalTitle = 'Edit Budget';
+    this.modalContent = `You are about to edit budget #${index + 1}.`;
+    this.isModalVisible = true;
   }
 
   openDeleteModal(index: number) {
-    console.log('show me delete message', index + 1);
+    this.modalTitle = 'Delete Budget';
+    this.modalContent = `Are you sure you want to delete budget #${index + 1}?`;
+    this.isModalVisible = true;
+  }
+
+  closeModal() {
+    this.isModalVisible = false;
   }
 
   getAbsoluteSpent(budget: Budget): number {
@@ -94,7 +93,7 @@ export class BudgetsComponent implements OnInit {
 
   toggleMenu(index: number) {
     if (this.openDropDownIndex === index) {
-      this.openDropDownIndex = index;
+      this.openDropDownIndex = null;
     } else {
       this.openDropDownIndex = index;
     }
@@ -171,6 +170,21 @@ export class BudgetsComponent implements OnInit {
         return '#F2CDAC';
       default:
         return '#626070';
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    let clickedInside = false;
+
+    this.menuContainers.forEach((menu) => {
+      if (menu.nativeElement.contains(event.target)) {
+        clickedInside = true;
+      }
+    });
+
+    if (!clickedInside && this.openDropDownIndex !== null) {
+      this.openDropDownIndex = null;
     }
   }
 }
