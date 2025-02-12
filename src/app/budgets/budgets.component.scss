@@ -56,6 +56,27 @@
   justify-content: space-between;
 }
 
+.dots-img {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.list-items-container-parent {
+  position: relative;
+  .list-items-container {
+    width: fit-content;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    top: -20px;
+    z-index: 1;
+  }
+}
+
 ::ng-deep .custom-progress-bar {
   .mdc-linear-progress__bar-inner {
     border-top-width: 24px !important;

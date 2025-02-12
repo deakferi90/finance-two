@@ -1,4 +1,13 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { BudgetsService } from './budgets.service';
 import { Budget } from './budgets.interface';
 import { CommonModule } from '@angular/common';
@@ -20,10 +29,13 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './budgets.component.scss',
 })
 export class BudgetsComponent implements OnInit {
+  @ViewChildren('menuContainer') menuContainers!: QueryList<ElementRef>;
   [x: string]: any;
+  dotsUrl: string = 'assets/dots.png';
   progress: number = 50;
   totalAmount: number = 0;
-  spent: number | number[] | any;
+  spent!: number | number[];
+  openDropDownIndex: number | null = null;
   progressBarHeight: string = '24px';
   transactions: Transaction[] = [];
   budgets: Budget[] = [];
@@ -32,6 +44,10 @@ export class BudgetsComponent implements OnInit {
   showAll = false;
   colorBudget: string = '';
   selectedCategory: string | null = null;
+
+  get spentArray(): number[] {
+    return Array.isArray(this.spent) ? this.spent : [this.spent];
+  }
 
   budgetColors: { [key: string]: string } = {
     Entertainment: '#277C78',
@@ -49,8 +65,39 @@ export class BudgetsComponent implements OnInit {
     this.loadBudgetData();
   }
 
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    let clickedInside = false;
+
+    this.menuContainers.forEach((menu) => {
+      if (menu.nativeElement.contains(event.target)) {
+        clickedInside = true;
+      }
+    });
+
+    if (!clickedInside && this.openDropDownIndex !== null) {
+      this.openDropDownIndex = null;
+    }
+  }
+
+  openEditModal(index: number) {
+    console.log('show me edit message', index + 1);
+  }
+
+  openDeleteModal(index: number) {
+    console.log('show me delete message', index + 1);
+  }
+
   getAbsoluteSpent(budget: Budget): number {
     return Math.abs(this.calculateTotalSpent(budget));
+  }
+
+  toggleMenu(index: number) {
+    if (this.openDropDownIndex === index) {
+      this.openDropDownIndex = index;
+    } else {
+      this.openDropDownIndex = index;
+    }
   }
 
   calculateTotalSpent(budget: Budget): number {

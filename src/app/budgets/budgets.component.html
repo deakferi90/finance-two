@@ -4,38 +4,65 @@
     <app-donut-chart
       class="parent-container"
       [budgets]="budgets"
-      [spent]="spent"
+      [spent]="spentArray"
       (spentValues)="handleValue($event)"
     ></app-donut-chart>
     }
     <h1 class="font-bold text-2xl pb-[15px]">Spending Summary</h1>
-    <div
-      class="summary pt-[15px] pb-[15px] px-0 border-b border-[#f2f2f2]"
-      *ngFor="let budget of budgets; let i = index"
-    >
-      <div class="flex items-center gap-4">
-        <div
-          [ngStyle]="{
-            'background-color': budget.theme,
-            width: '4px',
-            height: '21px',
-            'border-radius': '10px'
-          }"
-        ></div>
-        <div class="category">{{ budget.category }}</div>
-      </div>
-      <div class="flex gap-2 items-center">
-        <div class="font-bold text-lg">${{ spentValues[i].toFixed(2) }}</div>
-        <div class="text-[gray]">of ${{ budget.maximum.toFixed(2) }}</div>
+
+    <div *ngFor="let budget of budgets; let i = index">
+      <div class="summary pt-[15px] pb-[15px] px-0 border-b border-[#f2f2f2]">
+        <div class="flex items-center gap-4">
+          <div
+            [ngStyle]="{
+              'background-color': budget.theme,
+              width: '4px',
+              height: '21px',
+              'border-radius': '10px'
+            }"
+          ></div>
+          <div class="category">{{ budget.category }}</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          <div class="font-bold text-lg">${{ spentValues[i].toFixed(2) }}</div>
+          <div class="text-[gray]">of ${{ budget.maximum.toFixed(2) }}</div>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="budgets-container-parent w-3/5">
-    @for (budget of budgets; track $index) {
-    <div class="parent-container">
-      <div class="flex items-center gap-5 text-[24px] pb-[20px]">
-        <span class="status" [ngStyle]="{ background: budget.theme }"></span>
-        <h1 class="font-bold">{{ budget.category }}</h1>
+    <div *ngFor="let budget of budgets; let i = index" class="parent-container">
+      <div
+        class="flex items-center justify-between gap-5 text-[24px] pb-[20px]"
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="status" [ngStyle]="{ background: budget.theme }"></span>
+          <h1 class="font-bold">{{ budget.category }}</h1>
+        </div>
+        <img
+          #menuContainer
+          (click)="toggleMenu(i)"
+          class="dots-img"
+          [src]="dotsUrl"
+          alt="dots"
+        />
+      </div>
+      <div class="list-items-container-parent">
+        <ul *ngIf="openDropDownIndex === i" class="list-items-container">
+          <li
+            (click)="openEditModal(i)"
+            class="pb-2 border-b border-gainsboro hover:cursor-pointer"
+          >
+            Edit Budget
+          </li>
+          <li
+            (click)="openDeleteModal(i)"
+            class="text-[#C94736] pt-2 hover:cursor-pointer"
+          >
+            Delete Budget
+          </li>
+        </ul>
       </div>
       <h2 class="text-gray-500">
         Maximum of {{ "$" + budget.maximum.toFixed(2) }}
@@ -45,9 +72,9 @@
           mode="buffer"
           class="custom-progress-bar"
           [ngStyle]="{
-        height: progressBarHeight,
-        'border-radius': '5px',
-      }"
+            height: progressBarHeight,
+            'border-radius': '5px',
+          }"
           [ngClass]="budget.category.toLowerCase().replace(' ', '-')"
           [value]="(getAbsoluteSpent(budget) / budget.maximum) * 100"
         ></mat-progress-bar>
@@ -144,6 +171,5 @@
         </div>
       </div>
     </div>
-    }
   </div>
 </div>
