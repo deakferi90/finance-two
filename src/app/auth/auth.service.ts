@@ -13,10 +13,16 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signup(data: object): Observable<any> {
-    console.log(data);
+    console.log('Signup Request Data:', data);
     return this.http.post(`${this.baseUrl}/signup`, data).pipe(
-      tap(() => {
-        this.router.navigate(['/login']);
+      tap({
+        next: (res) => {
+          console.log('Signup Success:', res);
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          console.error('Signup Error:', err);
+        },
       })
     );
   }

@@ -1,55 +1,71 @@
 <div class="header-black">
   <img src="assets/logoAuth.png" alt="Logo" class="img-logo" />
 </div>
+
 <div class="box-container">
   <div class="signup-card-container">
     <img src="assets/finance-pic.png" alt="Styled Image" class="image-banner" />
     <img src="assets/message.png" alt="Message" class="img-msg" />
     <img src="assets/logoAuth.png" alt="Message" class="img-logo" />
   </div>
+
   <div class="signup-card-box">
     <div class="signup-card">
       <div class="card-title">
         <h1>Sign Up</h1>
+
         <form
           class="form-group form-container"
           [formGroup]="signupForm"
           (ngSubmit)="onSubmit()"
         >
+          <!-- Name Field -->
           <label for="name">Name</label>
           <input
-            name="name"
-            type="string"
+            id="name"
+            type="text"
             placeholder="Name"
-            [(ngModel)]="user.username"
-            formControlName="name"
-            placeholder="Name"
+            formControlName="username"
             autocomplete="name"
           />
-          @if (isSubmitted && user.username.length === 0) {
-          <div class="text-red-500">Name is required!</div>
-          }
-          <label>Email</label>
+          <div
+            *ngIf="isSubmitted && signupForm.controls['username'].errors?.['required']"
+            class="text-red-500"
+          >
+            Name is required!
+          </div>
+
+          <!-- Email Field -->
+          <label for="email">Email</label>
           <input
             id="email"
             type="email"
-            [(ngModel)]="user.email"
-            formControlName="email"
             placeholder="Email"
+            formControlName="email"
             autocomplete="email"
           />
-          @if (isSubmitted && user.email.length === 0) {
-          <div class="text-red-500">Email is required!</div>
-          }
-          <label>Create Password</label>
+          <div
+            *ngIf="isSubmitted && signupForm.controls['email'].errors?.['required']"
+            class="text-red-500"
+          >
+            Email is required!
+          </div>
+          <div
+            *ngIf="isSubmitted && signupForm.controls['email'].errors?.['email']"
+            class="text-red-500"
+          >
+            Invalid email format!
+          </div>
+
+          <!-- Password Field -->
+          <label for="password">Create Password</label>
           <div class="custom-input-container">
             <input
               id="password"
-              matInput
               [type]="showPassword ? 'text' : 'password'"
               formControlName="password"
               placeholder="Password"
-              autocomplete="current-password"
+              autocomplete="new-password"
             />
             <mat-icon
               matSuffix
@@ -59,18 +75,28 @@
               {{ showPassword ? "visibility_off" : "visibility" }}
             </mat-icon>
           </div>
-          @if (isSubmitted && user.password.length === 0) {
-          <div class="text-red-500">Password is required!</div>
-          } @else if(user.password.length > 0 && user.password.length < 8) {
-          <div class="text-red-500">
+          <div
+            *ngIf="isSubmitted && signupForm.controls['password'].errors?.['required']"
+            class="text-red-500"
+          >
+            Password is required!
+          </div>
+          <div
+            *ngIf="
+              isSubmitted && signupForm.controls['password'].errors?.['minlength']
+            "
+            class="text-red-500"
+          >
             Password must be at least 8 characters!
           </div>
-          }
+
+          <!-- Submit Button -->
           <button class="form-btn" type="submit">Submit</button>
         </form>
+
         <div class="txt-container">
-          <span class="txt">Already have an account? </span
-          ><a routerLink="/login">Login</a>
+          <span class="txt">Already have an account? </span>
+          <a routerLink="/login">Login</a>
         </div>
       </div>
     </div>

@@ -1,32 +1,34 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule, MatIconModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
-  signupForm!: FormGroup;
-  isSubmitted: boolean = false;
-  showPassword: boolean = false;
-
-  user = { username: '', email: '', password: '' };
+  signupForm: FormGroup;
+  isSubmitted = false;
+  showPassword = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.signupForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(8),
       ]),
     });
   }
@@ -37,15 +39,22 @@ export class SignupComponent {
 
   onSubmit() {
     this.isSubmitted = true;
-    if (this.signupForm.valid) {
-      const value = this.signupForm.value;
 
-      this.authService.signup(this.user).subscribe(
-        (complete: string) => {
+    if (this.signupForm.valid) {
+      console.log('Form Data:', this.signupForm.value);
+
+      this.authService.signup(this.signupForm.value).subscribe(
+        (response: any) => {
+          console.log('Signup successful!', response);
           this.router.navigate(['/login']);
         },
-        (err: string) => {
-          alert(`Unsuccessful registration`);
+        (error) => {
+          console.error('Signup error:', error);
+          alert(
+            `Unsuccessful registration: ${
+              error.error?.message || 'Unknown error'
+            }`
+          );
         }
       );
     }
