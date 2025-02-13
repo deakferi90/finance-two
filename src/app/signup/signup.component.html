@@ -57,7 +57,6 @@
             Invalid email format!
           </div>
 
-          <!-- Password Field -->
           <label for="password">Create Password</label>
           <div class="custom-input-container">
             <input
@@ -69,7 +68,7 @@
             />
             <mat-icon
               matSuffix
-              class="eye-icon"
+              class="eye-icon hover:cursor-pointer"
               (click)="togglePasswordVisibility()"
             >
               {{ showPassword ? "visibility_off" : "visibility" }}
@@ -89,8 +88,6 @@
           >
             Password must be at least 8 characters!
           </div>
-
-          <!-- Submit Button -->
           <button class="form-btn" type="submit">Submit</button>
         </form>
 
