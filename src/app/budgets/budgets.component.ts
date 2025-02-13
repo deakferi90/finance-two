@@ -41,6 +41,7 @@ export class BudgetsComponent implements OnInit {
   progressBarHeight: string = '24px';
   transactions: Transaction[] = [];
   budgets: Budget[] = [];
+  filteredBudgets: Budget[] = [];
   spentValues: any;
   displaySpent: any;
   showAll = false;
@@ -146,6 +147,10 @@ export class BudgetsComponent implements OnInit {
     this.service.getBudgets().subscribe((data) => {
       if (Array.isArray(data) && data.length > 0) {
         this.budgets = data[0].budgets;
+        console.log(this.budgets);
+        this.filteredBudgets = this.budgets.filter(
+          (budget) => !budget.optional
+        );
         this.transactions = data[0].transactions;
         this.spent = this.budgets.map((budget) =>
           this.calculateTotalSpent(budget)
@@ -163,19 +168,6 @@ export class BudgetsComponent implements OnInit {
         console.error('Unexpected data format', data);
       }
     });
-  }
-
-  getColorForTheme(theme: string): string {
-    switch (theme.toLowerCase()) {
-      case 'Entertainment':
-        return '#277C78';
-      case 'Bills':
-        return '#82C9D7';
-      case 'Dining Out':
-        return '#F2CDAC';
-      default:
-        return '#626070';
-    }
   }
 
   @HostListener('document:click', ['$event'])

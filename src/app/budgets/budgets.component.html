@@ -11,14 +11,14 @@
     @if (budgets.length > 0) {
     <app-donut-chart
       class="parent-container"
-      [budgets]="budgets"
+      [budgets]="filteredBudgets"
       [spent]="spentArray"
       (spentValues)="handleValue($event)"
     ></app-donut-chart>
     }
     <h1 class="font-bold text-2xl pb-[15px]">Spending Summary</h1>
 
-    <div *ngFor="let budget of budgets; let i = index">
+    <div *ngFor="let budget of filteredBudgets; let i = index">
       <div class="summary pt-[15px] pb-[15px] px-0 border-b border-[#f2f2f2]">
         <div class="flex items-center gap-4">
           <div
@@ -40,7 +40,10 @@
   </div>
 
   <div class="budgets-container-parent w-3/5">
-    <div *ngFor="let budget of budgets; let i = index" class="parent-container">
+    <div
+      *ngFor="let budget of filteredBudgets; let i = index"
+      class="parent-container"
+    >
       <div
         class="flex items-center justify-between gap-5 text-[24px] pb-[20px]"
       >

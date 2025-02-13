@@ -31,9 +31,11 @@ export class DonutChartComponent implements AfterViewInit {
   @ViewChild('myDonutChart') private canvasRef!: ElementRef<HTMLCanvasElement>;
 
   @Input() budgets: Budget[] = [];
+  @Input() filteredBudgets: Budget[] = [];
   @Input() spent: any[] = [];
   @Input() getAbsoluteSpent!: (budget: Budget) => number;
   @Output() spentValues = new EventEmitter<any>();
+
   chart: Chart | undefined;
 
   constructor() {}
@@ -52,7 +54,7 @@ export class DonutChartComponent implements AfterViewInit {
     if (this.canvasRef && this.canvasRef.nativeElement) {
       const ctx = this.canvasRef.nativeElement.getContext('2d');
 
-      const totalBudget = this.budgets.reduce(
+      const totalBudget = this.filteredBudgets.reduce(
         (acc, budget) => acc + budget.maximum,
         0
       );
@@ -87,12 +89,28 @@ export class DonutChartComponent implements AfterViewInit {
         this.chart = new Chart(ctx, {
           type: 'doughnut',
           data: {
-            labels: ['Entertainment', 'Bills', 'Dining Out', 'Personal Care'],
+            labels: [
+              'Entertainment',
+              'Bills',
+              'Groceries',
+              'Dining Out',
+              'Transportation',
+              'Personal Care',
+              'Education',
+            ],
             datasets: [
               {
                 label: 'Spent',
                 data: this.spent,
-                backgroundColor: ['#277C78', '#82C9D7', '#F2CDAC', '#626070'],
+                backgroundColor: [
+                  '#277C78',
+                  '#82C9D7',
+                  '#426CD5',
+                  '#F2CDAC',
+                  '#FFA500b3',
+                  '#626070',
+                  '#FFB6C1CC',
+                ],
                 hoverOffset: 4,
               },
             ],

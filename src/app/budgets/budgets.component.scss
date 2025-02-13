@@ -95,12 +95,24 @@
     border-top: 24px solid #82c9d7 !important;
   }
 
+  &.groceries .mdc-linear-progress__bar-inner {
+    border-top: 24px solid #426cd5 !important;
+  }
+
   &.dining-out .mdc-linear-progress__bar-inner {
     border-top: 24px solid #f2cdac !important;
   }
 
+  &.transportation .mdc-linear-progress__bar-inner {
+    border-top: 24px solid #ffa500b3 !important;
+  }
+
   &.personal-care .mdc-linear-progress__bar-inner {
     border-top: 24px solid #626070 !important;
+  }
+
+  &.education .mdc-linear-progress__bar-inner {
+    border-top: 24px solid #ffb6c1cc !important;
   }
 }
 

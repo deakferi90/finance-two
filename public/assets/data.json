@@ -411,14 +411,32 @@
         "theme": "#82C9D7"
       },
       {
+        "category": "Groceries",
+        "maximum": 110.0,
+        "theme": "#426CD5",
+        "optional": true
+      },
+      {
         "category": "Dining Out",
         "maximum": 75.0,
         "theme": "#F2CDAC"
       },
       {
+        "category": "Transportation",
+        "maximum": 110.0,
+        "theme": "#FFA500b3",
+        "optional": true
+      },
+      {
         "category": "Personal Care",
         "maximum": 100.0,
         "theme": "#626070"
+      },
+      {
+        "category": "Education",
+        "maximum": 50.0,
+        "theme": "#FFB6C1CC",
+        "optional": true
       }
     ],
     "pots": [
