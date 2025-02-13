@@ -31,7 +31,6 @@ export class DonutChartComponent implements AfterViewInit {
   @ViewChild('myDonutChart') private canvasRef!: ElementRef<HTMLCanvasElement>;
 
   @Input() budgets: Budget[] = [];
-  @Input() filteredBudgets: Budget[] = [];
   @Input() spent: any[] = [];
   @Input() getAbsoluteSpent!: (budget: Budget) => number;
   @Output() spentValues = new EventEmitter<any>();
@@ -54,14 +53,14 @@ export class DonutChartComponent implements AfterViewInit {
     if (this.canvasRef && this.canvasRef.nativeElement) {
       const ctx = this.canvasRef.nativeElement.getContext('2d');
 
-      const totalBudget = this.filteredBudgets.reduce(
+      const totalBudget = this.budgets.reduce(
         (acc, budget) => acc + budget.maximum,
         0
       );
 
-      const totalSpent = this.spent.reduce(
-        (acc: any, budget: any) => acc + Math.abs(budget)
-      );
+      const totalSpent = this.spent
+        .slice(0, this.budgets.length)
+        .reduce((acc, spent) => acc + Math.abs(spent), 0);
 
       const bigText = `$${Math.floor(Number(totalSpent))}`;
       const centerTextPlugin = {
