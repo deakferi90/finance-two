@@ -403,39 +403,46 @@
       {
         "category": "Entertainment",
         "maximum": 50.0,
-        "theme": "#277C78"
+        "theme": "#277C78",
+        "color": "Green"
       },
       {
         "category": "Bills",
         "maximum": 750.0,
-        "theme": "#82C9D7"
+        "theme": "#82C9D7",
+        "color": "Cyan"
       },
       {
         "category": "Groceries",
         "maximum": 110.0,
         "theme": "#426CD5",
+        "color": "Blue",
         "optional": true
       },
       {
         "category": "Dining Out",
         "maximum": 75.0,
-        "theme": "#F2CDAC"
+        "theme": "#F2CDAC",
+        "color": "Desert"
       },
       {
         "category": "Transportation",
         "maximum": 110.0,
         "theme": "#FFA500b3",
+        "color": "Orange",
         "optional": true
       },
       {
         "category": "Personal Care",
         "maximum": 100.0,
-        "theme": "#626070"
+        "theme": "#626070",
+        "color": "Gray"
       },
       {
         "category": "Education",
         "maximum": 50.0,
         "theme": "#FFB6C1CC",
+        "color": "Pink",
         "optional": true
       }
     ],

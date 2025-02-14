@@ -53,16 +53,22 @@ export class DonutChartComponent implements AfterViewInit {
     if (this.canvasRef && this.canvasRef.nativeElement) {
       const ctx = this.canvasRef.nativeElement.getContext('2d');
 
-      const totalBudget = this.budgets.reduce(
+      const filteredBudgets = this.budgets.filter((budget) => !budget.optional);
+
+      const totalBudget = filteredBudgets.reduce(
         (acc, budget) => acc + budget.maximum,
         0
       );
 
-      const totalSpent = this.spent
-        .slice(0, this.budgets.length)
-        .reduce((acc, spent) => acc + Math.abs(spent), 0);
+      const filteredSpent = this.spent.slice(0, filteredBudgets.length);
+
+      const totalSpent = filteredSpent.reduce(
+        (acc, spent) => acc + Math.abs(spent),
+        0
+      );
 
       const bigText = `$${Math.floor(Number(totalSpent))}`;
+
       const centerTextPlugin = {
         id: 'centerText',
         afterDraw(chart: { width: any; height: any; ctx: any }) {
@@ -74,7 +80,6 @@ export class DonutChartComponent implements AfterViewInit {
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(bigText, width / 2, height / 2 - 10);
-
           ctx.font = `${Math.min(width / 2, 16)}px Arial`;
           ctx.fillStyle = 'gray';
           ctx.fillText(smallText, width / 2, height / 2 + 20);
@@ -88,28 +93,12 @@ export class DonutChartComponent implements AfterViewInit {
         this.chart = new Chart(ctx, {
           type: 'doughnut',
           data: {
-            labels: [
-              'Entertainment',
-              'Bills',
-              'Groceries',
-              'Dining Out',
-              'Transportation',
-              'Personal Care',
-              'Education',
-            ],
+            labels: filteredBudgets.map((budget) => budget.category),
             datasets: [
               {
                 label: 'Spent',
-                data: this.spent,
-                backgroundColor: [
-                  '#277C78',
-                  '#82C9D7',
-                  '#426CD5',
-                  '#F2CDAC',
-                  '#FFA500b3',
-                  '#626070',
-                  '#FFB6C1CC',
-                ],
+                data: filteredSpent,
+                backgroundColor: filteredBudgets.map((budget) => budget.theme),
                 hoverOffset: 4,
               },
             ],
@@ -128,8 +117,7 @@ export class DonutChartComponent implements AfterViewInit {
                 callbacks: {
                   label: (tooltipItem: any) => {
                     const value = Math.abs(tooltipItem.raw);
-                    const integerValue = Math.floor(value);
-                    return `${tooltipItem.label}: $${integerValue}`;
+                    return `${tooltipItem.label}: $${Math.floor(value)}`;
                   },
                 },
               },
