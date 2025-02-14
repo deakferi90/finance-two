@@ -28,9 +28,9 @@ export class ModalComponent {
     theme: false,
   };
 
-  selectedCategory: any = null;
-  selectedMaximum: any = null;
-  selectedTheme: any = null;
+  selectedCategory: null = null;
+  selectedMaximum: null = null;
+  selectedTheme: string | null = null;
 
   constructor() {}
 
