@@ -42,6 +42,7 @@ export class BudgetsComponent implements OnInit {
   transactions: Transaction[] = [];
   budgets: Budget[] = [];
   filteredBudgets: Budget[] = [];
+  bugdetData!: Budget;
   spentValues: any;
   displaySpent: any;
   showAll = false;
@@ -79,10 +80,12 @@ export class BudgetsComponent implements OnInit {
     this.isModalVisible = true;
   }
 
-  openEditModal(index: number) {
+  openEditModal(budget: Budget) {
     this.modalTitle = 'Edit Budget';
-    this.modalContent = `You are about to edit budget #${index + 1}.`;
+    this.modalContent = `As your budgets change, feel free to update your spending limits.`;
     this.isModalVisible = true;
+    this.bugdetData = budget;
+    console.log(this.bugdetData);
   }
 
   openDeleteModal(budget: Budget) {

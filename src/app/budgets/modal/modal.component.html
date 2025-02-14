@@ -101,6 +101,75 @@
       Add Budget
     </button>
     } @else if(title === 'Edit Budget') {
+    <span class="text-[#696868] mt-2">Budget Category</span>
+    <div class="custom-dropdown-container mb-3">
+      <div class="dropdown-selected" (click)="toggleDropdown('category')">
+        <span>{{
+          selectedCategory ? selectedCategory.category : "Select an option"
+        }}</span>
+        <i class="arrow" [class.open]="dropdownStates['category']">▼</i>
+      </div>
+
+      <div *ngIf="dropdownStates['category']" class="dropdown-list">
+        <div
+          *ngFor="let option of budgets"
+          class="dropdown-item flex justify-between"
+          (click)="selectOption('category', option)"
+          [ngClass]="{
+            'not-selectable': budgetColors[option.category]
+          }"
+        >
+          <span>{{ option.category }}</span>
+          @if ( budgetColors[option.category]) {
+          <span>Already in use</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <span class="text-[#696868] mt-2">Maximum Spend</span>
+    <div>
+      <input
+        class="max-speed"
+        type="number"
+        [value]="selectedBudget.maximum"
+        (input)="formatNumber($event)"
+      />
+    </div>
+
+    <span class="text-[#696868] mt-2">Theme</span>
+    <div class="custom-dropdown-container mb-2">
+      <div class="dropdown-selected" (click)="toggleDropdown('theme')">
+        <span *ngIf="selectedTheme" class="theme-selection">
+          <span
+            class="circle"
+            [ngStyle]="{ backgroundColor: selectedTheme }"
+          ></span>
+          {{ getColorName(selectedTheme) }}
+        </span>
+        <span *ngIf="!selectedTheme">Select an option</span>
+        <i class="arrow" [class.open]="dropdownStates['theme']">▼</i>
+      </div>
+
+      <div *ngIf="dropdownStates['theme']" class="dropdown-list">
+        <div
+          *ngFor="let option of budgets"
+          class="dropdown-item flex justify-between"
+          (click)="selectOption('theme', option)"
+        >
+          <div>
+            <span
+              class="circle"
+              [ngStyle]="{ backgroundColor: option.theme }"
+            ></span>
+            <span>{{ option.color }}</span>
+          </div>
+          @if (budgetColors[option.category]) {
+          <span>Already in use</span>
+          }
+        </div>
+      </div>
+    </div>
     <button
       class="mt-[20px] w-[100%] py-[14px] bg-[#201F24] text-white rounded-lg"
       (click)="close()"

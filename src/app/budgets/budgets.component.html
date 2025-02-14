@@ -62,7 +62,7 @@
       <div class="list-items-container-parent">
         <ul *ngIf="openDropDownIndex === i" class="list-items-container">
           <li
-            (click)="openEditModal(i)"
+            (click)="openEditModal(budget)"
             class="pb-2 border-b border-gainsboro hover:cursor-pointer"
           >
             Edit Budget
@@ -190,6 +190,7 @@
   [budgets]="budgets"
   [content]="modalContent"
   [budgetColors]="budgetColors"
+  [selectedBudget]="bugdetData"
   [deleteMsg]="deleteMsg"
   [cancel]="cancel"
   (closeModal)="closeModal()"
