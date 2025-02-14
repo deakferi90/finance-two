@@ -50,6 +50,8 @@ export class BudgetsComponent implements OnInit {
   modalContent: string = '';
   colorBudget: string = '';
   selectedCategory: string | null = null;
+  deleteMsg: string = '';
+  cancel: string = '';
 
   get spentArray(): number[] {
     return Array.isArray(this.spent) ? this.spent : [this.spent];
@@ -83,10 +85,12 @@ export class BudgetsComponent implements OnInit {
     this.isModalVisible = true;
   }
 
-  openDeleteModal(index: number) {
-    this.modalTitle = 'Delete Budget';
-    this.modalContent = `Are you sure you want to delete budget #${index + 1}?`;
+  openDeleteModal(budget: Budget) {
+    this.modalTitle = `Delete '${budget.category}'`;
+    this.modalContent = `Are you sure you want to delete this budget? This action cannot be reversed, and all data inside it will be removed forever.`;
     this.isModalVisible = true;
+    this.deleteMsg = 'Yes, Confirm Deletion';
+    this.cancel = 'No, Go Back';
   }
 
   closeModal() {

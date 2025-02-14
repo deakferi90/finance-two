@@ -12,6 +12,8 @@ import { Budget } from '../budgets.interface';
 export class ModalComponent {
   @Input() isVisible: boolean = false;
   @Input() content!: string;
+  @Input() deleteMsg!: string;
+  @Input() cancel!: string;
   @Input() budgets: Budget[] = [];
   @Input() title = '';
   @Input() message = '';

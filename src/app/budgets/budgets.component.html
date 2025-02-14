@@ -68,7 +68,7 @@
             Edit Budget
           </li>
           <li
-            (click)="openDeleteModal(i)"
+            (click)="openDeleteModal(budget)"
             class="text-[#C94736] pt-2 hover:cursor-pointer"
           >
             Delete Budget
@@ -190,5 +190,7 @@
   [budgets]="budgets"
   [content]="modalContent"
   [budgetColors]="budgetColors"
+  [deleteMsg]="deleteMsg"
+  [cancel]="cancel"
   (closeModal)="closeModal()"
 ></app-modal>

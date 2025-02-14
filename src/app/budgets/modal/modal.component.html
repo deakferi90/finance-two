@@ -10,15 +10,15 @@
       </button>
     </div>
     <p class="text-[#696868] mb-3">{{ content }}</p>
-    @if (title === 'Delete Budget') {
+    @if (title) {
     <button
       class="mt-[20px] w-[100%] py-[14px] bg-[#C94736] text-white rounded-lg"
       (click)="close()"
     >
-      Yes, Confirm Deletion
+      {{ deleteMsg }}
     </button>
     <button class="mt-[20px] text-[#696868] w-[100%]" (click)="close()">
-      No, Go Back
+      {{ cancel }}
     </button>
     } @else if (title === 'Add New Budget') {
 
