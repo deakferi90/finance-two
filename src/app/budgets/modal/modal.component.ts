@@ -18,7 +18,7 @@ export class ModalComponent {
   @Input() title = '';
   @Input() message = '';
   @Input() budgetColors: { [key: string]: string } = {};
-  @Input() selectedBudget!: object;
+  @Input() selectedBudget!: Budget;
   @Output() closeModal = new EventEmitter<void>();
   maxSpeed: number = 0;
 

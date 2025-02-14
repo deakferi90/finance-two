@@ -105,7 +105,7 @@
     <div class="custom-dropdown-container mb-3">
       <div class="dropdown-selected" (click)="toggleDropdown('category')">
         <span>{{
-          selectedCategory ? selectedCategory.category : "Select an option"
+          selectedCategory ? selectedCategory.category : selectedBudget.category
         }}</span>
         <i class="arrow" [class.open]="dropdownStates['category']">▼</i>
       </div>
@@ -115,14 +115,8 @@
           *ngFor="let option of budgets"
           class="dropdown-item flex justify-between"
           (click)="selectOption('category', option)"
-          [ngClass]="{
-            'not-selectable': budgetColors[option.category]
-          }"
         >
           <span>{{ option.category }}</span>
-          @if ( budgetColors[option.category]) {
-          <span>Already in use</span>
-          }
         </div>
       </div>
     </div>
@@ -147,7 +141,14 @@
           ></span>
           {{ getColorName(selectedTheme) }}
         </span>
-        <span *ngIf="!selectedTheme">Select an option</span>
+        <div *ngIf="!selectedTheme && selectedBudget">
+          <span
+            class="circle"
+            [ngStyle]="{ backgroundColor: selectedBudget.theme }"
+          ></span>
+          <span>{{ selectedBudget.color }}</span>
+        </div>
+
         <i class="arrow" [class.open]="dropdownStates['theme']">▼</i>
       </div>
 
@@ -164,9 +165,6 @@
             ></span>
             <span>{{ option.color }}</span>
           </div>
-          @if (budgetColors[option.category]) {
-          <span>Already in use</span>
-          }
         </div>
       </div>
     </div>
