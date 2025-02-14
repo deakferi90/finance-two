@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Budget } from '../budgets.interface';
 
 @Component({
@@ -15,6 +15,7 @@ export class ModalComponent {
   @Input() budgets: Budget[] = [];
   @Input() title = '';
   @Input() message = '';
+  @Input() budgetColors: { [key: string]: string } = {};
   @Output() closeModal = new EventEmitter<void>();
   maxSpeed: number = 0;
 
@@ -27,6 +28,17 @@ export class ModalComponent {
   selectedCategory: any = null;
   selectedMaximum: any = null;
   selectedTheme: any = null;
+
+  constructor() {}
+
+  // ngOnInit(): void {
+  //   console.log('this is on init');
+  //   if() {}
+  // }
+
+  objectKeys(obj: any): string[] {
+    return Object.keys(obj);
+  }
 
   toggleDropdown(dropdown: string) {
     this.dropdownStates[dropdown] = !this.dropdownStates[dropdown];
@@ -52,6 +64,10 @@ export class ModalComponent {
       const selectedCategoryOption = this.budgets.find(
         (budget) => budget.category === option.category
       );
+      this.dropdownStates[dropdown] = option;
+      console.log(selectedCategoryOption);
+      console.log(this.budgetColors);
+
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
       }

@@ -84,3 +84,13 @@
   display: inline-block;
   margin-right: 10px;
 }
+
+.selected-category {
+  color: red;
+}
+
+.not-selectable {
+  pointer-events: none;
+  color: #696868;
+  opacity: 0.5;
+}
