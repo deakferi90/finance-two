@@ -85,6 +85,14 @@ export class ModalComponent {
   }
 
   close() {
+    this.resetSelections();
     this.closeModal.emit();
+  }
+
+  resetSelections() {
+    this.selectedCategory = null;
+    this.selectedMaximum = null;
+    this.selectedTheme = null;
+    this.selectedBudget = { ...this.selectedBudget };
   }
 }
