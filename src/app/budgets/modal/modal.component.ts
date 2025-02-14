@@ -28,8 +28,8 @@ export class ModalComponent {
     theme: false,
   };
 
-  selectedCategory: null = null;
-  selectedMaximum: null = null;
+  selectedCategory: string | null = null;
+  selectedMaximum: string | null = null;
   selectedTheme: string | null = null;
 
   constructor() {}
