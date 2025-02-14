@@ -31,11 +31,6 @@ export class ModalComponent {
 
   constructor() {}
 
-  // ngOnInit(): void {
-  //   console.log('this is on init');
-  //   if() {}
-  // }
-
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
   }
@@ -65,8 +60,6 @@ export class ModalComponent {
         (budget) => budget.category === option.category
       );
       this.dropdownStates[dropdown] = option;
-      console.log(selectedCategoryOption);
-      console.log(this.budgetColors);
 
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
