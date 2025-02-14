@@ -18,7 +18,7 @@ export class ModalComponent {
   @Input() title = '';
   @Input() message = '';
   @Input() budgetColors: { [key: string]: string } = {};
-  @Input() selectedBudget: any;
+  @Input() selectedBudget!: object;
   @Output() closeModal = new EventEmitter<void>();
   maxSpeed: number = 0;
 
@@ -58,7 +58,6 @@ export class ModalComponent {
   selectOption(dropdown: string, option: any) {
     if (dropdown === 'category') {
       this.selectedCategory = option;
-      console.log(this.selectedBudget);
 
       const selectedCategoryOption = this.budgets.find(
         (budget) => budget.category === option.category
