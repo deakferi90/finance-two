@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Budget } from '../budgets.interface';
 import { FormsModule } from '@angular/forms';
+import { BudgetService } from './budget.service';
 
 @Component({
   selector: 'app-modal',
@@ -44,7 +45,7 @@ export class ModalComponent {
   selectedTheme: string | null = null;
   newValue: object = {};
 
-  constructor() {}
+  constructor(private service: BudgetService) {}
 
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
@@ -100,17 +101,28 @@ export class ModalComponent {
   updateBudget() {
     const maxSpeed = document.querySelector('.max-speed') as HTMLInputElement;
     const inputValue = maxSpeed?.value;
+
     this.selectedMaximum = inputValue;
     const themeHexCode = this.selectedTheme!;
-    const selectedColor = this.colorMapping[themeHexCode] || 'Unknown';
+    let selectedColor = this.selectedBudget.color;
+
+    if (themeHexCode !== this.selectedBudget.theme) {
+      selectedColor =
+        this.colorMapping[themeHexCode] || this.selectedBudget.color;
+    }
 
     this.newValue = {
-      category: this.selectedCategory?.category,
+      category: this.selectedCategory?.category || this.selectedBudget.category,
       maximum: Number(this.selectedMaximum),
-      theme: this.selectedTheme,
+      theme: this.selectedTheme || this.selectedBudget.theme,
       color: selectedColor,
     };
+
     console.log(this.newValue);
+
+    return this.service.updateBudget(this.newValue).subscribe((data) => {
+      console.log(data);
+    });
   }
 
   close() {

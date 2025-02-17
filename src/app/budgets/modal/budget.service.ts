@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BudgetService {
-  private apiUrl = 'http://localhost:3000/budgets';
+  private apiUrl = 'http://localhost:3000/api/budgets';
 
   constructor(private http: HttpClient) {}
 
-  updateBudget(budgetId: number, updatedBudget: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${budgetId}`, updatedBudget);
+  updateBudget(updatedBudget: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}`, updatedBudget);
   }
 }
