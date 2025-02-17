@@ -9,11 +9,10 @@ import { AuthModal } from './auth-model';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3000'; // You can move this to environment variables for flexibility
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
-  // Sign up method
   signup(data: AuthModal) {
     return this.httpClient.post(`${this.baseUrl}/register`, data).pipe(
       catchError((error) => {
@@ -26,29 +25,24 @@ export class AuthService {
     );
   }
 
-  // Login method
   login(data: object) {
     return this.httpClient.post(`${this.baseUrl}/login`, data).pipe(
       tap((result: any) => {
-        // Store user data and token in localStorage
         localStorage.setItem('authUser', JSON.stringify(result));
-        this.router.navigate(['/overview']); // Redirect to the overview page
+        this.router.navigate(['/overview']);
       }),
       catchError((error) => {
-        // Handle errors properly
         console.error('Login failed:', error);
         return throwError('Invalid email or password. Please try again.');
       })
     );
   }
 
-  // Logout method
   logout() {
     localStorage.removeItem('authUser');
-    this.router.navigate(['/login']); // Redirect to login after logout
+    this.router.navigate(['/login']);
   }
 
-  // Check if user is logged in
   isLoggedIn(): boolean {
     return localStorage.getItem('authUser') !== null;
   }

@@ -126,7 +126,7 @@
       <input
         class="max-speed"
         type="number"
-        [value]="selectedBudget.maximum"
+        [value]="selectedBudget.maximum || selectedCategory?.maximum"
         (input)="formatNumber($event)"
       />
     </div>
@@ -170,7 +170,7 @@
     </div>
     <button
       class="mt-[20px] w-[100%] py-[14px] bg-[#201F24] text-white rounded-lg"
-      (click)="close()"
+      (click)="updateBudget()"
     >
       Save Changes
     </button>

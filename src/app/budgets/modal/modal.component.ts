@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Budget } from '../budgets.interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })
@@ -22,6 +23,16 @@ export class ModalComponent {
   @Output() closeModal = new EventEmitter<void>();
   maxSpeed: number = 0;
 
+  colorMapping: { [key: string]: string } = {
+    '#277C78': 'Green',
+    '#82C9D7': 'Cyan',
+    '#426CD5': 'Blue',
+    '#F2CDAC': 'Desert Sand',
+    '#FFA500b3': 'Orange',
+    '#626070': 'Gray',
+    '#FFB6C1CC': 'Pink',
+  };
+
   dropdownStates: { [key: string]: boolean } = {
     category: false,
     maximum: false,
@@ -29,8 +40,9 @@ export class ModalComponent {
   };
 
   selectedCategory: Budget | null = null;
-  selectedMaximum: string | null = null;
+  selectedMaximum: number | string | null = null;
   selectedTheme: string | null = null;
+  newValue: object = {};
 
   constructor() {}
 
@@ -66,6 +78,7 @@ export class ModalComponent {
 
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
+        this.selectedMaximum = selectedCategoryOption.maximum;
       }
     } else if (dropdown === 'theme') {
       this.selectedTheme = option.theme;
@@ -82,6 +95,22 @@ export class ModalComponent {
     } else {
       this.maxSpeed = 0;
     }
+  }
+
+  updateBudget() {
+    const maxSpeed = document.querySelector('.max-speed') as HTMLInputElement;
+    const inputValue = maxSpeed?.value;
+    this.selectedMaximum = inputValue;
+    const themeHexCode = this.selectedTheme!;
+    const selectedColor = this.colorMapping[themeHexCode] || 'Unknown';
+
+    this.newValue = {
+      category: this.selectedCategory?.category,
+      maximum: Number(this.selectedMaximum),
+      theme: this.selectedTheme,
+      color: selectedColor,
+    };
+    console.log(this.newValue);
   }
 
   close() {
