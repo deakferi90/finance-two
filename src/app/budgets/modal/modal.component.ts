@@ -28,7 +28,7 @@ export class ModalComponent {
     theme: false,
   };
 
-  selectedCategory: string | null = null;
+  selectedCategory: Budget | null = null;
   selectedMaximum: string | null = null;
   selectedTheme: string | null = null;
 
