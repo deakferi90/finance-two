@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Budget } from '../budgets.interface';
 import { FormsModule } from '@angular/forms';
-import { BudgetService } from './budget.service';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -22,6 +22,9 @@ export class ModalComponent {
   @Input() budgetColors: { [key: string]: string } = {};
   @Input() selectedBudget!: Budget;
   @Output() closeModal = new EventEmitter<void>();
+  @Output() themeChanged = new EventEmitter<Budget>();
+  @Output() budgetSelected = new EventEmitter<Budget>();
+  @Output() budgetUpdated = new EventEmitter<Budget>();
   maxSpeed: number = 0;
 
   colorMapping: { [key: string]: string } = {
@@ -42,10 +45,10 @@ export class ModalComponent {
 
   selectedCategory: Budget | null = null;
   selectedMaximum: number | string | null = null;
-  selectedTheme: string | null = null;
-  newValue: object = {};
+  selectedTheme: string | undefined = '';
+  newValue: Budget | object = {};
 
-  constructor(private service: BudgetService) {}
+  constructor(private modalService: ModalService) {}
 
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
@@ -58,6 +61,12 @@ export class ModalComponent {
       if (key !== dropdown) {
         this.dropdownStates[key] = false;
       }
+    });
+  }
+
+  loadBudgets() {
+    this.modalService.getBudgets().subscribe((budgets) => {
+      this.budgets = budgets;
     });
   }
 
@@ -112,17 +121,17 @@ export class ModalComponent {
     }
 
     this.newValue = {
+      id: this.selectedBudget.id,
       category: this.selectedCategory?.category || this.selectedBudget.category,
       maximum: Number(this.selectedMaximum),
       theme: this.selectedTheme || this.selectedBudget.theme,
       color: selectedColor,
     };
 
-    console.log(this.newValue);
-
-    return this.service.updateBudget(this.newValue).subscribe((data) => {
-      console.log(data);
+    this.modalService.updateBudget(this.newValue).subscribe((data) => {
+      this.budgetUpdated.emit(data);
     });
+    this.close();
   }
 
   close() {
@@ -133,7 +142,7 @@ export class ModalComponent {
   resetSelections() {
     this.selectedCategory = null;
     this.selectedMaximum = null;
-    this.selectedTheme = null;
+    this.selectedTheme = '';
     this.selectedBudget = { ...this.selectedBudget };
   }
 }

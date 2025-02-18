@@ -31,7 +31,9 @@ import { ModalComponent } from './modal/modal.component';
   styleUrl: './budgets.component.scss',
 })
 export class BudgetsComponent implements OnInit {
-  @ViewChildren('menuContainer') menuContainers!: QueryList<ElementRef>;
+  @ViewChildren('menuContainer') menuContainers:
+    | QueryList<ElementRef>
+    | never[] = [];
   [x: string]: any;
   dotsUrl: string = 'assets/dots.png';
   progress: number = 50;
@@ -42,7 +44,7 @@ export class BudgetsComponent implements OnInit {
   transactions: Transaction[] = [];
   budgets: Budget[] = [];
   filteredBudgets: Budget[] = [];
-  bugdetData!: Budget;
+  budgetData!: Budget;
   spentValues: any;
   displaySpent: any;
   showAll = false;
@@ -53,6 +55,9 @@ export class BudgetsComponent implements OnInit {
   selectedCategory: string | null = null;
   deleteMsg: string = '';
   cancel: string = '';
+  selectedTheme: string = '';
+  selectedBudget: Budget | null = null;
+  updatedObject!: object;
 
   get spentArray(): number[] {
     return Array.isArray(this.spent) ? this.spent : [this.spent];
@@ -74,6 +79,12 @@ export class BudgetsComponent implements OnInit {
     this.loadBudgetData();
   }
 
+  themeChanged(newTheme: string) {
+    if (this.selectedBudget) {
+      this.selectedBudget = { ...this.selectedBudget, theme: newTheme };
+    }
+  }
+
   addBudget() {
     this.modalTitle = 'Add New Budget';
     this.modalContent = `Choose category to set a spending budget. These categories can help you monitor spending.`;
@@ -84,8 +95,8 @@ export class BudgetsComponent implements OnInit {
     this.modalTitle = 'Edit Budget';
     this.modalContent = `As your budgets change, feel free to update your spending limits.`;
     this.isModalVisible = true;
-    this.bugdetData = budget;
-    console.log(this.bugdetData);
+    this.budgetData = budget;
+    console.log(this.budgetData);
   }
 
   openDeleteModal(budget: Budget) {
@@ -133,6 +144,14 @@ export class BudgetsComponent implements OnInit {
   toggleShowAll(category: string | null) {
     this.selectedCategory =
       this.selectedCategory === category ? null : category;
+  }
+
+  budgetSelected(updatedBudget: Budget) {
+    console.log('Updated budget received:', updatedBudget);
+
+    this.filteredBudgets = this.filteredBudgets.map((budget) =>
+      budget.id === updatedBudget.id ? { ...budget, ...updatedBudget } : budget
+    );
   }
 
   getVisibleTransactions(category: string): Transaction[] {

@@ -190,8 +190,9 @@
   [budgets]="budgets"
   [content]="modalContent"
   [budgetColors]="budgetColors"
-  [selectedBudget]="bugdetData"
+  [selectedBudget]="budgetData"
   [deleteMsg]="deleteMsg"
   [cancel]="cancel"
   (closeModal)="closeModal()"
+  (budgetUpdated)="budgetSelected($event)"
 ></app-modal>
