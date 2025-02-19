@@ -9,6 +9,7 @@ import {
 import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +23,11 @@ export class SignupComponent {
   isSubmitted = false;
   showPassword = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.signupForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -45,12 +50,12 @@ export class SignupComponent {
 
       this.authService.signup(this.signupForm.value).subscribe(
         (response: any) => {
-          console.log('Signup successful!', response);
+          this.toastr.success('You successfully signed up!');
           this.router.navigate(['/login']);
         },
         (error) => {
           console.error('Signup error:', error);
-          alert(
+          this.toastr.error(
             `Unsuccessful registration: ${
               error.error?.message || 'Unknown error'
             }`

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:3000/api/auth';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -31,6 +31,7 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, data).pipe(
       tap((result: any) => {
         localStorage.setItem('authUser', JSON.stringify(result));
+        console.log(result);
       })
     );
   }
