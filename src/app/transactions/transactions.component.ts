@@ -84,7 +84,6 @@ export class TransactionsComponent implements OnInit {
       this.updatePagination();
       this.updatePageData();
     });
-    console.log(this.showFiller);
   }
 
   onPageChange(event: PageEvent) {

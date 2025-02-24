@@ -19,29 +19,33 @@ describe('DonutChartComponent', () => {
 
     component.budgets = [
       {
+        id: 1,
         category: 'Entertainment',
-        maximum: 1000,
+        amount: 1000,
         theme: '#277C78',
         color: 'Green',
         optional: true,
       },
       {
+        id: 2,
         category: 'Bills',
-        maximum: 800,
+        amount: 800,
         theme: '#82C9D7',
         color: 'Cyan',
         optional: true,
       },
       {
+        id: 3,
         category: 'Dining Out',
-        maximum: 400,
+        amount: 400,
         theme: '#F2CDAC',
         color: 'Desert Sand',
         optional: true,
       },
       {
+        id: 4,
         category: 'Personal Care',
-        maximum: 300,
+        amount: 300,
         theme: '#626070',
         color: 'Gray',
         optional: true,
