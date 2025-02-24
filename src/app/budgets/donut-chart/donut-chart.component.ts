@@ -45,7 +45,9 @@ export class DonutChartComponent implements AfterViewInit {
   }
 
   spentData() {
-    this.spent = this.spent.map(Math.abs);
+    this.spent = this.spent.map((value) =>
+      isNaN(value) ? 0 : Math.abs(value)
+    );
     this.spentValues.emit(this.spent);
   }
 

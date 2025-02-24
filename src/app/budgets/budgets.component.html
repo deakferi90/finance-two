@@ -31,9 +31,16 @@
           ></div>
           <div class="category">{{ budget.category }}</div>
         </div>
-        <div class="flex gap-2 items-center">
-          <div class="font-bold text-lg">${{ spentValues[i].toFixed(2) }}</div>
-          <div class="text-[gray]">of ${{ budget.maximum.toFixed(2) }}</div>
+        <div
+          *ngIf="spentValues && spentValues[i] !== undefined"
+          class="flex gap-2 items-center"
+        >
+          <div class="font-bold text-lg">
+            ${{ spentValues[i] ? spentValues[i] : "0.00" }}
+          </div>
+          <div class="text-[gray]">
+            of ${{ budget.maximum ? budget.maximum : "0.00" }}
+          </div>
         </div>
       </div>
     </div>
@@ -75,9 +82,7 @@
           </li>
         </ul>
       </div>
-      <h2 class="text-gray-500">
-        Maximum of {{ "$" + budget.maximum.toFixed(2) }}
-      </h2>
+      <h2 class="text-gray-500">Maximum of {{ "$" + budget.maximum }}</h2>
       <div class="progress-bar-container">
         <mat-progress-bar
           mode="buffer"
@@ -99,7 +104,7 @@
           <div>
             <h3 class="text-gray-500">Spent</h3>
             <div class="font-bold">
-              {{ "$" + getAbsoluteSpent(budget).toFixed(2) }}
+              {{ "$" + getAbsoluteSpent(budget) }}
             </div>
           </div>
         </div>
@@ -111,7 +116,7 @@
               {{
                 calculateRemainingAmount(budget) < 0
                   ? "$0"
-                  : "$" + calculateRemainingAmount(budget).toFixed(2)
+                  : "$" + calculateRemainingAmount(budget)
               }}
             </div>
           </div>

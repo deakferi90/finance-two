@@ -170,29 +170,55 @@ export class BudgetsComponent implements OnInit {
   }
 
   loadBudgetData() {
-    this.service.getBudgets().subscribe((data) => {
-      if (Array.isArray(data) && data.length > 0) {
-        this.budgets = data[0].budgets;
+    this.service.getBudgetData().subscribe((data: any) => {
+      console.log(data);
+      if (Array.isArray(data.budgets) && data.budgets.length > 0) {
+        this.budgets = data.budgets;
+        this.filteredBudgets = data.budgets.filter(
+          (budget: any) => !budget.optional
+        );
+        this.transactions = data.transactions;
+        console.log(this.transactions);
         console.log(this.budgets);
-        this.filteredBudgets = this.budgets.filter(
-          (budget) => !budget.optional
-        );
-        this.transactions = data[0].transactions;
-        this.spent = this.budgets.map((budget) =>
-          this.calculateTotalSpent(budget)
-        );
+        this.spent = this.budgets.map((budget) => {
+          return this.calculateTotalSpent(budget);
+        });
+
         for (let i = 0; i < this.spent.length; i++) {
           this.spentValues = this.spent[i];
         }
 
         this.cdr.detectChanges();
-        for (let index = 0; index < data[0].budgets.length; index++) {
-          const el = data[0].budgets[index];
-          this.progress = el.maximum;
+        for (let index = 0; index < this.budgets.length; index++) {
+          const element = this.spent[index];
+          console.log(element);
+          // this.progress = element.maximum;
         }
       } else {
         console.error('Unexpected data format', data);
       }
+      //   if (Array.isArray(data) && data.length > 0) {
+      //     this.budgets = data[0].budgets;
+      //     console.log(this.budgets);
+      //     this.filteredBudgets = this.budgets.filter(
+      //       (budget) => !budget.optional
+      //     );
+      //     this.transactions = data[0].transactions;
+      //     this.spent = this.budgets.map((budget) =>
+      //       this.calculateTotalSpent(budget)
+      //     );
+      //     for (let i = 0; i < this.spent.length; i++) {
+      //       this.spentValues = this.spent[i];
+      //     }
+
+      //     this.cdr.detectChanges();
+      //     for (let index = 0; index < data[0].budgets.length; index++) {
+      //       const el = data[0].budgets[index];
+      //       this.progress = el.maximum;
+      //     }
+      //   } else {
+      //     console.error('Unexpected data format', data);
+      //   }
     });
   }
 
