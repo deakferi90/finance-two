@@ -58,7 +58,7 @@ export class DonutChartComponent implements AfterViewInit {
       const filteredBudgets = this.budgets.filter((budget) => !budget.optional);
 
       const totalBudget = filteredBudgets.reduce(
-        (acc, budget) => acc + budget.maximum,
+        (acc, budget) => acc + budget.amount,
         0
       );
 

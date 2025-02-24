@@ -88,7 +88,7 @@ export class ModalComponent {
 
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
-        this.selectedMaximum = selectedCategoryOption.maximum;
+        this.selectedMaximum = selectedCategoryOption.amount;
       }
     } else if (dropdown === 'theme') {
       this.selectedTheme = option.theme;

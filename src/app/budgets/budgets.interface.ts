@@ -1,7 +1,7 @@
 export interface Budget {
   id: number;
   category: string;
-  maximum: number;
+  amount: number;
   theme: string;
   color: string;
   optional: boolean;

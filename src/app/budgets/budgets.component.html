@@ -39,7 +39,7 @@
             ${{ spentValues[i] ? spentValues[i] : "0.00" }}
           </div>
           <div class="text-[gray]">
-            of ${{ budget.maximum ? budget.maximum : "0.00" }}
+            of ${{ budget.amount ? budget.amount : "0.00" }}
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
           </li>
         </ul>
       </div>
-      <h2 class="text-gray-500">Maximum of {{ "$" + budget.maximum }}</h2>
+      <h2 class="text-gray-500">Maximum of {{ "$" + budget.amount }}</h2>
       <div class="progress-bar-container">
         <mat-progress-bar
           mode="buffer"
@@ -92,7 +92,7 @@
             'border-radius': '5px',
           }"
           [ngClass]="budget.category.toLowerCase().replace(' ', '-')"
-          [value]="(getAbsoluteSpent(budget) / budget.maximum) * 100"
+          [value]="(getAbsoluteSpent(budget) / budget.amount) * 100"
         ></mat-progress-bar>
       </div>
       <div class="prices">

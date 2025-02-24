@@ -46,8 +46,6 @@ export class SignupComponent {
     this.isSubmitted = true;
 
     if (this.signupForm.valid) {
-      console.log('Form Data:', this.signupForm.value);
-
       this.authService.signup(this.signupForm.value).subscribe(
         (response: any) => {
           this.toastr.success('You successfully signed up!');
