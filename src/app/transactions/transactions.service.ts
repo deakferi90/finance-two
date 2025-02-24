@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TransactionsService {
-  dataUrl = 'assets/data.json';
+  dataUrl = 'http://localhost:3000/api/transactions';
   constructor(private http: HttpClient) {}
 
   getTransactions(): Observable<Transaction[]> {

@@ -79,7 +79,7 @@ export class TransactionsComponent implements OnInit {
 
   showData() {
     this.transactionService.getTransactions().subscribe((data) => {
-      this.transactions = data[0]['transactions'];
+      this.transactions = data;
       this.filteredTransactions = this.transactions;
       this.updatePagination();
       this.updatePageData();
