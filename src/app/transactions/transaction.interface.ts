@@ -1,5 +1,4 @@
 export interface Transaction {
-  [x: string]: any;
   avatar: string;
   name: string;
   category: string;
