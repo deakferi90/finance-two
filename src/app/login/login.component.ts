@@ -50,19 +50,25 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    this.isLoggedIn = true;
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(
-        (response: string) => {
-          this.toastr.success('You successfully logged in!');
-          this.router.navigate(['/transactions']);
-        },
-        (error: string) => {
-          this.toastr.error('Your login credentials are incorrect!');
-          this.errorMessage = 'Invalid email or password. Please try again.';
-        }
-      );
-      console.log(this.loginForm.value);
+    if (this.loginForm.invalid) {
+      this.toastr.error('Please enter valid email and password.');
+      return;
     }
+
+    this.isLoggedIn = true;
+
+    this.authService.login(this.loginForm.value).subscribe(
+      (response: string) => {
+        this.toastr.success('You successfully logged in!');
+        this.router.navigate(['/transactions']);
+      },
+      (error: string) => {
+        this.toastr.error('Your login credentials are incorrect!');
+        this.errorMessage = 'Invalid email or password. Please try again.';
+        this.isLoggedIn = false;
+      }
+    );
+
+    console.log(this.loginForm.value);
   }
 }
