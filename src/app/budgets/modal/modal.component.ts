@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Budget } from '../budgets.interface';
 import { FormsModule } from '@angular/forms';
 import { ModalService } from './modal.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modal',
@@ -11,7 +12,7 @@ import { ModalService } from './modal.service';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit {
   @Input() isVisible: boolean = false;
   @Input() content!: string;
   @Input() deleteMsg!: string;
@@ -20,7 +21,7 @@ export class ModalComponent {
   @Input() title = '';
   @Input() message = '';
   @Input() budgetColors: { [key: string]: string } = {};
-  @Input() selectedBudget!: Budget;
+  @Input() selectedBudget!: any;
   @Output() closeModal = new EventEmitter<void>();
   @Output() themeChanged = new EventEmitter<Budget>();
   @Output() budgetSelected = new EventEmitter<Budget>();
@@ -39,16 +40,23 @@ export class ModalComponent {
 
   dropdownStates: { [key: string]: boolean } = {
     category: false,
-    maximum: false,
+    amount: false,
     theme: false,
   };
 
   selectedCategory: Budget | null = null;
-  selectedMaximum: number | string | null = null;
+  selectedAmount: number | string | null = null;
   selectedTheme: string | undefined = '';
   newValue: Budget | object = {};
 
-  constructor(private modalService: ModalService) {}
+  constructor(
+    private modalService: ModalService,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit(): void {
+    this.loadBudgets();
+  }
 
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
@@ -65,7 +73,7 @@ export class ModalComponent {
   }
 
   loadBudgets() {
-    this.modalService.getBudgets().subscribe((budgets) => {
+    this.modalService.getBudgets().subscribe((budgets: Budget[]) => {
       this.budgets = budgets;
     });
   }
@@ -88,7 +96,7 @@ export class ModalComponent {
 
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
-        this.selectedMaximum = selectedCategoryOption.amount;
+        this.selectedAmount = selectedCategoryOption.amount;
       }
     } else if (dropdown === 'theme') {
       this.selectedTheme = option.theme;
@@ -110,8 +118,7 @@ export class ModalComponent {
   updateBudget() {
     const maxSpeed = document.querySelector('.max-speed') as HTMLInputElement;
     const inputValue = maxSpeed?.value;
-
-    this.selectedMaximum = inputValue;
+    this.selectedAmount = inputValue;
     const themeHexCode = this.selectedTheme!;
     let selectedColor = this.selectedBudget.color;
 
@@ -121,16 +128,23 @@ export class ModalComponent {
     }
 
     this.newValue = {
-      id: this.selectedBudget.id,
+      id: Number(this.selectedBudget.id),
+      amount: Number(this.selectedAmount),
       category: this.selectedCategory?.category || this.selectedBudget.category,
-      maximum: Number(this.selectedMaximum),
       theme: this.selectedTheme || this.selectedBudget.theme,
       color: selectedColor,
     };
+    this.modalService.updateBudget(this.newValue).subscribe(
+      (updatedBudget: Budget | undefined) => {
+        this.budgetUpdated.emit(updatedBudget);
+        this.toastr.success('Budget updated successfully!');
+      },
+      (error: any) => {
+        this.toastr.error('Error updating budget');
+        console.error('Update failed:', error);
+      }
+    );
 
-    this.modalService.updateBudget(this.newValue).subscribe((data) => {
-      this.budgetUpdated.emit(data);
-    });
     this.close();
   }
 
@@ -139,9 +153,22 @@ export class ModalComponent {
     this.closeModal.emit();
   }
 
+  resetBudgets() {
+    this.modalService.resetBudgets().subscribe(
+      () => {
+        this.loadBudgets(); // Reload budgets from API after reset
+        this.toastr.success('Budgets reset successfully!');
+      },
+      (error) => {
+        this.toastr.error('Failed to reset budgets');
+        console.error('Reset failed:', error);
+      }
+    );
+  }
+
   resetSelections() {
     this.selectedCategory = null;
-    this.selectedMaximum = null;
+    this.selectedAmount = null;
     this.selectedTheme = '';
     this.selectedBudget = { ...this.selectedBudget };
   }

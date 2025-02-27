@@ -1,5 +1,5 @@
 export interface Budget {
-  id: number;
+  id: number | string;
   category: string;
   amount: number;
   theme: string;
