@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterViewInit,
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
@@ -16,6 +17,7 @@ import { Transaction } from '../transactions/transaction.interface';
 import { DonutChartComponent } from './donut-chart/donut-chart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-budgets',
@@ -30,11 +32,12 @@ import { ModalComponent } from './modal/modal.component';
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.scss',
 })
-export class BudgetsComponent implements OnInit {
+export class BudgetsComponent implements OnInit, AfterViewInit {
   @ViewChildren('menuContainer') menuContainers:
     | QueryList<ElementRef>
     | never[] = [];
-  [x: string]: any;
+  @ViewChild(DonutChartComponent) donutChart!: DonutChartComponent;
+  chart!: Chart;
   dotsUrl: string = 'assets/dots.png';
   progress: number = 50;
   totalAmount: number = 0;
@@ -72,11 +75,15 @@ export class BudgetsComponent implements OnInit {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private service: BudgetsService
+    private budgetService: BudgetsService
   ) {}
 
   ngOnInit(): void {
     this.loadBudgetData();
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.callCreateChart(), 0);
   }
 
   themeChanged(newTheme: string) {
@@ -160,14 +167,12 @@ export class BudgetsComponent implements OnInit {
       : filteredTransactions.slice(0, 3);
   }
 
-  handleValue(value: any) {
-    for (let index = 0; index < value.length; index++) {
-      this.spentValues = value;
-    }
+  handleValue(value: []) {
+    this.spentValues = value;
   }
 
   loadBudgetData() {
-    this.service.getBudgetData().subscribe((data: any) => {
+    this.budgetService.getBudgetData().subscribe((data: any) => {
       if (Array.isArray(data.budgets) && data.budgets.length > 0) {
         this.budgets = data.budgets;
         this.filteredBudgets = data.budgets.filter(
@@ -189,6 +194,56 @@ export class BudgetsComponent implements OnInit {
     });
   }
 
+  onEditBudget(budgetId: number | string, updatedData: Partial<Budget>) {
+    const budgetIdNumber = Number(budgetId);
+    this.budgetService.updateBudget(budgetIdNumber, updatedData).subscribe(
+      (response) => {
+        console.log('Budget updated:', response);
+
+        const index = this.budgets.findIndex(
+          (budget) => budget.id === budgetId
+        );
+        if (index !== -1) {
+          this.budgets[index] = { ...this.budgets[index], ...updatedData };
+        }
+
+        this.filteredBudgets = this.budgets.filter(
+          (budget) => !budget.optional
+        );
+
+        this.recalculateSpentValues();
+        this.refreshChart();
+
+        this.isModalVisible = false;
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        console.error('Error updating budget:', error);
+      }
+    );
+  }
+
+  refreshChart() {
+    if (this.chart) {
+      this.chart.update();
+    }
+  }
+
+  recalculateSpentValues() {
+    this.spent = this.budgets.map((budget) =>
+      Math.abs(this.calculateTotalSpent(budget))
+    );
+    this.spentValues = [...this.spent];
+    this.cdr.detectChanges();
+  }
+
+  callCreateChart() {
+    if (this.donutChart) {
+      this.donutChart.createChart();
+    } else {
+      console.warn('Retrying in 100ms...');
+    }
+  }
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent) {
     let clickedInside = false;

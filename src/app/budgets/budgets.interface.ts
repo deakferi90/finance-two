@@ -1,8 +1,8 @@
 export interface Budget {
-  id: number | string;
+  id: number;
   category: string;
   amount: number;
   theme: string;
   color: string;
-  optional: boolean;
+  optional?: boolean;
 }

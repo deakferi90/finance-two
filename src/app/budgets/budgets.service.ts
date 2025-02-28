@@ -24,4 +24,8 @@ export class BudgetsService {
       transactions: this.getTransactions(),
     });
   }
+
+  updateBudget(id: number, budgetData: any): Observable<any> {
+    return this.http.put(`${this.budgetsUrl}/${id}`, budgetData);
+  }
 }

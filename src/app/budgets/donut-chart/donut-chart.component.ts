@@ -7,6 +7,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   Chart,
@@ -31,13 +32,14 @@ export class DonutChartComponent implements AfterViewInit {
   @ViewChild('myDonutChart') private canvasRef!: ElementRef<HTMLCanvasElement>;
 
   @Input() budgets: Budget[] = [];
-  @Input() spent: any[] = [];
+  @Input() spent: number[] = [];
   @Input() getAbsoluteSpent!: (budget: Budget) => number;
   @Output() spentValues = new EventEmitter<any>();
+  @Output() chartRedraw = new EventEmitter<void>();
 
   chart: Chart | undefined;
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.createChart();
@@ -45,10 +47,26 @@ export class DonutChartComponent implements AfterViewInit {
   }
 
   spentData() {
-    this.spent = this.spent.map((value) =>
-      isNaN(value) ? 0 : Math.abs(value)
+    console.log(this.budgets);
+    const nonOptionalBudgets = this.budgets.filter(
+      (budget) => !budget.optional
     );
-    this.spentValues.emit(this.spent);
+    console.log('📌 Non-Optional Budgets:', nonOptionalBudgets);
+
+    const spentValues = nonOptionalBudgets.map((budget) => {
+      const index = this.budgets.findIndex((b) => b.id === budget.id);
+      const spentValue = index !== -1 ? Math.abs(this.spent[index]) : 0;
+
+      return {
+        id: budget.id,
+        category: budget.category,
+        spent: spentValue,
+      };
+    });
+
+    console.log('💰 Correctly Mapped Spent Values:', spentValues);
+
+    this.spentValues.emit(spentValues.map((item) => item.spent));
   }
 
   createChart() {
@@ -135,5 +153,13 @@ export class DonutChartComponent implements AfterViewInit {
     } else {
       console.error('Canvas element not available');
     }
+  }
+
+  refresh() {
+    setTimeout(() => {
+      this.budgets = [...this.budgets];
+      this.spent = [...this.spent];
+      this.cdr.detectChanges();
+    }, 0);
   }
 }

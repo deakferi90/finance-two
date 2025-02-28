@@ -26,6 +26,7 @@ export class ModalComponent implements OnInit {
   @Output() themeChanged = new EventEmitter<Budget>();
   @Output() budgetSelected = new EventEmitter<Budget>();
   @Output() budgetUpdated = new EventEmitter<Budget>();
+  @Output() chartRedraw = new EventEmitter<void>();
   maxSpeed: number = 0;
 
   colorMapping: { [key: string]: string } = {
@@ -116,55 +117,42 @@ export class ModalComponent implements OnInit {
   }
 
   updateBudget() {
-    const maxSpeed = document.querySelector('.max-speed') as HTMLInputElement;
-    const inputValue = maxSpeed?.value;
-    this.selectedAmount = inputValue;
-    const themeHexCode = this.selectedTheme!;
-    let selectedColor = this.selectedBudget.color;
+    const maxSpeedInput = document.querySelector(
+      '.max-speed'
+    ) as HTMLInputElement;
+    const inputValue = maxSpeedInput?.value;
 
-    if (themeHexCode !== this.selectedBudget.theme) {
-      selectedColor =
-        this.colorMapping[themeHexCode] || this.selectedBudget.color;
-    }
-
-    this.newValue = {
-      id: Number(this.selectedBudget.id),
-      amount: Number(this.selectedAmount),
+    const updatedBudget: Budget = {
+      id: this.selectedBudget.id,
+      amount: inputValue ? Number(inputValue) : this.selectedBudget.amount,
       category: this.selectedCategory?.category || this.selectedBudget.category,
       theme: this.selectedTheme || this.selectedBudget.theme,
-      color: selectedColor,
+      color:
+        this.selectedTheme && this.colorMapping[this.selectedTheme]
+          ? this.colorMapping[this.selectedTheme]
+          : this.selectedBudget.color,
     };
-    this.modalService.updateBudget(this.newValue).subscribe(
-      (updatedBudget: Budget | undefined) => {
-        this.budgetUpdated.emit(updatedBudget);
+
+    this.modalService.updateBudget(updatedBudget).subscribe(
+      (response: Budget) => {
+        this.budgetUpdated.emit(response);
         this.toastr.success('Budget updated successfully!');
+
+        this.selectedBudget = { ...this.selectedBudget, ...response };
+        this.resetSelections();
+        this.close();
       },
-      (error: any) => {
+      (error) => {
         this.toastr.error('Error updating budget');
         console.error('Update failed:', error);
       }
     );
-
-    this.close();
   }
 
   close() {
     this.resetSelections();
     this.closeModal.emit();
   }
-
-  // resetBudgets() {
-  //   this.modalService.resetBudgets().subscribe(
-  //     () => {
-  //       this.loadBudgets();
-  //       this.toastr.success('Budgets reset successfully!');
-  //     },
-  //     (error) => {
-  //       this.toastr.error('Failed to reset budgets');
-  //       console.error('Reset failed:', error);
-  //     }
-  //   );
-  // }
 
   resetSelections() {
     this.selectedCategory = null;
