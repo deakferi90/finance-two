@@ -153,18 +153,18 @@ export class ModalComponent implements OnInit {
     this.closeModal.emit();
   }
 
-  resetBudgets() {
-    this.modalService.resetBudgets().subscribe(
-      () => {
-        this.loadBudgets(); // Reload budgets from API after reset
-        this.toastr.success('Budgets reset successfully!');
-      },
-      (error) => {
-        this.toastr.error('Failed to reset budgets');
-        console.error('Reset failed:', error);
-      }
-    );
-  }
+  // resetBudgets() {
+  //   this.modalService.resetBudgets().subscribe(
+  //     () => {
+  //       this.loadBudgets();
+  //       this.toastr.success('Budgets reset successfully!');
+  //     },
+  //     (error) => {
+  //       this.toastr.error('Failed to reset budgets');
+  //       console.error('Reset failed:', error);
+  //     }
+  //   );
+  // }
 
   resetSelections() {
     this.selectedCategory = null;

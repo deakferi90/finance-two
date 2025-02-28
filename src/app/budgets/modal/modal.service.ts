@@ -39,18 +39,18 @@ export class ModalService {
       );
   }
 
-  resetBudgets(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/reset`, {}).pipe(
-      map((response) => {
-        console.log('✅ Budgets reset:', response);
-        return response;
-      }),
-      catchError((error) => {
-        console.error('❌ Error resetting budgets:', error);
-        return throwError(() => new Error('Reset failed'));
-      })
-    );
-  }
+  // resetBudgets(): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/reset`, {}).pipe(
+  //     map((response) => {
+  //       console.log('✅ Budgets reset:', response);
+  //       return response;
+  //     }),
+  //     catchError((error) => {
+  //       console.error('❌ Error resetting budgets:', error);
+  //       return throwError(() => new Error('Reset failed'));
+  //     })
+  //   );
+  // }
 
   deleteBudget(id: string): Observable<any> {
     this.localBudgets = this.localBudgets.filter((budget) => budget.id !== id);
