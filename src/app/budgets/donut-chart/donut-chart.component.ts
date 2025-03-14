@@ -73,6 +73,11 @@ export class DonutChartComponent implements AfterViewInit {
     if (this.canvasRef && this.canvasRef.nativeElement) {
       const ctx = this.canvasRef.nativeElement.getContext('2d');
 
+      // Destroy the existing chart if it exists
+      if (this.chart) {
+        this.chart.destroy();
+      }
+
       const filteredBudgets = this.budgets.filter((budget) => !budget.optional);
 
       const totalBudget = filteredBudgets.reduce(
@@ -124,7 +129,7 @@ export class DonutChartComponent implements AfterViewInit {
             ],
           },
           options: {
-            aspectRatio: 2.25,
+            aspectRatio: 1,
             responsive: false,
             cutout: '65%',
             maintainAspectRatio: true,

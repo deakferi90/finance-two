@@ -203,8 +203,9 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
         const index = this.budgets.findIndex(
           (budget) => budget.id === budgetId
         );
+
         if (index !== -1) {
-          this.budgets[index] = { ...this.budgets[index], ...updatedData };
+          this.budgets[index] = { ...this.budgets[index], ...response };
         }
 
         this.filteredBudgets = this.budgets.filter(
@@ -212,9 +213,11 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
         );
 
         this.recalculateSpentValues();
+
         this.refreshChart();
 
         this.isModalVisible = false;
+
         this.cdr.detectChanges();
       },
       (error) => {
@@ -224,8 +227,8 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
   }
 
   refreshChart() {
-    if (this.chart) {
-      this.chart.update();
+    if (this.donutChart) {
+      this.donutChart.createChart();
     }
   }
 
