@@ -37,13 +37,13 @@
           class="dropdown-item flex justify-between"
           (click)="selectOption('category', option)"
           [ngClass]="{
-            'not-selectable': budgetColors[option.category]
+            'not-selectable':
+              budgetColors[option.category] ||
+              option.category === selectedCategory?.category
           }"
         >
           <span>{{ option.category }}</span>
-          @if ( budgetColors[option.category]) {
-          <span>Already in use</span>
-          }
+          <span *ngIf="budgetColors[option.category]">Already in use</span>
         </div>
       </div>
     </div>
@@ -157,6 +157,10 @@
           *ngFor="let option of budgets"
           class="dropdown-item flex justify-between"
           (click)="selectOption('theme', option)"
+          [ngClass]="{
+            'not-selectable':
+              budgetColors[option.category] || option.theme === selectedTheme
+          }"
         >
           <div>
             <span

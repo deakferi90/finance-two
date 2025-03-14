@@ -12,6 +12,7 @@
     <app-donut-chart
       class="parent-container"
       [budgets]="budgets"
+      [filteredBudgets]="filteredBudgets"
       [spent]="spentArray"
       (spentValues)="handleValue($event)"
       (chartRedraw)="callCreateChart()"

@@ -75,7 +75,7 @@ export class ModalComponent implements OnInit {
 
   loadBudgets() {
     this.modalService.getBudgets().subscribe((budgets: Budget[]) => {
-      this.budgets = budgets;
+      console.log(budgets);
     });
   }
 
@@ -150,7 +150,6 @@ export class ModalComponent implements OnInit {
   }
 
   close() {
-    this.resetSelections();
     this.closeModal.emit();
   }
 

@@ -175,17 +175,13 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
     this.budgetService.getBudgetData().subscribe((data: any) => {
       if (Array.isArray(data.budgets) && data.budgets.length > 0) {
         this.budgets = data.budgets;
-        this.filteredBudgets = data.budgets.filter(
-          (budget: any) => !budget.optional
-        );
         this.transactions = data.transactions;
-        this.spent = this.budgets.map((budget) => {
-          return this.calculateTotalSpent(budget);
-        });
 
-        for (let i = 0; i < this.spent.length; i++) {
-          this.spentValues = this.spent[i];
-        }
+        this.filteredBudgets = this.budgets
+          .filter((budget: any) => !budget.optional)
+          .sort((a, b) => Number(a.optional) - Number(b.optional));
+
+        this.recalculateSpentValues();
 
         this.cdr.detectChanges();
       } else {
@@ -196,14 +192,14 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
 
   onEditBudget(budgetId: number | string, updatedData: Partial<Budget>) {
     const budgetIdNumber = Number(budgetId);
+
     this.budgetService.updateBudget(budgetIdNumber, updatedData).subscribe(
       (response) => {
-        console.log('Budget updated:', response);
+        console.log('✅ Budget updated:', response);
 
         const index = this.budgets.findIndex(
           (budget) => budget.id === budgetId
         );
-
         if (index !== -1) {
           this.budgets[index] = { ...this.budgets[index], ...response };
         }
@@ -213,15 +209,13 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
         );
 
         this.recalculateSpentValues();
-
         this.refreshChart();
 
         this.isModalVisible = false;
-
         this.cdr.detectChanges();
       },
       (error) => {
-        console.error('Error updating budget:', error);
+        console.error('❌ Error updating budget:', error);
       }
     );
   }
@@ -233,7 +227,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
   }
 
   recalculateSpentValues() {
-    this.spent = this.budgets.map((budget) =>
+    this.spent = this.filteredBudgets.map((budget) =>
       Math.abs(this.calculateTotalSpent(budget))
     );
     this.spentValues = [...this.spent];

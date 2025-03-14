@@ -8,6 +8,7 @@ import {
   Output,
   EventEmitter,
   ChangeDetectorRef,
+  OnInit,
 } from '@angular/core';
 import {
   Chart,
@@ -28,10 +29,11 @@ Chart.register(ArcElement, Tooltip, Legend, DoughnutController);
   templateUrl: './donut-chart.component.html',
   styleUrls: ['./donut-chart.component.scss'],
 })
-export class DonutChartComponent implements AfterViewInit {
+export class DonutChartComponent implements OnInit, AfterViewInit {
   @ViewChild('myDonutChart') private canvasRef!: ElementRef<HTMLCanvasElement>;
 
   @Input() budgets: Budget[] = [];
+  @Input() filteredBudgets: Budget[] = [];
   @Input() spent: number[] = [];
   @Input() getAbsoluteSpent!: (budget: Budget) => number;
   @Output() spentValues = new EventEmitter<any>();
@@ -41,14 +43,20 @@ export class DonutChartComponent implements AfterViewInit {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
+  ngOnInit(): void {
+    this.spentValues.emit(this.spent);
+  }
+
   ngAfterViewInit(): void {
     this.createChart();
     this.spentData();
   }
 
   spentData() {
+    console.log('this is the budgets');
     console.log(this.budgets);
-    const nonOptionalBudgets = this.budgets.filter(
+    console.log(this.filteredBudgets);
+    const nonOptionalBudgets = this.filteredBudgets.filter(
       (budget) => !budget.optional
     );
     console.log('📌 Non-Optional Budgets:', nonOptionalBudgets);

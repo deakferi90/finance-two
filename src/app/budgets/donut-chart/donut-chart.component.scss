@@ -4,3 +4,9 @@
   background: #f8f4f0;
   border-radius: 10px;
 }
+
+.chartjs-tooltip {
+  z-index: 9999 !important;
+  position: absolute !important;
+  pointer-events: none;
+}

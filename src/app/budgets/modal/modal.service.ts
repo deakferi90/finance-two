@@ -12,17 +12,8 @@ export class ModalService {
 
   constructor(private http: HttpClient) {}
 
-  getBudgets(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
-      map((budgets) => {
-        this.localBudgets = budgets;
-        return budgets;
-      }),
-      catchError((error) => {
-        console.error('Error fetching budgets:', error);
-        return of([]);
-      })
-    );
+  getBudgets(): Observable<Budget[]> {
+    return this.http.get<Budget[]>(`${this.apiUrl}`);
   }
 
   updateBudget(updatedBudget: any): Observable<any> {
@@ -38,19 +29,6 @@ export class ModalService {
         })
       );
   }
-
-  // resetBudgets(): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/reset`, {}).pipe(
-  //     map((response) => {
-  //       console.log('✅ Budgets reset:', response);
-  //       return response;
-  //     }),
-  //     catchError((error) => {
-  //       console.error('❌ Error resetting budgets:', error);
-  //       return throwError(() => new Error('Reset failed'));
-  //     })
-  //   );
-  // }
 
   deleteBudget(id: string): Observable<any> {
     this.localBudgets = this.localBudgets.filter((budget) => budget.id !== id);
