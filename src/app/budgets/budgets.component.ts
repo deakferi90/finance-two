@@ -197,22 +197,18 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
   onEditBudget(budgetId: number | string, updatedData: Partial<Budget>) {
     const budgetIdNumber = Number(budgetId);
 
-    // Update the budget through the service
     this.budgetService.updateBudget(budgetIdNumber, updatedData).subscribe(
       (response) => {
         console.log('Budget updated:', response);
 
-        // Update the `this.budgets` array without duplicating entries
         this.budgets = this.budgets.map((budget: { id: any }) =>
           budget.id === response.id ? { ...budget, ...response } : budget
         );
 
-        // Update `this.filteredBudgets` array without duplication
         this.filteredBudgets = this.budgets.filter(
           (budget: { optional: any }) => !budget.optional
         );
 
-        // Ensure there's no duplication after filtering and updates
         this.budgets = [
           ...new Set(this.budgets.map((budget: { id: any }) => budget.id)),
         ].map((id) =>
@@ -221,14 +217,11 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
 
         console.log(this.budgets);
 
-        // Recalculate values and refresh chart
         this.recalculateSpentValues();
         this.refreshChart();
 
-        // Close the modal
         this.isModalVisible = false;
 
-        // Trigger change detection to reflect updates
         this.cdr.detectChanges();
       },
       (error) => {
