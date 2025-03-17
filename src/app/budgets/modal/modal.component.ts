@@ -141,7 +141,7 @@ export class ModalComponent implements OnInit {
 
         this.selectedBudget = { ...this.selectedBudget, ...response };
 
-        this.budgets = this.budgets.filter((budget) =>
+        this.budgets = this.budgets.map((budget) =>
           budget.id === response.id ? { ...budget, ...response } : budget
         );
 

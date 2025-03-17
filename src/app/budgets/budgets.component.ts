@@ -45,7 +45,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
   openDropDownIndex: number | null = null;
   progressBarHeight: string = '24px';
   transactions: Transaction[] = [];
-  budgets: Budget[] = [];
+  budgets: Budget[] | any = [];
   filteredBudgets: Budget[] = [];
   budgetData!: Budget;
   spentValues: any;
@@ -180,7 +180,10 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
 
         this.filteredBudgets = this.budgets
           .filter((budget: any) => !budget.optional)
-          .sort((a, b) => Number(a.optional) - Number(b.optional));
+          .sort(
+            (a: { optional: any }, b: { optional: any }) =>
+              Number(a.optional) - Number(b.optional)
+          );
 
         this.recalculateSpentValues();
 
@@ -193,34 +196,39 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
 
   onEditBudget(budgetId: number | string, updatedData: Partial<Budget>) {
     const budgetIdNumber = Number(budgetId);
+
+    // Update the budget through the service
     this.budgetService.updateBudget(budgetIdNumber, updatedData).subscribe(
       (response) => {
         console.log('Budget updated:', response);
 
-        this.budgets = this.filteredBudgets.map((budget) =>
+        // Update the `this.budgets` array without duplicating entries
+        this.budgets = this.budgets.map((budget: { id: any }) =>
           budget.id === response.id ? { ...budget, ...response } : budget
         );
 
-        const index = this.filteredBudgets.findIndex(
-          (budget) => budget.id === budgetId
+        // Update `this.filteredBudgets` array without duplication
+        this.filteredBudgets = this.budgets.filter(
+          (budget: { optional: any }) => !budget.optional
         );
 
-        if (index !== -1) {
-          this.budgets[index] = { ...this.budgets[index], ...response };
-        }
-
-        this.filteredBudgets = this.budgets.filter(
-          (budget) => !budget.optional
+        // Ensure there's no duplication after filtering and updates
+        this.budgets = [
+          ...new Set(this.budgets.map((budget: { id: any }) => budget.id)),
+        ].map((id) =>
+          this.budgets.find((budget: { id: unknown }) => budget.id === id)
         );
 
         console.log(this.budgets);
 
+        // Recalculate values and refresh chart
         this.recalculateSpentValues();
-
         this.refreshChart();
 
+        // Close the modal
         this.isModalVisible = false;
 
+        // Trigger change detection to reflect updates
         this.cdr.detectChanges();
       },
       (error) => {
