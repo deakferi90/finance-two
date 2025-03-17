@@ -53,28 +53,13 @@ export class DonutChartComponent implements OnInit, AfterViewInit {
   }
 
   spentData() {
-    console.log('this is the budgets');
-    console.log(this.budgets);
-    console.log(this.filteredBudgets);
+    console.log('this is the budgets:', this.budgets);
+    console.log('this is the filteredBudgets:', this.filteredBudgets);
+
     const nonOptionalBudgets = this.filteredBudgets.filter(
       (budget) => !budget.optional
     );
     console.log('📌 Non-Optional Budgets:', nonOptionalBudgets);
-
-    const spentValues = nonOptionalBudgets.map((budget) => {
-      const index = this.budgets.findIndex((b) => b.id === budget.id);
-      const spentValue = index !== -1 ? Math.abs(this.spent[index]) : 0;
-
-      return {
-        id: budget.id,
-        category: budget.category,
-        spent: spentValue,
-      };
-    });
-
-    console.log('💰 Correctly Mapped Spent Values:', spentValues);
-
-    this.spentValues.emit(spentValues.map((item) => item.spent));
   }
 
   createChart() {
@@ -147,16 +132,18 @@ export class DonutChartComponent implements OnInit, AfterViewInit {
               },
               tooltip: {
                 enabled: true,
-                callbacks: {
-                  label: (tooltipItem: any) => {
-                    const value = Math.abs(tooltipItem.raw);
-                    return `${tooltipItem.label}: $${Math.floor(value)}`;
-                  },
-                },
+                backgroundColor: 'rgba(0,0,0,0.7)',
+                bodyColor: '#fff',
+                position: 'nearest',
+                yAlign: 'center',
+                xAlign: 'center',
+                caretSize: 6,
+                padding: 10,
+                displayColors: false,
               },
             },
             layout: {
-              padding: 20,
+              padding: 10,
             },
           },
         });

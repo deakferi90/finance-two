@@ -49,6 +49,7 @@ export class ModalComponent implements OnInit {
   selectedAmount: number | string | null = null;
   selectedTheme: string | undefined = '';
   newValue: Budget | object = {};
+  filteredBudgets!: Budget[];
 
   constructor(
     private modalService: ModalService,
@@ -56,7 +57,9 @@ export class ModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadBudgets();
+    this.modalService.getBudgets().subscribe((budgets: Budget[]) => {
+      this.filteredBudgets = budgets;
+    });
   }
 
   objectKeys(obj: any): string[] {
@@ -70,12 +73,6 @@ export class ModalComponent implements OnInit {
       if (key !== dropdown) {
         this.dropdownStates[key] = false;
       }
-    });
-  }
-
-  loadBudgets() {
-    this.modalService.getBudgets().subscribe((budgets: Budget[]) => {
-      console.log(budgets);
     });
   }
 
@@ -139,6 +136,15 @@ export class ModalComponent implements OnInit {
         this.toastr.success('Budget updated successfully!');
 
         this.selectedBudget = { ...this.selectedBudget, ...response };
+
+        this.budgets = this.budgets.map((budget) =>
+          budget.id === response.id ? { ...budget, ...response } : budget
+        );
+
+        this.filteredBudgets = this.budgets.filter(
+          (budget) => !budget.optional
+        );
+
         this.resetSelections();
         this.close();
       },
@@ -157,6 +163,6 @@ export class ModalComponent implements OnInit {
     this.selectedCategory = null;
     this.selectedAmount = null;
     this.selectedTheme = '';
-    this.selectedBudget = { ...this.selectedBudget };
+    this.selectedBudget = null;
   }
 }

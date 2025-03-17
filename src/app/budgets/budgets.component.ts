@@ -79,6 +79,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('let see if this is it');
     this.loadBudgetData();
   }
 
@@ -192,14 +193,18 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
 
   onEditBudget(budgetId: number | string, updatedData: Partial<Budget>) {
     const budgetIdNumber = Number(budgetId);
-
     this.budgetService.updateBudget(budgetIdNumber, updatedData).subscribe(
       (response) => {
-        console.log('✅ Budget updated:', response);
+        console.log('Budget updated:', response);
 
-        const index = this.budgets.findIndex(
+        this.budgets = this.budgets.map((budget) =>
+          budget.id === response.id ? { ...budget, ...response } : budget
+        );
+
+        const index = this.filteredBudgets.findIndex(
           (budget) => budget.id === budgetId
         );
+
         if (index !== -1) {
           this.budgets[index] = { ...this.budgets[index], ...response };
         }
@@ -208,14 +213,18 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
           (budget) => !budget.optional
         );
 
+        console.log(this.budgets);
+
         this.recalculateSpentValues();
+
         this.refreshChart();
 
         this.isModalVisible = false;
+
         this.cdr.detectChanges();
       },
       (error) => {
-        console.error('❌ Error updating budget:', error);
+        console.error('Error updating budget:', error);
       }
     );
   }
@@ -230,6 +239,8 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
     this.spent = this.filteredBudgets.map((budget) =>
       Math.abs(this.calculateTotalSpent(budget))
     );
+
+    console.log(this.spent);
     this.spentValues = [...this.spent];
     this.cdr.detectChanges();
   }
