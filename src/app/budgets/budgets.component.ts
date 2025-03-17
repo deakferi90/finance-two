@@ -197,7 +197,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
       (response) => {
         console.log('Budget updated:', response);
 
-        this.budgets = this.budgets.map((budget) =>
+        this.budgets = this.filteredBudgets.map((budget) =>
           budget.id === response.id ? { ...budget, ...response } : budget
         );
 

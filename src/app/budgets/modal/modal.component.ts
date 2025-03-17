@@ -4,6 +4,7 @@ import { Budget } from '../budgets.interface';
 import { FormsModule } from '@angular/forms';
 import { ModalService } from './modal.service';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-modal',
@@ -57,9 +58,12 @@ export class ModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.modalService.getBudgets().subscribe((budgets: Budget[]) => {
-      this.filteredBudgets = budgets;
-    });
+    this.modalService
+      .getBudgets()
+      .pipe(take(1))
+      .subscribe((budgets: Budget[]) => {
+        this.filteredBudgets = budgets;
+      });
   }
 
   objectKeys(obj: any): string[] {
@@ -137,7 +141,7 @@ export class ModalComponent implements OnInit {
 
         this.selectedBudget = { ...this.selectedBudget, ...response };
 
-        this.budgets = this.budgets.map((budget) =>
+        this.budgets = this.budgets.filter((budget) =>
           budget.id === response.id ? { ...budget, ...response } : budget
         );
 
