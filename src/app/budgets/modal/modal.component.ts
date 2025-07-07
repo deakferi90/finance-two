@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Budget } from '../budgets.interface';
 import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { ModalService } from './modal.service';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
@@ -9,7 +11,7 @@ import { take } from 'rxjs';
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })
@@ -29,6 +31,7 @@ export class ModalComponent implements OnInit {
   @Output() budgetUpdated = new EventEmitter<Budget>();
   @Output() chartRedraw = new EventEmitter<void>();
   maxSpeed: number = 0;
+  initialBudgets: Budget[] = [];
 
   colorMapping: { [key: string]: string } = {
     '#277C78': 'Green',
@@ -46,7 +49,8 @@ export class ModalComponent implements OnInit {
     theme: false,
   };
 
-  selectedCategory: Budget | null = null;
+  selectedCategory: any = null;
+  previousSelections: any[] = [];
   selectedAmount: number | string | null = null;
   selectedTheme: string | undefined = '';
   newValue: Budget | object = {};
@@ -94,7 +98,7 @@ export class ModalComponent implements OnInit {
       const selectedCategoryOption = this.budgets.find(
         (budget) => budget.category === option.category
       );
-      this.dropdownStates[dropdown] = option;
+      this.dropdownStates[dropdown] = option + 1;
 
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
@@ -145,12 +149,17 @@ export class ModalComponent implements OnInit {
           budget.id === response.id ? { ...budget, ...response } : budget
         );
 
-        this.filteredBudgets = this.budgets.filter(
-          (budget) => !budget.optional
-        );
+        this.modalService
+          .getBudgets()
+          .pipe(take(1))
+          .subscribe((budgets: Budget[]) => {
+            this.filteredBudgets = budgets;
+            this.initialBudgets = [...budgets]; // Reset the initial budget data
+          });
 
         this.resetSelections();
-        this.close();
+
+        this.close(); // Close the modal after saving changes
       },
       (error) => {
         this.toastr.error('Error updating budget');
@@ -160,6 +169,20 @@ export class ModalComponent implements OnInit {
   }
 
   close() {
+    this.selectedCategory =
+      this.initialBudgets.find(
+        (budget) => budget.category === this.selectedCategory?.category
+      ) || null;
+
+    this.selectedTheme = this.selectedCategory
+      ? this.selectedCategory.theme
+      : '';
+
+    this.selectedAmount = this.selectedCategory
+      ? this.selectedCategory.amount
+      : null;
+
+    this.selectedBudget = null;
     this.closeModal.emit();
   }
 

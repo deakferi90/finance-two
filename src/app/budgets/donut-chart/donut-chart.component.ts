@@ -53,13 +53,9 @@ export class DonutChartComponent implements OnInit, AfterViewInit {
   }
 
   spentData() {
-    console.log('this is the budgets:', this.budgets);
-    console.log('this is the filteredBudgets:', this.filteredBudgets);
-
     const nonOptionalBudgets = this.filteredBudgets.filter(
       (budget) => !budget.optional
     );
-    console.log('📌 Non-Optional Budgets:', nonOptionalBudgets);
   }
 
   createChart() {

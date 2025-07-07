@@ -68,7 +68,5 @@ export class LoginComponent {
         this.isLoggedIn = false;
       }
     );
-
-    console.log(this.loginForm.value);
   }
 }

@@ -79,7 +79,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('let see if this is it');
     this.loadBudgetData();
   }
 
@@ -199,8 +198,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
 
     this.budgetService.updateBudget(budgetIdNumber, updatedData).subscribe(
       (response) => {
-        console.log('Budget updated:', response);
-
         this.budgets = this.budgets.map((budget: { id: any }) =>
           budget.id === response.id ? { ...budget, ...response } : budget
         );
@@ -214,8 +211,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
         ].map((id) =>
           this.budgets.find((budget: { id: unknown }) => budget.id === id)
         );
-
-        console.log(this.budgets);
 
         this.recalculateSpentValues();
         this.refreshChart();
@@ -241,7 +236,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
       Math.abs(this.calculateTotalSpent(budget))
     );
 
-    console.log(this.spent);
     this.spentValues = [...this.spent];
     this.cdr.detectChanges();
   }

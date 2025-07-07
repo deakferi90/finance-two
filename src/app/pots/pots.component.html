@@ -1,1 +1,27 @@
-<p>pots works!</p>
+<div class="pots-container">
+  @for (pot of pots; track pots) {
+  <div class="pot-box">
+    <div class="theme-box">
+      <div class="theme-content">
+        <div class="theme" [style.background-color]="pot.theme"></div>
+        <div class="name">{{ pot.name }}</div>
+      </div>
+      <div class="dot-img-container"><img src="assets/dots.svg" /></div>
+    </div>
+    <div class="total-saved">
+      <span class="saved-txt">Total saved</span>
+      <span class="saved-price">${{ pot.total }}</span>
+    </div>
+    <mat-progress-bar
+      mode="buffer"
+      class="pots-progress-bar"
+      [ngStyle]="{
+        height: progressBarHeight,
+        width: '88%',
+        backgroundColor: pot.theme,
+        'border-radius': '5px',
+      }"
+    ></mat-progress-bar>
+  </div>
+  }
+</div>

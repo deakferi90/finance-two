@@ -31,21 +31,22 @@
         <i class="arrow" [class.open]="dropdownStates['category']">▼</i>
       </div>
 
-      <div *ngIf="dropdownStates['category']" class="dropdown-list">
-        <div
-          *ngFor="let option of budgets"
-          class="dropdown-item flex justify-between"
-          (click)="selectOption('category', option)"
-          [ngClass]="{
-            'not-selectable':
-              budgetColors[option.category] ||
-              option.category === selectedCategory?.category
-          }"
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Budget Category</mat-label>
+        <mat-select
+          [(value)]="selectedCategory"
+          (selectionChange)="selectOption('category', $event.value)"
         >
-          <span>{{ option.category }}</span>
-          <span *ngIf="budgetColors[option.category]">Already in use</span>
-        </div>
-      </div>
+          <mat-option
+            *ngFor="let option of budgets"
+            [value]="option"
+            [disabled]="budgetColors[option.category]"
+          >
+            {{ option.category }}
+            <span *ngIf="budgetColors[option.category]"> - Already in use</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <span class="text-[#696868] mt-2">Maximum Spend</span>

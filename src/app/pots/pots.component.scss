@@ -1,0 +1,62 @@
+.pots-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+
+  .pot-box {
+    width: auto;
+    height: 300px;
+    background: #fff;
+    border-radius: 20px;
+  }
+}
+
+.theme {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.theme-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 25px;
+}
+
+.theme-content {
+  display: flex;
+  gap: 10px;
+}
+
+.dot-img-container {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.pots-progress-bar {
+  margin: 5% auto;
+}
+
+.total-saved {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 88%;
+  text-align: center;
+  margin: 10px 0 0 25px;
+
+  .saved-txt {
+    color: grey;
+  }
+
+  .saved-price {
+    font-size: 38px;
+  }
+}
