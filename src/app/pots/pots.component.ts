@@ -22,6 +22,11 @@ export class PotsComponent implements OnInit {
     this.getPotsData();
   }
 
+  calculatePercentageWidth(pot: Pots): string {
+    const percentage = (pot.total / pot.target) * 100;
+    return percentage.toFixed(2) + '%';
+  }
+
   getPotsData() {
     this.potsService.getPots().subscribe((data) => {
       this.pots = data[0]?.pots || [];

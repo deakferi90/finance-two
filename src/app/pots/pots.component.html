@@ -1,3 +1,8 @@
+<div class="text-right mt-[-50px]">
+  <button class="add-pots p-[14px] color-[#fff] bg-black hover:bg-gray-800">
+    +Add New Pot
+  </button>
+</div>
 <div class="pots-container">
   @for (pot of pots; track pots) {
   <div class="pot-box">
@@ -10,18 +15,46 @@
     </div>
     <div class="total-saved">
       <span class="saved-txt">Total saved</span>
-      <span class="saved-price">${{ pot.total }}</span>
+      <span class="saved-price">${{ pot.total.toFixed(2) }}</span>
     </div>
-    <mat-progress-bar
-      mode="buffer"
+    <!-- <mat-progress-bar
+      mode="determinate"
       class="pots-progress-bar"
       [ngStyle]="{
         height: progressBarHeight,
-        width: '88%',
+        width: calculatePercentageWidth(pot),
         backgroundColor: pot.theme,
         'border-radius': '5px',
       }"
-    ></mat-progress-bar>
+    ></mat-progress-bar> -->
+    <div
+      class="progress-bar-wrapper"
+      [ngStyle]="{ height: progressBarHeight, 'border-radius': '5px' }"
+    >
+      <div class="progress-background"></div>
+      <div
+        class="progress-filled"
+        [ngStyle]="{
+          width: calculatePercentageWidth(pot),
+          backgroundColor: pot.theme,
+          'border-radius': '5px',
+        }"
+      ></div>
+    </div>
+    <div class="total-saved">
+      <span class="saved-txt"
+        >{{ ((pot.total / pot.target) * 100).toFixed(2) }}%</span
+      >
+      <span class="saved-txt">Target of ${{ pot.target.toFixed(2) }}</span>
+    </div>
+    <div class="flex justify-between total-saved">
+      <button class="bg-beige text-black py-2.5 px-12 rounded-lg">
+        +Add Money
+      </button>
+      <button class="bg-beige text-black py-2.5 px-12 rounded-lg">
+        Withdraw
+      </button>
+    </div>
   </div>
   }
 </div>

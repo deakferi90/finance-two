@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  margin-top: 20px;
 
   @media screen and (max-width: 720px) {
     grid-template-columns: 1fr;
@@ -41,7 +42,7 @@
 }
 
 .pots-progress-bar {
-  margin: 5% auto;
+  margin: 1% 6%;
 }
 
 .total-saved {
@@ -50,13 +51,58 @@
   align-items: center;
   width: 88%;
   text-align: center;
-  margin: 10px 0 0 25px;
+  margin: 1% auto;
+  font-weight: 400;
 
   .saved-txt {
     color: grey;
+    font-weight: 200;
   }
 
   .saved-price {
     font-size: 38px;
   }
+}
+
+.add-pots {
+  padding: 14px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.pot-container {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.progress-bar-wrapper {
+  width: 88%;
+  margin: 0 auto;
+  position: relative;
+  background-color: #dcdcdc;
+}
+
+.progress-background {
+  width: 100%;
+  height: 100%;
+  background-color: #dcdcdc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+}
+
+.progress-filled {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+}
+
+.saved-txt {
+  display: block;
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
 }
