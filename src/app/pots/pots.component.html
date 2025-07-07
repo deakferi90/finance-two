@@ -17,16 +17,6 @@
       <span class="saved-txt">Total saved</span>
       <span class="saved-price">${{ pot.total.toFixed(2) }}</span>
     </div>
-    <!-- <mat-progress-bar
-      mode="determinate"
-      class="pots-progress-bar"
-      [ngStyle]="{
-        height: progressBarHeight,
-        width: calculatePercentageWidth(pot),
-        backgroundColor: pot.theme,
-        'border-radius': '5px',
-      }"
-    ></mat-progress-bar> -->
     <div
       class="progress-bar-wrapper"
       [ngStyle]="{ height: progressBarHeight, 'border-radius': '5px' }"
@@ -48,10 +38,10 @@
       <span class="saved-txt">Target of ${{ pot.target.toFixed(2) }}</span>
     </div>
     <div class="flex justify-between total-saved">
-      <button class="bg-beige text-black py-2.5 px-12 rounded-lg">
+      <button class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg">
         +Add Money
       </button>
-      <button class="bg-beige text-black py-2.5 px-12 rounded-lg">
+      <button class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg">
         Withdraw
       </button>
     </div>
