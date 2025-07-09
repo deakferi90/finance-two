@@ -23,30 +23,34 @@
     } @else if (title === 'Add New Budget') {
 
     <span class="text-[#696868] mt-2">Budget Category</span>
-    <div class="custom-dropdown-container mb-3">
+    <div class="custom-dropdown-container mb-2">
       <div class="dropdown-selected" (click)="toggleDropdown('category')">
-        <span>{{
-          selectedCategory ? selectedCategory.category : "Select an option"
-        }}</span>
+        <span *ngIf="selectedCategory; else noCategory">
+          {{ selectedCategory.category }}
+        </span>
+        <ng-template #noCategory>
+          <span>Select an option</span>
+        </ng-template>
         <i class="arrow" [class.open]="dropdownStates['category']">▼</i>
       </div>
 
-      <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Budget Category</mat-label>
-        <mat-select
-          [(value)]="selectedCategory"
-          (selectionChange)="selectOption('category', $event.value)"
+      <div *ngIf="dropdownStates['category']" class="dropdown-list">
+        <div
+          *ngFor="let option of budgets"
+          class="dropdown-item flex justify-between"
+          (click)="
+            !budgetColors[option.category] && selectOption('category', option)
+          "
+          [ngClass]="{
+            'not-selectable': budgetColors[option.category]
+          }"
         >
-          <mat-option
-            *ngFor="let option of budgets"
-            [value]="option"
-            [disabled]="budgetColors[option.category]"
-          >
-            {{ option.category }}
-            <span *ngIf="budgetColors[option.category]"> - Already in use</span>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+          <div>{{ option.category }}</div>
+          @if (budgetColors[option.category]) {
+          <span>Already in use</span>
+          }
+        </div>
+      </div>
     </div>
 
     <span class="text-[#696868] mt-2">Maximum Spend</span>

@@ -154,12 +154,12 @@ export class ModalComponent implements OnInit {
           .pipe(take(1))
           .subscribe((budgets: Budget[]) => {
             this.filteredBudgets = budgets;
-            this.initialBudgets = [...budgets]; // Reset the initial budget data
+            this.initialBudgets = [...budgets];
           });
 
         this.resetSelections();
 
-        this.close(); // Close the modal after saving changes
+        this.close();
       },
       (error) => {
         this.toastr.error('Error updating budget');
@@ -184,6 +184,10 @@ export class ModalComponent implements OnInit {
 
     this.selectedBudget = null;
     this.closeModal.emit();
+  }
+
+  adBudget() {
+    console.log('this is adding a budget');
   }
 
   resetSelections() {
