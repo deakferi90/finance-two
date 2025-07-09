@@ -51,7 +51,7 @@ export class ModalComponent implements OnInit {
 
   selectedCategory: any = null;
   previousSelections: any[] = [];
-  selectedAmount: number | string | null = null;
+  selectedAmount: number | string | null | undefined = null;
   selectedTheme: string | undefined = '';
   newValue: Budget | object = {};
   filteredBudgets!: Budget[];
@@ -186,8 +186,25 @@ export class ModalComponent implements OnInit {
     this.closeModal.emit();
   }
 
-  adBudget() {
-    console.log('this is adding a budget');
+  addBudget() {
+    const selAmount = document.querySelector(
+      '.max-speed'
+    ) as HTMLInputElement | null;
+    this.selectedAmount = selAmount?.value;
+
+    const budgetData = {
+      category: this.selectedCategory?.category,
+      amount: this.selectedAmount,
+      theme: this.selectedCategory?.theme,
+    };
+    this.modalService.addBudget(budgetData).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  deleteBudget() {
+    // this.modalService.deleteBudget(this.selectedCategory.id);
+    console.log('this is the delete');
   }
 
   resetSelections() {

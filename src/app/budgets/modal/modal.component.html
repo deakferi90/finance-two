@@ -13,7 +13,7 @@
     @if (title.includes('Delete')) {
     <button
       class="mt-[20px] w-[100%] py-[14px] bg-[#C94736] text-white rounded-lg"
-      (click)="close()"
+      (click)="deleteBudget()"
     >
       {{ deleteMsg }}
     </button>
@@ -101,7 +101,7 @@
     </div>
     <button
       class="mt-[20px] w-[100%] py-[14px] bg-[#201F24] text-white rounded-lg"
-      (click)="close()"
+      (click)="addBudget()"
     >
       Add Budget
     </button>
@@ -159,6 +159,7 @@
 
       <div *ngIf="dropdownStates['theme']" class="dropdown-list">
         <div
+          disabled="true"
           *ngFor="let option of budgets"
           class="dropdown-item flex justify-between"
           (click)="selectOption('theme', option)"
