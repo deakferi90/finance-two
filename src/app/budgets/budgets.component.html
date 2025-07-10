@@ -201,6 +201,7 @@
   [deleteMsg]="deleteMsg"
   [cancel]="cancel"
   (chartRedraw)="callCreateChart()"
+  (budgetAdded)="onBudgetAdded($event)"
   (closeModal)="closeModal()"
   (budgetUpdated)="onEditBudget($event.id, $event)"
 ></app-modal>

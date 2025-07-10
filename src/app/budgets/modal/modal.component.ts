@@ -29,6 +29,7 @@ export class ModalComponent implements OnInit {
   @Output() themeChanged = new EventEmitter<Budget>();
   @Output() budgetSelected = new EventEmitter<Budget>();
   @Output() budgetUpdated = new EventEmitter<Budget>();
+  @Output() budgetAdded = new EventEmitter<Budget>();
   @Output() chartRedraw = new EventEmitter<void>();
   maxSpeed: number = 0;
   initialBudgets: Budget[] = [];
@@ -197,9 +198,17 @@ export class ModalComponent implements OnInit {
       amount: this.selectedAmount,
       theme: this.selectedCategory?.theme,
     };
-    this.modalService.addBudget(budgetData).subscribe((data) => {
-      console.log(data);
+    this.modalService.addBudget(budgetData).subscribe((newBudget: Budget) => {
+      if (newBudget) {
+        this.toastr.success('Budget added successfully!');
+        this.budgets = [...this.budgets, newBudget];
+        this.budgetAdded.emit(newBudget);
+        this.close();
+      } else {
+        this.toastr.error('Failed to add budget');
+      }
     });
+    this.close();
   }
 
   deleteBudget() {

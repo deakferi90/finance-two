@@ -94,3 +94,9 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.theme.mb-2.ng-star-inserted {
+  background-color: gray;
+  pointer-events: none;
+  opacity: 0.6;
+}

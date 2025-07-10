@@ -129,6 +129,11 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onBudgetAdded(newBudget: Budget) {
+    this.budgets.push(newBudget);
+    console.log(this.budgets);
+  }
+
   calculateTotalSpent(budget: Budget): number {
     return this.transactions
       .filter((item) => item.category === budget.category)
