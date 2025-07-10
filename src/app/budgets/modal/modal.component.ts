@@ -25,6 +25,7 @@ export class ModalComponent implements OnInit {
   @Input() message = '';
   @Input() budgetColors: { [key: string]: string } = {};
   @Input() selectedBudget!: any;
+  @Input() loadDataBudget!: () => void;
   @Output() closeModal = new EventEmitter<void>();
   @Output() themeChanged = new EventEmitter<Budget>();
   @Output() budgetSelected = new EventEmitter<Budget>();
@@ -194,20 +195,23 @@ export class ModalComponent implements OnInit {
     this.selectedAmount = selAmount?.value;
 
     const budgetData = {
+      id: this.selectedCategory.id,
       category: this.selectedCategory?.category,
       amount: this.selectedAmount,
       theme: this.selectedCategory?.theme,
     };
     this.modalService.addBudget(budgetData).subscribe((newBudget: Budget) => {
       if (newBudget) {
+        this.budgetAdded.emit(newBudget);
         this.toastr.success('Budget added successfully!');
         this.budgets = [...this.budgets, newBudget];
-        this.budgetAdded.emit(newBudget);
+        this.resetSelections();
         this.close();
       } else {
         this.toastr.error('Failed to add budget');
       }
     });
+    this.loadDataBudget();
     this.close();
   }
 

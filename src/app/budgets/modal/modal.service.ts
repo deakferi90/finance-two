@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { Budget } from '../budgets.interface';
 
 @Injectable({
@@ -42,7 +42,7 @@ export class ModalService {
   }
 
   addBudget(newBudget: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, newBudget).pipe(
+    return this.http.post<Budget>(`${this.apiUrl}`, newBudget).pipe(
       map((budget) => {
         this.localBudgets.push(budget);
         return budget;

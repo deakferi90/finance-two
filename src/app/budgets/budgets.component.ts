@@ -8,6 +8,7 @@ import {
   HostListener,
   QueryList,
   ViewChildren,
+  OnChanges,
 } from '@angular/core';
 import { BudgetsService } from './budgets.service';
 import { Budget } from './budgets.interface';
@@ -32,7 +33,7 @@ import { Chart } from 'chart.js';
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.scss',
 })
-export class BudgetsComponent implements OnInit, AfterViewInit {
+export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChildren('menuContainer') menuContainers:
     | QueryList<ElementRef>
     | never[] = [];
@@ -129,9 +130,16 @@ export class BudgetsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  ngOnChanges() {
+    if (this.budgets.length) {
+      this.donutChart.createChart();
+    }
+  }
+
   onBudgetAdded(newBudget: Budget) {
-    this.budgets.push(newBudget);
-    console.log(this.budgets);
+    this.budgets = [...this.budgets, newBudget];
+    this.loadBudgetData();
+    this.donutChart.createChart();
   }
 
   calculateTotalSpent(budget: Budget): number {

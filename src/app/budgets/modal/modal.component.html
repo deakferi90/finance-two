@@ -129,15 +129,16 @@
     <span class="text-[#696868] mt-2">Maximum Spend</span>
     <div>
       <input
+        #amountInput
         class="max-speed"
         type="number"
-        [value]="selectedBudget.amount || selectedCategory?.amount"
+        [value]="selectedCategory ? selectedCategory.amount : ''"
         (input)="formatNumber($event)"
       />
     </div>
 
     <span class="text-[#696868] mt-2">Theme</span>
-    <div class="custom-dropdown-container mb-2">
+    <div class="custom-dropdown-container theme mb-2">
       <div class="dropdown-selected" (click)="toggleDropdown('theme')">
         <span *ngIf="selectedTheme" class="theme-selection">
           <span
