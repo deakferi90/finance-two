@@ -53,16 +53,13 @@ export class DonutChartComponent implements OnInit, AfterViewInit {
   }
 
   spentData() {
-    const nonOptionalBudgets = this.filteredBudgets.filter(
-      (budget) => !budget.optional
-    );
+    return this.filteredBudgets.filter((budget) => !budget.optional);
   }
 
   createChart() {
     if (this.canvasRef && this.canvasRef.nativeElement) {
       const ctx = this.canvasRef.nativeElement.getContext('2d');
 
-      // Destroy the existing chart if it exists
       if (this.chart) {
         this.chart.destroy();
       }

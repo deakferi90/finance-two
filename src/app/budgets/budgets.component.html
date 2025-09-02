@@ -200,6 +200,7 @@
   [selectedBudget]="budgetData"
   [deleteMsg]="deleteMsg"
   [cancel]="cancel"
+  [recalculateSpentValues]="recalculateSpentValues.bind(this)"
   (chartRedraw)="callCreateChart()"
   (budgetAdded)="onBudgetAdded($event)"
   (closeModal)="closeModal()"

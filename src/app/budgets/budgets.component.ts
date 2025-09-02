@@ -134,12 +134,14 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
     if (this.budgets.length) {
       this.donutChart.createChart();
     }
+    this.loadBudgetData();
+    console.log('on changes');
   }
 
   onBudgetAdded(newBudget: Budget) {
     this.budgets = [...this.budgets, newBudget];
     this.loadBudgetData();
-    this.donutChart.createChart();
+    this.refreshChart();
   }
 
   calculateTotalSpent(budget: Budget): number {

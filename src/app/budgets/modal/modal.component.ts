@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Budget } from '../budgets.interface';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ModalService } from './modal.service';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
+import { DonutChartComponent } from '../donut-chart/donut-chart.component';
 
 @Component({
   selector: 'app-modal',
@@ -20,12 +29,14 @@ export class ModalComponent implements OnInit {
   @Input() content!: string;
   @Input() deleteMsg!: string;
   @Input() cancel!: string;
-  @Input() budgets: Budget[] = [];
+  @Input() budgets: Budget[] | any = [];
   @Input() title = '';
   @Input() message = '';
   @Input() budgetColors: { [key: string]: string } = {};
   @Input() selectedBudget!: any;
   @Input() loadDataBudget!: () => void;
+  @Input() recalculateSpentValues!: () => void;
+  @ViewChild(DonutChartComponent) donutChart!: DonutChartComponent;
   @Output() closeModal = new EventEmitter<void>();
   @Output() themeChanged = new EventEmitter<Budget>();
   @Output() budgetSelected = new EventEmitter<Budget>();
@@ -60,7 +71,8 @@ export class ModalComponent implements OnInit {
 
   constructor(
     private modalService: ModalService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -88,7 +100,7 @@ export class ModalComponent implements OnInit {
 
   getColorName(theme: string): string {
     const selectedCategoryOption = this.budgets.find(
-      (budget) => budget.theme === theme
+      (budget: { theme: string }) => budget.theme === theme
     );
     return selectedCategoryOption ? selectedCategoryOption.color : '';
   }
@@ -98,7 +110,7 @@ export class ModalComponent implements OnInit {
       this.selectedCategory = option;
 
       const selectedCategoryOption = this.budgets.find(
-        (budget) => budget.category === option.category
+        (budget: { category: any }) => budget.category === option.category
       );
       this.dropdownStates[dropdown] = option + 1;
 
@@ -147,7 +159,7 @@ export class ModalComponent implements OnInit {
 
         this.selectedBudget = { ...this.selectedBudget, ...response };
 
-        this.budgets = this.budgets.map((budget) =>
+        this.budgets = this.budgets.map((budget: { id: number }) =>
           budget.id === response.id ? { ...budget, ...response } : budget
         );
 
@@ -188,6 +200,12 @@ export class ModalComponent implements OnInit {
     this.closeModal.emit();
   }
 
+  refreshChart() {
+    if (this.donutChart) {
+      this.donutChart.createChart();
+    }
+  }
+
   addBudget() {
     const selAmount = document.querySelector(
       '.max-speed'
@@ -201,17 +219,31 @@ export class ModalComponent implements OnInit {
       theme: this.selectedCategory?.theme,
     };
     this.modalService.addBudget(budgetData).subscribe((newBudget: Budget) => {
+      this.budgets = this.budgets.map((budget: { id: number }) =>
+        budget.id === newBudget.id ? { ...budget, ...newBudget } : budget
+      );
+
+      if (
+        !this.budgets.some(
+          (budget: { id: number }) => budget.id === newBudget.id
+        )
+      ) {
+        this.budgets = [...this.budgets, newBudget];
+      }
+
+      this.filteredBudgets = this.budgets.filter(
+        (budget: { optional: boolean }) => !budget.optional && budget.optional
+      );
+
       if (newBudget) {
         this.budgetAdded.emit(newBudget);
         this.toastr.success('Budget added successfully!');
-        this.budgets = [...this.budgets, newBudget];
         this.resetSelections();
         this.close();
       } else {
         this.toastr.error('Failed to add budget');
       }
     });
-    this.loadDataBudget();
     this.close();
   }
 
