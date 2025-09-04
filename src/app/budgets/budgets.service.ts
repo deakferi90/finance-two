@@ -28,4 +28,8 @@ export class BudgetsService {
   updateBudget(id: number, budgetData: any): Observable<any> {
     return this.http.put(`${this.budgetsUrl}/${id}`, budgetData);
   }
+
+  deleteBudget(budgetId: number) {
+    return this.http.delete(`${this.budgetsUrl}/${budgetId}`);
+  }
 }

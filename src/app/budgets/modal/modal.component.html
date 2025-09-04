@@ -13,11 +13,11 @@
     @if (title.includes('Delete')) {
     <button
       class="mt-[20px] w-[100%] py-[14px] bg-[#C94736] text-white rounded-lg"
-      (click)="deleteBudget()"
+      (click)="confirmDelete()"
     >
       {{ deleteMsg }}
     </button>
-    <button class="mt-[20px] text-[#696868] w-[100%]" (click)="close()">
+    <button class="mt-[20px] text-[#696868] w-[100%]" (click)="cancelDelete()">
       {{ cancel }}
     </button>
     } @else if (title === 'Add New Budget') {

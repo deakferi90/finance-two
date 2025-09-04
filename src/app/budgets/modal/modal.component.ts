@@ -43,6 +43,7 @@ export class ModalComponent implements OnInit {
   @Output() budgetUpdated = new EventEmitter<Budget>();
   @Output() budgetAdded = new EventEmitter<Budget>();
   @Output() chartRedraw = new EventEmitter<void>();
+  @Output() budgetDeleted = new EventEmitter<number>();
   maxSpeed: number = 0;
   initialBudgets: Budget[] = [];
 
@@ -247,9 +248,15 @@ export class ModalComponent implements OnInit {
     this.close();
   }
 
-  deleteBudget() {
-    // this.modalService.deleteBudget(this.selectedCategory.id);
-    console.log('this is the delete');
+  confirmDelete() {
+    if (this.selectedBudget) {
+      this.budgetDeleted.emit(this.selectedBudget.id);
+    }
+    this.closeModal.emit();
+  }
+
+  cancelDelete() {
+    this.closeModal.emit();
   }
 
   resetSelections() {

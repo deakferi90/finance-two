@@ -112,6 +112,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
     this.isModalVisible = true;
     this.deleteMsg = 'Yes, Confirm Deletion';
     this.cancel = 'No, Go Back';
+    this.budgetData = budget;
   }
 
   closeModal() {
@@ -238,6 +239,31 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
         console.error('Error updating budget:', error);
       }
     );
+  }
+
+  deleteBudget(budgetId: number) {
+    console.log(this.budgets);
+    // Backend hívás (ha van)
+    this.budgetService.deleteBudget(budgetId).subscribe({
+      next: () => {
+        // 1️⃣ Távolítsd el a budgetet a helyi tömbből
+        this.budgets = this.budgets.filter(
+          (b: { id: number }) => b.id !== budgetId
+        );
+        this.filteredBudgets = this.filteredBudgets.filter(
+          (b) => b.id !== budgetId
+        );
+
+        // 2️⃣ Újraszámolás, chart frissítés
+        this.recalculateSpentValues();
+        this.refreshChart();
+
+        // 3️⃣ Modal bezárása
+        this.isModalVisible = false;
+        this.cdr.detectChanges();
+      },
+      error: (err) => console.error('Error deleting budget:', err),
+    });
   }
 
   refreshChart() {
