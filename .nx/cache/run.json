@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx serve",
+    "startTime": "2025-09-03T14:32:44.159Z",
+    "endTime": "2025-09-03T14:35:23.604Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "personal-finance:serve:development",
+      "target": "serve",
+      "projectName": "personal-finance",
+      "hash": "6704619219069090713",
+      "startTime": "2025-09-03T14:32:44.320Z",
+      "endTime": "2025-09-03T14:35:23.599Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

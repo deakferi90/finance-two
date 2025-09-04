@@ -1,0 +1,958 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.4.1",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [],
+    "projectFileMap": {
+      "personal-finance": [
+        {
+          "file": ".editorconfig",
+          "hash": "17241496168097493888"
+        },
+        {
+          "file": ".env",
+          "hash": "16968096570386672716"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "4974618851175577285"
+        },
+        {
+          "file": ".vscode/extensions.json",
+          "hash": "14075834438752640208"
+        },
+        {
+          "file": ".vscode/launch.json",
+          "hash": "17406702432687230417"
+        },
+        {
+          "file": ".vscode/tasks.json",
+          "hash": "10093397977228577162"
+        },
+        {
+          "file": "README.md",
+          "hash": "16396651452412192211"
+        },
+        {
+          "file": "nx.json",
+          "hash": "10667447766602641669"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "15217544772568568652"
+        },
+        {
+          "file": "package.json",
+          "hash": "10673905417435780533",
+          "deps": [
+            "npm:@angular-devkit/build-angular",
+            "npm:@angular-devkit/core",
+            "npm:@angular-devkit/schematics",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@nx/angular",
+            "npm:@nx/workspace",
+            "npm:@schematics/angular",
+            "npm:@types/jasmine",
+            "npm:autoprefixer",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:npm-run-all",
+            "npm:nx",
+            "npm:postcss",
+            "npm:tailwindcss",
+            "npm:typescript",
+            "npm:@angular/animations",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/localize",
+            "npm:@angular/material",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/router",
+            "npm:bcryptjs",
+            "npm:chart.js",
+            "npm:cors",
+            "npm:dotenv",
+            "npm:jsonwebtoken",
+            "npm:mongoose",
+            "npm:ngx-toastr",
+            "npm:rxjs",
+            "npm:tslib",
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "postcss.config.js",
+          "hash": "17966158942953485927"
+        },
+        {
+          "file": "project.json",
+          "hash": "10218621981538237549"
+        },
+        {
+          "file": "proxy.conf.json",
+          "hash": "3485636656951856913"
+        },
+        {
+          "file": "public/assets/arrowDown.svg",
+          "hash": "11064828892765220487"
+        },
+        {
+          "file": "public/assets/arrowRight.png",
+          "hash": "13965835098572837591"
+        },
+        {
+          "file": "public/assets/avatars/aqua-flow-utilities.jpg",
+          "hash": "3644602812309625764"
+        },
+        {
+          "file": "public/assets/avatars/buzz-marketing-group.jpg",
+          "hash": "8202626465416807261"
+        },
+        {
+          "file": "public/assets/avatars/bytewise.jpg",
+          "hash": "445700432630925551"
+        },
+        {
+          "file": "public/assets/avatars/daniel-carter.jpg",
+          "hash": "17316604940019113875"
+        },
+        {
+          "file": "public/assets/avatars/ecofuel-energy.jpg",
+          "hash": "9903483695588009616"
+        },
+        {
+          "file": "public/assets/avatars/elevate-education.jpg",
+          "hash": "560392240070446595"
+        },
+        {
+          "file": "public/assets/avatars/ella-phillips.jpg",
+          "hash": "11699825955618997001"
+        },
+        {
+          "file": "public/assets/avatars/emma-richardson.jpg",
+          "hash": "11354144130145549250"
+        },
+        {
+          "file": "public/assets/avatars/ethan-clark.jpg",
+          "hash": "6035361690246134606"
+        },
+        {
+          "file": "public/assets/avatars/flavor-fiesta.jpg",
+          "hash": "17876077621907308692"
+        },
+        {
+          "file": "public/assets/avatars/green-plate-eatery.jpg",
+          "hash": "13039110932019859343"
+        },
+        {
+          "file": "public/assets/avatars/harper-edwards.jpg",
+          "hash": "13418027374575785457"
+        },
+        {
+          "file": "public/assets/avatars/james-thompson.jpg",
+          "hash": "3917860362153468847"
+        },
+        {
+          "file": "public/assets/avatars/liam-hughes.jpg",
+          "hash": "12885347878970330602"
+        },
+        {
+          "file": "public/assets/avatars/lily-ramirez.jpg",
+          "hash": "14353624154122679112"
+        },
+        {
+          "file": "public/assets/avatars/mason-martinez.jpg",
+          "hash": "15277859161966668403"
+        },
+        {
+          "file": "public/assets/avatars/nimbus-data-storage.jpg",
+          "hash": "8572026279552472799"
+        },
+        {
+          "file": "public/assets/avatars/pixel-playground.jpg",
+          "hash": "13594074746255037147"
+        },
+        {
+          "file": "public/assets/avatars/rina-sato.jpg",
+          "hash": "7269101676821795377"
+        },
+        {
+          "file": "public/assets/avatars/savory-bites-bistro.jpg",
+          "hash": "15146361219714055902"
+        },
+        {
+          "file": "public/assets/avatars/sebastian-cook.jpg",
+          "hash": "9610368540332423577"
+        },
+        {
+          "file": "public/assets/avatars/serenity-spa-and-wellness.jpg",
+          "hash": "2006498342622009526"
+        },
+        {
+          "file": "public/assets/avatars/sofia-peterson.jpg",
+          "hash": "3052581596518036554"
+        },
+        {
+          "file": "public/assets/avatars/spark-electric-solutions.jpg",
+          "hash": "7584595847700170272"
+        },
+        {
+          "file": "public/assets/avatars/sun-park.jpg",
+          "hash": "4954301811667264333"
+        },
+        {
+          "file": "public/assets/avatars/swift-ride-share.jpg",
+          "hash": "2158091844701537850"
+        },
+        {
+          "file": "public/assets/avatars/technova-innovations.jpg",
+          "hash": "15525997200317280501"
+        },
+        {
+          "file": "public/assets/avatars/urban-services-hub.jpg",
+          "hash": "8376895891288846603"
+        },
+        {
+          "file": "public/assets/avatars/william-harris.jpg",
+          "hash": "16615748981872998374"
+        },
+        {
+          "file": "public/assets/avatars/yuna-kim.jpg",
+          "hash": "17815934088827905703"
+        },
+        {
+          "file": "public/assets/bills-active.svg",
+          "hash": "15128512781552449261"
+        },
+        {
+          "file": "public/assets/bills.svg",
+          "hash": "5635593862265565702"
+        },
+        {
+          "file": "public/assets/chart-logo-active.svg",
+          "hash": "15391843173988414655"
+        },
+        {
+          "file": "public/assets/chart-logo.svg",
+          "hash": "12686169621884229152"
+        },
+        {
+          "file": "public/assets/data.json",
+          "hash": "168217554154707771"
+        },
+        {
+          "file": "public/assets/dots.png",
+          "hash": "2491909709378854346"
+        },
+        {
+          "file": "public/assets/dots.svg",
+          "hash": "6320840309784490985"
+        },
+        {
+          "file": "public/assets/favicon-32x32.png",
+          "hash": "12744533118699211984"
+        },
+        {
+          "file": "public/assets/finance-pic.png",
+          "hash": "14859376421194777201"
+        },
+        {
+          "file": "public/assets/home-active.svg",
+          "hash": "598331292670433148"
+        },
+        {
+          "file": "public/assets/home.svg",
+          "hash": "13668816716652491377"
+        },
+        {
+          "file": "public/assets/icon-bill-due.svg",
+          "hash": "2636702249637094273"
+        },
+        {
+          "file": "public/assets/icon-bill-paid.svg",
+          "hash": "4853603552843616392"
+        },
+        {
+          "file": "public/assets/icon-caret-down.svg",
+          "hash": "4771365650347801642"
+        },
+        {
+          "file": "public/assets/icon-caret-left.svg",
+          "hash": "7991305190986903964"
+        },
+        {
+          "file": "public/assets/icon-caret-right.svg",
+          "hash": "2154057632374968282"
+        },
+        {
+          "file": "public/assets/icon-close-modal.svg",
+          "hash": "14528231855102337642"
+        },
+        {
+          "file": "public/assets/icon-ellipsis.svg",
+          "hash": "10995303197991747239"
+        },
+        {
+          "file": "public/assets/icon-filter-mobile.svg",
+          "hash": "13323706334233909111"
+        },
+        {
+          "file": "public/assets/icon-hide-password.svg",
+          "hash": "17194841124596235413"
+        },
+        {
+          "file": "public/assets/icon-minimize-menu.svg",
+          "hash": "12336735265023288155"
+        },
+        {
+          "file": "public/assets/icon-nav-budgets.svg",
+          "hash": "9990502593511831989"
+        },
+        {
+          "file": "public/assets/icon-nav-overview.svg",
+          "hash": "9955829838329546683"
+        },
+        {
+          "file": "public/assets/icon-nav-pots.svg",
+          "hash": "10213520573366946206"
+        },
+        {
+          "file": "public/assets/icon-nav-recurring-bills.svg",
+          "hash": "148742729715912120"
+        },
+        {
+          "file": "public/assets/icon-nav-transactions.svg",
+          "hash": "3549417100874248523"
+        },
+        {
+          "file": "public/assets/icon-pot.svg",
+          "hash": "4813022070963615419"
+        },
+        {
+          "file": "public/assets/icon-recurring-bills.svg",
+          "hash": "7761105725884714329"
+        },
+        {
+          "file": "public/assets/icon-search.svg",
+          "hash": "17062317287242850338"
+        },
+        {
+          "file": "public/assets/icon-selected.svg",
+          "hash": "4853603552843616392"
+        },
+        {
+          "file": "public/assets/icon-show-password.svg",
+          "hash": "410841856806336022"
+        },
+        {
+          "file": "public/assets/icon-sort-mobile.svg",
+          "hash": "4034483618010517129"
+        },
+        {
+          "file": "public/assets/illustration-authentication.svg",
+          "hash": "16993347927429000695"
+        },
+        {
+          "file": "public/assets/logo-large.svg",
+          "hash": "3230997121836267175"
+        },
+        {
+          "file": "public/assets/logo-small.svg",
+          "hash": "13767238443629766183"
+        },
+        {
+          "file": "public/assets/logo.svg",
+          "hash": "7245012652768007845"
+        },
+        {
+          "file": "public/assets/logoAuth.png",
+          "hash": "6221862448226344834"
+        },
+        {
+          "file": "public/assets/message.png",
+          "hash": "8679341918794828611"
+        },
+        {
+          "file": "public/assets/minimize.svg",
+          "hash": "12202591031179007775"
+        },
+        {
+          "file": "public/assets/pots-active.svg",
+          "hash": "3811110303525011593"
+        },
+        {
+          "file": "public/assets/pots.svg",
+          "hash": "10460501710348481051"
+        },
+        {
+          "file": "public/assets/transactions-active.svg",
+          "hash": "15964516630570694150"
+        },
+        {
+          "file": "public/assets/transactions.svg",
+          "hash": "2826421687980065639"
+        },
+        {
+          "file": "public/favicon.ico",
+          "hash": "3988961587069885523"
+        },
+        {
+          "file": "public/minimize.svg",
+          "hash": "12202591031179007775"
+        },
+        {
+          "file": "public/search.svg",
+          "hash": "2345246861106884476"
+        },
+        {
+          "file": "src/app/app.component.html",
+          "hash": "10632780976525551317"
+        },
+        {
+          "file": "src/app/app.component.scss",
+          "hash": "15694237467888759314"
+        },
+        {
+          "file": "src/app/app.component.spec.ts",
+          "hash": "3344845140179862206",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "src/app/app.component.ts",
+          "hash": "17048800950145954046",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:rxjs",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/app.config.ts",
+          "hash": "7464687950780051889",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/router",
+            "npm:ngx-toastr",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/app.routes.ts",
+          "hash": "6534049562993532449",
+          "deps": [
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/auth/auth.guard.spec.ts",
+          "hash": "7443145221917816745",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/auth/auth.guard.ts",
+          "hash": "2531378661697086092",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/auth/auth.service.spec.ts",
+          "hash": "3844594902345527588",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/auth/auth.service.ts",
+          "hash": "10739050728849761357",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:rxjs",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/budgets/budgets.component.html",
+          "hash": "12876632855102211365"
+        },
+        {
+          "file": "src/app/budgets/budgets.component.scss",
+          "hash": "5407230992336201583"
+        },
+        {
+          "file": "src/app/budgets/budgets.component.spec.ts",
+          "hash": "6511111413388607456",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/budgets/budgets.component.ts",
+          "hash": "13863072803338841861",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "npm:chart.js"
+          ]
+        },
+        {
+          "file": "src/app/budgets/budgets.interface.ts",
+          "hash": "3761682962137588813"
+        },
+        {
+          "file": "src/app/budgets/budgets.service.spec.ts",
+          "hash": "3333168558773271584",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/budgets/budgets.service.ts",
+          "hash": "7544037850146155861",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/budgets/chart-update.service.ts",
+          "hash": "6083005795281610033",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/budgets/donut-chart/donut-chart.component.html",
+          "hash": "6289519644329334811"
+        },
+        {
+          "file": "src/app/budgets/donut-chart/donut-chart.component.scss",
+          "hash": "11682342815507694374"
+        },
+        {
+          "file": "src/app/budgets/donut-chart/donut-chart.component.spec.ts",
+          "hash": "243544605898221651",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/budgets/donut-chart/donut-chart.component.ts",
+          "hash": "5819934627088474510",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:chart.js"
+          ]
+        },
+        {
+          "file": "src/app/budgets/modal/modal.component.html",
+          "hash": "9079164370169263596"
+        },
+        {
+          "file": "src/app/budgets/modal/modal.component.scss",
+          "hash": "9024861946793816465"
+        },
+        {
+          "file": "src/app/budgets/modal/modal.component.spec.ts",
+          "hash": "2827790756501094380",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/budgets/modal/modal.component.ts",
+          "hash": "18077775343922990683",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "npm:ngx-toastr",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/budgets/modal/modal.service.spec.ts",
+          "hash": "7016187655535406546",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/budgets/modal/modal.service.ts",
+          "hash": "15126951257652693734",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/login/login.component.html",
+          "hash": "15873360655595197553"
+        },
+        {
+          "file": "src/app/login/login.component.scss",
+          "hash": "18332102037343242648"
+        },
+        {
+          "file": "src/app/login/login.component.spec.ts",
+          "hash": "18308345857481744230",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:ngx-toastr",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/login/login.component.ts",
+          "hash": "10461410634293407310",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:@angular/common",
+            "npm:ngx-toastr",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "src/app/overview/overview.component.html",
+          "hash": "5274400480521717643"
+        },
+        {
+          "file": "src/app/overview/overview.component.scss",
+          "hash": "9020911983002457087"
+        },
+        {
+          "file": "src/app/overview/overview.component.spec.ts",
+          "hash": "16053003823725518229",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/overview/overview.component.ts",
+          "hash": "8431879332288061173",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/overview/overview.interface.ts",
+          "hash": "7909556915649026776"
+        },
+        {
+          "file": "src/app/overview/overview.service.spec.ts",
+          "hash": "10683274691612481271",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/overview/overview.service.ts",
+          "hash": "14233003718390741280",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/pots/pots.component.html",
+          "hash": "6548380443942315060"
+        },
+        {
+          "file": "src/app/pots/pots.component.scss",
+          "hash": "15481710733829743135"
+        },
+        {
+          "file": "src/app/pots/pots.component.spec.ts",
+          "hash": "15708520353706736865",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/pots/pots.component.ts",
+          "hash": "15533672635538887174",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/forms",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/pots/pots.interface.ts",
+          "hash": "12540718458261557471"
+        },
+        {
+          "file": "src/app/pots/pots.service.spec.ts",
+          "hash": "1342666730380377466",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/pots/pots.service.ts",
+          "hash": "9962489983612810201",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/recurring-bills/recurring-bills.component.html",
+          "hash": "10393775864483658233"
+        },
+        {
+          "file": "src/app/recurring-bills/recurring-bills.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/recurring-bills/recurring-bills.component.spec.ts",
+          "hash": "3305927939206645941",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/recurring-bills/recurring-bills.component.ts",
+          "hash": "5726489574770480476",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/shared/auth-model.ts",
+          "hash": "1790449122147280406"
+        },
+        {
+          "file": "src/app/shared/auth-service.ts",
+          "hash": "11573712320649230730",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/show-filler.service.spec.ts",
+          "hash": "16182133001698968124",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/show-filler.service.ts",
+          "hash": "161233130125370949",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/sidebar.service.spec.ts",
+          "hash": "1894980841784148440",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/sidebar.service.ts",
+          "hash": "17042344012038844457",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/sidenav/sidenav.component.html",
+          "hash": "15773726273837395055"
+        },
+        {
+          "file": "src/app/sidenav/sidenav.component.scss",
+          "hash": "9246067259302484934"
+        },
+        {
+          "file": "src/app/sidenav/sidenav.component.spec.ts",
+          "hash": "17280519524856178876",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/sidenav/sidenav.component.ts",
+          "hash": "2332109256641238562",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:@angular/platform-browser",
+            "npm:@angular/material",
+            "npm:@angular/common",
+            "npm:@angular/animations"
+          ]
+        },
+        {
+          "file": "src/app/signup/signup.component.html",
+          "hash": "1736823838654358546"
+        },
+        {
+          "file": "src/app/signup/signup.component.scss",
+          "hash": "15258328369789620623"
+        },
+        {
+          "file": "src/app/signup/signup.component.spec.ts",
+          "hash": "7024762162183102266",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router",
+            "npm:ngx-toastr"
+          ]
+        },
+        {
+          "file": "src/app/signup/signup.component.ts",
+          "hash": "8785720686589753696",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:@angular/forms",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "npm:ngx-toastr"
+          ]
+        },
+        {
+          "file": "src/app/transactions/data.interface.ts",
+          "hash": "529593615508570525"
+        },
+        {
+          "file": "src/app/transactions/sortOption.interface.ts",
+          "hash": "1057976527303521808"
+        },
+        {
+          "file": "src/app/transactions/transaction.interface.ts",
+          "hash": "2610528363807119748"
+        },
+        {
+          "file": "src/app/transactions/transactions.component.html",
+          "hash": "1612059877129580250"
+        },
+        {
+          "file": "src/app/transactions/transactions.component.scss",
+          "hash": "8314134231251822486"
+        },
+        {
+          "file": "src/app/transactions/transactions.component.spec.ts",
+          "hash": "10841509307996696163",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "src/app/transactions/transactions.component.ts",
+          "hash": "12366726585247454095",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "src/app/transactions/transactions.service.spec.ts",
+          "hash": "5594515938384609398",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/transactions/transactions.service.ts",
+          "hash": "17381066486505465098",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/index.html",
+          "hash": "11635234393244239040"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "875041330523952236",
+          "deps": [
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "src/styles.scss",
+          "hash": "16514777012368315123"
+        },
+        {
+          "file": "src/variables.scss",
+          "hash": "17912107775581143985"
+        },
+        {
+          "file": "tailwind.config.js",
+          "hash": "5648955285478258248"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "14560978611694835822"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "16227375016570950083"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "11023685540591620072"
+        }
+      ]
+    }
+  }
+}

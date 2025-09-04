@@ -1,0 +1,884 @@
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:39.668Z - Started listening on: \\.\pipe\nx\C:\Users\FERENC~1.DEA\AppData\Local\Temp\8b6185bf56f82f7097c4\d.sock
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:39.682Z - [WATCHER]: Subscribed to changes within: C:\frontendmentor\finance-new (native)
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:39.688Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:39.690Z - Established a connection. Number of open connections: 2
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:39.698Z - Closed a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:39.704Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:39.816Z - Time taken for 'loadSpecifiedNxPlugins' 7.631600000000049ms
+Time for 'plugin worker 2856 code loading' 25.197599999999994
+Time for 'plugin worker 24468 code loading' 43.0779
+Time for 'plugin worker 10856 code loading' 43.41290000000001
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:40.811Z - Time taken for 'Load Nx Plugin: C:\frontendmentor\finance-new\node_modules\nx\src\plugins\package-json' 1099.7579ms
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:40.833Z - Time taken for 'Load Nx Plugin: C:\frontendmentor\finance-new\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 1120.5140000000001ms
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:40.919Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:40.919Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:40.920Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:40.927Z - No files changed, but no in-memory cached project graph found. Recomputing it...
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:40.948Z - Time taken for 'loadDefaultNxPlugins' 1208.4787000000001ms
+Time for 'nx/core/project-json:createNodes' 3.4579000000001088
+Time for 'nx/core/package-json:createNodes' 12.47609999999986
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 69.93959999999993
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:41.163Z - Time taken for 'build-project-configs' 154.08469999999988ms
+Time for 'build typescript dependencies' 446.1206000000002
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:41.999Z - Wrote project graph cache to C:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.001Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.004Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.006Z - Time taken for 'total for creating and serializing project graph' 2299.7401ms
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.010Z - Done responding to the client project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.010Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 2300. Response time: 6.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.032Z - [REQUEST]: Responding to the client. handleRunPreTasksExecution
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.033Z - Time taken for 'preTasksExecution' 2.8427999999998974ms
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.034Z - Done responding to the client handleRunPreTasksExecution
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.034Z - Handled PRE_TASKS_EXECUTION. Handling time: 3. Response time: 2.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.198Z - Reusing in-memory cached project graph because no files changed.
+DEBUG nx::native::tasks::task_hasher: plan length: 1
+DEBUG nx::native::tasks::hashers::hash_workspace_files: Hashing workspace fileset{cache_key="nx.json,.gitignore,.nxignore"}: Adding "4974618851175577285" (".gitignore") to hash
+DEBUG nx::native::tasks::hashers::hash_workspace_files: Hashing workspace fileset{cache_key="nx.json,.gitignore,.nxignore"}: Adding "10667447766602641669" ("nx.json") to hash
+DEBUG nx::native::tasks::hashers::hash_workspace_files: Hashing workspace fileset{cache_key="nx.json,.gitignore,.nxignore"}: Hash Value: "501284142771022476"
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.250Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.252Z - Done responding to the client handleHashTasks
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:42.252Z - Handled HASH_TASKS. Handling time: 53. Response time: 2.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:44.312Z - [REQUEST]: Responding to the client. handleGetEstimatedTaskTimings
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:44.313Z - Done responding to the client handleGetEstimatedTaskTimings
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:44.313Z - Handled GET_ESTIMATED_TASK_TIMINGS. Handling time: 6. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.553Z - Established a connection. Number of open connections: 2
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.554Z - Closed a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.557Z - Established a connection. Number of open connections: 2
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.560Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.561Z - Reusing in-memory cached project graph because no files changed.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.561Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.562Z - Time taken for 'total for creating and serializing project graph' 1.118800000000192ms
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.564Z - Done responding to the client project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:47.564Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:32:56.224Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:08.905Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:09.046Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:18.578Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:18.642Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:18.820Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:18.864Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:18.919Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:18.982Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:19.107Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:19.383Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:19.431Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:19.497Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:33:19.594Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.489Z - Closed a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.602Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.603Z - Done responding to the client recordOutputsHash
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.603Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.612Z - [REQUEST]: Responding to the client. handleRecordTaskRuns
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.613Z - Done responding to the client handleRecordTaskRuns
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.613Z - Handled RECORD_TASK_RUNS. Handling time: 2. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-03T14:35:23.636Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.711Z - Started listening on: \\.\pipe\nx\C:\Users\FERENC~1.DEA\AppData\Local\Temp\8b6185bf56f82f7097c4\d.sock
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.721Z - [WATCHER]: Subscribed to changes within: c:\frontendmentor\finance-new (native)
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.727Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.733Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.781Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.781Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.783Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.787Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:01.854Z - Time taken for 'loadSpecifiedNxPlugins' 5.59820000000002ms
+Time for 'plugin worker 4984 code loading' 14.24730000000001
+Time for 'plugin worker 25476 code loading' 13.328000000000003
+Time for 'plugin worker 15996 code loading' 14.720899999999993
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.395Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\package-json' 603.5568ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.452Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 658.373ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.516Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.517Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.517Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.521Z - No files changed, but no in-memory cached project graph found. Recomputing it...
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.530Z - Time taken for 'loadDefaultNxPlugins' 723.6158999999999ms
+Time for 'nx/core/project-json:createNodes' 1.754000000000019
+Time for 'nx/core/package-json:createNodes' 6.979900000000043
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 25.525900000000092
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.647Z - Time taken for 'build-project-configs' 83.39429999999993ms
+Time for 'build typescript dependencies' 0.28330000000005384
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.721Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.722Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.724Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.725Z - Time taken for 'total for creating and serializing project graph' 936.1678ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.727Z - Done responding to the client project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.728Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 936. Response time: 5.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.742Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.743Z - Done responding to the client handleContextFileData
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.743Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 1. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:02.746Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.026Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.027Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.028Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.037Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.038Z - Reusing in-memory cached project graph because no files changed.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.038Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.039Z - Time taken for 'total for creating and serializing project graph' 1.3394000000000688ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.042Z - Done responding to the client project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.042Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 4.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.057Z - [REQUEST]: Responding to the client. handleRunPreTasksExecution
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.057Z - Time taken for 'preTasksExecution' 1.802699999999959ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.058Z - Done responding to the client handleRunPreTasksExecution
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.058Z - Handled PRE_TASKS_EXECUTION. Handling time: 2. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.166Z - Reusing in-memory cached project graph because no files changed.
+DEBUG nx::native::tasks::task_hasher: plan length: 1
+DEBUG nx::native::tasks::hashers::hash_workspace_files: Hashing workspace fileset{cache_key="nx.json,.gitignore,.nxignore"}: Adding "4974618851175577285" (".gitignore") to hash
+DEBUG nx::native::tasks::hashers::hash_workspace_files: Hashing workspace fileset{cache_key="nx.json,.gitignore,.nxignore"}: Adding "10667447766602641669" ("nx.json") to hash
+DEBUG nx::native::tasks::hashers::hash_workspace_files: Hashing workspace fileset{cache_key="nx.json,.gitignore,.nxignore"}: Hash Value: "501284142771022476"
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.206Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.207Z - Done responding to the client handleHashTasks
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:03.207Z - Handled HASH_TASKS. Handling time: 41. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:05.398Z - [REQUEST]: Responding to the client. handleGetEstimatedTaskTimings
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:05.399Z - Done responding to the client handleGetEstimatedTaskTimings
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:05.399Z - Handled GET_ESTIMATED_TASK_TIMINGS. Handling time: 24. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.490Z - Established a connection. Number of open connections: 2
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.491Z - Closed a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.491Z - Established a connection. Number of open connections: 2
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.495Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.495Z - Reusing in-memory cached project graph because no files changed.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.495Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.497Z - Time taken for 'total for creating and serializing project graph' 0.7812999999996464ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.499Z - Done responding to the client project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:08.499Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX v21.4.1 Daemon Server] - 2025-09-04T06:34:16.794Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T09:34:09.160Z - Closed a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T09:34:09.165Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T09:34:09.166Z - [WATCHER]: Stopping the watcher for c:\frontendmentor\finance-new (sources)
+[NX v21.4.1 Daemon Server] - 2025-09-04T09:34:09.166Z - [WATCHER]: Stopping the watcher for c:\frontendmentor\finance-new (outputs)
+[NX v21.4.1 Daemon Server] - 2025-09-04T09:34:09.174Z - Server stopped because: "10800000ms of inactivity"
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.025Z - Started listening on: \\.\pipe\nx\C:\Users\FERENC~1.DEA\AppData\Local\Temp\8b6185bf56f82f7097c4\d.sock
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.030Z - [WATCHER]: Subscribed to changes within: c:\frontendmentor\finance-new (native)
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.038Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.041Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.088Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.088Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.089Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.093Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.154Z - Time taken for 'loadSpecifiedNxPlugins' 5.906100000000038ms
+Time for 'plugin worker 24584 code loading' 17.177899999999994
+Time for 'plugin worker 23196 code loading' 15.548699999999997
+Time for 'plugin worker 23836 code loading' 13.476100000000002
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.782Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\package-json' 684.0201ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.795Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 695.4069ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.859Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.860Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.860Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.863Z - No files changed, but no in-memory cached project graph found. Recomputing it...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.875Z - Time taken for 'loadDefaultNxPlugins' 762.8090000000001ms
+Time for 'nx/core/project-json:createNodes' 1.6527000000000953
+Time for 'nx/core/package-json:createNodes' 10.543000000000006
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 23.874900000000025
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:07.991Z - Time taken for 'build-project-configs' 80.88799999999992ms
+Time for 'build typescript dependencies' 33.70090000000005
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.107Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.108Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.110Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.112Z - Time taken for 'total for creating and serializing project graph' 1017.1005ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.114Z - Done responding to the client project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.115Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1017. Response time: 5.
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.128Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.129Z - Done responding to the client handleContextFileData
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.129Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 1. Response time: 1.
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:08.131Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.090Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.090Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.203Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.203Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.204Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.210Z - Time taken for 'hash changed files from watcher' 1.5702999999994063ms
+Time for 'nx/core/project-json:createNodes' 1.6657000000013795
+Time for 'nx/core/package-json:createNodes' 6.40480000000025
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 21.738900000000285
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.246Z - Time taken for 'build-project-configs' 32.02079999999842ms
+Time for 'build typescript dependencies' 0.03600000000005821
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.285Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.285Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.286Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.286Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:34.286Z - Time taken for 'total execution time for createProjectGraph()' 30.853699999999662ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.116Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.118Z - [WATCHER]: src/app/budgets/budgets.component.html was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.321Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.321Z - [REQUEST]: src/app/budgets/budgets.component.html
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.321Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.325Z - Time taken for 'hash changed files from watcher' 1.1543000000019674ms
+Time for 'nx/core/project-json:createNodes' 0.9644000000007509
+Time for 'nx/core/package-json:createNodes' 3.1647999999986496
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 21.18250000000262
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.367Z - Time taken for 'build-project-configs' 34.55999999999767ms
+Time for 'build typescript dependencies' 0.029099999999743886
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.432Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.432Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.434Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.434Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:38.434Z - Time taken for 'total execution time for createProjectGraph()' 46.288800000002084ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.154Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.154Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.155Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.156Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.157Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.159Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.160Z - Reusing in-memory cached project graph because no files changed.
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.160Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.162Z - Time taken for 'total for creating and serializing project graph' 1.3563999999969383ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.163Z - Done responding to the client project-graph
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.163Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.174Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.174Z - Done responding to the client handleContextFileData
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.174Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 1. Response time: 0.
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:52:49.175Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.831Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.831Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.940Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.940Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.940Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.943Z - Time taken for 'hash changed files from watcher' 0.9932999999946333ms
+Time for 'nx/core/project-json:createNodes' 0.7759000000005472
+Time for 'nx/core/package-json:createNodes' 2.547500000000582
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 8.281100000000151
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.961Z - Time taken for 'build-project-configs' 14.115499999999884ms
+Time for 'build typescript dependencies' 0.01929999999993015
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.991Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.991Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.991Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.992Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:53:01.992Z - Time taken for 'total execution time for createProjectGraph()' 20.971199999999953ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:24.857Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:24.859Z - [WATCHER]: src/app/budgets/budgets.component.html was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.060Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.060Z - [REQUEST]: src/app/budgets/budgets.component.html
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.060Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.063Z - Time taken for 'hash changed files from watcher' 0.4776000000128988ms
+Time for 'nx/core/project-json:createNodes' 0.49099999997997656
+Time for 'nx/core/package-json:createNodes' 2.014599999994971
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 13.87400000001071
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.093Z - Time taken for 'build-project-configs' 24.19779999999446ms
+Time for 'build typescript dependencies' 0.047599999990779907
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.168Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.168Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.173Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.173Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:55:25.173Z - Time taken for 'total execution time for createProjectGraph()' 38.63060000000405ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.067Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.072Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.476Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.476Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.476Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.484Z - Time taken for 'hash changed files from watcher' 1.208199999993667ms
+Time for 'nx/core/project-json:createNodes' 1.2264000000141095
+Time for 'nx/core/package-json:createNodes' 4.122399999992922
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 30.952499999984866
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.558Z - Time taken for 'build-project-configs' 62.560000000026776ms
+Time for 'build typescript dependencies' 31.284899999998743
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.730Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.730Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.733Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.734Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.734Z - Time taken for 'total execution time for createProjectGraph()' 126.87390000000596ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:01.783Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:18.292Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:18.294Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:18.744Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.101Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.102Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.102Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.106Z - Time taken for 'hash changed files from watcher' 0.9903999999805819ms
+Time for 'nx/core/project-json:createNodes' 0.9616000000096392
+Time for 'nx/core/package-json:createNodes' 3.7835999999952037
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 28.125400000019
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.157Z - Time taken for 'build-project-configs' 41.65020000000368ms
+Time for 'build typescript dependencies' 10.8295999999973
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.237Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.238Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.239Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.239Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:56:19.239Z - Time taken for 'total execution time for createProjectGraph()' 66.04790000000503ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:52.994Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:52.996Z - [WATCHER]: src/app/budgets/budgets.service.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:53.445Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.603Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.603Z - [REQUEST]: src/app/budgets/budgets.service.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.604Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.609Z - Time taken for 'hash changed files from watcher' 0.9940999999525957ms
+Time for 'nx/core/project-json:createNodes' 1.4530999999842606
+Time for 'nx/core/package-json:createNodes' 5.449099999968894
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 30.55950000003213
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.673Z - Time taken for 'build-project-configs' 48.99890000000596ms
+Time for 'build typescript dependencies' 16.509299999976065
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.800Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.801Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.806Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.807Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:58:54.807Z - Time taken for 'total execution time for createProjectGraph()' 94.14529999997467ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:03.533Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:03.539Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:04.640Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.756Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.756Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.756Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.760Z - Time taken for 'hash changed files from watcher' 1.0353999999933876ms
+Time for 'nx/core/project-json:createNodes' 1.1257999999797903
+Time for 'nx/core/package-json:createNodes' 3.6370999999926426
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 24.11069999996107
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.816Z - Time taken for 'build-project-configs' 42.80059999995865ms
+Time for 'build typescript dependencies' 18.458299999998417
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.925Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.925Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.927Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.927Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:06.927Z - Time taken for 'total execution time for createProjectGraph()' 86.50290000002133ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:14.609Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:14.611Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.015Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.016Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.016Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.017Z - Time taken for 'hash changed files from watcher' 0.497899999958463ms
+Time for 'nx/core/project-json:createNodes' 0.5822000000043772
+Time for 'nx/core/package-json:createNodes' 1.9011000000173226
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 8.941600000020117
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.038Z - Time taken for 'build-project-configs' 16.395299999974668ms
+Time for 'build typescript dependencies' 0.037699999986216426
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.071Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.071Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.071Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.071Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:21.071Z - Time taken for 'total execution time for createProjectGraph()' 22.6704000000027ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:53.977Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:53.977Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T10:59:54.501Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.382Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.382Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.382Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.386Z - Time taken for 'hash changed files from watcher' 0.6205000000190921ms
+Time for 'nx/core/project-json:createNodes' 0.828200000047218
+Time for 'nx/core/package-json:createNodes' 2.0547999999835156
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 10.186999999976251
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.408Z - Time taken for 'build-project-configs' 16.789400000008754ms
+Time for 'build typescript dependencies' 4.346300000033807
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.446Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.446Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.447Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.447Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:00:00.447Z - Time taken for 'total execution time for createProjectGraph()' 29.53030000004219ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:06.829Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:06.829Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:07.514Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.231Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.231Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.231Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.234Z - Time taken for 'hash changed files from watcher' 0.7755000001052395ms
+Time for 'nx/core/project-json:createNodes' 0.8416000000433996
+Time for 'nx/core/package-json:createNodes' 3.0239999999757856
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 17.44900000002235
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.269Z - Time taken for 'build-project-configs' 29.221000000019558ms
+Time for 'build typescript dependencies' 7.012699999962933
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.321Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.321Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.323Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.323Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:13.323Z - Time taken for 'total execution time for createProjectGraph()' 41.04470000008587ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:31.928Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:31.931Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:32.456Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.344Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.345Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.345Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.347Z - Time taken for 'hash changed files from watcher' 0.47340000001713634ms
+Time for 'nx/core/project-json:createNodes' 0.5450000000419095
+Time for 'nx/core/package-json:createNodes' 1.7308999999659136
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 10.822299999999814
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.369Z - Time taken for 'build-project-configs' 17.820199999958277ms
+Time for 'build typescript dependencies' 5.062799999956042
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.407Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.408Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.408Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.408Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:03:38.408Z - Time taken for 'total execution time for createProjectGraph()' 28.82999999995809ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:22.280Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:22.282Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:23.059Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.691Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.692Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.692Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.696Z - Time taken for 'hash changed files from watcher' 1.1468000001041219ms
+Time for 'nx/core/project-json:createNodes' 0.8919999999925494
+Time for 'nx/core/package-json:createNodes' 4.895699999993667
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 29.57880000001751
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.773Z - Time taken for 'build-project-configs' 63.29709999996703ms
+Time for 'build typescript dependencies' 9.778400000068359
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.864Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.864Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.865Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.866Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:28.866Z - Time taken for 'total execution time for createProjectGraph()' 71.90820000006352ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:49.899Z - [WATCHER]: src/app/budgets/modal/modal.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:49.900Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:50.528Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.300Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.300Z - [REQUEST]: src/app/budgets/modal/modal.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.300Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.302Z - Time taken for 'hash changed files from watcher' 0.36389999999664724ms
+Time for 'nx/core/project-json:createNodes' 0.3418999999994412
+Time for 'nx/core/package-json:createNodes' 1.1361000000033528
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 10.464700000011362
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.324Z - Time taken for 'build-project-configs' 16.873100000084378ms
+Time for 'build typescript dependencies' 4.964900000020862
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.364Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.365Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.365Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.365Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:06:56.365Z - Time taken for 'total execution time for createProjectGraph()' 31.589999999967404ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:34.652Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:34.654Z - [WATCHER]: src/app/budgets/budgets.service.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:35.022Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.056Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.056Z - [REQUEST]: src/app/budgets/budgets.service.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.056Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.060Z - Time taken for 'hash changed files from watcher' 0.7125000000232831ms
+Time for 'nx/core/project-json:createNodes' 0.8422000000718981
+Time for 'nx/core/package-json:createNodes' 2.3881000000983477
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 19.18530000001192
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.096Z - Time taken for 'build-project-configs' 31.125400000019ms
+Time for 'build typescript dependencies' 7.98050000006333
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.226Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.226Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.227Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.228Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:07:41.228Z - Time taken for 'total execution time for createProjectGraph()' 53.86960000009276ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:00.056Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:00.060Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:00.520Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.473Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.473Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.473Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.475Z - Time taken for 'hash changed files from watcher' 0.6853000000119209ms
+Time for 'nx/core/project-json:createNodes' 1.0635000000474975
+Time for 'nx/core/package-json:createNodes' 2.3071000000927597
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 9.130099999951199
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.495Z - Time taken for 'build-project-configs' 15.558799999998882ms
+Time for 'build typescript dependencies' 11.253200000035577
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.537Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.538Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.538Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.538Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:06.538Z - Time taken for 'total execution time for createProjectGraph()' 33.363400000031106ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:13.318Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:13.318Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:13.751Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.728Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.728Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.728Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.732Z - Time taken for 'hash changed files from watcher' 0.6757000000216067ms
+Time for 'nx/core/project-json:createNodes' 0.7729000000981614
+Time for 'nx/core/package-json:createNodes' 2.17339999997057
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 9.703900000080466
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.754Z - Time taken for 'build-project-configs' 17.576500000082888ms
+Time for 'build typescript dependencies' 4.793600000091828
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.791Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.791Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.792Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.792Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:08:19.792Z - Time taken for 'total execution time for createProjectGraph()' 29.991999999969266ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:29.977Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:29.978Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:30.413Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.391Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.391Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.391Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.395Z - Time taken for 'hash changed files from watcher' 0.9842999998945743ms
+Time for 'nx/core/project-json:createNodes' 1.0152000000234693
+Time for 'nx/core/package-json:createNodes' 2.5595999998040497
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 10.274299999931827
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.418Z - Time taken for 'build-project-configs' 18.058799999998882ms
+Time for 'build typescript dependencies' 4.51230000006035
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.453Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.454Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.455Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.455Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:09:36.455Z - Time taken for 'total execution time for createProjectGraph()' 27.063300000037998ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:04.639Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:04.639Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.040Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.040Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.040Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.042Z - Time taken for 'hash changed files from watcher' 0.5115999998524785ms
+Time for 'nx/core/project-json:createNodes' 0.4882000000216067
+Time for 'nx/core/package-json:createNodes' 2.397899999981746
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 10.346499999985099
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.064Z - Time taken for 'build-project-configs' 16.0722999998834ms
+Time for 'build typescript dependencies' 0.06920000002719462
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.097Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.097Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.098Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.098Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:11.098Z - Time taken for 'total execution time for createProjectGraph()' 25.535499999998137ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:15.402Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:15.402Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:15.835Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.810Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.810Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.810Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.812Z - Time taken for 'hash changed files from watcher' 0.7117999999318272ms
+Time for 'nx/core/project-json:createNodes' 0.9687999999150634
+Time for 'nx/core/package-json:createNodes' 2.2690000000875443
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 10.120900000212714
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.835Z - Time taken for 'build-project-configs' 18.48629999998957ms
+Time for 'build typescript dependencies' 4.85730000003241
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.878Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.878Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.879Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.879Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:21.879Z - Time taken for 'total execution time for createProjectGraph()' 31.8460999999661ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:53.682Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:53.683Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:11:54.287Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.090Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.090Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.090Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.094Z - Time taken for 'hash changed files from watcher' 0.5793000000994653ms
+Time for 'nx/core/project-json:createNodes' 0.9350000000558794
+Time for 'nx/core/package-json:createNodes' 2.5635999999940395
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 9.301399999996647
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.117Z - Time taken for 'build-project-configs' 18.356299999868497ms
+Time for 'build typescript dependencies' 5.560300000011921
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.159Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.160Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.161Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.161Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:00.161Z - Time taken for 'total execution time for createProjectGraph()' 33.702499999897555ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:48.795Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:48.795Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:49.207Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.207Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.207Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.207Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.209Z - Time taken for 'hash changed files from watcher' 0.49800000013783574ms
+Time for 'nx/core/project-json:createNodes' 0.7432999999728054
+Time for 'nx/core/package-json:createNodes' 1.8063999998848885
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 12.747000000206754
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.240Z - Time taken for 'build-project-configs' 23.604899999918416ms
+Time for 'build typescript dependencies' 11.01659999997355
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.320Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.321Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.323Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.323Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:12:55.323Z - Time taken for 'total execution time for createProjectGraph()' 59.72819999977946ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:05.227Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:05.227Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:05.705Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.639Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.639Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.639Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.642Z - Time taken for 'hash changed files from watcher' 0.5497000000905246ms
+Time for 'nx/core/project-json:createNodes' 0.7372999999206513
+Time for 'nx/core/package-json:createNodes' 1.979300000006333
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 16.80669999984093
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.675Z - Time taken for 'build-project-configs' 26.328299999935552ms
+Time for 'build typescript dependencies' 8.562700000125915
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.737Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.737Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.739Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.739Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:11.739Z - Time taken for 'total execution time for createProjectGraph()' 44.4749999998603ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:13.414Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:13.428Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:14.034Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.819Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.819Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.819Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.822Z - Time taken for 'hash changed files from watcher' 0.521900000050664ms
+Time for 'nx/core/project-json:createNodes' 0.6936999999452382
+Time for 'nx/core/package-json:createNodes' 1.8663999999407679
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 10.17409999994561
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.847Z - Time taken for 'build-project-configs' 19.406000000191852ms
+Time for 'build typescript dependencies' 5.291500000050291
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.887Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.887Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.888Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.888Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:13:19.888Z - Time taken for 'total execution time for createProjectGraph()' 29.472699999809265ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:07.289Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:07.291Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:07.721Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.704Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.704Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.704Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.706Z - Time taken for 'hash changed files from watcher' 0.4476999999023974ms
+Time for 'nx/core/project-json:createNodes' 0.5960999999660999
+Time for 'nx/core/package-json:createNodes' 1.9457000000402331
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 6.840300000039861
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.723Z - Time taken for 'build-project-configs' 13.01370000001043ms
+Time for 'build typescript dependencies' 4.529499999945983
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.758Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.758Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.758Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.758Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:15:13.759Z - Time taken for 'total execution time for createProjectGraph()' 25.468000000109896ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:03.231Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:03.239Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:03.616Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.642Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.642Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.642Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.648Z - Time taken for 'hash changed files from watcher' 1.0990000001620501ms
+Time for 'nx/core/project-json:createNodes' 1.5474999998696148
+Time for 'nx/core/package-json:createNodes' 5.864500000141561
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 31.86089999997057
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.705Z - Time taken for 'build-project-configs' 47.842599999858066ms
+Time for 'build typescript dependencies' 4.168199999956414
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.749Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.749Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.750Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.750Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:09.750Z - Time taken for 'total execution time for createProjectGraph()' 40.905900000128895ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:54.769Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:54.771Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:17:55.242Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.176Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.176Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.176Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.180Z - Time taken for 'hash changed files from watcher' 1.0696000000461936ms
+Time for 'nx/core/project-json:createNodes' 1.843699999852106
+Time for 'nx/core/package-json:createNodes' 5.1027999999932945
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 22.968000000109896
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.216Z - Time taken for 'build-project-configs' 32.249599999981ms
+Time for 'build typescript dependencies' 3.7709999999497086
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.254Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.255Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.255Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.255Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:01.256Z - Time taken for 'total execution time for createProjectGraph()' 29.432299999985844ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:06.820Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:06.822Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:07.253Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.230Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.231Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.231Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.239Z - Time taken for 'hash changed files from watcher' 2.8808999999891967ms
+Time for 'nx/core/project-json:createNodes' 3.510499999858439
+Time for 'nx/core/package-json:createNodes' 26.017800000030547
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 50.22509999992326
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.337Z - Time taken for 'build-project-configs' 81.18760000006296ms
+Time for 'build typescript dependencies' 26.139200000092387
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.578Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.580Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.585Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.585Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:18:13.586Z - Time taken for 'total execution time for createProjectGraph()' 169.54490000009537ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:12.011Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:12.011Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:12.433Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.421Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.421Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.421Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.423Z - Time taken for 'hash changed files from watcher' 0.5119999998714775ms
+Time for 'nx/core/project-json:createNodes' 0.5825000000186265
+Time for 'nx/core/package-json:createNodes' 1.8510999998543411
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 11.065799999982119
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.447Z - Time taken for 'build-project-configs' 18.53289999999106ms
+Time for 'build typescript dependencies' 5.4398000000510365
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.493Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.494Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.494Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.495Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.495Z - Time taken for 'total execution time for createProjectGraph()' 37.34429999999702ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.729Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:18.731Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:19.325Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.140Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.141Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.141Z - [REQUEST]: 
+Time for 'nx/core/project-json:createNodes' 0.946399999782443
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.163Z - Time taken for 'hash changed files from watcher' 2.6485999999567866ms
+Time for 'nx/core/package-json:createNodes' 5.740699999965727
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 41.63430000003427
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.249Z - Time taken for 'build-project-configs' 69.63069999986328ms
+Time for 'build typescript dependencies' 31.167399999918416
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.480Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.481Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.484Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.485Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:25.485Z - Time taken for 'total execution time for createProjectGraph()' 179.0193999998737ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:48.915Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:48.915Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:49.331Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:53.091Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:53.091Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:53.585Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.321Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.321Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.322Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.326Z - Time taken for 'hash changed files from watcher' 0.763899999903515ms
+Time for 'nx/core/project-json:createNodes' 0.6692999999504536
+Time for 'nx/core/package-json:createNodes' 2.712999999988824
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 17.83449999988079
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.364Z - Time taken for 'build-project-configs' 31.833999999798834ms
+Time for 'build typescript dependencies' 0.027200000127777457
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.412Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.413Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.414Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.414Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:19:55.414Z - Time taken for 'total execution time for createProjectGraph()' 36.52819999982603ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:46.496Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:46.497Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:52.905Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:52.905Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:52.905Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:52.908Z - Time taken for 'hash changed files from watcher' 0.8510999998543411ms
+Time for 'nx/core/project-json:createNodes' 1.0271999998949468
+Time for 'nx/core/package-json:createNodes' 2.436799999792129
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 21.48769999993965
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:52.952Z - Time taken for 'build-project-configs' 35.587300000013784ms
+Time for 'build typescript dependencies' 0.03619999997317791
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:53.009Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:53.009Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:53.010Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:53.010Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:20:53.010Z - Time taken for 'total execution time for createProjectGraph()' 44.19480000017211ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:19.361Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:19.361Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:19.856Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:23.492Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:23.493Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:24.080Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:25.767Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:25.768Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:25.768Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:25.780Z - Time taken for 'hash changed files from watcher' 1.0674000000581145ms
+Time for 'nx/core/project-json:createNodes' 1.3393999999389052
+Time for 'nx/core/package-json:createNodes' 9.518999999854714
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 40.694499999750406
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:25.859Z - Time taken for 'build-project-configs' 66.73930000001565ms
+Time for 'build typescript dependencies' 23.369399999734014
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:25.999Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:26.000Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:26.001Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:26.002Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:26.002Z - Time taken for 'total execution time for createProjectGraph()' 106.72440000018105ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:48.482Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:48.485Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:49.040Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:54.895Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:54.895Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:54.895Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:54.900Z - Time taken for 'hash changed files from watcher' 1.4544999999925494ms
+Time for 'nx/core/project-json:createNodes' 0.9776999996975064
+Time for 'nx/core/package-json:createNodes' 2.7689999998547137
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 23.652300000190735
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:54.951Z - Time taken for 'build-project-configs' 41.524299999699ms
+Time for 'build typescript dependencies' 9.486700000241399
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:55.038Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:55.038Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:55.040Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:55.040Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:29:55.041Z - Time taken for 'total execution time for createProjectGraph()' 69.59629999985918ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:03.031Z - [WATCHER]: src/app/budgets/budgets.component.html was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:03.032Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.440Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.440Z - [REQUEST]: src/app/budgets/budgets.component.html
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.440Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.442Z - Time taken for 'hash changed files from watcher' 0.6320000002160668ms
+Time for 'nx/core/project-json:createNodes' 0.5789000000804663
+Time for 'nx/core/package-json:createNodes' 1.9975000000558794
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 11.844399999827147
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.469Z - Time taken for 'build-project-configs' 21.287800000049174ms
+Time for 'build typescript dependencies' 5.032000000122935
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.518Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.519Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.520Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.520Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.520Z - Time taken for 'total execution time for createProjectGraph()' 37.51869999989867ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.596Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:09.598Z - [WATCHER]: src/app/budgets/budgets.component.html was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:10.060Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.014Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.014Z - [REQUEST]: src/app/budgets/budgets.component.html
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.014Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.017Z - Time taken for 'hash changed files from watcher' 0.7685000002384186ms
+Time for 'nx/core/project-json:createNodes' 0.46370000019669533
+Time for 'nx/core/package-json:createNodes' 1.7037999997846782
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 8.986899999901652
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.036Z - Time taken for 'build-project-configs' 14.764700000174344ms
+Time for 'build typescript dependencies' 3.8865000000223517
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.070Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.070Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.071Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.071Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:16.071Z - Time taken for 'total execution time for createProjectGraph()' 25.67739999992773ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:34.500Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:34.503Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:34.965Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:36.197Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:36.201Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:40.154Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:40.913Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:40.913Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:40.913Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:40.921Z - Time taken for 'hash changed files from watcher' 1.1167999999597669ms
+Time for 'nx/core/project-json:createNodes' 0.8995999996550381
+Time for 'nx/core/package-json:createNodes' 3.6729999999515712
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 33.790299999993294
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:40.996Z - Time taken for 'build-project-configs' 58.595499999821186ms
+Time for 'build typescript dependencies' 12.151899999938905
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:41.124Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:41.124Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:41.126Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:41.126Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:41.127Z - Time taken for 'total execution time for createProjectGraph()' 107.13690000027418ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:55.323Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:32:55.324Z - [WATCHER]: src/app/budgets/budgets.component.html was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.741Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.741Z - [REQUEST]: src/app/budgets/budgets.component.html
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.741Z - [REQUEST]: 
+Time for 'nx/core/project-json:createNodes' 0.6540999999269843
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.746Z - Time taken for 'hash changed files from watcher' 0.795099999755621ms
+Time for 'nx/core/package-json:createNodes' 1.8566000000573695
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 15.238400000147521
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.772Z - Time taken for 'build-project-configs' 23.05890000006184ms
+Time for 'build typescript dependencies' 5.055199999827892
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.817Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.817Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.818Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.818Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:33:01.819Z - Time taken for 'total execution time for createProjectGraph()' 35.89819999970496ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:04.904Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:04.917Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:05.468Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.321Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.321Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.321Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.323Z - Time taken for 'hash changed files from watcher' 0.6518000001087785ms
+Time for 'nx/core/project-json:createNodes' 0.3828000002540648
+Time for 'nx/core/package-json:createNodes' 1.9562999997287989
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 9.145000000018626
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.344Z - Time taken for 'build-project-configs' 15.656700000166893ms
+Time for 'build typescript dependencies' 4.1222999999299645
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.384Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.384Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.385Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.385Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:11.385Z - Time taken for 'total execution time for createProjectGraph()' 31.23769999993965ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:23.870Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:23.871Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:24.287Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:28.085Z - [WATCHER]: src/app/budgets/budgets.component.ts was modified
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:28.085Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:28.705Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.281Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.281Z - [REQUEST]: src/app/budgets/budgets.component.ts
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.281Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.285Z - Time taken for 'hash changed files from watcher' 1.120500000193715ms
+Time for 'nx/core/project-json:createNodes' 1.0838999999687076
+Time for 'nx/core/package-json:createNodes' 2.71460000006482
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 20.445299999788404
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.328Z - Time taken for 'build-project-configs' 34.663499999791384ms
+Time for 'build typescript dependencies' 13.3703000000678
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.424Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.425Z - [SYNC]: collect registered sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.426Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.426Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:34:30.427Z - Time taken for 'total execution time for createProjectGraph()' 73.98130000010133ms
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:37:02.801Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:37:02.805Z - [WATCHER]: Stopping the watcher for c:\frontendmentor\finance-new (sources)
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:37:02.805Z - [WATCHER]: Stopping the watcher for c:\frontendmentor\finance-new (sources)
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:37:02.806Z - [WATCHER]: Stopping the watcher for c:\frontendmentor\finance-new (outputs)
+[NX v21.4.1 Daemon Server] - 2025-09-04T11:37:02.808Z - Server stopped because: "Stopping the daemon the set of ignored files changed (native)"
