@@ -170,10 +170,18 @@ export class ModalComponent implements OnInit {
           .subscribe((budgets: Budget[]) => {
             this.filteredBudgets = budgets;
             this.initialBudgets = [...budgets];
+
+            // ✅ Redraw donut chart with new values
+            if (this.donutChart) {
+              const spentValues = this.filteredBudgets.map((b) => b.amount);
+              this.donutChart.updateChartData(
+                this.filteredBudgets,
+                spentValues
+              );
+            }
           });
 
         this.resetSelections();
-
         this.close();
       },
       (error) => {

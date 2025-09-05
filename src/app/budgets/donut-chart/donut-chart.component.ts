@@ -148,6 +148,17 @@ export class DonutChartComponent implements OnInit, AfterViewInit {
     }
   }
 
+  updateChartData(newBudgets: Budget[], newSpent: number[]) {
+    this.budgets = [...newBudgets];
+    this.spent = [...newSpent];
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    this.createChart();
+  }
+
   refresh() {
     setTimeout(() => {
       this.budgets = [...this.budgets];
