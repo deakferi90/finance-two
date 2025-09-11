@@ -218,34 +218,39 @@ export class ModalComponent implements OnInit {
       category: this.selectedCategory?.category,
       amount: this.selectedAmount,
       theme: this.selectedCategory?.theme,
+      color: this.selectedCategory?.color,
+      optional: false, // mark new budgets as non-optional
     };
-    this.modalService.addBudget(budgetData).subscribe((newBudget: Budget) => {
-      this.budgets = this.budgets.map((budget: { id: number }) =>
-        budget.id === newBudget.id ? { ...budget, ...newBudget } : budget
-      );
 
-      if (
-        !this.budgets.some(
-          (budget: { id: number }) => budget.id === newBudget.id
-        )
-      ) {
+    this.modalService.addBudget(budgetData).subscribe({
+      next: (newBudget: Budget | null) => {
+        if (!newBudget) {
+          console.error('Failed to add budget');
+          return;
+        }
+
+        // Add to local budgets array
         this.budgets = [...this.budgets, newBudget];
-      }
 
-      this.filteredBudgets = this.budgets.filter(
-        (budget: { optional: boolean }) => !budget.optional && budget.optional
-      );
+        // Update filtered budgets for chart (non-optional only)
+        this.filteredBudgets = this.budgets.filter(
+          (b: { optional: boolean }) => !b.optional
+        );
 
-      if (newBudget) {
+        // Recalculate and refresh chart
+        this.recalculateSpentValues();
+        this.refreshChart();
+
         this.budgetAdded.emit(newBudget);
-        this.toastr.success('Budget added successfully!');
         this.resetSelections();
         this.close();
-      } else {
-        this.toastr.error('Failed to add budget');
-      }
+        this.toastr.success('Budget added successfully!');
+        console.log('Budget added successfully:', newBudget);
+      },
+      error: (err) => {
+        console.error('Error adding budget:', err);
+      },
     });
-    this.close();
   }
 
   confirmDelete() {

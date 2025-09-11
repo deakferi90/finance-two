@@ -19,6 +19,7 @@ import { DonutChartComponent } from './donut-chart/donut-chart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 import { Chart } from 'chart.js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-budgets',
@@ -76,6 +77,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
 
   constructor(
     private cdr: ChangeDetectorRef,
+    private toastr: ToastrService,
     private budgetService: BudgetsService
   ) {}
 
@@ -263,6 +265,25 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
         this.cdr.detectChanges();
       },
       error: (err) => console.error('Error deleting budget:', err),
+    });
+  }
+
+  onAddBudget(budgetData: Budget) {
+    this.budgetService.addBudget(budgetData).subscribe({
+      next: (newBudget) => {
+        if (!newBudget) {
+          console.error('Failed to add budget');
+          return;
+        }
+
+        this.budgets = [...this.budgets, newBudget];
+
+        this.filteredBudgets = this.budgets.filter((b: any) => !b.optional);
+
+        this.recalculateSpentValues();
+        this.refreshChart();
+      },
+      error: (err) => console.error('Error adding budget:', err),
     });
   }
 

@@ -41,12 +41,8 @@ export class ModalService {
     );
   }
 
-  addBudget(newBudget: any): Observable<any> {
+  addBudget(newBudget: any): Observable<Budget | null> {
     return this.http.post<Budget>(`${this.apiUrl}`, newBudget).pipe(
-      map((budget) => {
-        this.localBudgets.push(budget);
-        return budget;
-      }),
       catchError((error) => {
         console.error('Error adding budget:', error);
         return of(null);

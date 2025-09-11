@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
+import { Budget } from './budgets.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -31,5 +32,9 @@ export class BudgetsService {
 
   deleteBudget(budgetId: number) {
     return this.http.delete(`${this.budgetsUrl}/${budgetId}`);
+  }
+
+  addBudget(budget: Budget) {
+    return this.http.post(`${this.budgetsUrl}`, budget);
   }
 }
