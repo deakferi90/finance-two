@@ -202,6 +202,7 @@
   [cancel]="cancel"
   [recalculateSpentValues]="recalculateSpentValues.bind(this)"
   (chartRedraw)="callCreateChart()"
+  [recalculateSpentValues]="loadBudgetData"
   (budgetAdded)="onBudgetAdded($event)"
   (closeModal)="closeModal()"
   (budgetUpdated)="onEditBudget($event.id, $event)"

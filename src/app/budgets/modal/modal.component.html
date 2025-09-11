@@ -33,17 +33,14 @@
         </ng-template>
         <i class="arrow" [class.open]="dropdownStates['category']">▼</i>
       </div>
-
       <div *ngIf="dropdownStates['category']" class="dropdown-list">
         <div
-          *ngFor="let option of budgets"
+          *ngFor="let option of uniqueCategories()"
           class="dropdown-item flex justify-between"
           (click)="
             !budgetColors[option.category] && selectOption('category', option)
           "
-          [ngClass]="{
-            'not-selectable': budgetColors[option.category]
-          }"
+          [ngClass]="{ 'not-selectable': budgetColors[option.category] }"
         >
           <div>{{ option.category }}</div>
           @if (budgetColors[option.category]) {

@@ -36,6 +36,7 @@ export class ModalComponent implements OnInit {
   @Input() selectedBudget!: any;
   @Input() loadDataBudget!: () => void;
   @Input() recalculateSpentValues!: () => void;
+  @Input() loadBudgetData!: () => void;
   @ViewChild(DonutChartComponent) donutChart!: DonutChartComponent;
   @Output() closeModal = new EventEmitter<void>();
   @Output() themeChanged = new EventEmitter<Budget>();
@@ -82,7 +83,25 @@ export class ModalComponent implements OnInit {
       .pipe(take(1))
       .subscribe((budgets: Budget[]) => {
         this.filteredBudgets = budgets;
+
+        // Rebuild budgetColors from existing budgets
+        this.budgetColors = {};
+        budgets.forEach((b) => {
+          if (!b.optional) {
+            // only non-optional budgets
+            this.budgetColors[b.category] = b.theme;
+          }
+        });
       });
+  }
+
+  uniqueCategories() {
+    const seen: { [key: string]: boolean } = {};
+    return this.budgets.filter((b: { category: string | number }) => {
+      if (seen[b.category]) return false;
+      seen[b.category] = true;
+      return true;
+    });
   }
 
   objectKeys(obj: any): string[] {
@@ -208,47 +227,75 @@ export class ModalComponent implements OnInit {
   }
 
   addBudget() {
-    const selAmount = document.querySelector(
+    const selAmountInput = document.querySelector(
       '.max-speed'
     ) as HTMLInputElement | null;
-    this.selectedAmount = selAmount?.value;
+    this.selectedAmount = selAmountInput?.value;
 
-    const budgetData = {
+    if (!this.selectedCategory) {
+      this.toastr.warning('Please select a category');
+      return;
+    }
+
+    const newBudget: Budget = {
       id: this.selectedCategory.id,
-      category: this.selectedCategory?.category,
-      amount: this.selectedAmount,
-      theme: this.selectedCategory?.theme,
-      color: this.selectedCategory?.color,
-      optional: false, // mark new budgets as non-optional
+      category: this.selectedCategory.category,
+      amount: Number(this.selectedAmount),
+      theme: this.selectedCategory.theme,
+      color: this.selectedCategory.color,
+      optional: false, // initially false
     };
 
-    this.modalService.addBudget(budgetData).subscribe({
-      next: (newBudget: Budget | null) => {
-        if (!newBudget) {
-          console.error('Failed to add budget');
-          return;
+    if (this.budgetColors[newBudget.category]) {
+      this.toastr.warning('This category is already in use!');
+      return;
+    }
+
+    this.modalService.addBudget(newBudget).subscribe({
+      next: (response: Budget | null) => {
+        if (!response) return;
+
+        // Update local budgets array
+        const existingIndex = this.budgets.findIndex(
+          (b: { id: number }) => b.id === response.id
+        );
+        if (existingIndex > -1) {
+          this.budgets[existingIndex] = response;
+        } else {
+          this.budgets.push(response);
         }
 
-        // Add to local budgets array
-        this.budgets = [...this.budgets, newBudget];
-
-        // Update filtered budgets for chart (non-optional only)
-        this.filteredBudgets = this.budgets.filter(
-          (b: { optional: boolean }) => !b.optional
+        // ✅ Set the newly added budget as optional
+        const addedBudgetIndex = this.budgets.findIndex(
+          (b: { id: number }) => b.id === response.id
         );
+        if (addedBudgetIndex > -1) {
+          this.budgets[addedBudgetIndex].optional = true;
+        }
 
-        // Recalculate and refresh chart
-        this.recalculateSpentValues();
-        this.refreshChart();
+        // Update budgetColors for dropdown greying
+        this.budgetColors[response.category] = response.theme;
 
-        this.budgetAdded.emit(newBudget);
+        // Refresh filtered budgets (non-optional only)
+        this.filteredBudgets = this.budgets.filter((b: Budget) => !b.optional);
+
+        // Emit updated budgets to parent (if needed)
+        this.budgetAdded.emit(this.budgets);
+
+        // Reset modal selections and close
         this.resetSelections();
         this.close();
+
+        // ✅ Update chart immediately
+        if (this.donutChart) {
+          this.donutChart.createChart();
+        }
+
         this.toastr.success('Budget added successfully!');
-        console.log('Budget added successfully:', newBudget);
       },
       error: (err) => {
         console.error('Error adding budget:', err);
+        this.toastr.error('Failed to add budget');
       },
     });
   }

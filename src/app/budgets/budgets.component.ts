@@ -43,14 +43,14 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   dotsUrl: string = 'assets/dots.png';
   progress: number = 50;
   totalAmount: number = 0;
-  spent!: number | number[];
+  spent: number[] = [];
+  spentValues: number[] = [];
   openDropDownIndex: number | null = null;
   progressBarHeight: string = '24px';
   transactions: Transaction[] = [];
   budgets: Budget[] | any = [];
   filteredBudgets: Budget[] = [];
   budgetData!: Budget;
-  spentValues: any;
   displaySpent: any;
   showAll = false;
   isModalVisible = false;
@@ -109,12 +109,15 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   openDeleteModal(budget: Budget) {
+    const budgetRef = this.budgets.find(
+      (b: { id: number }) => b.id === budget.id
+    );
     this.modalTitle = `Delete '${budget.category}'`;
-    this.modalContent = `Are you sure you want to delete this budget? This action cannot be reversed, and all data inside it will be removed forever.`;
+    this.modalContent = `Are you sure you want to delete this budget?`;
     this.isModalVisible = true;
     this.deleteMsg = 'Yes, Confirm Deletion';
     this.cancel = 'No, Go Back';
-    this.budgetData = budget;
+    this.budgetData = budgetRef;
   }
 
   closeModal() {
@@ -142,7 +145,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   onBudgetAdded(newBudget: Budget) {
-    this.budgets = [...this.budgets, newBudget];
+    this.filteredBudgets = [...this.budgets, newBudget];
     this.loadBudgetData();
     this.refreshChart();
   }
@@ -154,17 +157,15 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   calculateRemainingAmount(budget: Budget): number {
-    this.spent = this.calculateTotalSpent(budget);
-    return this.spent < 0 ? budget.amount - Math.abs(this.spent) : 0;
+    const spent = this.calculateTotalSpent(budget);
+    return spent < 0 ? budget.amount - Math.abs(spent) : 0;
   }
 
   calculateSpentPercentage(budget: Budget): number {
-    this.spent = this.calculateTotalSpent(budget);
-    const percentage =
-      budget.amount > 0 ? (this.spent / budget.amount) * 100 : 0;
+    const spent = this.calculateTotalSpent(budget);
+    const percentage = budget.amount > 0 ? (spent / budget.amount) * 100 : 0;
     return Math.min(percentage, 100);
   }
-
   toggleShowAll(category: string | null) {
     this.selectedCategory =
       this.selectedCategory === category ? null : category;
@@ -245,10 +246,8 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
 
   deleteBudget(budgetId: number) {
     console.log(this.budgets);
-    // Backend hívás (ha van)
     this.budgetService.deleteBudget(budgetId).subscribe({
       next: () => {
-        // 1️⃣ Távolítsd el a budgetet a helyi tömbből
         this.budgets = this.budgets.filter(
           (b: { id: number }) => b.id !== budgetId
         );
@@ -256,11 +255,8 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
           (b) => b.id !== budgetId
         );
 
-        // 2️⃣ Újraszámolás, chart frissítés
         this.recalculateSpentValues();
         this.refreshChart();
-
-        // 3️⃣ Modal bezárása
         this.isModalVisible = false;
         this.cdr.detectChanges();
       },
@@ -282,6 +278,9 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
 
         this.recalculateSpentValues();
         this.refreshChart();
+
+        this.isModalVisible = false;
+        this.cdr.detectChanges();
       },
       error: (err) => console.error('Error adding budget:', err),
     });
@@ -294,12 +293,15 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   recalculateSpentValues() {
-    this.spent = this.filteredBudgets.map((budget) =>
-      Math.abs(this.calculateTotalSpent(budget))
+    this.spent = this.filteredBudgets.map((b) =>
+      Math.abs(this.calculateTotalSpent(b))
     );
 
-    this.spentValues = [...this.spent];
-    this.cdr.detectChanges();
+    // Schedule update for next microtask
+    Promise.resolve().then(() => {
+      this.spentValues = [...this.spent];
+      this.cdr.detectChanges();
+    });
   }
 
   callCreateChart() {
