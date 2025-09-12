@@ -230,32 +230,29 @@ export class ModalComponent implements OnInit {
     const selAmountInput = document.querySelector(
       '.max-speed'
     ) as HTMLInputElement | null;
-    this.selectedAmount = selAmountInput?.value;
 
     if (!this.selectedCategory) {
       this.toastr.warning('Please select a category');
       return;
     }
 
+    const amountValue = selAmountInput?.value
+      ? Number(selAmountInput.value)
+      : 0;
+
     const newBudget: Budget = {
       id: this.selectedCategory.id,
       category: this.selectedCategory.category,
-      amount: Number(this.selectedAmount),
+      amount: amountValue,
       theme: this.selectedCategory.theme,
       color: this.selectedCategory.color,
-      optional: false, // initially false
+      optional: false,
     };
-
-    if (this.budgetColors[newBudget.category]) {
-      this.toastr.warning('This category is already in use!');
-      return;
-    }
 
     this.modalService.addBudget(newBudget).subscribe({
       next: (response: Budget | null) => {
         if (!response) return;
 
-        // Update local budgets array
         const existingIndex = this.budgets.findIndex(
           (b: { id: number }) => b.id === response.id
         );
@@ -265,28 +262,17 @@ export class ModalComponent implements OnInit {
           this.budgets.push(response);
         }
 
-        // ✅ Set the newly added budget as optional
-        const addedBudgetIndex = this.budgets.findIndex(
-          (b: { id: number }) => b.id === response.id
+        this.filteredBudgets = this.budgets.filter(
+          (b: { optional: boolean }) => !b.optional
         );
-        if (addedBudgetIndex > -1) {
-          this.budgets[addedBudgetIndex].optional = true;
-        }
 
-        // Update budgetColors for dropdown greying
         this.budgetColors[response.category] = response.theme;
 
-        // Refresh filtered budgets (non-optional only)
-        this.filteredBudgets = this.budgets.filter((b: Budget) => !b.optional);
+        this.budgetAdded.emit(response);
 
-        // Emit updated budgets to parent (if needed)
-        this.budgetAdded.emit(this.budgets);
-
-        // Reset modal selections and close
         this.resetSelections();
         this.close();
 
-        // ✅ Update chart immediately
         if (this.donutChart) {
           this.donutChart.createChart();
         }

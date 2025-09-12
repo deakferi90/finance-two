@@ -36,6 +36,7 @@ export class DonutChartComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() budgets: Budget[] = [];
   @Input() spent: number[] = [];
+  @Input() filteredBudgets: Budget[] = [];
   @Output() spentValues = new EventEmitter<number[]>();
   @Output() chartRedraw = new EventEmitter<void>();
 

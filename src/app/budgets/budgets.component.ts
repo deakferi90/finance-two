@@ -109,15 +109,13 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   openDeleteModal(budget: Budget) {
-    const budgetRef = this.budgets.find(
-      (b: { id: number }) => b.id === budget.id
-    );
     this.modalTitle = `Delete '${budget.category}'`;
     this.modalContent = `Are you sure you want to delete this budget?`;
-    this.isModalVisible = true;
     this.deleteMsg = 'Yes, Confirm Deletion';
     this.cancel = 'No, Go Back';
-    this.budgetData = budgetRef;
+
+    this.budgetData = budget;
+    this.isModalVisible = true;
   }
 
   closeModal() {
@@ -186,7 +184,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
       : filteredTransactions.slice(0, 3);
   }
 
-  handleValue(value: []) {
+  handleValue(value: number[]) {
     this.spentValues = value;
   }
 
@@ -245,7 +243,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   deleteBudget(budgetId: number) {
-    console.log(this.budgets);
     this.budgetService.deleteBudget(budgetId).subscribe({
       next: () => {
         this.budgets = this.budgets.filter(
@@ -257,10 +254,16 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
 
         this.recalculateSpentValues();
         this.refreshChart();
+
         this.isModalVisible = false;
         this.cdr.detectChanges();
+
+        this.toastr.success('Budget deleted successfully!');
       },
-      error: (err) => console.error('Error deleting budget:', err),
+      error: (err) => {
+        console.error('Error deleting budget:', err);
+        this.toastr.error('Failed to delete budget');
+      },
     });
   }
 
