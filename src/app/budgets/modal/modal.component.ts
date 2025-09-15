@@ -85,11 +85,9 @@ export class ModalComponent implements OnInit {
       .subscribe((budgets: Budget[]) => {
         this.filteredBudgets = budgets;
 
-        // Rebuild budgetColors from existing budgets
         this.budgetColors = {};
         budgets.forEach((b) => {
           if (!b.optional) {
-            // only non-optional budgets
             this.budgetColors[b.category] = b.theme;
           }
         });
@@ -155,13 +153,15 @@ export class ModalComponent implements OnInit {
   }
 
   allCategoriesWithStatus() {
-    return this.allCategories.map((cat) => {
-      const isUsed = this.budgets.some(
-        (b: { category: string; optional: any }) =>
-          b.category === cat.category && !b.optional
-      );
-      return { ...cat, alreadyUsed: isUsed };
-    });
+    return this.allCategories
+      .map((cat) => {
+        const isUsed = this.budgets.some(
+          (b: { category: string; optional: any }) =>
+            b.category === cat.category && !b.optional
+        );
+        return { ...cat, alreadyUsed: isUsed };
+      })
+      .sort((a, b) => a.id - b.id);
   }
 
   objectKeys(obj: any): string[] {
@@ -322,6 +322,8 @@ export class ModalComponent implements OnInit {
           this.budgets.push(response);
         }
 
+        this.budgets.sort((a: Budget, b: Budget) => a.id - b.id);
+
         this.filteredBudgets = this.budgets.filter(
           (b: { optional: boolean }) => !b.optional
         );
@@ -349,8 +351,6 @@ export class ModalComponent implements OnInit {
   confirmDelete() {
     if (this.selectedBudget) {
       this.budgetDeleted.emit(this.selectedBudget.id);
-
-      // remove the category from budgetColors so it becomes selectable
       if (this.budgetColors[this.selectedBudget.category]) {
         delete this.budgetColors[this.selectedBudget.category];
       }
