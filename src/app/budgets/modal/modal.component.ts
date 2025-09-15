@@ -47,6 +47,7 @@ export class ModalComponent implements OnInit {
   @Output() budgetDeleted = new EventEmitter<number>();
   maxSpeed: number = 0;
   initialBudgets: Budget[] = [];
+  allCategories: Budget[] = [];
 
   colorMapping: { [key: string]: string } = {
     '#277C78': 'Green',
@@ -93,15 +94,74 @@ export class ModalComponent implements OnInit {
           }
         });
       });
+    this.allCategories = [
+      {
+        id: 1,
+        category: 'Entertainment',
+        amount: 50.0,
+        theme: '#277C78',
+        color: 'Green',
+        optional: false,
+      },
+      {
+        id: 2,
+        category: 'Bills',
+        amount: 750.0,
+        theme: '#82C9D7',
+        color: 'Cyan',
+        optional: false,
+      },
+      {
+        id: 3,
+        category: 'Groceries',
+        amount: 110.0,
+        theme: '#426CD5',
+        color: 'Blue',
+        optional: true,
+      },
+      {
+        id: 4,
+        category: 'Dining Out',
+        amount: 75.0,
+        theme: '#F2CDAC',
+        color: 'Desert Sand',
+        optional: false,
+      },
+      {
+        id: 5,
+        category: 'Transportation',
+        amount: 110.0,
+        theme: '#FFA500b3',
+        color: 'Orange',
+        optional: true,
+      },
+      {
+        id: 6,
+        category: 'Personal Care',
+        amount: 100.0,
+        theme: '#626070',
+        color: 'Gray',
+        optional: false,
+      },
+      {
+        id: 7,
+        category: 'Education',
+        amount: 50.0,
+        theme: '#FFB6C1CC',
+        color: 'Pink',
+        optional: true,
+      },
+    ];
   }
 
   uniqueCategories() {
-    const seen: { [key: string]: boolean } = {};
-    return this.budgets.filter((b: { category: string | number }) => {
-      if (seen[b.category]) return false;
-      seen[b.category] = true;
-      return true;
-    });
+    return this.allCategories.filter(
+      (cat) =>
+        !this.budgets.some(
+          (b: { category: string; optional: any }) =>
+            b.category === cat.category && !b.optional
+        )
+    );
   }
 
   objectKeys(obj: any): string[] {
@@ -289,6 +349,11 @@ export class ModalComponent implements OnInit {
   confirmDelete() {
     if (this.selectedBudget) {
       this.budgetDeleted.emit(this.selectedBudget.id);
+
+      // remove the category from budgetColors so it becomes selectable
+      if (this.budgetColors[this.selectedBudget.category]) {
+        delete this.budgetColors[this.selectedBudget.category];
+      }
     }
     this.closeModal.emit();
   }
@@ -301,6 +366,5 @@ export class ModalComponent implements OnInit {
     this.selectedCategory = null;
     this.selectedAmount = null;
     this.selectedTheme = '';
-    this.selectedBudget = null;
   }
 }

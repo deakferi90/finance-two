@@ -242,15 +242,34 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
     );
   }
 
+  updateBudgetColors() {
+    this.budgetColors = {};
+
+    this.budgets.forEach((budget: any) => {
+      this.budgets[budget.category] = true;
+    });
+  }
+
   deleteBudget(budgetId: number) {
     this.budgetService.deleteBudget(budgetId).subscribe({
       next: () => {
+        const deletedBudget = this.budgets.find(
+          (b: { id: number }) => b.id === budgetId
+        );
+
+        // Remove from active budgets
         this.budgets = this.budgets.filter(
           (b: { id: number }) => b.id !== budgetId
         );
         this.filteredBudgets = this.filteredBudgets.filter(
           (b) => b.id !== budgetId
         );
+
+        if (deletedBudget) {
+          deletedBudget.optional = true;
+          this.budgets.push(deletedBudget);
+          delete this.budgetColors[deletedBudget.category];
+        }
 
         this.recalculateSpentValues();
         this.refreshChart();
@@ -300,7 +319,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
       Math.abs(this.calculateTotalSpent(b))
     );
 
-    // Schedule update for next microtask
     Promise.resolve().then(() => {
       this.spentValues = [...this.spent];
       this.cdr.detectChanges();
