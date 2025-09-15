@@ -189,20 +189,16 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   loadBudgetData() {
-    this.budgetService.getBudgetData().subscribe((data: any) => {
+    this.budgetService.getBudgetData().subscribe((data) => {
       if (Array.isArray(data.budgets) && data.budgets.length > 0) {
         this.budgets = data.budgets;
         this.transactions = data.transactions;
 
-        this.filteredBudgets = this.budgets
-          .filter((budget: any) => !budget.optional)
-          .sort(
-            (a: { optional: any }, b: { optional: any }) =>
-              Number(a.optional) - Number(b.optional)
-          );
+        this.filteredBudgets = this.budgets.filter(
+          (budget: Budget) => !budget.optional
+        );
 
         this.recalculateSpentValues();
-
         this.cdr.detectChanges();
       } else {
         console.error('Unexpected data format', data);
@@ -253,10 +249,12 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   deleteBudget(budgetId: number) {
     this.budgetService.deleteBudget(budgetId).subscribe({
       next: () => {
+        // Find the deleted budget
         const deletedBudget = this.budgets.find(
           (b: { id: number }) => b.id === budgetId
         );
 
+        // Remove it from budgets arrays
         this.budgets = this.budgets.filter(
           (b: { id: number }) => b.id !== budgetId
         );
@@ -264,11 +262,16 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
           (b) => b.id !== budgetId
         );
 
-        if (deletedBudget) {
-          deletedBudget.optional = true;
-          this.budgets.push(deletedBudget);
+        // Remove from budgetColors so it becomes selectable again
+        if (deletedBudget && this.budgetColors[deletedBudget.category]) {
           delete this.budgetColors[deletedBudget.category];
         }
+
+        // Re-sort budgets by id
+        this.budgets.sort((a: Budget, b: Budget) => a.id - b.id);
+        this.filteredBudgets = this.budgets.filter(
+          (b: { optional: boolean }) => !b.optional
+        );
 
         this.recalculateSpentValues();
         this.refreshChart();
@@ -284,7 +287,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
       },
     });
   }
-
   onAddBudget(budgetData: Budget) {
     this.budgetService.addBudget(budgetData).subscribe({
       next: (newBudget) => {
@@ -292,8 +294,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
           console.error('Failed to add budget');
           return;
         }
-
-        this.budgets = [...this.budgets, newBudget];
 
         this.filteredBudgets = this.budgets.filter((b: any) => !b.optional);
 
