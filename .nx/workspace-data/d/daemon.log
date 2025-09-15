@@ -8920,3 +8920,144 @@ Time for 'build typescript dependencies' 37.73739999999998
       at async c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:74:9
 [NX v21.4.1 Daemon Server] - 2025-09-15T09:40:14.683Z - Time taken for 'total execution time for createProjectGraph()' 73.42000000000007ms
 [NX v21.4.1 Daemon Server] - 2025-09-15T09:40:14.688Z - Done responding to the client null
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.109Z - Started listening on: \\.\pipe\nx\C:\Users\FERENC~1.DEA\AppData\Local\Temp\8b6185bf56f82f7097c4\d.sock
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.112Z - [WATCHER]: Subscribed to changes within: c:\frontendmentor\finance-new (native)
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.115Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.117Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.148Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.148Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.149Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.152Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.205Z - Time taken for 'loadSpecifiedNxPlugins' 2.5108999999999924ms
+Time for 'plugin worker 13172 code loading' 9.1353
+Time for 'plugin worker 27800 code loading' 9.617600000000003
+Time for 'plugin worker 15056 code loading' 8.168
+Time for 'plugin worker 23732 code loading' 8.854800000000004
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.395Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\adapter\angular-json' 240.31689999999998ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.571Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\package-json' 414.8773ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.574Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 418.7258ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.593Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.594Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.594Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.595Z - No files changed, but no in-memory cached project graph found. Recomputing it...
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.602Z - Time taken for 'loadDefaultNxPlugins' 440.20349999999996ms
+Time for 'nx-angular-json-plugin:createNodes' 1.293299999999988
+Time for 'nx/core/project-json:createNodes' 0.9021999999999935
+Time for 'nx/core/package-json:createNodes' 3.6953000000000316
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 8.494199999999978
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.643Z - Time taken for 'build-project-configs' 29.514600000000087ms
+Time for 'build typescript dependencies' 21.713000000000022
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.696Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json with errors
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.697Z - [REQUEST]: Responding to the client with an error. Error when preparing serialized project graph. Failed to process project graph.
+    MultipleProjectsWithSameNameError: The following projects are defined in multiple locations:
+  - personal-finance: 
+    - 
+    - .
+  
+  To fix this, set a unique name for each project in a project.json inside the project's root. If the project does not currently have a project.json, you can create one that contains only a name.
+      at validateAndNormalizeProjectRootMap (c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:468:15)
+      at mergeCreateNodesResults (c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:354:9)
+      at c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:298:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async processFilesAndCreateAndSerializeProjectGraph (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\project-graph-incremental-recomputation.js:165:43)
+      at async getCachedSerializedProjectGraphPromise (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\project-graph-incremental-recomputation.js:57:24)
+      at async handleRequestProjectGraph (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\handle-request-project-graph.js:12:24)
+      at async handleResult (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:188:14)
+      at async handleMessage (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:109:9)
+      at async c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:74:9
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.702Z - Time taken for 'total execution time for createProjectGraph()' 49.11570000000006ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:41:30.703Z - Done responding to the client null
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.507Z - Started listening on: \\.\pipe\nx\C:\Users\FERENC~1.DEA\AppData\Local\Temp\8b6185bf56f82f7097c4\d.sock
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.510Z - [WATCHER]: Subscribed to changes within: c:\frontendmentor\finance-new (native)
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.520Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.522Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.558Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.558Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.559Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.561Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.608Z - Time taken for 'loadSpecifiedNxPlugins' 2.4898000000000025ms
+Time for 'plugin worker 15624 code loading' 7.9940999999999995
+Time for 'plugin worker 25012 code loading' 8.375499999999999
+Time for 'plugin worker 19524 code loading' 8.355400000000003
+Time for 'plugin worker 23844 code loading' 8.3355
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.759Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\adapter\angular-json' 194.98999999999995ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.905Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\package-json' 340.90099999999995ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.915Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\js' 351.53780000000006ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.919Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.919Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.919Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.921Z - No files changed, but no in-memory cached project graph found. Recomputing it...
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.928Z - Time taken for 'loadDefaultNxPlugins' 356.39669999999995ms
+Time for 'nx-angular-json-plugin:createNodes' 1.8903999999999996
+Time for 'nx/core/project-json:createNodes' 1
+Time for 'nx/core/package-json:createNodes' 5.6351999999999975
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 11.764400000000023
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:10.988Z - Time taken for 'build-project-configs' 36.40129999999999ms
+Time for 'build typescript dependencies' 34.14749999999998
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:11.066Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json with errors
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:11.068Z - [REQUEST]: Responding to the client with an error. Error when preparing serialized project graph. Failed to process project graph.
+    MultipleProjectsWithSameNameError: The following projects are defined in multiple locations:
+  - personal-finance: 
+    - 
+    - .
+  
+  To fix this, set a unique name for each project in a project.json inside the project's root. If the project does not currently have a project.json, you can create one that contains only a name.
+      at validateAndNormalizeProjectRootMap (c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:468:15)
+      at mergeCreateNodesResults (c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:354:9)
+      at c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:298:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async processFilesAndCreateAndSerializeProjectGraph (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\project-graph-incremental-recomputation.js:165:43)
+      at async getCachedSerializedProjectGraphPromise (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\project-graph-incremental-recomputation.js:57:24)
+      at async handleRequestProjectGraph (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\handle-request-project-graph.js:12:24)
+      at async handleResult (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:188:14)
+      at async handleMessage (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:109:9)
+      at async c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:74:9
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:11.072Z - Time taken for 'total execution time for createProjectGraph()' 71.48079999999993ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:11.074Z - Done responding to the client null
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:51.978Z - Started listening on: \\.\pipe\nx\C:\Users\FERENC~1.DEA\AppData\Local\Temp\8b6185bf56f82f7097c4\d.sock
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:51.982Z - [WATCHER]: Subscribed to changes within: c:\frontendmentor\finance-new (native)
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:51.985Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:51.987Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.026Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.027Z - Closed a connection. Number of open connections: 0
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.028Z - Established a connection. Number of open connections: 1
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.032Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.097Z - Time taken for 'loadSpecifiedNxPlugins' 3.4073999999999955ms
+Time for 'plugin worker 25420 code loading' 9.565800000000003
+Time for 'plugin worker 14780 code loading' 10.684800000000003
+Time for 'plugin worker 8712 code loading' 12.114700000000006
+Time for 'plugin worker 28240 code loading' 11.182100000000005
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.332Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\adapter\angular-json' 296.45200000000006ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.552Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\package-json' 516.3544999999999ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.554Z - Time taken for 'Load Nx Plugin: c:\frontendmentor\finance-new\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 517.3333ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.580Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.580Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.580Z - [REQUEST]: 
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.582Z - No files changed, but no in-memory cached project graph found. Recomputing it...
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.590Z - Time taken for 'loadDefaultNxPlugins' 545.4263000000001ms
+Time for 'nx-angular-json-plugin:createNodes' 1.498199999999997
+Time for 'nx/core/project-json:createNodes' 1.3870999999999754
+Time for 'nx/core/package-json:createNodes' 7.70070000000004
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 13.74249999999995
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.666Z - Time taken for 'build-project-configs' 46.25060000000008ms
+Time for 'build typescript dependencies' 42.72220000000004
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.760Z - Wrote project graph cache to c:\frontendmentor\finance-new\.nx\workspace-data\project-graph.json with errors
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.762Z - [REQUEST]: Responding to the client with an error. Error when preparing serialized project graph. Failed to process project graph.
+    MultipleProjectsWithSameNameError: The following projects are defined in multiple locations:
+  - personal-finance: 
+    - 
+    - .
+  
+  To fix this, set a unique name for each project in a project.json inside the project's root. If the project does not currently have a project.json, you can create one that contains only a name.
+      at validateAndNormalizeProjectRootMap (c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:468:15)
+      at mergeCreateNodesResults (c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:354:9)
+      at c:\frontendmentor\finance-new\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:298:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async processFilesAndCreateAndSerializeProjectGraph (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\project-graph-incremental-recomputation.js:165:43)
+      at async getCachedSerializedProjectGraphPromise (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\project-graph-incremental-recomputation.js:57:24)
+      at async handleRequestProjectGraph (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\handle-request-project-graph.js:12:24)
+      at async handleResult (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:188:14)
+      at async handleMessage (c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:109:9)
+      at async c:\frontendmentor\finance-new\node_modules\nx\src\daemon\server\server.js:74:9
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.768Z - Time taken for 'total execution time for createProjectGraph()' 89.80790000000002ms
+[NX v21.4.1 Daemon Server] - 2025-09-15T09:43:52.769Z - Done responding to the client null

@@ -33,19 +33,16 @@
         </ng-template>
         <i class="arrow" [class.open]="dropdownStates['category']">▼</i>
       </div>
+
       <div *ngIf="dropdownStates['category']" class="dropdown-list">
         <div
-          *ngFor="let option of uniqueCategories()"
+          *ngFor="let option of allCategoriesWithStatus()"
           class="dropdown-item flex justify-between"
-          (click)="
-            !budgetColors[option.category] && selectOption('category', option)
-          "
-          [ngClass]="{ 'not-selectable': budgetColors[option.category] }"
+          (click)="!option.alreadyUsed && selectOption('category', option)"
+          [ngClass]="{ 'not-selectable': option.alreadyUsed }"
         >
           <div>{{ option.category }}</div>
-          @if (budgetColors[option.category]) {
-          <span>Already in use</span>
-          }
+          <span *ngIf="option.alreadyUsed">Already in use</span>
         </div>
       </div>
     </div>

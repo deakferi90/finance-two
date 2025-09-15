@@ -257,7 +257,6 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
           (b: { id: number }) => b.id === budgetId
         );
 
-        // Remove from active budgets
         this.budgets = this.budgets.filter(
           (b: { id: number }) => b.id !== budgetId
         );

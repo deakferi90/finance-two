@@ -154,14 +154,14 @@ export class ModalComponent implements OnInit {
     ];
   }
 
-  uniqueCategories() {
-    return this.allCategories.filter(
-      (cat) =>
-        !this.budgets.some(
-          (b: { category: string; optional: any }) =>
-            b.category === cat.category && !b.optional
-        )
-    );
+  allCategoriesWithStatus() {
+    return this.allCategories.map((cat) => {
+      const isUsed = this.budgets.some(
+        (b: { category: string; optional: any }) =>
+          b.category === cat.category && !b.optional
+      );
+      return { ...cat, alreadyUsed: isUsed };
+    });
   }
 
   objectKeys(obj: any): string[] {
