@@ -189,7 +189,6 @@ export class ModalComponent implements OnInit {
         (cat) => cat.category === option.category
       );
 
-      console.log(selectedCategoryOption);
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
         this.selectedAmount = selectedCategoryOption.amount;
