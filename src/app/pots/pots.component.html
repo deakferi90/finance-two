@@ -4,7 +4,7 @@
   </button>
 </div>
 <div class="pots-container">
-  @for (pot of pots; track pots) {
+  @for (pot of pots; track pot.id) {
   <div class="pot-box">
     <div class="theme-box">
       <div class="theme-content">
@@ -38,10 +38,16 @@
       <span class="saved-txt">Target of ${{ pot.target.toFixed(2) }}</span>
     </div>
     <div class="flex justify-between total-saved">
-      <button class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg">
+      <button
+        (click)="addMoney()"
+        class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg"
+      >
         +Add Money
       </button>
-      <button class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg">
+      <button
+        (click)="withDrawMoney()"
+        class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg"
+      >
         Withdraw
       </button>
     </div>

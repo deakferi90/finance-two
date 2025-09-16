@@ -65,7 +65,7 @@
             class="circle"
             [ngStyle]="{ backgroundColor: selectedTheme }"
           ></span>
-          {{ getColorName(selectedTheme) }}
+          {{ getColorName() }}
         </span>
         <span *ngIf="!selectedTheme">Select an option</span>
         <i class="arrow" [class.open]="dropdownStates['theme']">▼</i>
@@ -145,7 +145,7 @@
                 selectedBudget?.theme
             }"
           ></span>
-          {{ getColorName(selectedTheme) }}
+          {{ getColorName() }}
         </span>
         <div *ngIf="!selectedTheme && selectedBudget">
           <span

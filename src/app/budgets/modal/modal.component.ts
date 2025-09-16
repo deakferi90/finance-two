@@ -177,7 +177,7 @@ export class ModalComponent implements OnInit {
     });
   }
 
-  getColorName(theme: string): string {
+  getColorName(): string {
     return this.selectedColorName || '';
   }
 

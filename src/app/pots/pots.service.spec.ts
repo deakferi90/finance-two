@@ -1,16 +1,31 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PotsComponent } from './pots.component';
+import { ToastrService } from 'ngx-toastr';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { PotsService } from './pots.service';
+describe('PotsComponent', () => {
+  let component: PotsComponent;
+  let fixture: ComponentFixture<PotsComponent>;
 
-describe('PotsService', () => {
-  let service: PotsService;
+  const toastrServiceMock = {
+    success: jasmine.createSpy('success'),
+    error: jasmine.createSpy('error'),
+    warning: jasmine.createSpy('warning'),
+    info: jasmine.createSpy('info'),
+  };
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(PotsService);
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [PotsComponent, HttpClientTestingModule],
+      providers: [{ provide: ToastrService, useValue: toastrServiceMock }],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(PotsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });

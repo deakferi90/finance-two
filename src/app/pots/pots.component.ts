@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PotsService } from './pots.service';
 import { Pots } from './pots.interface';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -32,5 +31,13 @@ export class PotsComponent implements OnInit {
       this.pots = data[0]?.pots || [];
       console.log(this.pots);
     });
+  }
+
+  addMoney() {
+    console.log('moeny is being added');
+  }
+
+  withDrawMoney() {
+    console.log('money is withdrawing');
   }
 }
