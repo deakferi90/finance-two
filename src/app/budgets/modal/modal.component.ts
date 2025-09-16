@@ -71,6 +71,7 @@ export class ModalComponent implements OnInit {
   selectedTheme: string | undefined = '';
   newValue: Budget | object = {};
   filteredBudgets!: Budget[];
+  selectedColorName: string = '';
 
   constructor(
     private modalService: ModalService,
@@ -85,11 +86,9 @@ export class ModalComponent implements OnInit {
       .subscribe((budgets: Budget[]) => {
         this.filteredBudgets = budgets;
 
-        // Rebuild budgetColors from existing budgets
         this.budgetColors = {};
         budgets.forEach((b) => {
           if (!b.optional) {
-            // only non-optional budgets
             this.budgetColors[b.category] = b.theme;
           }
         });
@@ -179,27 +178,26 @@ export class ModalComponent implements OnInit {
   }
 
   getColorName(theme: string): string {
-    const selectedCategoryOption = this.budgets.find(
-      (budget: { theme: string }) => budget.theme === theme
-    );
-    return selectedCategoryOption ? selectedCategoryOption.color : '';
+    return this.selectedColorName || '';
   }
 
   selectOption(dropdown: string, option: any) {
     if (dropdown === 'category') {
       this.selectedCategory = option;
 
-      const selectedCategoryOption = this.budgets.find(
-        (budget: { category: any }) => budget.category === option.category
+      const selectedCategoryOption = this.allCategories.find(
+        (cat) => cat.category === option.category
       );
-      this.dropdownStates[dropdown] = option + 1;
 
+      console.log(selectedCategoryOption);
       if (selectedCategoryOption) {
         this.selectedTheme = selectedCategoryOption.theme;
         this.selectedAmount = selectedCategoryOption.amount;
+        this.selectedColorName = selectedCategoryOption.color;
       }
     } else if (dropdown === 'theme') {
       this.selectedTheme = option.theme;
+      this.selectedColorName = option.color;
     }
 
     this.dropdownStates[dropdown] = false;
@@ -350,7 +348,6 @@ export class ModalComponent implements OnInit {
     if (this.selectedBudget) {
       this.budgetDeleted.emit(this.selectedBudget.id);
 
-      // remove the category from budgetColors so it becomes selectable
       if (this.budgetColors[this.selectedBudget.category]) {
         delete this.budgetColors[this.selectedBudget.category];
       }

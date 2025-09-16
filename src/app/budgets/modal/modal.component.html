@@ -111,15 +111,16 @@
 
       <div *ngIf="dropdownStates['category']" class="dropdown-list">
         <div
-          *ngFor="let option of budgets"
+          *ngFor="let option of allCategoriesWithStatus()"
           class="dropdown-item flex justify-between"
-          (click)="selectOption('category', option)"
+          (click)="!option.alreadyUsed && selectOption('category', option)"
+          [ngClass]="{ 'not-selectable': option.alreadyUsed }"
         >
           <span>{{ option.category }}</span>
+          <span *ngIf="option.alreadyUsed">Already in use</span>
         </div>
       </div>
     </div>
-
     <span class="text-[#696868] mt-2">Maximum Spend</span>
     <div>
       <input
@@ -137,7 +138,12 @@
         <span *ngIf="selectedTheme" class="theme-selection">
           <span
             class="circle"
-            [ngStyle]="{ backgroundColor: selectedTheme }"
+            [ngStyle]="{
+              backgroundColor:
+                selectedTheme ||
+                selectedCategory?.theme ||
+                selectedBudget?.theme
+            }"
           ></span>
           {{ getColorName(selectedTheme) }}
         </span>
@@ -154,7 +160,6 @@
 
       <div *ngIf="dropdownStates['theme']" class="dropdown-list">
         <div
-          disabled="true"
           *ngFor="let option of budgets"
           class="dropdown-item flex justify-between"
           (click)="selectOption('theme', option)"
