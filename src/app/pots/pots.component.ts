@@ -28,8 +28,7 @@ export class PotsComponent implements OnInit {
 
   getPotsData() {
     this.potsService.getPots().subscribe((data) => {
-      this.pots = data[0]?.pots || [];
-      console.log(this.pots);
+      this.pots = data;
     });
   }
 

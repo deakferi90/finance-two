@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PotsService {
-  dataUrl = 'assets/data.json';
+  potsUrl = 'http://localhost:3000/api/pots';
   constructor(private http: HttpClient) {}
 
   getPots(): Observable<any[]> {
-    return this.http.get<Pots[]>(this.dataUrl);
+    return this.http.get<Pots[]>(this.potsUrl);
   }
 }
