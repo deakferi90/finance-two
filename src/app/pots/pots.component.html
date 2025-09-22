@@ -6,12 +6,43 @@
 <div class="pots-container">
   @for (pot of pots; track pot.id) {
   <div class="pot-box">
-    <div class="theme-box">
-      <div class="theme-content">
-        <div class="theme" [style.background-color]="pot.theme"></div>
-        <div class="name">{{ pot.name }}</div>
+    <div class="flex items-center justify-between text-[24px] p-5">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-6 h-6 rounded-full"
+          [style.background-color]="pot.theme"
+        ></div>
+        <div class="font-bold text-gray-800">{{ pot.name }}</div>
       </div>
-      <div class="dot-img-container"><img src="assets/dots.svg" /></div>
+      <div class="relative cursor-pointer hover:opacity-80">
+        <img
+          src="{{ dotsUrl }}"
+          #menuContainer
+          (click)="toggleMenu(pot.id)"
+          class="dots-img"
+          [src]="dotsUrl"
+          alt="dots"
+        />
+      </div>
+    </div>
+    <div class="list-items-container-parent relative">
+      <ul
+        *ngIf="openDropDownIndex === pot.id"
+        class="list-items-container w-fit p-[10px] bg-white border border-gray-300 rounded-[10px] absolute right-0 -top-5 z-[1]"
+      >
+        <li
+          (click)="openEditPotModal(pot)"
+          class="pb-2 border-b border-gainsboro hover:cursor-pointer"
+        >
+          Edit Pot
+        </li>
+        <li
+          (click)="openDeletePotModal(pot)"
+          class="text-[#C94736] pt-2 hover:cursor-pointer"
+        >
+          Delete Pot
+        </li>
+      </ul>
     </div>
     <div class="total-saved">
       <span class="saved-txt">Total saved</span>
@@ -40,13 +71,13 @@
     <div class="flex justify-between total-saved">
       <button
         (click)="addMoney()"
-        class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg"
+        class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg pad"
       >
         +Add Money
       </button>
       <button
         (click)="withDrawMoney()"
-        class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg"
+        class="bg-custom-off-white text-black py-2.5 px-12 rounded-lg pad"
       >
         Withdraw
       </button>
@@ -54,3 +85,9 @@
   </div>
   }
 </div>
+<app-potsmodal
+  (potDeleted)="deletePot($event)"
+  (closeModal)="closeModal()"
+  [isVisible]="isModalVisible"
+>
+</app-potsmodal>

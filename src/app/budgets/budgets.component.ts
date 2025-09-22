@@ -249,12 +249,10 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   deleteBudget(budgetId: number) {
     this.budgetService.deleteBudget(budgetId).subscribe({
       next: () => {
-        // Find the deleted budget
         const deletedBudget = this.budgets.find(
           (b: { id: number }) => b.id === budgetId
         );
 
-        // Remove it from budgets arrays
         this.budgets = this.budgets.filter(
           (b: { id: number }) => b.id !== budgetId
         );
@@ -262,12 +260,10 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
           (b) => b.id !== budgetId
         );
 
-        // Remove from budgetColors so it becomes selectable again
         if (deletedBudget && this.budgetColors[deletedBudget.category]) {
           delete this.budgetColors[deletedBudget.category];
         }
 
-        // Re-sort budgets by id
         this.budgets.sort((a: Budget, b: Budget) => a.id - b.id);
         this.filteredBudgets = this.budgets.filter(
           (b: { optional: boolean }) => !b.optional
