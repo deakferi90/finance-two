@@ -14,7 +14,7 @@ export class PotsService {
     return this.http.get<Pots[]>(this.potsUrl);
   }
 
-  deletePot(potId: number) {
+  deletePot(potId: number): Observable<any> {
     return this.http.delete(`${this.potsUrl}/${potId}`);
   }
 }

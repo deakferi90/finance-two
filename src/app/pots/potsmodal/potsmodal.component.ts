@@ -17,4 +17,8 @@ export class PotsmodalComponent {
   close() {
     this.closeModal.emit();
   }
+
+  onDelete() {
+    this.potDeleted.emit();
+  }
 }

@@ -9,11 +9,21 @@
         X
       </button>
     </div>
-    <p class="text-[#696868] mb-3">Asset Name</p>
+    <p class="text-[#696868] mb-3">
+      Are you sure you want to delete this pot? This action cannot be reversed,
+      and all the data inside it will be removed forever.
+    </p>
     <button
-      class="mt-[20px] w-[100%] py-[14px] bg-[#C94736] text-white rounded-lg"
+      class="mt-[5px] w-[100%] py-[14px] bg-[#C94736] text-white font-semibold rounded-lg"
+      (click)="onDelete()"
     >
-      Delete
+      Yes, Confirm Deletion
+    </button>
+    <button
+      class="mt-[5px] w-[100%] py-[14px] bg-transparent text-[#696868] rounded-lg"
+      (click)="close()"
+    >
+      No Go Back
     </button>
   </div>
 </div>

@@ -25,7 +25,6 @@ export class PotsComponent implements OnInit {
   @ViewChildren('menuContainer') menuContainers:
     | QueryList<ElementRef>
     | never[] = [];
-  pots: Pots[] = [];
   progressBarHeight: string = '12px';
   dotsUrl: string = 'assets/dots.png';
   openDropDownIndex: number | null = null;
@@ -33,6 +32,8 @@ export class PotsComponent implements OnInit {
   modalContent: string = '';
   isModalVisible: boolean = false;
   potsData!: Pots | object;
+  selectedPotId: number | null = null;
+  pots: (Pots & { animatedWidth?: string })[] = [];
 
   constructor(
     private potsService: PotsService,
@@ -44,15 +45,49 @@ export class PotsComponent implements OnInit {
     this.getPotsData();
   }
 
+  calculateBufferValue(pot: any): number {
+    return Math.min(((pot.current + (pot.buffer || 0)) / pot.total) * 100, 100);
+  }
+
   calculatePercentageWidth(pot: Pots): string {
     const percentage = (pot.total / pot.target) * 100;
     return percentage.toFixed(2) + '%';
   }
 
   getPotsData() {
-    this.potsService.getPots().subscribe((data) => {
-      this.pots = data;
+    this.potsService.getPots().subscribe((data: Pots[]) => {
+      this.pots = data.map((p) => ({
+        ...p,
+        animatedValue: 0,
+      }));
+
+      this.pots.forEach((pot) => {
+        const targetValue = this.calculatePercentageValue(pot);
+        this.animateProgress(pot, targetValue);
+      });
     });
+  }
+
+  calculatePercentageValue(pot: Pots): number {
+    if (!pot?.target || pot.target === 0) return 0;
+    return Math.min((pot.total / pot.target) * 100, 100);
+  }
+
+  private animateProgress(pot: Pots, target: number) {
+    let current = 0;
+
+    const step = () => {
+      current += 5;
+      pot.animatedValue = Math.min(current, target);
+
+      this.cdr.detectChanges();
+
+      if (current < target) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
   }
 
   addMoney() {
@@ -82,28 +117,30 @@ export class PotsComponent implements OnInit {
     this.potsData = pot;
   }
 
-  deletePot(potId: number) {
-    console.log(potId);
+  openDeletePotModal(potId: number) {
+    console.log('Opening modal for pot ID:', potId);
+    this.selectedPotId = potId;
+    this.isModalVisible = true;
   }
 
-  openDeletePotModal(potId: any) {
-    this.isModalVisible = true;
-    // this.potsService.deletePot(potId).subscribe({
-    //   next: () => {
-    //     const deletedPot = this.pots.find(
-    //       (b: { id: number }) => b.id === potId
-    //     );
-    //     this.pots = this.pots.filter((b: { id: number }) => b.id !== potId);
-    //     this.pots.sort((a: Pots, b: Pots) => a.id - b.id);
-    //     this.isModalVisible = true;
-    //     this.cdr.detectChanges();
-    //     this.toastr.success('Pot deleted successfully!');
-    //   },
-    //   error: (err) => {
-    //     console.error('Error deleting pot:', err);
-    //     this.toastr.error('Failed to delete pot');
-    //   },
-    // });
+  confirmDeletePot() {
+    if (!this.selectedPotId) {
+      console.error('Error: pot ID is undefined');
+      return;
+    }
+
+    this.potsService.deletePot(this.selectedPotId).subscribe({
+      next: () => {
+        this.pots = this.pots.filter((p) => p.id !== this.selectedPotId);
+        this.toastr.success('Pot deleted successfully!');
+        this.isModalVisible = false;
+        this.selectedPotId = null;
+      },
+      error: (err) => {
+        console.error('Error deleting pot:', err);
+        this.toastr.error('Failed to delete pot');
+      },
+    });
   }
 
   @HostListener('document:click', ['$event'])

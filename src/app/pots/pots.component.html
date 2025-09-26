@@ -37,7 +37,7 @@
           Edit Pot
         </li>
         <li
-          (click)="openDeletePotModal(pot)"
+          (click)="openDeletePotModal(pot.id)"
           class="text-[#C94736] pt-2 hover:cursor-pointer"
         >
           Delete Pot
@@ -48,20 +48,17 @@
       <span class="saved-txt">Total saved</span>
       <span class="saved-price">${{ pot.total.toFixed(2) }}</span>
     </div>
-    <div
+    <mat-progress-bar
+      mode="buffer"
       class="progress-bar-wrapper"
-      [ngStyle]="{ height: progressBarHeight, 'border-radius': '5px' }"
-    >
-      <div class="bg-custom-off-white"></div>
-      <div
-        class="progress-filled"
-        [ngStyle]="{
-          width: calculatePercentageWidth(pot),
-          backgroundColor: pot.theme,
-          'border-radius': '5px',
-        }"
-      ></div>
-    </div>
+      [style.--color]="pot.theme"
+      [value]="pot.animatedValue"
+      [ngStyle]="{
+        height: progressBarHeight,
+        'border-radius': '5px',
+        '--mdc-linear-progress-active-indicator-color': pot.theme
+      }"
+    ></mat-progress-bar>
     <div class="total-saved">
       <span class="saved-txt"
         >{{ ((pot.total / pot.target) * 100).toFixed(2) }}%</span
@@ -86,7 +83,7 @@
   }
 </div>
 <app-potsmodal
-  (potDeleted)="deletePot($event)"
+  (confirmDelete)="confirmDeletePot()"
   (closeModal)="closeModal()"
   [isVisible]="isModalVisible"
 >
