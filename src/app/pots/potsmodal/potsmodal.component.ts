@@ -10,8 +10,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PotsmodalComponent {
   @Input() isVisible: boolean = false;
+  @Input() selectedPotName: string = '';
   @Output() closeModal = new EventEmitter<void>();
-  @Output() potDeleted = new EventEmitter<number>();
+  @Output() confirmDelete = new EventEmitter<void>();
   constructor() {}
 
   close() {
@@ -19,6 +20,6 @@ export class PotsmodalComponent {
   }
 
   onDelete() {
-    this.potDeleted.emit();
+    this.confirmDelete.emit();
   }
 }

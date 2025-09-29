@@ -33,6 +33,7 @@ export class PotsComponent implements OnInit {
   isModalVisible: boolean = false;
   potsData!: Pots | object;
   selectedPotId: number | null = null;
+  selectedPotName: string = '';
   pots: (Pots & { animatedWidth?: string })[] = [];
 
   constructor(
@@ -55,9 +56,10 @@ export class PotsComponent implements OnInit {
   }
 
   getPotsData() {
-    this.potsService.getPots().subscribe((data: Pots[]) => {
+    this.potsService.getPots().subscribe((data: any[]) => {
       this.pots = data.map((p) => ({
         ...p,
+        id: p._id,
         animatedValue: 0,
       }));
 
@@ -117,9 +119,10 @@ export class PotsComponent implements OnInit {
     this.potsData = pot;
   }
 
-  openDeletePotModal(potId: number) {
-    console.log('Opening modal for pot ID:', potId);
-    this.selectedPotId = potId;
+  openDeletePotModal(pot: any) {
+    console.log('Opening modal for pot ID:', pot.name);
+    this.selectedPotId = pot._id;
+    this.selectedPotName = pot.name;
     this.isModalVisible = true;
   }
 
@@ -131,7 +134,11 @@ export class PotsComponent implements OnInit {
 
     this.potsService.deletePot(this.selectedPotId).subscribe({
       next: () => {
-        this.pots = this.pots.filter((p) => p.id !== this.selectedPotId);
+        const index = this.pots.findIndex((p) => p.id === this.selectedPotId);
+
+        if (index !== -1) {
+          this.pots.splice(index, 1);
+        }
         this.toastr.success('Pot deleted successfully!');
         this.isModalVisible = false;
         this.selectedPotId = null;

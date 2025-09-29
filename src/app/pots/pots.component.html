@@ -37,7 +37,7 @@
           Edit Pot
         </li>
         <li
-          (click)="openDeletePotModal(pot.id)"
+          (click)="openDeletePotModal(pot)"
           class="text-[#C94736] pt-2 hover:cursor-pointer"
         >
           Delete Pot
@@ -86,5 +86,6 @@
   (confirmDelete)="confirmDeletePot()"
   (closeModal)="closeModal()"
   [isVisible]="isModalVisible"
+  [selectedPotName]="selectedPotName"
 >
 </app-potsmodal>
