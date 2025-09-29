@@ -31,10 +31,11 @@ export class PotsComponent implements OnInit {
   modalTitle: string = '';
   modalContent: string = '';
   isModalVisible: boolean = false;
-  potsData!: Pots | object;
+  selectedPot!: Pots;
   selectedPotId: number | null = null;
   selectedPotName: string = '';
   pots: (Pots & { animatedWidth?: string })[] = [];
+  modalMode: 'edit' | 'delete' = 'delete';
 
   constructor(
     private potsService: PotsService,
@@ -112,17 +113,43 @@ export class PotsComponent implements OnInit {
     this.isModalVisible = false;
   }
 
-  openEditPotModal(pot: object) {
-    this.modalTitle = 'Edit Pot';
-    this.modalContent = `As your pot change, feel free to update your spending limits.`;
-    this.isModalVisible = false;
-    this.potsData = pot;
+  confirmEditPot(pot: any) {
+    if (!this.selectedPotId) {
+      console.error('Error: pot ID is undefined');
+      return;
+    }
+  }
+
+  onEditPot(updatedPot: Pots) {
+    if (!updatedPot._id) {
+      console.error('Error: Pot ID is missing');
+      return;
+    }
+
+    this.potsService.updatePot(updatedPot._id, updatedPot).subscribe({
+      next: () => {
+        this.getPotsData();
+        this.toastr.success('Pot updated successfully!');
+        this.closeModal();
+      },
+      error: (err) => {
+        console.error('Error updating pot:', err);
+        this.toastr.error('Failed to update pot');
+      },
+    });
+  }
+
+  openEditPotModal(pot: Pots) {
+    this.selectedPot = pot;
+    this.selectedPotName = pot.name;
+    this.isModalVisible = true;
+    this.modalMode = 'edit';
   }
 
   openDeletePotModal(pot: any) {
-    console.log('Opening modal for pot ID:', pot.name);
     this.selectedPotId = pot._id;
     this.selectedPotName = pot.name;
+    this.modalMode = 'delete';
     this.isModalVisible = true;
   }
 

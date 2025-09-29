@@ -85,7 +85,10 @@
 <app-potsmodal
   (confirmDelete)="confirmDeletePot()"
   (closeModal)="closeModal()"
+  (potUpdated)="onEditPot($event)"
+  [mode]="modalMode"
   [isVisible]="isModalVisible"
   [selectedPotName]="selectedPotName"
+  [selectedPot]="selectedPot"
 >
 </app-potsmodal>

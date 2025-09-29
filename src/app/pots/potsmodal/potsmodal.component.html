@@ -1,31 +1,111 @@
 <div *ngIf="isVisible" class="modal-overlay">
   <div class="modal-content">
     <div class="header">
-      <h1 class="font-sans font-bold text-[38px]">
-        Delete {{ selectedPotName }}
+      <h1 class="font-sans font-bold text-[28px]">
+        {{
+          mode === "delete"
+            ? "Delete '" + selectedPotName + "'"
+            : "Edit '" + selectedPotName + "'"
+        }}
       </h1>
       <button
         (click)="close()"
         class="w-[30px] h-[30px] rounded-full border border-[#696868] mt-0"
       >
-        X
+        ✕
       </button>
     </div>
-    <p class="text-[#696868] mb-3">
-      Are you sure you want to delete this pot? This action cannot be reversed,
-      and all the data inside it will be removed forever.
-    </p>
-    <button
-      class="mt-[5px] w-[100%] py-[14px] bg-[#C94736] text-white font-semibold rounded-lg"
-      (click)="onDelete()"
-    >
-      Yes, Confirm Deletion
-    </button>
-    <button
-      class="mt-[5px] w-[100%] py-[14px] bg-transparent text-[#696868] rounded-lg"
-      (click)="close()"
-    >
-      No Go Back
-    </button>
+
+    <ng-container *ngIf="mode === 'delete'">
+      <p class="text-[#696868] mb-3">
+        Are you sure you want to delete this pot? This action cannot be
+        reversed, and all the data inside it will be removed forever.
+      </p>
+
+      <button
+        class="mt-[5px] w-full py-[14px] bg-[#C94736] text-white font-semibold rounded-lg"
+        (click)="onDelete()"
+      >
+        Yes, Confirm Deletion
+      </button>
+
+      <button
+        class="mt-[5px] w-full py-[14px] bg-transparent text-[#696868] rounded-lg"
+        (click)="close()"
+      >
+        No, Go Back
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="mode === 'edit'">
+      <form>
+        <label class="block mb-2 font-semibold">Pot Name</label>
+        <input
+          type="text"
+          [(ngModel)]="editPot.name"
+          name="name"
+          placeholder="Enter pot name"
+          class="w-full p-2 border border-gray-300 rounded mb-3"
+        />
+        <label class="block mb-2 font-semibold">Target Amount</label>
+        <input
+          type="number"
+          [(ngModel)]="editPot.target"
+          name="target"
+          placeholder="Enter target amount"
+          class="w-full p-2 border border-gray-300 rounded mb-3"
+        />
+        <label class="block mb-2 font-semibold">Theme</label>
+        <div class="relative">
+          <div
+            class="border border-gray-300 rounded p-2 flex items-center justify-between cursor-pointer"
+            (click)="toggleThemeDropdown()"
+          >
+            <div class="flex items-center gap-2">
+              <span
+                class="w-5 h-5 rounded-full"
+                [style.background]="editPot.theme"
+              ></span>
+              <span>
+                {{ selectedThemeName }}
+              </span>
+            </div>
+            <span>▼</span>
+          </div>
+
+          <!-- Dropdown menu -->
+          <div
+            *ngIf="isThemeDropdownOpen"
+            class="absolute z-10 mt-1 w-full border border-gray-300 rounded bg-white"
+          >
+            <div
+              *ngFor="let theme of themes"
+              class="flex items-center justify-between p-2 cursor-pointer hover:bg-gray-100"
+              [ngClass]="{
+                'opacity-50 cursor-not-allowed': isThemeUsed(theme)
+              }"
+              (click)="!isThemeUsed(theme) && selectTheme(theme)"
+            >
+              <div class="flex items-center gap-2">
+                <span
+                  class="w-5 h-5 rounded-full"
+                  [style.background]="theme.value"
+                ></span>
+                <span>{{ theme.name }}</span>
+              </div>
+              <span *ngIf="isThemeUsed(theme)" class="text-sm text-red-500">
+                Already in use
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button
+        class="mt-[5px] w-full py-[14px] bg-[#000] text-white font-semibold rounded-lg"
+        (click)="onSave()"
+      >
+        Save Changes
+      </button>
+    </ng-container>
   </div>
 </div>
