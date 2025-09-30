@@ -44,7 +44,7 @@ export class PotsmodalComponent implements OnChanges {
     theme: '',
     themeColor: undefined,
     id: 0,
-    _id: 0,
+    _id: '0',
   };
 
   themes = [

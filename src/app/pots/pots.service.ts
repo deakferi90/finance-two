@@ -18,7 +18,7 @@ export class PotsService {
     return this.http.delete(`${this.potsUrl}/${potId}`);
   }
 
-  updatePot(id: number, selectedPot: Pots): Observable<any> {
+  updatePot(id: string, selectedPot: Pots): Observable<any> {
     return this.http.put(`${this.potsUrl}/${id}`, selectedPot);
   }
 }
