@@ -283,6 +283,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
       },
     });
   }
+
   onAddBudget(budgetData: Budget) {
     this.budgetService.addBudget(budgetData).subscribe({
       next: (newBudget) => {

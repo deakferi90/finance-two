@@ -35,7 +35,7 @@ export class PotsComponent implements OnInit {
   selectedPotId: number | null = null;
   selectedPotName: string = '';
   pots: (Pots & { animatedWidth?: string })[] = [];
-  modalMode: 'edit' | 'delete' = 'delete';
+  modalMode: 'edit' | 'delete' | 'add' = 'delete';
 
   constructor(
     private potsService: PotsService,
@@ -45,6 +45,21 @@ export class PotsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPotsData();
+  }
+
+  addPot() {
+    this.modalMode = 'add';
+    this.modalTitle = 'Add New Pot';
+    this.modalContent = `Create a pot to set savings targets. These can help keep you on track as you save for special purchases.`;
+    this.isModalVisible = true;
+  }
+
+  onAddNewPot(pot: Pots) {
+    this.potsService.addPot(pot).subscribe((newPot) => {
+      this.pots.push(newPot);
+      this.toastr.success('Pot added successfully!');
+      this.isModalVisible = false;
+    });
   }
 
   calculateBufferValue(pot: any): number {
@@ -80,7 +95,7 @@ export class PotsComponent implements OnInit {
     let current = 0;
 
     const step = () => {
-      current += 5;
+      current += 10;
       pot.animatedValue = Math.min(current, target);
 
       this.cdr.detectChanges();
@@ -111,13 +126,6 @@ export class PotsComponent implements OnInit {
 
   closeModal() {
     this.isModalVisible = false;
-  }
-
-  confirmEditPot(pot: any) {
-    if (!this.selectedPotId) {
-      console.error('Error: pot ID is undefined');
-      return;
-    }
   }
 
   onEditPot(updatedPot: Pots) {

@@ -5,7 +5,9 @@
         {{
           mode === "delete"
             ? "Delete '" + selectedPotName + "'"
-            : "Edit '" + selectedPotName + "'"
+            : mode === "edit"
+            ? "Edit '" + selectedPotName + "'"
+            : "Add new pot"
         }}
       </h1>
       <button
@@ -104,6 +106,69 @@
         (click)="onSave()"
       >
         Save Changes
+      </button>
+    </ng-container>
+    <ng-container *ngIf="mode === 'add'">
+      <form>
+        <label class="block mb-2 font-semibold">Pot Name</label>
+        <input
+          type="text"
+          [(ngModel)]="addPot.name"
+          name="name"
+          placeholder="Enter pot name"
+          class="w-full p-2 border border-gray-300 rounded mb-3"
+        />
+        <label class="block mb-2 font-semibold">Target Amount</label>
+        <input
+          type="number"
+          [(ngModel)]="addPot.target"
+          name="target"
+          placeholder="Enter target amount"
+          class="w-full p-2 border border-gray-300 rounded mb-3"
+        />
+        <label class="block mb-2 font-semibold">Theme</label>
+        <div class="relative">
+          <div
+            class="border border-gray-300 rounded p-2 flex items-center justify-between cursor-pointer"
+            (click)="toggleThemeDropdown()"
+          >
+            <div class="flex items-center gap-2">
+              <span
+                class="w-5 h-5 rounded-full"
+                [style.background]="addPot.theme"
+              ></span>
+              <span>
+                {{ selectedThemeName }}
+              </span>
+            </div>
+            <span>▼</span>
+          </div>
+
+          <div
+            *ngIf="isThemeDropdownOpen"
+            class="absolute z-10 mt-1 w-full border border-gray-300 rounded bg-white"
+          >
+            <div
+              *ngFor="let theme of addingNewThemes"
+              class="flex items-center justify-between p-2 cursor-pointer hover:bg-gray-100"
+              (click)="selectTheme(theme)"
+            >
+              <div class="flex items-center gap-2">
+                <span
+                  class="w-5 h-5 rounded-full"
+                  [style.background]="theme.value"
+                ></span>
+                <span>{{ theme.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button
+        class="mt-[5px] w-full py-[14px] bg-[#000] text-white font-semibold rounded-lg"
+        (click)="onAdd()"
+      >
+        Add Pot
       </button>
     </ng-container>
   </div>

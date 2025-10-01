@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pots } from './pots.interface';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +20,9 @@ export class PotsService {
 
   updatePot(id: string, selectedPot: Pots): Observable<any> {
     return this.http.put(`${this.potsUrl}/${id}`, selectedPot);
+  }
+
+  addPot(pot: Pots): Observable<Pots> {
+    return this.http.post<Pots>(this.potsUrl, pot);
   }
 }
