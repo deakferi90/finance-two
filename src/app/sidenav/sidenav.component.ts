@@ -77,7 +77,7 @@ export class SidenavComponent implements OnInit {
     },
     {
       id: 5,
-      label: 'Recurring bills',
+      label: 'Recurring Bills',
       imgUrl: 'assets/bills.svg',
       activeImgUrl: 'assets/bills-active.svg',
       link: 'recurring-bills',
