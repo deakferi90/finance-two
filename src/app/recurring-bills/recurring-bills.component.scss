@@ -1,0 +1,39 @@
+.bg-box {
+  width: 337px;
+  height: 190px;
+  background: #201f24;
+  color: #fff;
+  border-radius: 10px;
+  display: grid;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.bills-sum {
+  font-size: 32px;
+}
+
+.summary-box {
+  background-color: #fff;
+  width: 337px;
+  height: 204px;
+  margin-top: 24px;
+  border-radius: 10px;
+
+  p {
+    padding: 20px;
+    font-weight: 600;
+  }
+
+  .inner-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #69686826;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}
