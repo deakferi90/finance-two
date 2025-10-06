@@ -33,7 +33,9 @@ export class PotsmodalComponent implements OnInit, OnChanges {
   isThemeDropdownOpen = false;
 
   get selectedThemeName(): string {
-    const theme = this.themes.find((t) => t.value === this.editPot.theme);
+    const theme = this.addingNewThemes.find(
+      (t) => t.value === this.addPot.theme
+    );
     return theme ? theme.name : 'Select Theme';
   }
 
@@ -127,6 +129,10 @@ export class PotsmodalComponent implements OnInit, OnChanges {
     if (!this.addPot.theme) {
       this.addPot.theme = '#FFC0CB';
     }
+
+    this.addPot.themeColor = this.addPot.theme;
+
+    this.addPot.total = this.addPot.target / 2;
     this.addNewPot.emit(this.addPot);
   }
 

@@ -37,3 +37,37 @@
     }
   }
 }
+
+.input-container {
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: -25px;
+  }
+}
+
+.recurring-bills-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-left: 50px;
+
+  .input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 50px;
+
+    .first-inner-container,
+    .second-inner-container {
+      display: flex;
+      align-items: center;
+    }
+
+    input {
+      min-width: 320px;
+    }
+  }
+}

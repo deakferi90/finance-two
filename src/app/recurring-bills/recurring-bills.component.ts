@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { BillsService } from './bills.service';
 import { recurringBills } from './recurringBills.interface';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-recurring-bills',
   standalone: true,
-  imports: [],
+  imports: [MatSelectModule],
   templateUrl: './recurring-bills.component.html',
   styleUrl: './recurring-bills.component.scss',
 })

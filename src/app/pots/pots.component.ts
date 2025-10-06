@@ -57,6 +57,7 @@ export class PotsComponent implements OnInit {
   onAddNewPot(pot: Pots) {
     this.potsService.addPot(pot).subscribe((newPot) => {
       this.pots.push(newPot);
+      this.getPotsData();
       this.toastr.success('Pot added successfully!');
       this.isModalVisible = false;
     });
