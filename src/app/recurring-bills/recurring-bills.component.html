@@ -68,13 +68,18 @@
         <tbody>
           @for (bill of allBills; track bill._id) {
           <tr class="border-b border-gray-200">
-            <td class="py-4 flex items-center gap-2.5">
+            <td class="py-4 flex items-center gap-2.5 font-semibold">
               <img [src]="getAvatarUrl(bill.title)" />{{ bill.title }}
             </td>
-            <td class="py-4">
+            <td
+              class="py-4"
+              [ngStyle]="{
+                color: bill.status === 'ok' ? '#277C78' : '#696868'
+              }"
+            >
               {{ bill.dueDate }}
             </td>
-            <td class="py-4">${{ bill.amount.toFixed(2) }}</td>
+            <td class="py-4 font-semibold">${{ bill.amount.toFixed(2) }}</td>
           </tr>
           }
         </tbody>
