@@ -71,7 +71,9 @@
             <td class="py-4 flex items-center gap-2.5">
               <img [src]="getAvatarUrl(bill.title)" />{{ bill.title }}
             </td>
-            <td class="py-4">{{ bill.dueDate }}</td>
+            <td class="py-4">
+              {{ bill.dueDate }}
+            </td>
             <td class="py-4">${{ bill.amount }}</td>
           </tr>
           }
