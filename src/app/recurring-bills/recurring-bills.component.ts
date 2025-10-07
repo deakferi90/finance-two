@@ -16,6 +16,7 @@ export class RecurringBillsComponent implements OnInit {
   billsUrl: string = 'assets/recurring-bills.svg';
   allBills: recurringBills[] = [];
   sortOrder: 'latest' | 'oldest' = 'latest';
+  searchText: string = '';
 
   constructor(private billsService: BillsService) {}
 
@@ -28,8 +29,17 @@ export class RecurringBillsComponent implements OnInit {
     return match ? parseInt(match[0], 10) : 0;
   }
 
-  get sortedBills(): recurringBills[] {
-    return this.allBills.slice().sort((a, b) => {
+  filterTable(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.searchText = input.value;
+  }
+
+  get displayedBills(): recurringBills[] {
+    let filterTable = this.allBills.filter((bill) => {
+      return bill.title.toLowerCase().includes(this.searchText.toLowerCase());
+    });
+
+    return filterTable.slice().sort((a, b) => {
       const dayA = this.getDayFromDueDate(a.dueDate);
       const dayB = this.getDayFromDueDate(b.dueDate);
       return this.sortOrder === 'oldest' ? dayB - dayA : dayA - dayB;

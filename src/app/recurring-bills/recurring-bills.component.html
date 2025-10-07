@@ -28,6 +28,7 @@
       <div class="first-inner-container">
         <input
           id="filter"
+          (keyup)="filterTable($event)"
           type="text"
           placeholder="Search bills"
           class="input-el pl-5 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-color-icon-color cutom-width focus:border-icon-color"
@@ -46,9 +47,11 @@
           />
         </svg>
       </div>
-      <div class="second-inner-container">
-        <mat-label class="mr-5">Sort by</mat-label>
-        <mat-form-field appearance="fill">
+      <div
+        class="second-inner-container flex items-center gap-1 max-[1520px]:flex-col max-[1520px]:items-start"
+      >
+        <mat-label class="m-0">Sort by</mat-label>
+        <mat-form-field class="select-option" appearance="fill">
           <mat-select [(value)]="sortOrder" required>
             <mat-option value="oldest">Oldest</mat-option>
             <mat-option value="latest">Latest</mat-option>
@@ -66,7 +69,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (bill of sortedBills; track bill._id) {
+          @for (bill of displayedBills; track bill._id) {
           <tr class="border-b border-gray-200">
             <td class="py-4 font-semibold">
               <div class="flex items-center gap-3">
