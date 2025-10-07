@@ -15,11 +15,25 @@ export class RecurringBillsComponent implements OnInit {
   totalBills: number = 0;
   billsUrl: string = 'assets/recurring-bills.svg';
   allBills: recurringBills[] = [];
+  sortOrder: 'latest' | 'oldest' = 'latest';
 
   constructor(private billsService: BillsService) {}
 
   ngOnInit(): void {
     this.getTotalBillsPrice();
+  }
+
+  getDayFromDueDate(dueDate: string): number {
+    const match = dueDate.match(/\d+/);
+    return match ? parseInt(match[0], 10) : 0;
+  }
+
+  get sortedBills(): recurringBills[] {
+    return this.allBills.slice().sort((a, b) => {
+      const dayA = this.getDayFromDueDate(a.dueDate);
+      const dayB = this.getDayFromDueDate(b.dueDate);
+      return this.sortOrder === 'oldest' ? dayB - dayA : dayA - dayB;
+    });
   }
 
   getTotalBillsPrice() {

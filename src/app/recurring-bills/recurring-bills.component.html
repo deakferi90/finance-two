@@ -49,7 +49,7 @@
       <div class="second-inner-container">
         <mat-label class="mr-5">Sort by</mat-label>
         <mat-form-field appearance="fill">
-          <mat-select required value="latest">
+          <mat-select [(value)]="sortOrder" required>
             <mat-option value="oldest">Oldest</mat-option>
             <mat-option value="latest">Latest</mat-option>
           </mat-select>
@@ -66,7 +66,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (bill of allBills; track bill._id) {
+          @for (bill of sortedBills; track bill._id) {
           <tr class="border-b border-gray-200">
             <td class="py-4 font-semibold">
               <div class="flex items-center gap-3">
@@ -81,9 +81,9 @@
             >
               <span>{{ bill.dueDate }}</span>
               @if (bill.status === 'ok') {
-              <img src="assets/checkmark.svg" />
+              <img class="w-[16px] h-[16px]" src="assets/checkmark.svg" />
               } @else if (bill.status === 'bad') {
-              <img src="assets/warning.svg" />
+              <img class="w-[16px] h-[16px]" src="assets/warning.svg" />
               }
             </td>
             @if(bill.status === 'bad') {
