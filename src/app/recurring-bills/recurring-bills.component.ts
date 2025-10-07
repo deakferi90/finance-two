@@ -27,7 +27,6 @@ export class RecurringBillsComponent implements OnInit {
       .getBillsTotalValue()
       .subscribe((bills: recurringBills[]) => {
         this.allBills = bills;
-        console.log(this.allBills);
         this.totalBills = bills.reduce((prev, cur) => prev + cur.amount, 0);
       });
   }

@@ -68,18 +68,31 @@
         <tbody>
           @for (bill of allBills; track bill._id) {
           <tr class="border-b border-gray-200">
-            <td class="py-4 flex items-center gap-2.5 font-semibold">
-              <img [src]="getAvatarUrl(bill.title)" />{{ bill.title }}
+            <td class="py-4 font-semibold">
+              <div class="flex items-center gap-3">
+                <img [src]="getAvatarUrl(bill.title)" />{{ bill.title }}
+              </div>
             </td>
             <td
-              class="py-4"
+              class="py-4 flex items-center gap-1.5"
               [ngStyle]="{
                 color: bill.status === 'ok' ? '#277C78' : '#696868'
               }"
             >
-              {{ bill.dueDate }}
+              <span>{{ bill.dueDate }}</span>
+              @if (bill.status === 'ok') {
+              <img src="assets/checkmark.svg" />
+              } @else if (bill.status === 'bad') {
+              <img src="assets/warning.svg" />
+              }
             </td>
+            @if(bill.status === 'bad') {
+            <td class="py-4 font-semibold text-[#C94736]">
+              ${{ bill.amount.toFixed(2) }}
+            </td>
+            } @else {
             <td class="py-4 font-semibold">${{ bill.amount.toFixed(2) }}</td>
+            }
           </tr>
           }
         </tbody>
