@@ -8,9 +8,19 @@
   align-items: center;
   padding-left: 30px;
 
+  img {
+    display: block;
+  }
+
   @media screen and (max-width: 1360px) {
     width: 332px;
     height: 204px;
+  }
+
+  @media screen and (max-width: 720px) {
+    height: 118px;
+    display: flex;
+    gap: 15px;
   }
 }
 
