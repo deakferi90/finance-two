@@ -46,6 +46,10 @@ export class RecurringBillsComponent implements OnInit {
     });
   }
 
+  toggleSortOrder() {
+    this.sortOrder = this.sortOrder === 'oldest' ? 'latest' : 'oldest';
+  }
+
   getTotalBillsPrice() {
     this.billsService
       .getBillsTotalValue()

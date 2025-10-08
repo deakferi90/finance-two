@@ -47,9 +47,7 @@
           />
         </svg>
       </div>
-      <div
-        class="second-inner-container flex items-center gap-1 max-[1520px]:flex-col max-[1520px]:items-start"
-      >
+      <div class="second-inner-container flex items-center gap-1">
         <mat-label class="m-0">Sort by</mat-label>
         <mat-form-field class="select-option" appearance="fill">
           <mat-select [(value)]="sortOrder" required>
@@ -58,10 +56,17 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="img-container flex items-center gap-1">
+        <img
+          class="sort-table"
+          (click)="toggleSortOrder()"
+          src="assets/sort-icon.png"
+        />
+      </div>
     </div>
     <div class="table">
-      <table class="table-auto w-full border-collapse">
-        <thead class="border-b border-gray-200">
+      <table class="table-auto w-full border-collapse bg-width">
+        <thead class="border-b border-gray-200 table-head">
           <tr>
             <th class="py-4 text-left text-[#696868]">Bill Title</th>
             <th class="py-4 text-left text-[#696868]">Due Date</th>
@@ -96,6 +101,41 @@
             } @else {
             <td class="py-4 font-semibold">${{ bill.amount.toFixed(2) }}</td>
             }
+          </tr>
+          }
+        </tbody>
+      </table>
+      <table class="table-auto w-full border-collapse sm-width">
+        <thead></thead>
+        <tbody>
+          @for (bill of displayedBills; track bill._id) {
+          <tr class="border-b border-gray-200">
+            <td class="py-4 font-semibold">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-3">
+                  <img [src]="getAvatarUrl(bill.title)" />{{ bill.title }}
+                </div>
+                <div
+                  class="flex items-center gap-1.5"
+                  [ngStyle]="{
+                    color: bill.status === 'ok' ? '#277C78' : '#696868'
+                  }"
+                >
+                  <span>{{ bill.dueDate }}</span>
+                  @if (bill.status === 'ok') {
+                  <img class="w-[16px] h-[16px]" src="assets/checkmark.svg" />
+                  } @else if (bill.status === 'bad') {
+                  <img class="w-[16px] h-[16px]" src="assets/warning.svg" />
+                  }
+                </div>
+              </div>
+            </td>
+            <td
+              class="font-semibold"
+              [ngClass]="{ 'text-[#C94736]': bill.status === 'bad' }"
+            >
+              ${{ bill.amount.toFixed(2) }}
+            </td>
           </tr>
           }
         </tbody>
