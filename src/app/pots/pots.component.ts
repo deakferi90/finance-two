@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Input,
   OnInit,
   QueryList,
   ViewChildren,
@@ -36,6 +37,7 @@ export class PotsComponent implements OnInit {
   selectedPotName: string = '';
   pots: (Pots & { animatedWidth?: string })[] = [];
   modalMode: 'edit' | 'delete' | 'add' = 'delete';
+  @Input() showAddButton: boolean = true;
 
   constructor(
     private potsService: PotsService,

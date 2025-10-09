@@ -5,7 +5,6 @@
 .balance-info-container {
   padding: 20px;
   border-radius: 8px;
-  margin-top: 20px;
 }
 
 .balance-info-container h1 {
@@ -38,6 +37,15 @@
       margin-bottom: 10px;
       color: #000;
       font-weight: 600;
+    }
+  }
+
+  .box {
+    background-color: #201f24;
+
+    h1,
+    .current-value {
+      color: #fff;
     }
   }
 }

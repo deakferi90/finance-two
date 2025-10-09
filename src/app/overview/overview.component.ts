@@ -2,11 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { OverviewService } from './overview.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { PotsComponent } from '../pots/pots.component';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, PotsComponent],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
 })
@@ -17,7 +18,6 @@ export class OverviewComponent implements OnInit {
   constructor(private overviewService: OverviewService) {}
   ngOnInit(): void {
     this.displayData();
-    // this.handleOrientationChange();
   }
 
   // handleOrientationChange() {
