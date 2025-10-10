@@ -3,6 +3,9 @@ import { OverviewService } from './overview.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PotsComponent } from '../pots/pots.component';
+import { PotsSharedService } from '../shared/pots-shared.service';
+import { Pots } from '../pots/pots.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-overview',
@@ -13,20 +16,27 @@ import { PotsComponent } from '../pots/pots.component';
 })
 export class OverviewComponent implements OnInit {
   @Input() showFiller: 'open' | 'closed' = 'closed';
+  moneyBag: string = 'assets/money-bag.png';
   isPortrait = window.matchMedia('(orientation: portrait)').matches;
+
   balance: any = {};
-  constructor(private overviewService: OverviewService) {}
+
+  // ✅ Use Observables instead of local variables
+  totalSaved$!: Observable<number>;
+  totalPots$!: Observable<Pots[]>;
+
+  constructor(
+    private overviewService: OverviewService,
+    private sharedService: PotsSharedService
+  ) {}
+
   ngOnInit(): void {
     this.displayData();
+
+    // ✅ Assign observables directly (no subscribe)
+    this.totalSaved$ = this.sharedService.totalSaved$;
+    this.totalPots$ = this.sharedService.totalPotsData$;
   }
-
-  // handleOrientationChange() {
-  //   const contentContainer = document.querySelector('.content-container');
-
-  //   // if (window.matchMedia('(orientation: portrait)').matches) {
-  //   //   contentContainer?.classList.remove('shifted');
-  //   // }
-  // }
 
   displayData() {
     this.overviewService

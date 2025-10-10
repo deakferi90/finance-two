@@ -1,30 +1,79 @@
 <div class="balance-info-container">
   <div
     [ngClass]="{
-       'balance-info-prices': showFiller === 'closed',
-      'balance-info-prices-sm': showFiller === 'open' && !isPortrait,
+      'balance-info-prices': showFiller === 'closed',
+      'balance-info-prices-sm': showFiller === 'open' && !isPortrait
     }"
   >
     <div class="parent-container box">
       <h1 class="color-black">Current Balance</h1>
       <div class="current-value">
-        {{ this.balance.current | currency : "USD" : "symbol" : "1.2-2" }}
+        {{ balance.current | currency : "USD" : "symbol" : "1.2-2" }}
       </div>
     </div>
+
     <div class="parent-container">
       <h1>Income</h1>
       <div class="current-value">
-        {{ this.balance.income | currency : "USD" : "symbol" : "1.2-2" }}
+        {{ balance.income | currency : "USD" : "symbol" : "1.2-2" }}
       </div>
     </div>
+
     <div class="parent-container">
       <h1>Expenses</h1>
       <div class="current-value">
-        {{ this.balance.expenses | currency : "USD" : "symbol" : "1.2-2" }}
+        {{ balance.expenses | currency : "USD" : "symbol" : "1.2-2" }}
       </div>
     </div>
   </div>
+
   <div class="pt-8">
-    <app-pots [showAddButton]="false"></app-pots>
+    <app-pots
+      [showAddButton]="false"
+      [showPotsBox]="false"
+      [totalSaved]="totalSaved$ | async"
+      [displayPots]="(totalPots$ | async) ?? []"
+    ></app-pots>
+
+    <div class="bg-[#fff] w-1/2 mt-5 p-5 pb-0 rounded-2xl">
+      <div class="text-[#201F24] flex justify-between">
+        <div class="text-[20px] font-bold">Pots</div>
+        <div class="text-[#696868] flex items-center gap-[12px]">
+          See Details<img
+            src="assets/arrow-right.png"
+            alt="Logo"
+            class="img-logo"
+          />
+        </div>
+      </div>
+      <div class="flex gap-[25px] py-5">
+        <div
+          class="bg-[#F8F4F0] rounded-md h-[110px] w-[247px] flex items-center justify-start gap-[10px] pl-5"
+        >
+          <div>
+            <img src="{{ moneyBag }}" />
+          </div>
+          <div>
+            <h4 class="text-[#696868]">Total Saved</h4>
+            <div class="text-3xl font-bold">${{ totalSaved$ | async }}</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-[12px]">
+          @if (totalPots$ | async; as pots) { @for (pot of (pots.slice(0, 4));
+          track pot._id) {
+          <div class="flex">
+            <div
+              class="h-[48px] w-[5px] rounded-2xl mr-[30px]"
+              [style.background-color]="pot.theme"
+            ></div>
+            <div>
+              <div class="text-[#696868]">{{ pot.name }}</div>
+              <div class="font-bold">${{ pot.total }}</div>
+            </div>
+          </div>
+          } }
+        </div>
+      </div>
+    </div>
   </div>
 </div>

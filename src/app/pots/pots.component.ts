@@ -14,6 +14,7 @@ import { PotsmodalComponent } from './potsmodal/potsmodal.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { PotsSharedService } from '../shared/pots-shared.service';
 
 @Component({
   selector: 'app-pots',
@@ -38,11 +39,15 @@ export class PotsComponent implements OnInit {
   pots: (Pots & { animatedWidth?: string })[] = [];
   modalMode: 'edit' | 'delete' | 'add' = 'delete';
   @Input() showAddButton: boolean = true;
+  @Input() showPotsBox: boolean = true;
+  @Input() displayPots: Pots[] = [];
+  @Input() totalSaved: any = 0;
 
   constructor(
     private potsService: PotsService,
     private cdr: ChangeDetectorRef,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private potsSharedService: PotsSharedService
   ) {}
 
   ngOnInit(): void {
@@ -86,6 +91,9 @@ export class PotsComponent implements OnInit {
         const targetValue = this.calculatePercentageValue(pot);
         this.animateProgress(pot, targetValue);
       });
+      this.totalSaved = this.pots.reduce((sum, pot) => sum + pot.total, 0);
+      this.potsSharedService.sendTotalSaved(this.totalSaved);
+      this.potsSharedService.sendTotalPots(this.pots);
     });
   }
 

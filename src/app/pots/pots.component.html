@@ -9,7 +9,7 @@
   }
 </div>
 <div class="pots-container">
-  @for (pot of pots; track pot._id) {
+  @for (pot of pots; track pot._id) { @if(showPotsBox) {
   <div class="pot-box">
     <div class="flex items-center justify-between text-[24px] p-5">
       <div class="flex items-center gap-3">
@@ -71,7 +71,7 @@
       <span class="saved-txt">Target of ${{ pot.target.toFixed(2) }}</span>
     </div>
   </div>
-  }
+  } }
 </div>
 <app-potsmodal
   (confirmDelete)="confirmDeletePot()"
