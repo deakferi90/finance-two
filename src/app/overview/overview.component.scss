@@ -54,6 +54,16 @@
   display: none;
 }
 
+.zindex {
+  z-index: 1;
+}
+
+@media screen and (max-width: 1280px) {
+  .custom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 1225px) {
   .balance-info-prices-sm {
     display: flex;
@@ -68,6 +78,14 @@
   }
 }
 
+@media screen and (max-width: 1100px) {
+  .balance-info-container {
+    app-donut-chart {
+      overflow-x: visible !important;
+    }
+  }
+}
+
 @media screen and (max-width: 992px) {
   .content-container .shifted {
     margin-left: auto !important;
@@ -75,6 +93,10 @@
 
   .parent-container {
     margin-bottom: 0px;
+  }
+
+  .custom-box-pots {
+    width: 100%;
   }
 }
 

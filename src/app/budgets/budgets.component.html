@@ -1,10 +1,12 @@
 <div class="text-right mt-[-50px]">
+  @if (showAddButton) {
   <button
     (click)="addBudget()"
     class="add-budget p-[14px] color-[#fff] bg-black hover:bg-gray-800"
   >
     +Add New Budget
   </button>
+  }
 </div>
 <div class="budget-parent-container flex flex-row gap-5">
   <div class="parent-container my-class w-2/5 h-3/5">
@@ -17,9 +19,9 @@
       (spentValues)="handleValue($event)"
       (chartRedraw)="callCreateChart()"
     ></app-donut-chart>
-    }
+    } @if (showAddButton) {
     <h1 class="font-bold text-2xl pb-[15px]">Spending Summary</h1>
-
+    }
     <div *ngFor="let budget of filteredBudgets; let i = index">
       <div class="summary pt-[15px] pb-[15px] px-0 border-b border-[#f2f2f2]">
         <div class="flex items-center gap-4">
@@ -40,14 +42,16 @@
           <div class="font-bold text-lg">
             ${{ spentValues[i] ? spentValues[i] : "0.00" }}
           </div>
+          @if (showAddButton) {
           <div class="text-[gray]">
             of ${{ budget.amount ? budget.amount : "0.00" }}
           </div>
+          }
         </div>
       </div>
     </div>
   </div>
-
+  @if (showAddButton) {
   <div class="budgets-container-parent w-3/5">
     <div
       *ngFor="let budget of filteredBudgets; let i = index"
@@ -190,6 +194,7 @@
       </div>
     </div>
   </div>
+  }
 </div>
 <app-modal
   [isVisible]="isModalVisible"

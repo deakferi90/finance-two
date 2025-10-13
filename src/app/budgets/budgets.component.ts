@@ -9,6 +9,7 @@ import {
   QueryList,
   ViewChildren,
   OnChanges,
+  Input,
 } from '@angular/core';
 import { BudgetsService } from './budgets.service';
 import { Budget } from './budgets.interface';
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 import { Chart } from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
+import { PotsSharedService } from '../shared/pots-shared.service';
 
 @Component({
   selector: 'app-budgets',
@@ -39,6 +41,9 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
     | QueryList<ElementRef>
     | never[] = [];
   @ViewChild(DonutChartComponent) donutChart!: DonutChartComponent;
+  @Input() showBudgets!: boolean;
+  @Input() showAddButton: boolean = true;
+  @Input() showBudgetsList!: boolean;
   chart!: Chart;
   dotsUrl: string = 'assets/dots.png';
   progress: number = 50;
@@ -78,7 +83,8 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(
     private cdr: ChangeDetectorRef,
     private toastr: ToastrService,
-    private budgetService: BudgetsService
+    private budgetService: BudgetsService,
+    private potsSharedService: PotsSharedService
   ) {}
 
   ngOnInit(): void {
@@ -204,6 +210,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
         console.error('Unexpected data format', data);
       }
     });
+    this.potsSharedService.sendBudgets(this.filteredBudgets);
   }
 
   onEditBudget(budgetId: number | string, updatedData: Partial<Budget>) {

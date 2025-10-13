@@ -3,6 +3,7 @@ import { OverviewService } from './overview.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PotsComponent } from '../pots/pots.component';
+import { BudgetsComponent } from '../budgets/budgets.component';
 import { PotsSharedService } from '../shared/pots-shared.service';
 import { Pots } from '../pots/pots.interface';
 import { Observable } from 'rxjs';
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, PotsComponent],
+  imports: [CommonModule, HttpClientModule, PotsComponent, BudgetsComponent],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
 })

@@ -35,7 +35,7 @@
       [displayPots]="(totalPots$ | async) ?? []"
     ></app-pots>
 
-    <div class="bg-[#fff] w-1/2 mt-5 p-5 pb-0 rounded-2xl">
+    <div class="bg-[#fff] w-3/5 mt-5 p-5 pb-0 rounded-2xl custom-box-pots">
       <div class="text-[#201F24] flex justify-between">
         <div class="text-[20px] font-bold">Pots</div>
         <div class="text-[#696868] flex items-center gap-[12px]">
@@ -46,7 +46,7 @@
           />
         </div>
       </div>
-      <div class="flex gap-[25px] py-5">
+      <div class="flex gap-[25px] py-2.5">
         <div
           class="bg-[#F8F4F0] rounded-md h-[110px] w-[247px] flex items-center justify-start gap-[10px] pl-5"
         >
@@ -58,9 +58,9 @@
             <div class="text-3xl font-bold">${{ totalSaved$ | async }}</div>
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-[12px]">
-          @if (totalPots$ | async; as pots) { @for (pot of (pots.slice(0, 4));
-          track pot._id) {
+        <div class="grid grid-cols-2 gap-[12px] custom-grid">
+          @if (totalPots$ | async; as pots) { @for (pot of pots; track pot._id)
+          {
           <div class="flex">
             <div
               class="h-[48px] w-[5px] rounded-2xl mr-[30px]"
@@ -73,6 +73,25 @@
           </div>
           } }
         </div>
+      </div>
+    </div>
+    <div class="bg-[#fff] w-2/5 mt-5 p-5 pb-0 rounded-2xl custom-box-pots">
+      <div class="text-[#201F24] flex justify-between">
+        <div class="text-[20px] font-bold zindex">Budgets</div>
+        <div class="text-[#696868] flex items-center gap-[12px]">
+          See Details<img
+            src="assets/arrow-right.png"
+            alt="Logo"
+            class="img-logo"
+          />
+        </div>
+      </div>
+      <div class="budgets-container-overview">
+        <app-budgets
+          class="budgets-cl"
+          [showAddButton]="false"
+          [showBudgetsList]="false"
+        ></app-budgets>
       </div>
     </div>
   </div>
