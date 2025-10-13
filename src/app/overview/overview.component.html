@@ -27,8 +27,9 @@
     </div>
   </div>
 
-  <div class="pt-8">
+  <div class="pt-8 flex gap-[20px]">
     <app-pots
+      class="hidden"
       [showAddButton]="false"
       [showPotsBox]="false"
       [totalSaved]="totalSaved$ | async"
