@@ -7,11 +7,19 @@ import { BudgetsComponent } from '../budgets/budgets.component';
 import { PotsSharedService } from '../shared/pots-shared.service';
 import { Pots } from '../pots/pots.interface';
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
+import { Overview } from './overview.interface';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, PotsComponent, BudgetsComponent],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    PotsComponent,
+    BudgetsComponent,
+    RouterLink,
+  ],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
 })
@@ -19,6 +27,7 @@ export class OverviewComponent implements OnInit {
   @Input() showFiller: 'open' | 'closed' = 'closed';
   moneyBag: string = 'assets/money-bag.png';
   isPortrait = window.matchMedia('(orientation: portrait)').matches;
+  overview: Overview[] | any = [];
 
   balance: any = {};
 
@@ -42,6 +51,6 @@ export class OverviewComponent implements OnInit {
   displayData() {
     this.overviewService
       .getOverviewBudgets()
-      .subscribe((data) => (this.balance = data[0].balance));
+      .subscribe((overviewData) => (this.overview = overviewData));
   }
 }

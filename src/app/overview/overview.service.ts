@@ -6,7 +6,7 @@ import { Overview } from './overview.interface';
   providedIn: 'root',
 })
 export class OverviewService {
-  dataUrl = 'assets/data.json';
+  dataUrl = 'http://localhost:3000/api/overview';
   constructor(private http: HttpClient) {}
 
   getOverviewBudgets() {

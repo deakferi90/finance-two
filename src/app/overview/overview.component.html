@@ -1,4 +1,5 @@
 <div class="balance-info-container">
+  @for (balance of overview; track $index) {
   <div
     [ngClass]="{
       'balance-info-prices': showFiller === 'closed',
@@ -26,6 +27,7 @@
       </div>
     </div>
   </div>
+  }
 
   <div class="pt-8 flex gap-[20px]">
     <app-pots
@@ -39,13 +41,16 @@
     <div class="bg-[#fff] w-3/5 mt-5 p-5 pb-0 rounded-2xl custom-box-pots">
       <div class="text-[#201F24] flex justify-between">
         <div class="text-[20px] font-bold">Pots</div>
-        <div class="text-[#696868] flex items-center gap-[12px]">
+        <a
+          class="text-[#696868] flex items-center gap-[12px] cursor-pointer"
+          routerLink="/pots"
+        >
           See Details<img
             src="assets/arrow-right.png"
             alt="Logo"
             class="img-logo"
           />
-        </div>
+        </a>
       </div>
       <div class="flex gap-[25px] py-2.5">
         <div
@@ -79,13 +84,16 @@
     <div class="bg-[#fff] w-2/5 mt-5 p-5 pb-0 rounded-2xl custom-box-pots">
       <div class="text-[#201F24] flex justify-between">
         <div class="text-[20px] font-bold zindex">Budgets</div>
-        <div class="text-[#696868] flex items-center gap-[12px]">
+        <a
+          class="text-[#696868] flex items-center gap-[12px] cursor-pointer"
+          routerLink="/budgets"
+        >
           See Details<img
             src="assets/arrow-right.png"
             alt="Logo"
             class="img-logo"
           />
-        </div>
+        </a>
       </div>
       <div class="budgets-container-overview">
         <app-budgets
