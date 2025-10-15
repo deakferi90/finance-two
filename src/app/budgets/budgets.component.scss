@@ -116,11 +116,14 @@
   }
 }
 
-.budget-parent-container {
-  display: block;
-}
+@media screen and (max-width: 1200px) {
+  .parent-container,
+  .budgets-container-parent {
+    width: 100%;
+  }
 
-.parent-container,
-.budgets-container-parent {
-  width: 100%;
+  .budget-parent-container {
+    display: block;
+    width: 100%;
+  }
 }
