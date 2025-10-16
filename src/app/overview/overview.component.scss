@@ -69,9 +69,26 @@
   height: fit-content;
 }
 
-@media screen and (max-width: 1280px) {
+::ng-deep .my-class {
+  display: flex;
+}
+
+::ng-deep .summary {
+  border: none;
+}
+
+@media screen and (max-width: 1420px) {
   .custom-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 1330px) {
+  .custom-flex {
+    flex-direction: column;
+  }
+  .custom-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -124,5 +141,16 @@
       width: auto;
       text-align: center;
     }
+  }
+
+  .custom-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-width {
+    width: 90%;
   }
 }

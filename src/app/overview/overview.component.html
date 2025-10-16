@@ -29,7 +29,7 @@
   </div>
   }
 
-  <div class="pt-8 flex gap-[20px]">
+  <div class="pt-8 flex gap-[20px] custom-flex">
     <app-pots
       class="hidden"
       [showAddButton]="false"
@@ -42,7 +42,7 @@
       <div class="text-[#201F24] flex justify-between">
         <div class="text-[20px] font-bold">Pots</div>
         <a
-          class="text-[#696868] flex items-center gap-[12px] cursor-pointer"
+          class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
           routerLink="/pots"
         >
           See Details<img
@@ -52,9 +52,9 @@
           />
         </a>
       </div>
-      <div class="flex gap-[25px] py-2.5">
+      <div class="flex gap-[25px] py-2.5 custom-inner">
         <div
-          class="bg-[#F8F4F0] rounded-md h-[110px] w-[247px] flex items-center justify-start gap-[10px] pl-5"
+          class="bg-[#F8F4F0] rounded-md h-[110px] w-[247px] flex items-center justify-start gap-[10px] pl-5 custom-width"
         >
           <div>
             <img src="{{ moneyBag }}" />
@@ -69,7 +69,7 @@
           {
           <div class="flex">
             <div
-              class="h-[48px] w-[5px] rounded-2xl mr-[30px]"
+              class="h-[48px] w-[5px] rounded-2xl mr-[10px]"
               [style.background-color]="pot.theme"
             ></div>
             <div>
@@ -85,7 +85,7 @@
       <div class="text-[#201F24] flex justify-between">
         <div class="text-[20px] font-bold zindex">Budgets</div>
         <a
-          class="text-[#696868] flex items-center gap-[12px] cursor-pointer"
+          class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
           routerLink="/budgets"
         >
           See Details<img
