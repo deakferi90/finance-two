@@ -71,6 +71,18 @@
 
 ::ng-deep .my-class {
   display: flex;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
+}
+
+::ng-deep .custom-legend {
+  @media screen and (max-width: 600px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
 
 ::ng-deep .summary {

@@ -117,12 +117,16 @@
   }
 }
 
-@media screen and (max-width: 1120px) {
-  .parent-container,
-  .budgets-container-parent {
-    width: 100%;
-  }
+.sm-screen {
+  padding-bottom: 15px;
+}
 
+.parent-container,
+.budgets-container-parent {
+  width: 100%;
+}
+
+@media screen and (max-width: 1120px) {
   .budget-parent-container {
     display: block;
     width: 100%;

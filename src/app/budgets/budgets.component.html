@@ -22,8 +22,42 @@
     } @if (showAddButton) {
     <h1 class="font-bold text-2xl pb-[15px]">Spending Summary</h1>
     }
-    <div class="mt-[20px]">
-      <div *ngFor="let budget of filteredBudgets; let i = index">
+    <div class="mt-[20px] custom-legend">
+      <div
+        [ngClass]="{
+          'flex gap-[10px]': true,
+          'sm-screen': !showAddButton
+        }"
+        *ngFor="let budget of filteredBudgets; let i = index"
+      >
+        @if (!showAddButton) {
+        <div
+          [ngStyle]="{
+            'background-color': budget.theme,
+            width: '4px',
+            height: 'auto',
+            'border-radius': '10px',
+            'padding-bottom': '20px',
+          }"
+        ></div>
+        <div>
+          <div class="category">{{ budget.category }}</div>
+          <div
+            *ngIf="spentValues && spentValues[i] !== undefined"
+            class="flex gap-2 items-center"
+          >
+            <div class="font-bold text-lg">
+              ${{ spentValues[i] ? spentValues[i] : "0.00" }}
+            </div>
+            @if (showAddButton) {
+            <div class="text-[gray]">
+              of ${{ budget.amount ? budget.amount : "0.00" }}
+            </div>
+            }
+          </div>
+        </div>
+
+        } @else {
         <div class="summary pt-[15px] pb-[15px] px-0 border-b border-[#f2f2f2]">
           <div class="flex items-center gap-4">
             <div
@@ -50,6 +84,7 @@
             }
           </div>
         </div>
+        }
       </div>
     </div>
   </div>
