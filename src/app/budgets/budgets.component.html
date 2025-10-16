@@ -25,8 +25,8 @@
     <div class="mt-[20px] custom-legend">
       <div
         [ngClass]="{
-          'flex gap-[10px]': true,
-          'sm-screen': !showAddButton
+          'flex gap-[10px] mt-[15px]': true,
+          '!block': showAddButton
         }"
         *ngFor="let budget of filteredBudgets; let i = index"
       >

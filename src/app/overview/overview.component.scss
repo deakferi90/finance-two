@@ -82,6 +82,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    margin-left: -10px;
   }
 }
 
@@ -163,6 +164,6 @@
   }
 
   .custom-width {
-    width: 90%;
+    width: 100%;
   }
 }

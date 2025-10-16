@@ -62,6 +62,10 @@
   min-width: 200px;
 }
 
+::ng-deep .summary {
+  display: block;
+}
+
 .dots-img {
   &:hover {
     cursor: pointer;
@@ -117,13 +121,17 @@
   }
 }
 
-.sm-screen {
+::ng-deep .sm-screen {
   padding-bottom: 15px;
 }
 
 .parent-container,
 .budgets-container-parent {
   width: 100%;
+}
+
+.category {
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 1120px) {
