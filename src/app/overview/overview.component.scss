@@ -99,6 +99,7 @@
 @media screen and (max-width: 1330px) {
   .custom-flex {
     flex-direction: column;
+    gap: 0px;
   }
   .custom-grid {
     grid-template-columns: repeat(2, 1fr);
