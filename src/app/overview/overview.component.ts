@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PotsComponent } from '../pots/pots.component';
 import { BudgetsComponent } from '../budgets/budgets.component';
+import { TransactionsComponent } from '../transactions/transactions.component';
 import { PotsSharedService } from '../shared/pots-shared.service';
 import { Pots } from '../pots/pots.interface';
 import { Observable } from 'rxjs';
@@ -18,6 +19,7 @@ import { Overview } from './overview.interface';
     HttpClientModule,
     PotsComponent,
     BudgetsComponent,
+    TransactionsComponent,
     RouterLink,
   ],
   templateUrl: './overview.component.html',

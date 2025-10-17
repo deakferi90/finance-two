@@ -1,4 +1,5 @@
 <div class="parent-container" [class.shifted]="showFiller === 'open'">
+  @if (hideSearchAndFilter) {
   <div class="search-and-filter">
     <div class="input-container">
       <input
@@ -56,6 +57,7 @@
       </mat-form-field>
     </div>
   </div>
+  }
   <table
     mat-table
     class="min-w-full table-auto table-smaller-screen hide-table"
@@ -152,6 +154,7 @@
       </div>
     </div>
   </div>
+  @if (hideSearchAndFilter) {
   <div class="pagination-container">
     <button
       class="btn-steps"
@@ -192,4 +195,5 @@
     (page)="onPageChange($event)"
   >
   </mat-paginator>
+  }
 </div>
