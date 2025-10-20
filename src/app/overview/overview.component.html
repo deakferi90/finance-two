@@ -1,60 +1,17 @@
-<div class="balance-info-container">
-  @for (balance of overview; track $index) {
-  <div
-    [ngClass]="{
-      'balance-info-prices': showFiller === 'closed',
-      'balance-info-prices-sm': showFiller === 'open' && !isPortrait
-    }"
-  >
-    <div class="parent-container box">
-      <h1 class="color-black">Current Balance</h1>
-      <div class="current-value">
-        {{ balance.current | currency : "USD" : "symbol" : "1.2-2" }}
-      </div>
-    </div>
-
-    <div class="parent-container">
-      <h1>Income</h1>
-      <div class="current-value">
-        {{ balance.income | currency : "USD" : "symbol" : "1.2-2" }}
-      </div>
-    </div>
-
-    <div class="parent-container">
-      <h1>Expenses</h1>
-      <div class="current-value">
-        {{ balance.expenses | currency : "USD" : "symbol" : "1.2-2" }}
-      </div>
-    </div>
-  </div>
-  }
-</div>
-<div class="flex flex-column gap-4">
-  <div class="w-full gap-[20px]">
-    <app-pots
-      class="hidden"
-      [showAddButton]="false"
-      [showPotsBox]="false"
-      [totalSaved]="totalSaved$ | async"
-      [displayPots]="(totalPots$ | async) ?? []"
-    ></app-pots>
-
-    <div
-      class="bg-[#fff] w-3/5 mt-5 p-5 pb-0 rounded-2xl custom-box-pots h-fit"
-    >
+<div class="flex w-full gap-[20px]">
+  <div class="flex flex-col w-[60%] gap-[30px]">
+    <div class="bg-[#fff] h-fit p-8 rounded-2xl custom-box-pots">
       <div class="text-[#201F24] flex justify-between">
         <div class="text-[20px] font-bold">Pots</div>
         <a
           class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
           routerLink="/pots"
         >
-          See Details<img
-            src="assets/arrow-right.png"
-            alt="Logo"
-            class="img-logo"
-          />
+          See Details
+          <img src="assets/arrow-right.png" alt="Logo" class="img-logo" />
         </a>
       </div>
+
       <div class="flex gap-[25px] py-2.5 custom-inner">
         <div
           class="bg-[#F8F4F0] rounded-md h-[110px] w-[247px] flex items-center justify-start gap-[10px] pl-5 custom-width"
@@ -67,6 +24,7 @@
             <div class="text-3xl font-bold">${{ totalSaved$ | async }}</div>
           </div>
         </div>
+
         <div class="grid grid-cols-2 gap-[12px] custom-grid">
           @if (totalPots$ | async; as pots) { @for (pot of pots; track pot._id)
           {
@@ -83,66 +41,66 @@
           } }
         </div>
       </div>
-    </div>
-  </div>
-  <div class="bg-[#fff] w-2/5 mt-5 p-5 pb-0 rounded-2xl custom-box-pots">
-    <div class="text-[#201F24] flex justify-between">
-      <div class="text-[20px] font-bold zindex">Budgets</div>
-      <a
-        class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
-        routerLink="/budgets"
-      >
-        See Details<img
-          src="assets/arrow-right.png"
-          alt="Logo"
-          class="img-logo"
-        />
-      </a>
-    </div>
-    <div class="budgets-container-overview">
-      <app-budgets
-        class="budgets-cl"
+      <app-pots
         [showAddButton]="false"
-        [showBudgetsList]="false"
-      ></app-budgets>
+        [showPotsBox]="false"
+        [totalSaved]="totalSaved$ | async"
+        [displayPots]="(totalPots$ | async) ?? []"
+      ></app-pots>
+    </div>
+
+    <div class="bg-[#fff] h-fit p-10 rounded-2xl custom-box-pots mt-0">
+      <div class="text-[#201F24] flex justify-between">
+        <div class="text-[20px] font-bold zindex">Transactions</div>
+        <a
+          class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
+          routerLink="/transactions"
+        >
+          See Details
+          <img src="assets/arrow-right.png" alt="Logo" class="img-logo" />
+        </a>
+      </div>
+      <div class="transactions-container-overview">
+        <app-transactions [hideSearchAndFilter]="false"></app-transactions>
+      </div>
     </div>
   </div>
-</div>
-<div class="flex flex-column gap-4">
-  <div class="bg-[#fff] w-2/5 p-5 pb-0 rounded-2xl custom-box-pots">
-    <div class="text-[#201F24] flex justify-between">
-      <div class="text-[20px] font-bold zindex">Transactions</div>
-      <a
-        class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
-        routerLink="/transactions"
-      >
-        See Details<img
-          src="assets/arrow-right.png"
-          alt="Logo"
-          class="img-logo"
-        />
-      </a>
+
+  <div class="flex flex-col w-[40%] gap-[30px]">
+    <div class="bg-[#fff] h-fit p-8 rounded-2xl custom-box-pots">
+      <div class="text-[#201F24] flex justify-between">
+        <div class="text-[20px] font-bold zindex">Budgets</div>
+        <a
+          class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
+          routerLink="/budgets"
+        >
+          See Details
+          <img src="assets/arrow-right.png" alt="Logo" class="img-logo" />
+        </a>
+      </div>
+      <div class="budgets-container-overview">
+        <app-budgets
+          class="budgets-cl"
+          [showAddButton]="false"
+          [showBudgetsList]="false"
+        ></app-budgets>
+      </div>
     </div>
-    <div class="transactions-container-overview">
-      <app-transactions [hideSearchAndFilter]="false"></app-transactions>
-    </div>
-  </div>
-  <div class="bg-[#fff] p-5 pb-0 rounded-2xl custom-box-pots h-fit mt-[25px]">
-    <div class="text-[#201F24] flex justify-between">
-      <div class="text-[20px] font-bold zindex">Recurring Bills</div>
-      <a
-        class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
-        routerLink="/recurring-bills"
-      >
-        See Details<img
-          src="assets/arrow-right.png"
-          alt="Logo"
-          class="img-logo"
-        />
-      </a>
-    </div>
-    <div class="transactions-container-overview">
-      <app-recurring-bills [hideButton]="false"></app-recurring-bills>
+
+    <div class="bg-[#fff] h-fit p-8 rounded-2xl custom-box-pots">
+      <div class="text-[#201F24] flex justify-between">
+        <div class="text-[20px] font-bold zindex">Recurring Bills</div>
+        <a
+          class="text-[#696868] flex items-center gap-[12px] cursor-pointer z-[1]"
+          routerLink="/recurring-bills"
+        >
+          See Details
+          <img src="assets/arrow-right.png" alt="Logo" class="img-logo" />
+        </a>
+      </div>
+      <div class="transactions-container-overview">
+        <app-recurring-bills [hideButton]="false"></app-recurring-bills>
+      </div>
     </div>
   </div>
 </div>

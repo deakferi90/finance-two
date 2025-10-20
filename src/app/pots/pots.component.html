@@ -1,10 +1,12 @@
 <div class="text-right mt-[-50px]">
+  @if (showAddButton) {
   <button
     (click)="addPot()"
     class="add-pots p-[14px] color-[#fff] bg-black hover:bg-gray-800"
   >
     +Add New Pot
   </button>
+  }
 </div>
 <div class="pots-container">
   @for (pot of pots; track pot._id) { @if(showPotsBox) {
