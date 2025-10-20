@@ -89,12 +89,6 @@
   border: none;
 }
 
-@media screen and (max-width: 1420px) {
-  .custom-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media screen and (max-width: 1330px) {
   .custom-flex {
     flex-direction: column;

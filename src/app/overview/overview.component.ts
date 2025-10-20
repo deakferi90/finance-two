@@ -29,6 +29,7 @@ import { RecurringBillsComponent } from '../recurring-bills/recurring-bills.comp
 })
 export class OverviewComponent implements OnInit {
   @Input() showFiller: 'open' | 'closed' = 'closed';
+  paginatedTransactions: any[] = [];
   moneyBag: string = 'assets/money-bag.png';
   isPortrait = window.matchMedia('(orientation: portrait)').matches;
   overview: Overview[] | any = [];
