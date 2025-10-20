@@ -61,6 +61,7 @@ export class TransactionsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   paginatedData: Transaction[] = [];
+  paginatedDataForOverview: Transaction[] = [];
   pageSize = 10;
   totalPages = 0;
   currentPage = 0;
@@ -106,6 +107,7 @@ export class TransactionsComponent implements OnInit {
       startIndex,
       startIndex + this.pageSize
     );
+    this.paginatedDataForOverview = this.transactions.slice(0, 5);
     this.currentPage = pageIndex;
   }
 

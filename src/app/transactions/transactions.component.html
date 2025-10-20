@@ -78,6 +78,41 @@
         </th>
       </tr>
     </thead>
+
+    @if(!hideSearchAndFilter) {
+    <tbody>
+      <tr
+        class="border-b-[1px] border-[#f2f2f2]"
+        *ngFor="let item of paginatedDataForOverview"
+      >
+        <td class="custom-td flex items-left justify-start gap-5">
+          <img
+            class="img"
+            [src]="'assets/avatars/' + item.avatar"
+            alt="Avatar"
+          />
+          <span class="text-left font-bold">{{ item.name }}</span>
+        </td>
+        <td class="px-4 py-2 text-center sm-width">{{ item.category }}</td>
+        <td class="px-4 py-2 text-center sm-width">
+          {{ item.date | date : "shortDate" }}
+        </td>
+        <td
+          class="px-4 py-2 text-center font-bold sm-width"
+          [ngClass]="{
+            'text-green-500': item.amount > 0,
+            'text-black': item.amount < 0
+          }"
+        >
+          {{
+            item.amount > 0
+              ? "+" + (item.amount | currency)
+              : (item.amount | currency)
+          }}
+        </td>
+      </tr>
+    </tbody>
+    } @else {
     <tbody>
       <tr
         class="border-b-[1px] border-[#f2f2f2]"
@@ -110,6 +145,7 @@
         </td>
       </tr>
     </tbody>
+    }
   </table>
 
   <div mat-table class="min-w-full smaller-div table-smaller-screen">
