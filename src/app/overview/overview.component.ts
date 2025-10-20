@@ -10,6 +10,7 @@ import { Pots } from '../pots/pots.interface';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { Overview } from './overview.interface';
+import { RecurringBillsComponent } from '../recurring-bills/recurring-bills.component';
 
 @Component({
   selector: 'app-overview',
@@ -18,6 +19,7 @@ import { Overview } from './overview.interface';
     CommonModule,
     HttpClientModule,
     PotsComponent,
+    RecurringBillsComponent,
     BudgetsComponent,
     TransactionsComponent,
     RouterLink,

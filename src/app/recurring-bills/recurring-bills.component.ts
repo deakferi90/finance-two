@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BillsService } from './bills.service';
 import { recurringBills } from './recurringBills.interface';
 import { MatSelectModule } from '@angular/material/select';
@@ -12,16 +12,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './recurring-bills.component.scss',
 })
 export class RecurringBillsComponent implements OnInit {
+  @Input() hideButton: boolean = true;
   totalBills: number = 0;
   billsUrl: string = 'assets/recurring-bills.svg';
   allBills: recurringBills[] = [];
   sortOrder: 'latest' | 'oldest' = 'latest';
   searchText: string = '';
+  calculatedBills: object[] = [];
+  reducedAll: number = 0;
+  totals: { ok: number; bad: number; neutral: number; all: number } | null =
+    null;
 
   constructor(private billsService: BillsService) {}
 
   ngOnInit(): void {
     this.getTotalBillsPrice();
+    this.getBillsAmountByStatus();
   }
 
   getDayFromDueDate(dueDate: string): number {
@@ -50,13 +56,30 @@ export class RecurringBillsComponent implements OnInit {
     this.sortOrder = this.sortOrder === 'oldest' ? 'latest' : 'oldest';
   }
 
+  sendRecurringBillsData(bills: any) {
+    console.log(bills);
+    this.reducedAll = bills.reduce(
+      (prev: any, cur: any) => prev + cur.amount,
+      0
+    );
+    console.log(this.reducedAll);
+  }
+
   getTotalBillsPrice() {
     this.billsService
       .getBillsTotalValue()
       .subscribe((bills: recurringBills[]) => {
         this.allBills = bills;
+        this.sendRecurringBillsData(this.allBills);
         this.totalBills = bills.reduce((prev, cur) => prev + cur.amount, 0);
       });
+  }
+
+  getBillsAmountByStatus() {
+    this.billsService.getBillsTotals().subscribe((data) => {
+      this.totals = data;
+      console.log(this.totals.ok);
+    });
   }
 
   getAvatarUrl(title: string): string {

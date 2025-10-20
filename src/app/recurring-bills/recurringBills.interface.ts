@@ -4,6 +4,6 @@ export interface recurringBills {
   avatar: string;
   title: string;
   dueDate: string;
-  status: string;
+  status: 'ok' | 'bad' | 'neutral';
   amount: number;
 }

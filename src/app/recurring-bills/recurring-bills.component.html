@@ -1,3 +1,4 @@
+@if (hideButton) {
 <div class="recurring-bills-container">
   <div class="recurring-bills-inner-container">
     <div class="bg-box">
@@ -143,3 +144,19 @@
     </div>
   </div>
 </div>
+} @else {
+<div class="bills-boxes mt-[10px] mb-[10px] border-l-[4px] border-l-[#277c78]">
+  <p class="text-[#696868]">Paid Bills</p>
+  <p class="mr-[20px] color-[#000] font-bold">${{ totals?.ok?.toFixed(2) }}</p>
+</div>
+<div class="bills-boxes mt-[10px] mb-[10px] border-l-[4px] border-l-[#f2cdac]">
+  <p class="text-[#696868]">Total Upcoming</p>
+  <p class="mr-[20px] color-[#000] font-bold">
+    ${{ totals?.neutral?.toFixed(2) }}
+  </p>
+</div>
+<div class="bills-boxes mt-[10px] mb-[10px] border-l-[4px] border-l-[#82c9d7]">
+  <p class="text-[#696868]">Due Soon</p>
+  <p class="mr-[20px] color-[#000] font-bold">${{ totals?.bad?.toFixed(2) }}</p>
+</div>
+}
