@@ -36,7 +36,6 @@ export class OverviewComponent implements OnInit {
 
   balance: any = {};
 
-  // ✅ Use Observables instead of local variables
   totalSaved$!: Observable<number>;
   totalPots$!: Observable<Pots[]>;
 
@@ -48,7 +47,6 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.displayData();
 
-    // ✅ Assign observables directly (no subscribe)
     this.totalSaved$ = this.sharedService.totalSaved$;
     this.totalPots$ = this.sharedService.totalPotsData$;
   }

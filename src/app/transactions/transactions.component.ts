@@ -34,6 +34,7 @@ import { ShowFillerService } from '../show-filler.service';
 export class TransactionsComponent implements OnInit {
   @Input() showFiller: 'open' | 'closed' = 'closed';
   @Input() hideSearchAndFilter: boolean = true;
+  @Input() showOnlyFiveElements!: boolean;
   svgSortMobile: string = 'assets/icon-sort-mobile.svg';
   selectedTransaction: string | undefined;
   selectedTimeline: string | undefined;

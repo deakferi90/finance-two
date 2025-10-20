@@ -61,7 +61,10 @@
         </a>
       </div>
       <div class="transactions-container-overview">
-        <app-transactions [hideSearchAndFilter]="false"></app-transactions>
+        <app-transactions
+          [hideSearchAndFilter]="false"
+          [showOnlyFiveElements]="true"
+        ></app-transactions>
       </div>
     </div>
   </div>
