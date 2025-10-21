@@ -44,6 +44,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() showBudgets!: boolean;
   @Input() showAddButton: boolean = true;
   @Input() showBudgetsList!: boolean;
+  @Input() showBudgetsOnOverview!: boolean;
   chart!: Chart;
   dotsUrl: string = 'assets/dots.png';
   progress: number = 50;

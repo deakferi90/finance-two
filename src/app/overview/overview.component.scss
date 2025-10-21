@@ -68,6 +68,12 @@
   width: 100%;
 }
 
+.budgets-cl {
+  app-donut-chart {
+    margin-left: -50px !important;
+  }
+}
+
 ::ng-deep .my-class {
   display: flex;
 
