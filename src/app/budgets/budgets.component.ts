@@ -194,6 +194,24 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
     this.spentValues = value;
   }
 
+  animateBudgetBars() {
+    this.filteredBudgets.forEach((budget) => {
+      const targetValue = (this.getAbsoluteSpent(budget) / budget.amount) * 100;
+      budget.animatedValue = budget.animatedValue ?? 0;
+
+      const step = () => {
+        budget.animatedValue! += 2;
+        if (budget.animatedValue! < targetValue) {
+          requestAnimationFrame(step);
+        } else {
+          budget.animatedValue = targetValue;
+        }
+      };
+
+      requestAnimationFrame(step);
+    });
+  }
+
   loadBudgetData() {
     this.budgetService.getBudgetData().subscribe((data) => {
       if (Array.isArray(data.budgets) && data.budgets.length > 0) {
@@ -206,6 +224,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
 
         this.recalculateSpentValues();
         this.cdr.detectChanges();
+        this.animateBudgetBars();
       } else {
         console.error('Unexpected data format', data);
       }

@@ -5,4 +5,5 @@ export interface Budget {
   theme: string;
   color: string;
   optional?: boolean;
+  animatedValue?: number;
 }

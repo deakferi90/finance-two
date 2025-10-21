@@ -132,10 +132,10 @@
           class="custom-progress-bar"
           [ngStyle]="{
             height: progressBarHeight,
-            'border-radius': '5px',
+            'border-radius': '5px'
           }"
-          [ngClass]="budget.category.toLowerCase().replace(' ', '-')"
-          [value]="(getAbsoluteSpent(budget) / budget.amount) * 100"
+          [style.--mdc-linear-progress-active-indicator-color]="budget.theme"
+          [value]="budget.animatedValue"
         ></mat-progress-bar>
       </div>
       <div class="prices">
