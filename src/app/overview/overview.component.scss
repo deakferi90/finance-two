@@ -97,6 +97,10 @@
   .custom-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .sm-flex {
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 1225px) {

@@ -253,6 +253,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
 
         this.recalculateSpentValues();
         this.refreshChart();
+        this.animateBudgetBars();
 
         this.isModalVisible = false;
 
