@@ -12,23 +12,18 @@
   <div class="parent-container my-class w-2/5 h-3/5 mt-[20px]">
     @if (budgets.length > 0) {
     <app-donut-chart
-      class="parent-container"
+      [ngClass]="{
+        'parent-container': true,
+        'parent-container ml-[-52px] max-[1330px]:ml-[0px]':
+          showBudgetsOnOverview
+      }"
       [budgets]="budgets"
       [filteredBudgets]="filteredBudgets"
       [spent]="spentArray"
       (spentValues)="handleValue($event)"
       (chartRedraw)="callCreateChart()"
-    ></app-donut-chart>
-    @if (showBudgetsOnOverview) {
-    <app-donut-chart
-      class="parent-container"
-      [budgets]="budgets"
-      [filteredBudgets]="filteredBudgets"
-      [spent]="spentArray"
-      (spentValues)="handleValue($event)"
-      (chartRedraw)="callCreateChart()"
-    ></app-donut-chart>
-    } } @if (showAddButton) {
+    ></app-donut-chart
+    >} @if (showAddButton) {
     <h1 class="font-bold text-2xl pb-[15px]">Spending Summary</h1>
     }
     <div class="mt-[20px] custom-legend">
