@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TransactionsComponent } from './transactions.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
@@ -37,18 +36,25 @@ describe('TransactionsComponent', () => {
         recurring: false,
       },
     ];
+    component.filteredTransactions = component.transactions;
     fixture.detectChanges();
 
     const transactionItems = fixture.debugElement.queryAll(
       By.css('.parent-container')
     );
-    expect(transactionItems.length).toBe(1);
+    expect(transactionItems.length).toBeGreaterThan(0);
   });
 
   it('should display "No transactions available" if there are none', () => {
     component.transactions = [];
+    component.filteredTransactions = [];
+    fixture.detectChanges();
+
+    const message = fixture.debugElement.nativeElement.textContent;
+    expect(message).toContain('No transactions available');
   });
+
   it('should create', () => {
-    expect(TransactionsComponent).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 });

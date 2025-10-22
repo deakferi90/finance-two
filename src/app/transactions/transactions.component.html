@@ -1,6 +1,5 @@
 <div class="parent-container" [class.shifted]="showFiller === 'open'">
-  @if (hideSearchAndFilter) {
-  <div class="search-and-filter">
+  <div *ngIf="hideSearchAndFilter" class="search-and-filter">
     <div class="input-container">
       <input
         type="text"
@@ -22,6 +21,7 @@
         />
       </svg>
     </div>
+
     <img
       (click)="sortList()"
       src="assets/icon-sort-mobile.svg"
@@ -34,31 +34,42 @@
       alt="Logo"
       class="filter-logo"
     />
+
     <div class="sort-input-container">
       <mat-label class="whitespace-nowrap">Sort By</mat-label>
       <mat-form-field fxFlex="400px" fxFlex.lt-md="90%" fxFlex.lt-sm="100%">
         <mat-label>Select to sort...</mat-label>
         <mat-select (selectionChange)="onTimelineChange($event.value)">
-          @for (timeLine of timeLines; track timeLine.id) {
-          <mat-option [value]="timeLine.value">
+          <mat-option
+            *ngFor="let timeLine of timeLines"
+            [value]="timeLine.value"
+          >
             {{ timeLine.value }}
           </mat-option>
-          }
         </mat-select>
       </mat-form-field>
+
       <mat-label>Category</mat-label>
       <mat-form-field fxFlex="400px" fxFlex.lt-md="90%" fxFlex.lt-sm="100%">
         <mat-label>Select to sort...</mat-label>
         <mat-select (selectionChange)="onCategoryChange($event.value)">
-          @for (category of categories; track category.id) {
-          <mat-option [value]="category.value">{{ category.value }}</mat-option>
-          }
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category.value"
+          >
+            {{ category.value }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
   </div>
-  }
+
+  <div *ngIf="filteredTransactions.length === 0" class="no-transactions">
+    No transactions available
+  </div>
+
   <table
+    *ngIf="filteredTransactions.length > 0"
     mat-table
     class="min-w-full table-auto table-smaller-screen hide-table"
   >
@@ -79,44 +90,10 @@
       </tr>
     </thead>
 
-    @if(showOnlyFiveElements) {
-    <tbody>
+    <tbody *ngIf="showOnlyFiveElements">
       <tr
-        class="border-b-[1px] border-[#f2f2f2]"
         *ngFor="let item of paginatedDataForOverview"
-      >
-        <td class="custom-td flex items-left justify-start gap-5">
-          <img
-            class="img"
-            [src]="'assets/avatars/' + item.avatar"
-            alt="Avatar"
-          />
-          <span class="text-left font-bold">{{ item.name }}</span>
-        </td>
-        <td class="px-4 py-2 text-center sm-width">{{ item.category }}</td>
-        <td class="px-4 py-2 text-center sm-width">
-          {{ item.date | date : "shortDate" }}
-        </td>
-        <td
-          class="px-4 py-2 text-center font-bold sm-width"
-          [ngClass]="{
-            'text-green-500': item.amount > 0,
-            'text-black': item.amount < 0
-          }"
-        >
-          {{
-            item.amount > 0
-              ? "+" + (item.amount | currency)
-              : (item.amount | currency)
-          }}
-        </td>
-      </tr>
-    </tbody>
-    } @else {
-    <tbody>
-      <tr
         class="border-b-[1px] border-[#f2f2f2]"
-        *ngFor="let item of paginatedData"
       >
         <td class="custom-td flex items-left justify-start gap-5">
           <img
@@ -145,53 +122,83 @@
         </td>
       </tr>
     </tbody>
-    }
+
+    <tbody *ngIf="!showOnlyFiveElements">
+      <tr
+        *ngFor="let item of paginatedData"
+        class="border-b-[1px] border-[#f2f2f2]"
+      >
+        <td class="custom-td flex items-left justify-start gap-5">
+          <img
+            class="img"
+            [src]="'assets/avatars/' + item.avatar"
+            alt="Avatar"
+          />
+          <span class="text-left font-bold">{{ item.name }}</span>
+        </td>
+        <td class="px-4 py-2 text-center sm-width">{{ item.category }}</td>
+        <td class="px-4 py-2 text-center sm-width">
+          {{ item.date | date : "shortDate" }}
+        </td>
+        <td
+          class="px-4 py-2 text-center font-bold sm-width"
+          [ngClass]="{
+            'text-green-500': item.amount > 0,
+            'text-black': item.amount < 0
+          }"
+        >
+          {{
+            item.amount > 0
+              ? "+" + (item.amount | currency)
+              : (item.amount | currency)
+          }}
+        </td>
+      </tr>
+    </tbody>
   </table>
 
-  <div mat-table class="min-w-full smaller-div table-smaller-screen">
-    <div>
-      <div
-        class="flex justify-between items-center"
-        *ngFor="let item of paginatedData"
-      >
-        <div class="custom-td flex">
-          <div class="text-right">
-            <img
-              class="img"
-              [src]="'assets/avatars/' + item.avatar"
-              alt="Avatar"
-            />
-          </div>
-          <div>
-            <div class="text-left font-bold">
-              {{ item.name }}
-            </div>
-            <div>{{ item.category }}</div>
-          </div>
+  <div
+    *ngIf="filteredTransactions.length > 0"
+    mat-table
+    class="min-w-full smaller-div table-smaller-screen"
+  >
+    <div
+      *ngFor="let item of paginatedData"
+      class="flex justify-between items-center"
+    >
+      <div class="custom-td flex">
+        <div class="text-right">
+          <img
+            class="img"
+            [src]="'assets/avatars/' + item.avatar"
+            alt="Avatar"
+          />
         </div>
         <div>
-          <div
-            class="px-0 py-0 text-end font-bold"
-            [ngClass]="{
-              'text-green-500': item.amount > 0,
-              'text-black': item.amount < 0
-            }"
-          >
-            {{
-              item.amount > 0
-                ? "+" + (item.amount | currency)
-                : (item.amount | currency)
-            }}
-          </div>
-          <div class="px-0 py-0 text-end">
-            {{ item.date | date : "d MMM y" }}
-          </div>
+          <div class="text-left font-bold">{{ item.name }}</div>
+          <div>{{ item.category }}</div>
         </div>
+      </div>
+      <div>
+        <div
+          class="px-0 py-0 text-end font-bold"
+          [ngClass]="{
+            'text-green-500': item.amount > 0,
+            'text-black': item.amount < 0
+          }"
+        >
+          {{
+            item.amount > 0
+              ? "+" + (item.amount | currency)
+              : (item.amount | currency)
+          }}
+        </div>
+        <div class="px-0 py-0 text-end">{{ item.date | date : "d MMM y" }}</div>
       </div>
     </div>
   </div>
-  @if (hideSearchAndFilter) {
-  <div class="pagination-container">
+
+  <div *ngIf="hideSearchAndFilter" class="pagination-container">
     <button
       class="btn-steps"
       mat-icon-button
@@ -223,6 +230,7 @@
   </div>
 
   <mat-paginator
+    *ngIf="hideSearchAndFilter"
     [pageSize]="pageSize"
     [length]="filteredTransactions.length"
     [pageSizeOptions]="[10]"
@@ -231,5 +239,4 @@
     (page)="onPageChange($event)"
   >
   </mat-paginator>
-  }
 </div>
