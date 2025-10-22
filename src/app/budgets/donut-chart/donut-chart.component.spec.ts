@@ -9,7 +9,7 @@ describe('DonutChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, HttpClientModule, DonutChartComponent], // Add DonutChartComponent to imports
+      imports: [CommonModule, HttpClientModule, DonutChartComponent],
     }).compileComponents();
   });
 
