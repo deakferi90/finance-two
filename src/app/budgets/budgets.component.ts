@@ -106,6 +106,7 @@ export class BudgetsComponent implements OnInit, AfterViewInit, OnChanges {
     this.modalTitle = 'Add New Budget';
     this.modalContent = `Choose category to set a spending budget. These categories can help you monitor spending.`;
     this.isModalVisible = true;
+    this.onAddBudget(this.budgets);
   }
 
   openEditModal(budget: Budget) {

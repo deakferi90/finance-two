@@ -59,7 +59,13 @@
 
     <span class="text-[#696868] mt-2">Theme</span>
     <div class="custom-dropdown-container theme mb-2">
-      <div class="dropdown-selected" (click)="toggleDropdown('theme')">
+      <div
+        class="dropdown-selected"
+        (click)="toggleDropdown('theme')"
+        [ngClass]="{
+          'not-selectable': true
+        }"
+      >
         <span *ngIf="selectedTheme" class="theme-selection">
           <span
             class="circle"

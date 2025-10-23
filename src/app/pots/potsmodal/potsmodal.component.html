@@ -1,91 +1,90 @@
 <div *ngIf="isVisible" class="modal-overlay">
   <div class="modal-content">
-    <div class="header">
-      <h1 class="font-sans font-bold text-[28px]">
+    <div class="header flex justify-between items-center mb-4">
+      <h1 class="text-xl font-bold">
         {{
           mode === "delete"
             ? "Delete '" + selectedPotName + "'"
             : mode === "edit"
             ? "Edit '" + selectedPotName + "'"
-            : "Add new pot"
+            : "Add New Pot"
         }}
       </h1>
-      <button
-        (click)="close()"
-        class="w-[30px] h-[30px] rounded-full border border-[#696868] mt-0"
-      >
-        ✕
-      </button>
+      <button (click)="close()" class="text-lg font-bold">✕</button>
     </div>
 
+    <!-- DELETE MODE -->
     <ng-container *ngIf="mode === 'delete'">
-      <p class="text-[#696868] mb-3">
+      <p class="text-gray-600 mb-4">
         Are you sure you want to delete this pot? This action cannot be
-        reversed, and all the data inside it will be removed forever.
+        reversed.
       </p>
-
       <button
-        class="mt-[5px] w-full py-[14px] bg-[#C94736] text-white font-semibold rounded-lg"
+        class="w-full py-2 mb-2 bg-red-600 text-white rounded"
         (click)="onDelete()"
       >
         Yes, Confirm Deletion
       </button>
-
       <button
-        class="mt-[5px] w-full py-[14px] bg-transparent text-[#696868] rounded-lg"
+        class="w-full py-2 bg-gray-200 text-gray-700 rounded"
         (click)="close()"
       >
         No, Go Back
       </button>
     </ng-container>
 
+    <!-- EDIT MODE -->
     <ng-container *ngIf="mode === 'edit'">
-      <form>
-        <label class="block mb-2 font-semibold">Pot Name</label>
-        <input
-          type="text"
-          [(ngModel)]="editPot.name"
-          name="name"
-          placeholder="Enter pot name"
-          class="w-full p-2 border border-gray-300 rounded mb-3"
-        />
-        <label class="block mb-2 font-semibold">Target Amount</label>
-        <input
-          type="number"
-          [(ngModel)]="editPot.target"
-          name="target"
-          placeholder="Enter target amount"
-          class="w-full p-2 border border-gray-300 rounded mb-3"
-        />
-        <label class="block mb-2 font-semibold">Theme</label>
+      <p class="text-gray-600 mb-4">Update your pot details below.</p>
+      <form class="space-y-3">
+        <div>
+          <label class="block font-semibold mb-1">Pot Name</label>
+          <input
+            type="text"
+            [(ngModel)]="editPot.name"
+            name="editPotName"
+            placeholder="Enter pot name"
+            class="w-full border p-2 rounded"
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Target Amount</label>
+          <input
+            type="number"
+            [(ngModel)]="editPot.target"
+            name="editPotTarget"
+            placeholder="Enter target amount"
+            class="w-full border p-2 rounded"
+          />
+        </div>
+
         <div class="relative">
+          <label class="block font-semibold mb-1">Theme</label>
           <div
-            class="border border-gray-300 rounded p-2 flex items-center justify-between cursor-pointer"
+            class="border rounded p-2 flex justify-between items-center cursor-pointer"
             (click)="toggleThemeDropdown()"
           >
             <div class="flex items-center gap-2">
               <span
                 class="w-5 h-5 rounded-full"
-                [style.background]="addPot.theme"
+                [style.background]="editPot.theme"
               ></span>
-              <span>
-                {{ selectedThemeName }}
-              </span>
+              <span>{{ selectedThemeName }}</span>
             </div>
             <span>▼</span>
           </div>
 
           <div
             *ngIf="isThemeDropdownOpen"
-            class="absolute z-10 mt-1 w-full border border-gray-300 rounded bg-white"
+            class="absolute z-10 mt-1 w-full border rounded bg-white shadow"
           >
             <div
-              *ngFor="let theme of themes"
-              class="flex items-center justify-between p-2 cursor-pointer hover:bg-gray-100"
-              [ngClass]="{
-                'opacity-50 cursor-not-allowed': isThemeUsed(theme)
-              }"
-              (click)="!isThemeUsed(theme) && selectTheme(theme)"
+              *ngFor="let theme of allThemesWithStatus()"
+              class="flex justify-between items-center p-2 cursor-pointer hover:bg-gray-100"
+              [class.opacity-50]="theme.alreadyUsed"
+              [class.cursor-not-allowed]="theme.alreadyUsed"
+              (click)="!theme.alreadyUsed && selectTheme(theme)"
             >
               <div class="flex items-center gap-2">
                 <span
@@ -94,42 +93,54 @@
                 ></span>
                 <span>{{ theme.name }}</span>
               </div>
-              <span *ngIf="isThemeUsed(theme)" class="text-sm text-red-500">
+              <span *ngIf="theme.alreadyUsed" class="text-sm text-red-500">
                 Already in use
               </span>
             </div>
           </div>
         </div>
       </form>
+
       <button
-        class="mt-[5px] w-full py-[14px] bg-[#000] text-white font-semibold rounded-lg"
+        class="w-full py-2 mt-4 bg-black text-white rounded"
         (click)="onSave()"
       >
         Save Changes
       </button>
     </ng-container>
+
+    <!-- ADD MODE -->
     <ng-container *ngIf="mode === 'add'">
-      <form>
-        <label class="block mb-2 font-semibold">Pot Name</label>
-        <input
-          type="text"
-          [(ngModel)]="addPot.name"
-          name="name"
-          placeholder="Enter pot name"
-          class="w-full p-2 border border-gray-300 rounded mb-3"
-        />
-        <label class="block mb-2 font-semibold">Target Amount</label>
-        <input
-          type="number"
-          [(ngModel)]="addPot.target"
-          name="target"
-          placeholder="Enter target amount"
-          class="w-full p-2 border border-gray-300 rounded mb-3"
-        />
-        <label class="block mb-2 font-semibold">Theme</label>
+      <p class="text-gray-600 mb-4">
+        Create a new pot to set your savings target.
+      </p>
+      <form class="space-y-3">
+        <div>
+          <label class="block font-semibold mb-1">Pot Name</label>
+          <input
+            type="text"
+            [(ngModel)]="addPot.name"
+            name="addPotName"
+            placeholder="Enter pot name"
+            class="w-full border p-2 rounded"
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Target Amount</label>
+          <input
+            type="number"
+            [(ngModel)]="addPot.target"
+            name="addPotTarget"
+            placeholder="Enter target amount"
+            class="w-full border p-2 rounded"
+          />
+        </div>
+
         <div class="relative">
+          <label class="block font-semibold mb-1">Theme</label>
           <div
-            class="border border-gray-300 rounded p-2 flex items-center justify-between cursor-pointer"
+            class="border rounded p-2 flex justify-between items-center cursor-pointer"
             (click)="toggleThemeDropdown()"
           >
             <div class="flex items-center gap-2">
@@ -137,21 +148,21 @@
                 class="w-5 h-5 rounded-full"
                 [style.background]="addPot.theme"
               ></span>
-              <span>
-                {{ selectedThemeName }}
-              </span>
+              <span>{{ selectedThemeName }}</span>
             </div>
             <span>▼</span>
           </div>
 
           <div
             *ngIf="isThemeDropdownOpen"
-            class="absolute z-10 mt-1 w-full border border-gray-300 rounded bg-white"
+            class="absolute z-10 mt-1 w-full border rounded bg-white shadow"
           >
             <div
-              *ngFor="let theme of addingNewThemes"
-              class="flex items-center justify-between p-2 cursor-pointer hover:bg-gray-100"
-              (click)="selectTheme(theme)"
+              *ngFor="let theme of allThemesWithStatus()"
+              class="flex justify-between items-center p-2 cursor-pointer hover:bg-gray-100"
+              [class.opacity-50]="theme.alreadyUsed"
+              [class.cursor-not-allowed]="theme.alreadyUsed"
+              (click)="!theme.alreadyUsed && selectTheme(theme)"
             >
               <div class="flex items-center gap-2">
                 <span
@@ -160,12 +171,24 @@
                 ></span>
                 <span>{{ theme.name }}</span>
               </div>
+              <span *ngIf="theme.alreadyUsed" class="text-sm text-red-500">
+                Already in use
+              </span>
+            </div>
+
+            <div
+              *ngIf="availableThemes.length === 0"
+              class="p-2 text-center text-gray-500"
+            >
+              All themes are in use
             </div>
           </div>
         </div>
       </form>
+
       <button
-        class="mt-[5px] w-full py-[14px] bg-[#000] text-white font-semibold rounded-lg"
+        class="w-full py-2 mt-4 bg-black text-white rounded"
+        [disabled]="!addPot.theme || !addPot.name"
         (click)="onAdd()"
       >
         Add Pot
