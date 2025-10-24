@@ -61,8 +61,8 @@
     <div class="custom-dropdown-container theme mb-2">
       <div
         class="dropdown-selected"
-        (click)="!dropdownDisabled && toggleDropdown('theme')"
         [ngClass]="{ 'not-selectable': dropdownDisabled }"
+        (click)="!dropdownDisabled && toggleDropdown('theme')"
       >
         <span *ngIf="selectedTheme" class="theme-selection">
           <span
@@ -138,7 +138,11 @@
 
     <span class="text-[#696868] mt-2">Theme</span>
     <div class="custom-dropdown-container theme mb-2">
-      <div class="dropdown-selected" (click)="toggleDropdown('theme')">
+      <div
+        class="dropdown-selected"
+        [ngClass]="{ 'not-selectable': dropdownDisabled }"
+        (click)="(null)"
+      >
         <span *ngIf="selectedTheme" class="theme-selection">
           <span
             class="circle"
@@ -166,9 +170,6 @@
         <div
           *ngFor="let option of budgets"
           class="dropdown-item flex justify-between"
-          [ngClass]="{
-            'not-selectable': dropdownDisabled || budgetColors[option.category]
-          }"
         >
           <div>
             <span
