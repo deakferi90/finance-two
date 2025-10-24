@@ -79,9 +79,9 @@
         <div
           *ngFor="let option of budgets"
           class="dropdown-item flex justify-between"
-          (click)="!option.alreadyUsed && selectOption('category', option)"
+          (click)="!option.alreadyUsed && selectOption('theme', option)"
           [ngClass]="{
-            'not-selectable': budgetColors[option.category]
+            'not-selectable': budgetColors[option.theme]
           }"
         >
           <div>
