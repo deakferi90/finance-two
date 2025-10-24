@@ -72,6 +72,7 @@ export class ModalComponent implements OnInit {
   newValue: Budget | object = {};
   filteredBudgets!: Budget[];
   selectedColorName: string = '';
+  dropdownDisabled: boolean = true;
 
   constructor(
     private modalService: ModalService,
@@ -345,13 +346,23 @@ export class ModalComponent implements OnInit {
 
   confirmDelete() {
     if (this.selectedBudget) {
-      this.budgetDeleted.emit(this.selectedBudget.id);
+      const deletedId = this.selectedBudget.id;
+
+      this.budgets = this.budgets.filter(
+        (b: { id: number }) => b.id !== deletedId
+      );
+      this.filteredBudgets = this.filteredBudgets.filter(
+        (b) => b.id !== deletedId
+      );
 
       if (this.budgetColors[this.selectedBudget.category]) {
         delete this.budgetColors[this.selectedBudget.category];
       }
+
+      this.budgetDeleted.emit(deletedId);
+
+      this.closeModal.emit();
     }
-    this.closeModal.emit();
   }
 
   cancelDelete() {
