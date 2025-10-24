@@ -57,12 +57,10 @@ export class RecurringBillsComponent implements OnInit {
   }
 
   sendRecurringBillsData(bills: any) {
-    console.log(bills);
     this.reducedAll = bills.reduce(
       (prev: any, cur: any) => prev + cur.amount,
       0
     );
-    console.log(this.reducedAll);
   }
 
   getTotalBillsPrice() {
@@ -78,7 +76,6 @@ export class RecurringBillsComponent implements OnInit {
   getBillsAmountByStatus() {
     this.billsService.getBillsTotals().subscribe((data) => {
       this.totals = data;
-      console.log(this.totals.ok);
     });
   }
 

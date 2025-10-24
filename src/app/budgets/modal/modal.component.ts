@@ -298,7 +298,8 @@ export class ModalComponent implements OnInit {
       ? Number(selAmountInput.value)
       : 0;
 
-    const newBudget: Partial<Budget> = {
+    const newBudget: Budget = {
+      id: this.selectedCategory.id,
       category: this.selectedCategory.category,
       amount: amountValue,
       theme: this.selectedCategory.theme,
@@ -306,7 +307,7 @@ export class ModalComponent implements OnInit {
       optional: false,
     };
 
-    this.modalService.addBudget(newBudget as Budget).subscribe({
+    this.modalService.addBudget(newBudget).subscribe({
       next: (response: Budget | null) => {
         if (!response) return;
 
