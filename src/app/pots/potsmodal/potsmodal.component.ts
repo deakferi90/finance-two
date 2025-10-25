@@ -165,7 +165,19 @@ export class PotsmodalComponent implements OnInit, OnChanges {
     this.isThemeDropdownOpen = !this.isThemeDropdownOpen;
   }
 
+  updateThemeUsage() {
+    this.themes = this.themes.map((theme) => {
+      const isUsed = this.allPots.some(
+        (pot) => pot.theme === theme.value && pot.id !== this.editPot.id
+      );
+      return { ...theme, alreadyUsed: isUsed };
+    });
+  }
+
   selectTheme(theme: any) {
+    const oldTheme =
+      this.mode === 'edit' ? this.editPot.theme : this.addPot.theme;
+
     if (this.mode === 'edit') {
       this.editPot.theme = theme.value;
       this.editPot.themeColor = theme.value;
@@ -178,8 +190,8 @@ export class PotsmodalComponent implements OnInit, OnChanges {
       this.addPot.theme = theme.value;
       this.addPot.themeColor = theme.value;
     }
+    this.updateThemeUsage();
 
-    this.allThemesWithStatus();
     this.isThemeDropdownOpen = false;
   }
 

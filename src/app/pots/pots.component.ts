@@ -6,6 +6,7 @@ import {
   Input,
   OnInit,
   QueryList,
+  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { PotsService } from './pots.service';
@@ -27,6 +28,7 @@ export class PotsComponent implements OnInit {
   @ViewChildren('menuContainer') menuContainers:
     | QueryList<ElementRef>
     | never[] = [];
+  @ViewChild(PotsmodalComponent) potsModal!: PotsmodalComponent;
   progressBarHeight: string = '12px';
   dotsUrl: string = 'assets/dots.png';
   openDropDownIndex: number | null = null;
@@ -145,7 +147,7 @@ export class PotsComponent implements OnInit {
       return;
     }
 
-    this.potsService.updatePot(updatedPot._id, updatedPot).subscribe({
+    this.potsService.updatePot(String(updatedPot._id), updatedPot).subscribe({
       next: () => {
         this.getPotsData();
         this.toastr.success('Pot updated successfully!');
@@ -173,21 +175,20 @@ export class PotsComponent implements OnInit {
   }
 
   confirmDeletePot() {
-    if (!this.selectedPotId) {
-      console.error('Error: pot ID is undefined');
-      return;
-    }
+    if (!this.selectedPotId) return;
 
     this.potsService.deletePot(this.selectedPotId).subscribe({
       next: () => {
         const index = this.pots.findIndex((p) => p.id === this.selectedPotId);
+        if (index !== -1) this.pots.splice(index, 1);
 
-        if (index !== -1) {
-          this.pots.splice(index, 1);
-        }
         this.toastr.success('Pot deleted successfully!');
         this.isModalVisible = false;
         this.selectedPotId = null;
+
+        // ✅ Notify modal to recalc themes
+        this.potsModal.allPots = this.pots; // update the modal's allPots
+        this.potsModal.updateThemeUsage(); // refresh theme usage
       },
       error: (err) => {
         console.error('Error deleting pot:', err);
